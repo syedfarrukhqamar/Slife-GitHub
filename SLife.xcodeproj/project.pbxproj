@@ -7,14 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D401B6711CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
+		D401B6721CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
+		D401B6731CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
+		D40421F91CC7AAC400D916C7 /* LegWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40421F81CC7AAC400D916C7 /* LegWalk.swift */; };
+		D40421FB1CC7AAD000D916C7 /* LegTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40421FA1CC7AAD000D916C7 /* LegTravel.swift */; };
+		D4426B6E1CC0C58200199A71 /* ParseJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B6D1CC0C58200199A71 /* ParseJson.swift */; };
+		D4426B701CC0D4F900199A71 /* TripSuggestionCells_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */; };
+		D4426B721CC1267500199A71 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B711CC1267400199A71 /* Address.swift */; };
+		D4426B741CC1396500199A71 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B731CC1396500199A71 /* Leg.swift */; };
+		D4426B761CC139D800199A71 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B751CC139D700199A71 /* Trip.swift */; };
+		D4426B781CC1E9F000199A71 /* LegInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B771CC1E9F000199A71 /* LegInfo.swift */; };
+		D4426B7A1CC1F77D00199A71 /* LegDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B791CC1F77D00199A71 /* LegDetail.swift */; };
+		D4426B7C1CC1F9FC00199A71 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B7B1CC1F9FC00199A71 /* Walk.swift */; };
+		D4426B7E1CC1FB1B00199A71 /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B7D1CC1FB1B00199A71 /* Travel.swift */; };
+		D4558E501CB5301E0050DB75 /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */; };
+		D4558E511CB5301E0050DB75 /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */; };
+		D4558E521CB5301E0050DB75 /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */; };
+		D4558E581CB553E10050DB75 /* SearchTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E571CB553E10050DB75 /* SearchTripController.swift */; };
+		D4558E591CB553E10050DB75 /* SearchTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E571CB553E10050DB75 /* SearchTripController.swift */; };
+		D4558E5A1CB553E10050DB75 /* SearchTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E571CB553E10050DB75 /* SearchTripController.swift */; };
 		D46964F41CB3F37C00C6CFE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46964F31CB3F37C00C6CFE1 /* AppDelegate.swift */; };
-		D46964F61CB3F37C00C6CFE1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46964F51CB3F37C00C6CFE1 /* FirstViewController.swift */; };
 		D46964F81CB3F37C00C6CFE1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46964F71CB3F37C00C6CFE1 /* SecondViewController.swift */; };
 		D46964FB1CB3F37C00C6CFE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46964F91CB3F37C00C6CFE1 /* Main.storyboard */; };
 		D46964FD1CB3F37C00C6CFE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */; };
 		D46965001CB3F37C00C6CFE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46964FE1CB3F37C00C6CFE1 /* LaunchScreen.storyboard */; };
 		D469650B1CB3F37D00C6CFE1 /* SLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469650A1CB3F37D00C6CFE1 /* SLifeTests.swift */; };
 		D46965161CB3F37D00C6CFE1 /* SLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46965151CB3F37D00C6CFE1 /* SLifeUITests.swift */; };
+		D48827E31CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
+		D48827E41CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
+		D48827E51CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
+		D48827EB1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */; };
+		D48827ED1CBBE108002A0A87 /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827EC1CBBE108002A0A87 /* Trips.swift */; };
+		D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */; };
+		D4C9B48C1CBEAA9100978546 /* TripStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B48B1CBEAA9100978546 /* TripStocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +61,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D401B6701CB417150018465C /* tripSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tripSuggestions.swift; sourceTree = "<group>"; };
+		D40421F81CC7AAC400D916C7 /* LegWalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegWalk.swift; sourceTree = "<group>"; };
+		D40421FA1CC7AAD000D916C7 /* LegTravel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegTravel.swift; sourceTree = "<group>"; };
+		D4426B6D1CC0C58200199A71 /* ParseJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseJson.swift; sourceTree = "<group>"; };
+		D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionCells_new.swift; sourceTree = "<group>"; };
+		D4426B711CC1267400199A71 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		D4426B731CC1396500199A71 /* Leg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		D4426B751CC139D700199A71 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		D4426B771CC1E9F000199A71 /* LegInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegInfo.swift; sourceTree = "<group>"; };
+		D4426B791CC1F77D00199A71 /* LegDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegDetail.swift; sourceTree = "<group>"; };
+		D4426B7B1CC1F9FC00199A71 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		D4426B7D1CC1FB1B00199A71 /* Travel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
+		D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceHandler.swift; sourceTree = "<group>"; };
+		D4558E571CB553E10050DB75 /* SearchTripController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTripController.swift; sourceTree = "<group>"; };
 		D46964F01CB3F37C00C6CFE1 /* SLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46964F31CB3F37C00C6CFE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D46964F51CB3F37C00C6CFE1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D46964F71CB3F37C00C6CFE1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D46964FA1CB3F37C00C6CFE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +88,11 @@
 		D46965111CB3F37D00C6CFE1 /* SLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46965151CB3F37D00C6CFE1 /* SLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLifeUITests.swift; sourceTree = "<group>"; };
 		D46965171CB3F37D00C6CFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsCell.swift; sourceTree = "<group>"; };
+		D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC.swift; sourceTree = "<group>"; };
+		D48827EC1CBBE108002A0A87 /* Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
+		D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC_new.swift; sourceTree = "<group>"; };
+		D4C9B48B1CBEAA9100978546 /* TripStocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +120,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D40421F71CC6B97000D916C7 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D4426B7D1CC1FB1B00199A71 /* Travel.swift */,
+				D48827EC1CBBE108002A0A87 /* Trips.swift */,
+				D4426B751CC139D700199A71 /* Trip.swift */,
+				D4426B711CC1267400199A71 /* Address.swift */,
+				D4426B791CC1F77D00199A71 /* LegDetail.swift */,
+				D4426B731CC1396500199A71 /* Leg.swift */,
+				D40421F81CC7AAC400D916C7 /* LegWalk.swift */,
+				D40421FA1CC7AAD000D916C7 /* LegTravel.swift */,
+				D4426B771CC1E9F000199A71 /* LegInfo.swift */,
+				D4426B7B1CC1F9FC00199A71 /* Walk.swift */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
 		D46964E71CB3F37C00C6CFE1 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +160,19 @@
 		D46964F21CB3F37C00C6CFE1 /* SLife */ = {
 			isa = PBXGroup;
 			children = (
+				D4558E571CB553E10050DB75 /* SearchTripController.swift */,
 				D46964F31CB3F37C00C6CFE1 /* AppDelegate.swift */,
-				D46964F51CB3F37C00C6CFE1 /* FirstViewController.swift */,
+				D401B6701CB417150018465C /* tripSuggestions.swift */,
 				D46964F71CB3F37C00C6CFE1 /* SecondViewController.swift */,
+				D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */,
+				D4426B6D1CC0C58200199A71 /* ParseJson.swift */,
 				D46964F91CB3F37C00C6CFE1 /* Main.storyboard */,
+				D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */,
+				D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */,
+				D4C9B48B1CBEAA9100978546 /* TripStocks.swift */,
+				D40421F71CC6B97000D916C7 /* CustomClasses */,
+				D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */,
+				D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */,
 				D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */,
 				D46964FE1CB3F37C00C6CFE1 /* LaunchScreen.storyboard */,
 				D46965011CB3F37C00C6CFE1 /* Info.plist */,
@@ -259,9 +329,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4426B761CC139D800199A71 /* Trip.swift in Sources */,
+				D48827ED1CBBE108002A0A87 /* Trips.swift in Sources */,
+				D4C9B48C1CBEAA9100978546 /* TripStocks.swift in Sources */,
+				D40421F91CC7AAC400D916C7 /* LegWalk.swift in Sources */,
+				D4426B7A1CC1F77D00199A71 /* LegDetail.swift in Sources */,
+				D4558E581CB553E10050DB75 /* SearchTripController.swift in Sources */,
 				D46964F81CB3F37C00C6CFE1 /* SecondViewController.swift in Sources */,
 				D46964F41CB3F37C00C6CFE1 /* AppDelegate.swift in Sources */,
-				D46964F61CB3F37C00C6CFE1 /* FirstViewController.swift in Sources */,
+				D4426B7E1CC1FB1B00199A71 /* Travel.swift in Sources */,
+				D4558E501CB5301E0050DB75 /* WebServiceHandler.swift in Sources */,
+				D48827E31CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */,
+				D4426B701CC0D4F900199A71 /* TripSuggestionCells_new.swift in Sources */,
+				D4426B7C1CC1F9FC00199A71 /* Walk.swift in Sources */,
+				D401B6711CB417150018465C /* tripSuggestions.swift in Sources */,
+				D40421FB1CC7AAD000D916C7 /* LegTravel.swift in Sources */,
+				D4426B721CC1267500199A71 /* Address.swift in Sources */,
+				D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */,
+				D4426B781CC1E9F000199A71 /* LegInfo.swift in Sources */,
+				D4426B6E1CC0C58200199A71 /* ParseJson.swift in Sources */,
+				D4426B741CC1396500199A71 /* Leg.swift in Sources */,
+				D48827EB1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +357,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4558E591CB553E10050DB75 /* SearchTripController.swift in Sources */,
+				D48827E41CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */,
+				D401B6721CB417150018465C /* tripSuggestions.swift in Sources */,
+				D4558E511CB5301E0050DB75 /* WebServiceHandler.swift in Sources */,
 				D469650B1CB3F37D00C6CFE1 /* SLifeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4558E5A1CB553E10050DB75 /* SearchTripController.swift in Sources */,
+				D48827E51CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */,
+				D401B6731CB417150018465C /* tripSuggestions.swift in Sources */,
+				D4558E521CB5301E0050DB75 /* WebServiceHandler.swift in Sources */,
 				D46965161CB3F37D00C6CFE1 /* SLifeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BeMyCompetenceAB.SLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -418,6 +515,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BeMyCompetenceAB.SLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -486,6 +584,7 @@
 				D469651C1CB3F37D00C6CFE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D469651D1CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLifeTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +593,7 @@
 				D469651F1CB3F37D00C6CFE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D46965201CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLifeUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +602,7 @@
 				D46965221CB3F37D00C6CFE1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
