@@ -23,11 +23,16 @@ class TripSuggestionsTVC: UITableViewController {
         
         super.viewDidLoad()
         var searchTrips = WebServiceHandler()
-        let url = searchTrips.constructURL("Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
+        //let url = searchTrips.constructURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
+        
+        
+        
+        
+        let url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: CharacterSet.whitespaces), destination: to.trimmingCharacters(in: CharacterSet.whitespaces), returnContentType: jsonType, searchForArrival: "0")
         
         print("-------------------url----\(url)")
         
-        get_data_from_url(url)
+        get_data_from_url(url: url)
         print("-----------------------ended--090")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -50,18 +55,19 @@ class TripSuggestionsTVC: UITableViewController {
         
         
         let url:NSURL = NSURL(string: url)!
-        let session = NSURLSession.sharedSession()
+        let session = URLSession.shared
         
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "GET"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = "GET"
+//        request.cachePolicy = NSURLRequest.CachePolicy.ReloadIgnoringCacheData
         
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
         print("---json step 1------")
-        let task = session.dataTaskWithRequest(request) {
+        let task = session.dataTask(with: request as URLRequest) {
             (
-            let data, let response, let error) in
+            data, response, error) in
             
-            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+            guard let _:NSData = data as NSData?, let _:URLResponse = response  , error == nil else {
                 print("error")
                 return
             }
@@ -69,9 +75,11 @@ class TripSuggestionsTVC: UITableViewController {
             
             
             
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                self.extract_json(data!)
+            DispatchQueue.main.async(execute: {
+                
+//                }
+//            DispatchQueue.main.asynchronously(execute: {
+                self.extract_json(jsonData: data! as NSData)
                 // MARK XML Loading : for table view
                 // table vier data
                 
@@ -86,21 +94,21 @@ class TripSuggestionsTVC: UITableViewController {
                 
                 //self.trips.append(Trips(from_time: "", from_station: "", to_time: "", to_station: "", duration: "90")!)
                 //                print("....8989888...\(self.trips[0].duration)")
-                let tripArray = self.convertedJsonIntoNSDict["TripList"]!["Trip"] as! NSArray
+                let tripArray = (self.convertedJsonIntoNSDict["TripList"]! as! [String:Any])["Trip"] as! NSArray
                 //--for-1--------------------------------------------------------------------------------------------------
                 var forMain1 = 0
                 for tripArray in tripArray {
                     //  print("--Start--[TripList]-[Trip]-for Loop-1-------------------------------------------forMain1 \(forMain1)-----")
                     print("--------------------------------------------------------------------------------forMain1 \(forMain1)-----")
                     
-                    let dur = tripArray.valueForKey("dur")!
+                    let dur = (tripArray as! NSDictionary).value(forKey: "dur")!
                     //    var tripOneByOne = Trips(from_time: "", from_station: "", to_time: "", to_station: "", duration: tripArray.valueForKey("dur") as! String)
                     //                         print("--tripArray is \(tripArray.allKeys)")
                     //                     print("--tripArray.leglist is \(tripArray["LegList"])")
                     //                    print("--tripArray.leglist is \(tripArray["LegList"])")
                     //
                     
-                    let LegList = tripArray.valueForKey("LegList") as! NSDictionary
+                    let LegList = (tripArray as! NSDictionary).value(forKey: "LegList") as! NSDictionary
                     print("---LegList.allKeys--LegList is \(LegList.allKeys)")
                     print("---LegList.allKeys----duration being entered is :\(dur)")
                     
@@ -127,7 +135,7 @@ class TripSuggestionsTVC: UITableViewController {
                     
                     // Moved to end -------1
                     print("--End----------------------------------------------End------------------forMain1  \(forMain1)-----")
-                    forMain1++
+                    forMain1 += 1
                     
                 }
                 
@@ -150,12 +158,13 @@ class TripSuggestionsTVC: UITableViewController {
         let json: AnyObject?
         do {
             print("json downloading in progres........4........")
-            json = try NSJSONSerialization.JSONObjectWithData(jsonData, options: [])
+            json = try JSONSerialization.jsonObject(with: jsonData as Data, options: []) as! AnyObject
             print("json just downloaded.......5........")
         } catch {
             json = nil
             return
         }
+        //MARK: NIL
         
         convertedJsonIntoNSDict = (json as? NSDictionary)!
         
@@ -169,21 +178,26 @@ class TripSuggestionsTVC: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+//        <#code#>
+//    }
+//    
+//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return trips.count
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ ableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("tripSuggestionsCell", forIndexPath: indexPath) as! TripSuggestionsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tripSuggestionsCell", for: indexPath as IndexPath) as! TripSuggestionsCell
         
         
         // Fetches the appropriate meal for the data source layout.
@@ -222,22 +236,26 @@ class TripSuggestionsTVC: UITableViewController {
                         var legsIndex = 0
                        
                         for legs in legs {
-                        print("-legs.key---legs.key--\(legs.allKeys)")
-                        print("-legs.key---legs.key-d-\(legs["Destination"])")
+                        print("-legs.key---legs.key--\((legs as AnyObject).allKeys)")
+                     //   print("-legs.key---legs.key-d-\(legs["Destination"])")
                             
                             print("legs \(legs)")
 
-                            print("leglist.count = \(leglist["Leg"]!.count)")
+                            print("leglist.count = \((leglist["Leg"]! as AnyObject).count)")
 
-                            print("Legs.count = \(legs.count)")
+                            print("Legs.count = \((legs as AnyObject).count)")
                             
                             print("legsIndex = \(legsIndex)")
                             // iterating through all the keys in journey Leg
-                            if (legsIndex == 0 && (leglist["Leg"]!.count == 1))
+                            if (legsIndex == 0 && ((leglist["Leg"]! as AnyObject).count == 1))
                             {
                             
                                                         // get OriginTime()
-                                let origin = legs["Origin"] as! NSDictionary
+                                // Mark: Swift 3
+                                
+                                let origin = (legs as! [String:Any] )["Origin"] as! NSDictionary
+                                
+//                                let origin = legs["Origin"] as! NSDictionary
                                 for (key,value) in origin {
                                 
                                 if (key as! String == "time")
@@ -248,7 +266,7 @@ class TripSuggestionsTVC: UITableViewController {
                                 
                                 }
                             // get DestinationTime
-                                let destination = legs["Destination"] as! NSDictionary
+                                let destination = (legs as! [String: Any])["Destination"] as! NSDictionary
                                 for (key,value) in destination {
                                     
                                     if (key as! String == "time")
@@ -262,10 +280,10 @@ class TripSuggestionsTVC: UITableViewController {
                                 
                             }
                             // get the first leg to extract from time
-                            else if (legsIndex == 0 && (leglist["Leg"]!.count > 1))
+                            else if (legsIndex == 0 && ((leglist["Leg"]! as AnyObject).count > 1))
                             {
                                 // get OriginTime()
-                                let origin = legs["Origin"] as! NSDictionary
+                                let origin = (legs as! [String: Any])["Origin"] as! NSDictionary
                                 for (key,value) in origin {
                                     print("101--1----101")
                                     if (key as! String == "time")
@@ -280,12 +298,12 @@ print("101--2----101---legs index is \(legsIndex)")
                             
                             }
                             // get the last leg to extract to time
-                            else if ( legsIndex == (leglist["Leg"]!.count - 1)){
+                            else if ( legsIndex == ((leglist["Leg"]! as AnyObject).count - 1)){
                                 print("101--3----101")
                                 // get OriginTime()
                                 // get DestinationTime
                                 // get DestinationTime
-                                let destination = legs["Destination"] as! NSDictionary
+                                let destination = (legs as! [String: Any])["Destination"] as! NSDictionary
                                 for (key,value) in destination {
                                     print("-----a-----")
                                     if (key as! String == "time")
@@ -298,8 +316,8 @@ print("101--2----101---legs index is \(legsIndex)")
                             
                             }
                             print("------legs index value----\(legsIndex)")
-                            print("------total count is ----\(legs.count)")
-                      legsIndex++
+                            print("------total count is ----\((legs as AnyObject).count)")
+                      legsIndex += 1
 //                            if (legs.count == 1) {
 //                            
 //                                // extract the destination and origin's time

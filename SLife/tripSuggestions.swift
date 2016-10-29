@@ -5,7 +5,7 @@
 //  Created by syed farrukh Qamar on 05/04/16.
 //  Copyright © 2016 Be My Competence AB. All rights reserved.
 //
-
+/*
 import UIKit
 import AVFoundation
 
@@ -96,3 +96,4 @@ func extract_json(jsonData:NSData)
 //    //....
 //    completionHandler()
 //}
+ */

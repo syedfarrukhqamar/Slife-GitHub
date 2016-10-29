@@ -4,13 +4,16 @@ import Foundation
 class LegWalk:LegDetail {
     
     var journeyType : String
-    var walk: Dictionary<String,Walk>
+   // var walk: Dictionary<String,Walk>
+    var walk: Walk
     
 //    init(journeyType: String,legWalk: Dictionary<String,Walk>,originValue: Address, destinationValue : Address){
 //        self.journeyType = journeyType
 
-    init(journeyType: String,legWalk: Dictionary<String,Walk>,originValue: Address, destinationValue : Address){
-            self.journeyType = journeyType
+   // init(journeyType: String,legWalk: Dictionary<String,Walk>,originValue: Address, destinationValue : Address){
+    init(journeyType: String,legWalk: Walk,originValue: Address, destinationValue : Address){
+        
+    self.journeyType = journeyType
     
         self.walk = legWalk
 

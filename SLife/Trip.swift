@@ -3,6 +3,11 @@ import UIKit
 
 // Trip with Leglist
 class Trip: NSObject, NSCopying {
+    public func copy(with zone: NSZone? = nil) -> Any {
+    //<#code#>
+        return Any.self
+    }
+
     var dur : String
     var chg : String
     var co2 : String
@@ -10,7 +15,12 @@ class Trip: NSObject, NSCopying {
     var tariffRemark : String
     var tariffZones : String
 //    var LegList = [Leg]()
+    
+//  LegList will have all the legs of journey as LegWalk or LegTravel
+// they are being added in TripSuggestionsTVC_news.swift
+    
     var LegList : NSMutableArray
+    
     // some variables which will be populated by external functions
     var originDetail: Address
     var destinationDetail: Address
@@ -34,6 +44,9 @@ class Trip: NSObject, NSCopying {
     self.tariffZones = tariffZones
     
    // <LegList>
+        
+        // The following Origin and Destination is containing the high level informaion of journey of origin to destination. do not confuse it with legs' origin and destination. they are different and contains the leg's origin and destinations to complete a journey
+        
     self.LegList = LegList
    self.originDetail = originDetail
    self.destinationDetail = destinationDetail

@@ -12,9 +12,14 @@ import Foundation
 class LegTravel:LegDetail {
     
     var journeyType: String
-    var travel: Dictionary<String,Travel>
+    var travel : Travel
     
-    init(journeyType: String, legTravel: Dictionary<String,Travel>, originValue: Address ,destinationValue: Address){
+    //var travel: Dictionary<String,Travel> 
+    // changing from dicitonary to direct saving technique because of redundancy
+    
+// journey type is being saved already so why to save again in trip suggestions tvc
+    
+    init(journeyType: String, legTravel:Travel, originValue: Address ,destinationValue: Address){
         
         self.journeyType = journeyType
         self.travel = legTravel
