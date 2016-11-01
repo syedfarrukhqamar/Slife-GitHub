@@ -336,14 +336,12 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             swap_origin_Destination_Outlet.isEnabled = false
             
         print("++simple++++++FROM+++++++++++++++++CAUGHT")
-       
-            
-        
-        } else if (to_destination_Input.titleLabel?.text == "To") {
+         } else if (to_destination_Input.titleLabel?.text == "To") {
             navigationItem.rightBarButtonItem?.isEnabled = false
             swap_origin_Destination_Outlet.isEnabled = false
             
          print("++simple++++++To+++++++++++++++++CAUGHT")
+            print("----------ending-----------------")
         
         } else {
         
@@ -356,13 +354,14 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
            
             }
             else {
-            
-            
-            print("simple----From and To should not be same")
+           print("simple----From and To should not be same")
+                print("---------------end-------------")
             }
          }
-        print("ORIGIN STATUS: = \(from_Origin_Input.titleLabel?.text!) ")
-        print("Destination STATUS: = \(to_destination_Input.titleLabel?.text?.isEmpty) ")
+       // MARK: NIL
+//        
+//        print("ORIGIN STATUS: = \(from_Origin_Input.titleLabel?.text!) ")
+//        print("Destination STATUS: = \(to_destination_Input.titleLabel?.text?.isEmpty) ")
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -532,7 +531,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
                 
                 if (downloadingNotFinishedTrafficStatus == false){
                     
-                    print("dataSourceTrafficStatus:::::\(dataSourceTrafficStatus.count)")
+                    print("dataSourceTrafficStatus::::main simple:::\(dataSourceTrafficStatus.count)")
                     
                     // swift 3                dispatch_async(dispatch_get_main_queue(), {
                     DispatchQueue.main.async(execute: {

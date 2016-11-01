@@ -27,6 +27,7 @@ class TripSuggestionsCell_new: UITableViewCell {
     
     @IBOutlet weak var showTripRouteOnMapOutlet: UIButton!
     @IBOutlet weak var ZoneInfo: UILabel!
+    @IBOutlet weak var stack_LegImage_Icons: UIStackView!
     
 //    @IBOutlet weak var from_time: UILabel!
 //    @IBOutlet weak var from_station: UILabel!

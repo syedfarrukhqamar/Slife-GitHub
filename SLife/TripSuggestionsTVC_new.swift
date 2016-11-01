@@ -92,9 +92,7 @@ class TripSuggestionsTVC_new: UITableViewController {
             
             // load this json into Trip---start
             
-            
-            
-            // load this json intro trip end here
+             // load this json intro trip end here
             
         } catch {
             json = nil

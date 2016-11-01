@@ -99,8 +99,8 @@ class SlifeMethods {
             {
                 let labelText = leg.line
                 let iconName = leg.type
-                                print("--in loop----start position-.....\(startingPoint)")
-//                                print("------size-.....\(size)")
+                print("--in loop----start position-.....\(startingPoint)")
+//              print("------size-.....\(size)")
                 drawVisualLeg(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize, sizeFactor: sizeFactor, iconName: iconName, cell: cell, lineName: leg.name)
 
             
@@ -201,16 +201,12 @@ class SlifeMethods {
         //var legIcon = UILabel(frame: CGRectMake(sx ,sy, sw,sh))
         //let legIcon = UIButton(frame: CGRectMake(sx ,sy, sw,sh))
         let legIcon = UIButton(frame: CGRect(origin: CGPoint(x:sx,y:sy), size: CGSize(width:sw,height:sh)))
-        
-        
-        //var legLabel = UILabel(frame: CGRectMake(labelPoint_x,labelPoint_y , labelSize.width,labelSize.height))
-        
+         //var legLabel = UILabel(frame: CGRectMake(labelPoint_x,labelPoint_y , labelSize.width,labelSize.height))
         var legLabel = UILabel(frame: CGRect(origin: CGPoint(x:labelPoint_x,y:labelPoint_y), size: CGSize(width:labelSize.width,height:labelSize.height)))
-        
-        print("icon Point::::::::: size :::: \(iconSize)")
+         print("icon Point::::::::: size :::: \(iconSize)")
          print("legLabel:::::::::  :::: \(legLabel)")
-        print("legIcon:::::::::  :::: \(legIcon)")
-        print("legIcon.accessibilityActivationPoint:::::::::  :::: \(legIcon.accessibilityActivationPoint)")
+         print("legIcon:::::::::  :::: \(legIcon)")
+         print("legIcon.accessibilityActivationPoint:::::::::  :::: \(legIcon.accessibilityActivationPoint)")
 //        legIcon.text = "I"
 //        legLabel.text = "L"
 //        
@@ -254,75 +250,12 @@ class SlifeMethods {
 //        legLabel.minimumScaleFactor = 0.2
       legLabel.sizeToFit()
               // var image = UIImage.init(named: DEFAULT)
-    
         var iconImage = UIImage.init(named: )
-//        switch (iconName) {
-//        case BUS:
-//            <#code#>
-//            case METRO:
-//            <#code#>
-//
-//            case TRAIN_PENDALTAG:
-//            <#code#>
-//            
-//            case TRAM:
-//            <#code#>
-//            case BOAT_SHIP:
-//            <#code#>
-//            case FERRY:
-//            <#code#>
-//
-//            default:
-//            <#code#>
-//        }
-//
-//        switch (label ) {
-//        case "Line":
-//             label
-//            print("-Line--startPosition----position------\(startingPoint)---icon size---\(startingSize)")
-//            print("------------------------------------------------------------------------")
-//           // print("setting label for Line--Icon-position-----\(legIcon.bounds)---icon size---()")
-//           // print("setting label for Line--label-Position-----\(legLabel.bounds)---label size---()")
-//            
-//            legLabel.text = labelText
-//            legLabel.tag = labelTag
-//            
-//            // set the background color accordingly
-//            legLabel.backgroundColor = UIColor.blueColor()
-//            
-//            //set the text
-//            // set the backgroun color
-//         case "Dist":
-//            // label
-//            print("-Dist--startPosition----position------\(startingPoint)---icon size---\(startingSize)")
-//            print("------------------------------------------------------------------------")
-//            print("setting label for Dist--Icon-position-----\(legIcon.bounds)---icon size---()")
-//            print("setting label for Dist--label-Position-----\(legLabel.bounds)---label size---()")
-//            
-//           // print("setting label for walk--------------")
-//            legLabel.text = labelText
-//            legLabel.tag = labelTag
-//            
-//            // set the background color accordingly
-//            legLabel.backgroundColor = UIColor.yellowColor()
-//            
-//            //set the text
-//            // set the backgroun color
-//
-//            
-//        default:
-//            print("default in switch has been called")
-//        }
-//        
-         // add LegIcon and LegLabel into view
         // MARK: Line Color
-        
         print("leg name :::legLabel: \(legLabel.text)")
         print("leg name :::lineName: \(lineName)")
         let tripMap = TripMapViewControllers()
         // MARK: Nil
-        
-        
         
 //        let alphabetPart = legLabel.text.
         let checkAlphabet = Int(legLabel.text!)
@@ -339,8 +272,6 @@ class SlifeMethods {
             
             lineNoForColor = Int(legLabel.text!)!
             print("no nil found in the bus line ")
-            
-        
         }
         let lineDictColorInfo = tripMap.identifyTransportMode(lineNo: lineNoForColor, LineName: lineName)
         
@@ -352,38 +283,108 @@ class SlifeMethods {
         
         print(lineDictColorInfo.allKeys)
         
-//        let linecColorInfoDict = TripMapViewControllers.identifyTransportMode(<#T##TripMapViewControllers#>)
+//      let linecColorInfoDict = TripMapViewControllers.identifyTransportMode(<#T##TripMapViewControllers#>)
         legIcon.backgroundColor = UIColor.init(patternImage: icon)
         legLabel.backgroundColor = lineColorInfo
         legLabel.textColor = UIColor.white
+       // MARK: Adding Image
+        
+        print("--------------------------------------------------")
+//        print("stack view === in cell = \(cell.viewWithTag(15))")
+        print("--------------------------------------------------")
+        // MARK: Big test
+       // TEMP
+//        print("Total count cell.view with==\(cell.viewWithTag(15)?.subviews.count)")
+//        print("leg icon points =\(legIcon)")
+//        // Constraint settings
+//        legIcon.frame.origin.x = 0.0
+//        legIcon.frame.origin.y = 0.0
+        
+        
+//        print("cell.size =\(cell.frame.size)")
+//        print("cell. trip.Main.size =\(cell.viewWithTag(10)?.frame.size)")
+//        
+//       // print("Stack.size =\(cell.viewWithTag(15)?.frame.size)")
+       // print("Stack.origin before=\(cell.viewWithTag(15)?.frame.origin)")
+       // cell.viewWithTag(15)?.frame.origin.x = 100.0
+//        print("Stack.origin after=\(cell.viewWithTag(15)?.frame.origin)")
+        
+        //        print("cell.view with tag ======------before--------------")
+        
+//        print( cell.viewWithTag(15)?.frame.size.height)
+       // cell.viewWithTag(15)?.frame.size.height = (cell.viewWithTag(15)?.frame.size.height)! + 20.0
+        print("cell.view with tag ======--------after------------")
+        
+        //print( cell.viewWithTag(15)?.frame.size.height)
+        //let temp_view = UIView(frame: legIcon.frame)
+        //temp_view.addSubview(legIcon)
+       // let temp_Stack = UIStackView(arrangedSubviews: [temp_view])
+       // cell.addSubview(temp_Stack)
+        // MARK: LegIcons add
+//          cell.viewWithTag(15)?.addSubview(legIcon)
+        // MARK: Constraints Trip Info
+//        print("1-Before::::auto resize translation value is = \(cell.translatesAutoresizingMaskIntoConstraints)")
+//        cell.translatesAutoresizingMaskIntoConstraints = false
+//        print("1-After:::auto resize translation value is = \(cell.translatesAutoresizingMaskIntoConstraints)")
+       // let tripMain_margin = cell.viewWithTag(10)?.layoutMargins
+       
+        
+        //let legIcon_margin_stack = cell.viewWithTag(15)?.layoutMargins
+    //    let legIcons_stack = cell.viewWithTag(15) as! UIStackView
+        
+//        let tripMain_stack = cell.viewWithTag(10) as! UIStackView
+//        
+//        legIcon.frame.origin = tripMain_stack.frame.origin
+//        
+//        
+//        cell.addSubview(legIcon)
+     //   legIcon.topAnchor.constraint(equalTo: tripMain_stack.bottomAnchor).isActive = true
+        
+        
+       // legIcon.trailingAnchor.constraint(equalTo: cell.trailingAnchor).identifier = "LegIconConst"
+        //legIcon.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
+    //    legIcon.topAnchor.constraint(equalTo: tripMain_stack.bottomAnchor).isActive = true
+//       legIcon.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+//        legIcon.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
+        
+// legIcon.leadingAnchor.constraint(equalTo: cell.leadingAnchor).isActive = true
+ //       legIcon.trailingAnchor.constraint(equalTo: cell.trailingAnchor).isActive = true
+//        legIcon.topAnchor.constraint(equalTo: tripMain_stack.bottomAnchor).isActive = true
+//        legIcon.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+//        legIcon.leadingAnchor.constraint(equalTo: cell.leadingAnchor).isActive = true
+//        
+        
+        
+        
+        // legIcon.topAnchor.constraint(equalTo: legIcons_stack.bottomAnchor).isActive = true
+        
+        //tripMain_stack.bottomAnchor.constraint(equalTo: legIcons_stack.topAnchor).isActive = true
+        //temp_Stack.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+        
+        
+     //   temp_Stack.topAnchor.constraint(equalTo: tripMain_stack.bottomAnchor).isActive = true
+        
+        // legIcons_stack.leadingAnchor.constraint(equalTo: tripMain_stack.leadingAnchor).isActive = true
+        //legIcons_stack.topAnchor.constraint(equalTo: tripMain_stack.bottomAnchor).isActive = true
+        
+        // tripMain_stack.heightAnchor.constraint(equalToConstant: 300)
+        //    legIcons_stack.bottomAnchor.constraint(equalTo: cell.bottomAnchor).isActive = true
+//
+//        print("2-Before::::auto resize translation value is = \(cell.translatesAutoresizingMaskIntoConstraints)")
+//        cell.translatesAutoresizingMaskIntoConstraints = true
+//        
+//        print("2-After:::auto resize translation value is = \(cell.translatesAutoresizingMaskIntoConstraints)")
+        
+//        cell.viewWithTag(15)?.addSubview(legLabel)
+
+//        print("Total count cell.view with==\(cell.viewWithTag(15)?.subviews.count)")
+        
+//        // TEMP
+//        print("----Slife Methods--------------leg Label-------start---\(legLabel)")
+//        print(legLabel)
         cell.contentView.addSubview(legIcon)
-        print("----Slife Methods--------------leg Label-------start---\(legLabel)")
-        print(legLabel)
         cell.contentView.addSubview(legLabel)
        // add it to subview
-
-//        
-//        if (iconName == "c") {
-//        if(bgColor != UIColor.whiteColor()){
-//        label.backgroundColor = bgColor
-//        }
-//    
-//        
-//        }
-//        else
-//        {
-//         // apply the background to uilabel
-//        
-//        print("indeside test.........")
-//        let image = UIImage.init(named: "b")
-//        image?.drawInRect(<#T##rect: CGRect##CGRect#>)
-//            label.backgroundColor = UIColor.init(patternImage: image!)
-//            cell.contentView.addSubview(label)
-//        
-//        
-//        }
-        
-  //      label.backgroundColor = bgColor
     
     }
     

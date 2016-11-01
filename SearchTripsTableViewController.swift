@@ -108,6 +108,7 @@ var tripDateShow = Bool()
  //   @IBOutlet weak var stopOverMinutes: UIButton!
     
     @IBOutlet weak var stopOverMinutesInput: UITextField!
+ //   @IBOutlet weak var stopOverMinutesInput: UITextField!
   
       @IBOutlet weak var walkAwayFlagLabelSummaryScreen: UILabel!
     @IBOutlet weak var whenDoneCell: UITableViewCell!
@@ -131,11 +132,9 @@ var tripDateShow = Bool()
     @IBOutlet weak var allowAlternativeStopsSwitchValue: UISwitch!
     @IBAction func stopOverMinutesAction(sender: UITextField) {
         var test = String()
-      stopOverMinutes =  NumberFormatter().number(from: stopOverMinutesInput.text!)!.intValue
+       stopOverMinutes =  NumberFormatter().number(from: stopOverMinutesInput.text!)!.intValue
         if (stopOverMinutes > 0) {
-       
-            viaStopOverMinutesFlags = true
-        
+             viaStopOverMinutesFlags = true
         } else if ( stopOverMinutes == 0){
         viaStopOverMinutesFlags = false
         }
