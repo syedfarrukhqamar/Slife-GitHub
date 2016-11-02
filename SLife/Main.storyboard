@@ -882,7 +882,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0Ox-Te-URD">
                                                     <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kcl-eS-Dr2">
+                                                        <stackView opaque="NO" tag="25" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kcl-eS-Dr2">
                                                             <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lDq-ix-lxX">
@@ -1386,7 +1386,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" semanticContentAttribute="forceLeftToRight" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NUZ-9z-Dhz">
-                                            <rect key="frame" x="14.5" y="35" width="346" height="30"/>
+                                            <rect key="frame" x="15" y="35" width="346" height="30"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlA-1U-eCA">
                                                     <rect key="frame" x="0.0" y="5" width="18" height="20"/>
@@ -2613,7 +2613,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zQp-BL-hk8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eI1-sm-ajs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eI1-sm-ajs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2633,7 +2633,7 @@
                     <tabBarItem key="tabBarItem" tag="1" title="RealTime" image="RealTime.png" selectedImage="RealTimeSelected.png" id="Vjv-yP-rTz"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Zxf-wg-eQI"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xFG-BM-W0g">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="xFG-BM-W0g">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2730,7 +2730,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WKb-tM-gGE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qw4-Bl-DS4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qw4-Bl-DS4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2749,7 +2749,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="egQ-9E-CFv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search Trips" image="SearchTripsDefaultSelected.png" selectedImage="SearchTripsDefault.png" id="zIq-Ln-h8T"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lrU-X7-oXy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="lrU-X7-oXy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2950,7 +2950,7 @@
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qay-h6-vHS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Qay-h6-vHS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

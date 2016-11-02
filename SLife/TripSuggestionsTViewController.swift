@@ -26,8 +26,8 @@ class TripSuggestionsTViewController: UITableViewController {
     //Mark: Autolayout Variables
     var legIconsLineCounter = 0
     let legIconsHeight = 22
-    let headerCellHeight = 80
-    let legIconsLineTerminateCount = 4
+    let headerCellHeight = 60
+    var legIconsLineTerminateCount = 1
     
   //  @IBOutlet weak var mapReferenceAction: UIButton!
 //    MARK:- showTripOnMapAction
@@ -1001,7 +1001,7 @@ class TripSuggestionsTViewController: UITableViewController {
     
     
     // MARK: Height of row
-    /*
+    
      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             let tripCell = newTrip[section] as! Trip
             print("heightForHeaderInSection...........\(section).")
@@ -1014,9 +1014,20 @@ class TripSuggestionsTViewController: UITableViewController {
                 print("total line count is =inside heighForHeader==for section \(section)==is=\(lineCount)")
             
             }
- 
-            
-        let headerCellTotalHeight = (legIconsHeight * lineCount) + headerCellHeight
+        
+        
+        
+        
+        var icon_Count_Total = tripCell.LegList.count
+        var screenWidth = UIScreen.main.bounds.width
+       
+        
+        let total_icon_lines = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(60.0))
+       // print("leg Icons Line Termination Count-iconLimits = \(iconLimits)")
+       
+        
+        
+        let headerCellTotalHeight = (legIconsHeight * total_icon_lines.lineCount) + headerCellHeight
         print("headerCellTotalHeight = \(headerCellTotalHeight)")
         print("legIconsHeight = \(legIconsHeight)")
         print("lineCount = \(lineCount)")
@@ -1024,14 +1035,15 @@ class TripSuggestionsTViewController: UITableViewController {
         print("CGFloat::\(headerCellTotalHeight)")
         
         //heightFixed = true
+       // var icon_Count_Total = tripCell.LegList.count
+       // var lineTest = SlifeMethods.lineCountsToDisplayIcons(availableWidth: UIScreen.main.bounds.width, iconsCount: icon_Count_Total, iconWidth: CGFloat(20.0))
+       // print("line Test is = \(lineTest)")
+//        var icon_counts = SlifeMethods.iconCountsToDisplayIcons(availableWidth: UIScreen.main.bounds.width, iconsCount: icon_Count_Total, iconWidth: CGFloat(20.0))
+      //  print("icon counts total = \(icon_counts)")
         return CGFloat(headerCellTotalHeight)
         
     }
- 
- */
-    
- 
-       override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
   
         
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCells") as! TripSuggestionsCell_new
@@ -1078,7 +1090,12 @@ class TripSuggestionsTViewController: UITableViewController {
         //drawLeg(xy, size: size, legs: <#T##NSMutableArray#>, cell: <#T##UITableViewCell#>, indexPath: <#T##NSIndexPath#>, orientation: <#T##Character#>, spacingFactor: <#T##Float#>)
          //  let startingPoint = CGPoint(x: 5.0,y: 2.0)
         
-        var startingPoint = CGPoint(x: 5.0,y: 100.0)
+        let legIcons_y = headerCell.viewWithTag(10)?.frame.size.height
+        
+        // old starting vlaue of y is = 100
+        
+        print("y positions is ==== \(legIcons_y)")
+        var startingPoint = CGPoint(x: 5.0,y: legIcons_y!)
         let startingSize = CGSize(width:20.0,height:20.0)
         let orientation = "x"  // x, y, or xy
         let innerSpacing = CGPoint(x:10,y:0)
@@ -1090,20 +1107,36 @@ class TripSuggestionsTViewController: UITableViewController {
         var iconLegLine = 0
         legIconsLineCounter = 0
         var y = 0
+        var line = 1
+        var column = 1
+        var icon_Count_Total = tripCell.LegList.count
+        var screenWidth = UIScreen.main.bounds.width
+        let iconLimits = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(60.0))
+        print("leg Icons Line Termination Count-iconLimits = \(iconLimits)")
+         // MARK: Line Termination
         for index in tripCell.LegList {
             iconLegLine += 1
-            if(iconLegLine == legIconsLineTerminateCount){
+            
+            if(iconLegLine == iconLimits.iconCount){
+                
+           // if(iconLegLine == legIconsLineTerminateCount){
                 legIconsLineCounter += 1
                 print("legIconsLineCounter = \(legIconsLineCounter) for section : \(section)")
                 startingPoint.x = 5.0
                 startingPoint.y+=20.0
                 iconLegLine = 0
-               
+                print("Update ::: New Line:::: Line = \(line) column = \(column)")
+                line += 1
+                column = 1
+                
                 //tableView.reloadData()
              }
             else if (y != 0){
-            
+                
+                
+                print("Update ::: New Column::Line = \(line) column = \(column)")
             startingPoint.x+=60.0
+                column += 1
             }
             
             let ns = NSMutableArray()
@@ -1128,6 +1161,9 @@ class TripSuggestionsTViewController: UITableViewController {
         print(tripCell.originDetail.type)
         print(tripCell.originDetail.id)
         // MARK: Zone & Price Info
+        
+        
+        
         headerCell.ZoneInfo.text = tripCell.tariffZones
         headerCell.PriceInfo.text = tripCell.tariffRemark
         print("tripcell.duration is =)")

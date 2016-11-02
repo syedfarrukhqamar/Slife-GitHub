@@ -387,7 +387,120 @@ class SlifeMethods {
        // add it to subview
     
     }
+    static func lineCountsToDisplayIcons(availableWidth: CGFloat, iconsCount: Int, iconWidth: CGFloat) -> Int {
+        var total_Lines = 1
+        var widthSoFar = 0
+        var availableWidth_int = Int(availableWidth) - 30
+        var icon_Width_int = Int(iconWidth)
+        for index in 1...iconsCount {
+        widthSoFar += icon_Width_int
+            print("current width so far = \(widthSoFar)")
+            if(widthSoFar < availableWidth_int){
+         print("width so far is = \(widthSoFar) & Total Width is \(availableWidth_int)")
+            
+            } else {
+                total_Lines += 1
+                print("total Lines ")
+                widthSoFar = icon_Width_int
+                
+                print("Resetting the width of icons total Length to 0 = \(widthSoFar)")
+                
+            }
+        }
+        
+        //--------------------
+        
+        return total_Lines
     
+    }
+    static func iconCountsToDisplayIcons(availableWidth: CGFloat, iconsCount: Int, iconWidth: CGFloat) -> (iconCount: Int,lineCount: Int) {
+        
+        var total_Lines = 1
+       // var total_icons = 1
+        var widthSoFar = 0
+        var availableWidth_int = Int(availableWidth) - 30
+        var icon_Width_int = Int(iconWidth)
+        var totalICons = availableWidth_int / icon_Width_int
+       
+        var remainder = availableWidth_int % icon_Width_int
+        
+        // number of lines
+        
+        var lineCount = iconsCount / totalICons
+        
+        
+        if (lineCount == 0){
+        
+        
+        }
+        print("Number of lines = \(lineCount)")
+        print("remainder..\(remainder)")
+        print("available width of screen is = \(availableWidth_int)")
+        print("icon Width  === =\(iconWidth)")
+        print("icon Width Int === =\(icon_Width_int)")
+        print("in slife methods. counting icons = \(totalICons)")
+     
+        var icon_counting  = 1
+        var line_counting = 1
+        for index in 1...iconsCount {
+            
+                
+        
+            if (icon_counting <= totalICons){
+                
+                print("Printing Icons:::::Total Icon Count = \(iconsCount)-&& Line Count= \(line_counting)-Icon_counting = \(icon_counting) && Printable Icons == \(totalICons)")
+                
+                icon_counting += 1
+            } else {
+            
+                line_counting += 1
+                icon_counting = 1
+                print("Adding Line:::::Total Icon Count = \(iconsCount)-&& Line Count= \(line_counting)-Icon_counting = \(icon_counting) && Printable Icons == \(totalICons)")
+                
+               icon_counting += 1
+                
+            
+         //   print("line counting is = \(line_counting)")
+                
+            
+            }
+            // number of icons fit in one line is 
+            // totalICons
+            
+            /*
+            widthSoFar += icon_Width_int
+            print("current width so far = \(widthSoFar)")
+            if(widthSoFar < availableWidth_int){
+                print("width so far is = \(widthSoFar) & Total Width is \(availableWidth_int)")
+                
+            } else {
+                
+                total_Lines += 1
+                print("total Lines ")
+                widthSoFar = icon_Width_int
+                
+                print("Resetting the width of icons total Length to 0 = \(widthSoFar)")
+                
+            }
+             */
+            print("---end-------------------------------------------------")
+            print("ICONS Count = \(iconsCount)--iconsCount=\(index)")
+            print("line_counting = \(line_counting) && Icon Column:\(icon_counting)")
+            
+        }
+        /*
+        if (total_Lines == 1){
+        total_icons += 1
+        
+        }
+         */
+        //--------------------
+        
+        print("inslide SLIFE_Method icon = Total Icons in 1 Line = \(totalICons) && Line_Counting== \(line_counting)")
+        return (totalICons,line_counting)
+        
+    }
+
     static func stringToSlFormat(inputString: String)-> String{
         
         var returnedString = inputString.lowercased()
