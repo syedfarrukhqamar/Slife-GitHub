@@ -364,6 +364,15 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //        print("Destination STATUS: = \(to_destination_Input.titleLabel?.text?.isEmpty) ")
     }
     override func viewWillAppear(_ animated: Bool) {
+        rec_trip_to_Station_first_row.isHidden = true
+        rec_trip_from_Station_first_row.isHidden = true
+        
+        rec_trip_from_Station_ID_second_row.isHidden = true
+        
+        rec_trip_to_StationID_second_row.isHidden = true
+        rec_trip_from_Station_ID_third_Row.isHidden = true
+        rec_trip_to_Station_id_third_Row.isHidden = true
+        
         
         
        //MARK: Fav and Rec trips check

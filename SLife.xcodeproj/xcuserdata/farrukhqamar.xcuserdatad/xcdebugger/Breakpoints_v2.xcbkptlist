@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "499454995.396871"
+            timestampString = "499770411.612034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "977"
-            endingLineNumber = "977"
+            startingLineNumber = "988"
+            endingLineNumber = "988"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/SlifeMethods.swift"
-            timestampString = "499708454.262562"
+            timestampString = "499775000.492111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "626"
-            endingLineNumber = "626"
+            startingLineNumber = "627"
+            endingLineNumber = "627"
             landmarkName = "serializeObject(fromStationName:fromStationId:toStation_Name:toStationId:objectToSerialize_keyName:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -882,8 +882,19 @@ class TripSuggestionsTViewController: UITableViewController {
         count = count - 1
         print("--Row = \(indexPath.row)----count = \(count)")
         let leg = legList.LegList[indexPath.row] as! Leg
-        cell.legImage.image = UIImage(named: leg.legImageName)
-    
+        
+      cell.legImage.image = UIImage(named: leg.legImageName)
+       // MARK: Leg
+        print("cell for row  at index ===\(indexPath)-------------------------")
+        print("leg image name ==\(leg.legImageName)")
+        print("leg.line ==\(leg.line)")
+        print("leg.dir ==\(leg.dir)")
+        print("leg.journeyType ==\(leg.journeyType)")
+        print("leg.name ==\(leg.name)")
+        print("leg.origin ==\(leg.origin)")
+        
+        
+        
         // legList.originDetail.name
        
         //----#1-----#2------------------------ Origin Station....Leg
@@ -1162,10 +1173,29 @@ class TripSuggestionsTViewController: UITableViewController {
         print(tripCell.originDetail.id)
         // MARK: Zone & Price Info
         
+        var tariffZones_text = String()
+        var tariffRemarks_price = String()
+        
+        if (tripCell.tariffZones.contains("Not")){
+        tariffZones_text = "SL"
         
         
-        headerCell.ZoneInfo.text = tripCell.tariffZones
-        headerCell.PriceInfo.text = tripCell.tariffRemark
+        } else {
+        
+        tariffZones_text = tripCell.tariffZones
+            
+        }
+        if (tripCell.tariffRemark.contains("remarks")){
+            
+            tariffRemarks_price = "SL"
+            
+        } else {
+            
+            tariffRemarks_price = tripCell.tariffRemark
+        }
+        
+        headerCell.ZoneInfo.text = tariffZones_text
+        headerCell.PriceInfo.text = tariffRemarks_price
         print("tripcell.duration is =)")
         // MARK: MapReference
         let leg =  tripCell.LegList[0] as! Leg

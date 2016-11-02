@@ -101,6 +101,7 @@ class SlifeMethods {
                 let iconName = leg.type
                 print("--in loop----start position-.....\(startingPoint)")
 //              print("------size-.....\(size)")
+                print("print name ::::: in draw Visual Leg = \(leg.name)")
                 drawVisualLeg(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize, sizeFactor: sizeFactor, iconName: iconName, cell: cell, lineName: leg.name)
 
             
@@ -390,7 +391,7 @@ class SlifeMethods {
     static func lineCountsToDisplayIcons(availableWidth: CGFloat, iconsCount: Int, iconWidth: CGFloat) -> Int {
         var total_Lines = 1
         var widthSoFar = 0
-        var availableWidth_int = Int(availableWidth) - 30
+        var availableWidth_int = Int(availableWidth) - 10
         var icon_Width_int = Int(iconWidth)
         for index in 1...iconsCount {
         widthSoFar += icon_Width_int
@@ -418,7 +419,7 @@ class SlifeMethods {
         var total_Lines = 1
        // var total_icons = 1
         var widthSoFar = 0
-        var availableWidth_int = Int(availableWidth) - 30
+        var availableWidth_int = Int(availableWidth) - 10
         var icon_Width_int = Int(iconWidth)
         var totalICons = availableWidth_int / icon_Width_int
        
