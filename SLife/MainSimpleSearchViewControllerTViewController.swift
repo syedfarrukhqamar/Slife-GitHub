@@ -31,6 +31,7 @@ var via_StationId = String()
 var errorCode_generic_flag = false // false means no Error reported, true means error has been reported 
 
 var errorCode_generic = String()
+var errorCode_Specific_Message = String()
 var errorMessage_generic = String()
 
 // Trip Time/ Date / Arrival / Departure
@@ -364,6 +365,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //        print("Destination STATUS: = \(to_destination_Input.titleLabel?.text?.isEmpty) ")
     }
     override func viewWillAppear(_ animated: Bool) {
+        
         rec_trip_to_Station_first_row.isHidden = true
         rec_trip_from_Station_first_row.isHidden = true
         
@@ -451,7 +453,6 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
                 rec_trip_to_second_row.text = typeTrip_second.value(forKey: toStation_Name)  as? String
               
                 rec_trip_to_StationID_second_row.text = typeTrip_second.value(forKey: toStationId)  as? String
-    
                 print("RECENT TRIPS IS 2......")
  
             }
@@ -673,13 +674,8 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             //            self.busesStatusIcon = UIImageView(image: image)
             
             print("downloaded.....................\(self.busesStatusIcon.image)")
-            
-            
         }
-
-        
-        
-        //--------
+   //--------
         print("-view did apear----here.-.--.-.21")
         // setting default values and presentation
         // enabling now button
@@ -694,8 +690,12 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             let real_titleAlert = "Network Problem:" + errorCode_generic
             let real_titleMessage = errorMessage_generic
             print("Error:101: \(real_titleMessage)")
-            let display_message = "Please Try Again after checking your internet connection"
+            let display_message = errorMessage_generic + "Please Try Again after checking your internet connection"
             let alert = UIAlertController(title: real_titleAlert, message: display_message, preferredStyle: UIAlertControllerStyle.alert)
+            // MARK: Error Reset
+            
+            errorCode_generic_flag = false
+            
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             //   genericErrorDisplay.backgroundColor = UIColor.red
@@ -802,13 +802,14 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //        <#code#>
 //    }
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-        print("Index Path Row is = \(indexPath.section)")
+//      
+        
+        print("indexPath.section = \(indexPath.section)")
+        print("Index Path Row is = \(indexPath)")
+        
         if (indexPath.section == 0){
             print("traffic status selection has been called")
-     //   let vc = TrafficStatusViewController(nibName: "TrafficStatusViewController", bundle: nil)
-            //let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-   //         self.navigationController?.pushViewController(vc, animated: true)
+     
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
             let vc = storyBoard.instantiateViewController(withIdentifier: "TrafficStatusViewController") as! TrafficStatusViewController
@@ -818,19 +819,50 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             print("moving towards TrafficStatusViewController---------")
         
         }
-    
+            
+        else if (indexPath.section == 6) {
+        print("RECENTR TRIPS SECTION TOUCHED........")
+            var from_Station_ID = String()
+            var to_Station_ID = String()
+            
+            if (indexPath.row == 0){
+                print("indexPath 0......")
+            from_Station_ID = rec_trip_from_Station_first_row.text!
+            to_Station_ID = rec_trip_to_Station_first_row.text!
+                
+            } else if (indexPath.row == 1) {
+            print("indexPath 1......")
+                from_Station_ID = rec_trip_from_Station_ID_second_row.text!
+            to_Station_ID = rec_trip_to_StationID_second_row.text!
+            
+            } else if(indexPath.row == 2) {
+                print("indexPath 2......")
+            from_Station_ID = rec_trip_from_Station_ID_third_Row.text!
+            to_Station_ID = rec_trip_to_Station_id_third_Row.text!
+            
+            }
+            print("------S1--------")
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            print("------S2--------")
+            let vc = storyBoard.instantiateViewController(withIdentifier: "TripSuggestion") as! TripSuggestionsTViewController
+            print("------S3--------")
+            
+            vc.setValue(from_Station_ID, forKey: "from")
+            print("------S4--------")
+            vc.setValue(to_Station_ID, forKey: "to")
+            print("------S5--------")
+            vc.setValue("0", forKey: "searchForArrivals")
+            print("------S6--------")
+            self.navigationController?.pushViewController(vc, animated: true)
+            print("------S7--------")
+        }
     
     }
     // MARK: Swift 3
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // MARK: Resetting Traffic Status
-        downloadingNotFinishedTrafficStatus = true
-//        <#code#>
-//    }
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        
-        print("---------------------------1---------------\(segue.identifier)--")
+    print("---------------------------1---------------\(segue.identifier)--")
         advancedOptionsFlag = false
         if(segue.identifier == "showDate"){
             
@@ -841,14 +873,6 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         print("step 2")
             popOverViewController!.delegate = self
             
-//            popOverViewController?.delegate = self
-            
-            
-//        popOverViewController?.sourceView = w
-//            print("step 3")
-//            
-//            popOverViewController?.sourceRect = w.bounds
-//            print("step 3")
  
         }
         
@@ -874,20 +898,6 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             self.present(nav, animated: true, completion: nil)
 
             popoverContent.delegate = self
-
-        
-            /*
- var datePickerVC = segue.destinationViewController as! DatePickerViewController
-        var controller = datePickerVC.popoverPresentationController
-            
-            if controller != nil{
-            
-            
-            controller?.delegate = self
-                
-            }
- */
-            
         
         }
         if (segue.identifier == "From") {
@@ -915,26 +925,17 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             segue.destination.setValue(origin_StationId, forKey: "from")
             segue.destination.setValue(destination_StationId, forKey: "to")
             segue.destination.setValue("0", forKey: "searchForArrivals")
-            // now reset the values of from and to
-            //
-            //            fromStation_SiteId = ""
-            //            toStation_SiteId = ""
-            //            from_Origin_Input.setTitle("Test", forState: .Normal)
-            //            to_destination_Input.setTitle("", forState: .Normal)
-            //            from_to_value = ""
-            
-            //                    segue.destinationViewController.setValue(from_Origin_Input.titleLabel, forKey: "from")
-            //                    segue.destinationViewController.setValue(to_destination_Input.titleLabel, forKey: "to")
-            //
-          
+            }
+        /*
+        if (segue.identifier == "recent_first_row") {
+            print("--recent_first_row---seague------fromStation_SiteId---\(rec_trip_from_Station_first_row)-------------2-----------------")
+            print("---recent_first_row------seague--toStation_SiteId---\(rec_trip_to_Station_first_row)-------------2-----------------")
+            segue.destination.setValue(rec_trip_from_Station_first_row, forKey: "from")
+            segue.destination.setValue(rec_trip_to_Station_first_row, forKey: "to")
+            segue.destination.setValue("0", forKey: "searchForArrivals")
         }
-        //                print("success-------")
-        //            } else {
-        //                // download fail
-        //                print("fail-------")
-        //
-        //            }
-        //        })
+         */
+        
         
     }
     

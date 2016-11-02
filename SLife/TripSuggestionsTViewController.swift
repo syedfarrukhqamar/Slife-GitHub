@@ -934,7 +934,7 @@ class TripSuggestionsTViewController: UITableViewController {
         //-----#3------Visual Leg
         print()
         print(test.count)
-         SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+        SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
         print("startingPoint_101001----\(startingPoint)")
         //----#4------
         cell.name.text = ""//leg.name

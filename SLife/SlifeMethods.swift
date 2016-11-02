@@ -799,20 +799,25 @@ class SlifeMethods {
                 errorCode_generic_flag = true
                 errorCode_generic = jsonObjectDownloaded["errorCode"] as! String // "Error Code generic"//
                 errorMessage_generic = jsonObjectDownloaded["errorText"] as! String //"Error Code Message......."//
+                
+                print("error code flag==:: \(errorCode_generic_flag)")
+                print("error code generic in check for errorMessage:: \(errorMessage_generic)")
                 print("errorCode has been Caught BEEN CAUGHT CAUGHT CAUGHT CAUGHT............")
            
             }
             else
             {
                 errorCode_generic_flag = false
-                errorCode_generic = "test"
-                errorMessage_generic = "765--------"
+                errorCode_generic = ""
+                errorMessage_generic = ""
 
             print("key,value json key is here = \(key)")
          
             }
             print("no key found.....")
             }
+        
+        
         return errorCode_generic_flag
         
     }
