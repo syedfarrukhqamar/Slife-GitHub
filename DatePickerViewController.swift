@@ -8,7 +8,7 @@
 
 import AVFoundation
 import UIKit
-
+var date_value_simple = String()
 protocol popOverValue: class {
     func receiveValueFromPopOver(Date: String, Time: String)
 }

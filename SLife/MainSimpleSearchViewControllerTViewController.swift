@@ -102,8 +102,12 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
     @IBOutlet weak var rec_trip_from_to_third_Row: UILabel!
     @IBOutlet weak var rec_trip_to_Station_id_third_Row: UILabel!
     
+    @IBOutlet weak var recent_trips_first_row: UIView!
     
+    @IBOutlet weak var recent_trips_first_cell: UITableViewCell!
     
+    @IBOutlet weak var recent_trips_second_cell: UITableViewCell!
+    @IBOutlet weak var recent_trips_third_cell: UITableViewCell!
 //    @IBOutlet weak var genericErrorDisplay: UITableViewCell!
     
     
@@ -386,6 +390,13 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         if ((fav_array.count == 0) && (rec_array.count == 0)){
         
+            //MARK: Recentr Cells All Hide
+            
+            // hide  3rd cell and show first two
+            recent_trips_first_cell.isHidden = true
+            recent_trips_second_cell.isHidden = true
+            recent_trips_third_cell.isHidden = true
+            
         favourite_Cell_outlet.isUserInteractionEnabled = false
         
         } else {
@@ -399,8 +410,33 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             let fromStationId = "fromStationId"
             let toStation_Name = "toStation_Name"
             
+            // set from and to values same as first index
+            from_Origin_Input.setTitle("New Value", for: .normal)
+            to_destination_Input.setTitle("New Value 2", for: .normal)
+            let typeTrip_display = rec_array.firstObject as! NSDictionary
+            
+            from_Origin_Input.setTitle(typeTrip_display.value(forKey: fromStationName) as? String, for: .normal)
+            
+            to_destination_Input.setTitle(typeTrip_display.value(forKey: toStation_Name)   as? String, for: .normal)
+            
+            origin_StationId = (typeTrip_display.value(forKey: fromStationId)  as? String)!
+            destination_StationId = (typeTrip_display.value(forKey: toStationId)  as? String)!
+            
+            print("-------SETTING DEFAULT VALUES----------------------")
+            print("-------Origin Name= \(typeTrip_display.value(forKey: fromStationName) as? String)")
+            print("-------Destination Name= \(typeTrip_display.value(forKey: fromStationId)   as? String)")
+            print("-------Origin Station ID = \(origin_StationId)")
+            print("-------Origin Station ID = \(destination_StationId)")
+            
             
             if (rec_array.count == 1){
+                
+                //MARK: Recent Trip Rows Switch Off
+                // hide 2nd and 3rd cell and show first
+                recent_trips_first_cell.isHidden = false
+                recent_trips_second_cell.isHidden = true
+                recent_trips_third_cell.isHidden = true
+                
                 
                 print("--------recent trips is not zero.....")
                 
@@ -409,8 +445,10 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
                 print("typeTrip ==1====simple==\(typeTrip.allKeys)")
                 
                 print(typeTrip.allKeys)
-                
-                
+                rec_trip_from_first_row.text = typeTrip.value(forKey: fromStationName) as? String
+                rec_trip_from_Station_first_row.text = typeTrip.value(forKey: fromStationId)   as? String
+                rec_trip_to_first_row.text = typeTrip.value(forKey: toStation_Name)  as? String
+                rec_trip_to_Station_first_row.text = typeTrip.value(forKey: toStationId)  as? String
                 print("RECENT TRIPS IS 1......")
                 print("fromStationName = \(typeTrip.value(forKey: fromStationName) as? String)")
                 print("fromStationId = \(typeTrip.value(forKey: fromStationId) as? String)")
@@ -424,6 +462,12 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
                 recentTrips_first_row.viewWithTag(0)
             
             } else if (rec_array.count == 2) {
+                
+                // hide  3rd cell and show first two
+                recent_trips_first_cell.isHidden = false
+                recent_trips_second_cell.isHidden = false
+                recent_trips_third_cell.isHidden = true
+
                 
                 let typeTrip = rec_array.firstObject as! NSDictionary
                 let typeTrip_second = rec_array[1] as! NSDictionary
@@ -458,6 +502,13 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             }
             
             else if (rec_array.count >= 3) {
+                
+                
+                // hide  3rd cell and show first two
+                recent_trips_first_cell.isHidden = false
+                recent_trips_second_cell.isHidden = false
+                recent_trips_third_cell.isHidden = false
+                
                 let typeTrip = rec_array.firstObject as! NSDictionary
                 let typeTrip_second = rec_array[1] as! NSDictionary
                 let typeTrip_third = rec_array[2] as! NSDictionary
@@ -690,8 +741,9 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             let real_titleAlert = "Network Problem:" + errorCode_generic
             let real_titleMessage = errorMessage_generic
             print("Error:101: \(real_titleMessage)")
-            let display_message = errorMessage_generic + "Please Try Again after checking your internet connection"
-            let alert = UIAlertController(title: real_titleAlert, message: display_message, preferredStyle: UIAlertControllerStyle.alert)
+            let display_message = real_titleMessage
+            
+            let alert = UIAlertController(title: real_titleAlert, message: real_titleMessage, preferredStyle: UIAlertControllerStyle.alert)
             // MARK: Error Reset
             
             errorCode_generic_flag = false
@@ -782,10 +834,11 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             sr_toStation_ID = station.site_id
 
         }
+        // MARK: Default Values Setting
         
-        from_Origin_Input.setTitle(origin, for: .normal)
-        to_destination_Input.setTitle(destination, for: .normal)
-        
+//        from_Origin_Input.setTitle(origin, for: .normal)
+//        to_destination_Input.setTitle(destination, for: .normal)
+//        
        // print("1) from_Origin_Input.titleLabel = \(from_Origin_Input.titleLabel?.text!)")
         print("010-----origin = \(origin)")
         print("010------station.site_id-----\(station.site_id)")
@@ -938,7 +991,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         
     }
-    
+    // MARK: Date Set
     func receiveValueFromPopOver(Date: String, Time: String) {
         
         simple_expectedTripDate = Date

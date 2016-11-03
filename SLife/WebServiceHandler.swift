@@ -153,7 +153,7 @@ class WebServiceHandler {
         else {
             print("via station flag is false")
         }
-        
+        // MARK: Advance Date Options
         //------Depart Now/ Depart Earliest / Arrival At
             if (earliestDepartLatestArrival_flag == true){
             print("earliestDepartLatestArrival_Value = \(earliestDepartLatestArrival_Value)")
@@ -299,7 +299,7 @@ class WebServiceHandler {
        finalisedURLtoConnectConstruct += searchForArrival
     print("---webservice handler------2--------")
 
-    
+    // MARK: Simple Date Options
     //------Depart Now/ Depart Earliest / Arrival At
     
     if (simple_earliestDepartLatestArrival_flag == true){

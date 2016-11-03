@@ -131,15 +131,36 @@ var tripDateShow = Bool()
     @IBOutlet weak var transportChangesChangedFlag: UILabel!
     @IBOutlet weak var allowAlternativeStopsSwitchValue: UISwitch!
     @IBAction func stopOverMinutesAction(sender: UITextField) {
+        
         var test = String()
-       stopOverMinutes =  NumberFormatter().number(from: stopOverMinutesInput.text!)!.intValue
-        if (stopOverMinutes > 0) {
-             viaStopOverMinutesFlags = true
-        } else if ( stopOverMinutes == 0){
-        viaStopOverMinutesFlags = false
+        
+        if(Int(stopOverMinutesInput.text!) == nil){
+        
+        print("not a number in text")
+        
         }
+        else {
+        
+            stopOverMinutes =  NumberFormatter().number(from: stopOverMinutesInput.text!)!.intValue
+            print("1---stop over minutes")
+            
+            if (stopOverMinutes > 0) {
+                
+                viaStopOverMinutesFlags = true
+            } else if ( stopOverMinutes == 0){
+                viaStopOverMinutesFlags = false
+            }
+            
+            print("viaStopOverMinutesFlags status = \(viaStopOverMinutesFlags)")
+            print("stopOverMinutesInput.text!\(stopOverMinutesInput.text!)")
+            
+        
+        }
+        
+    
         print("Stop Over Minutes Value is = \(stopOverMinutes)")
     }
+    
     @IBAction func switchFromTo(sender: UIButton) {
         let fromValue = from_Origin.titleLabel?.text!
         let toValue = to_destination_Input.titleLabel?.text!
@@ -149,8 +170,25 @@ var tripDateShow = Bool()
     }
     
     @IBAction func currentDateShow(sender: UIButton) {
+       
         print("tripDateShow value should be true")
-        whenDoneCell.isHidden = false
+        let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
+        let nav = UINavigationController(rootViewController: popoverContent)
+        
+        nav.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover = nav.popoverPresentationController
+        // MARK: Swift 3
+        popoverContent.preferredContentSize = CGSize(width: 300, height: 250)//CGSizeMake(300,250)
+        //popover!.delegate = self
+        popover!.sourceView = self.view
+        //        popover!.sourceRect = CGRectMake(100,100,0,0)
+        
+        popover!.sourceRect =  CGRect(origin: CGPoint(x: 0,y:0), size: CGSize(width:0, height:400))
+        // CGRectMake(0,400,0,0)
+        
+        self.present(nav, animated: true, completion: nil)
+  //WHenDoneCell is a cell (Pink color old date
+       // whenDoneCell.isHidden = false
        // datePickerCell.hidden = false
         tripDateShow = true
         print("tripDateShow value should be true now = \(tripDateShow)")
@@ -200,7 +238,7 @@ var tripDateShow = Bool()
         
         now.backgroundColor = UIColor.blue
         now.setTitleColor(UIColor.white, for: UIControlState.normal)
-        
+    
         
         earliestDepartLatestArrival_flag = false
         earliestDepartureOutlet.backgroundColor = UIColor.white
@@ -415,6 +453,7 @@ var tripDateShow = Bool()
         //MARK: Error Check Alert
         // enabling now button
         if (errorCode_generic_flag == true) {
+            errorCode_generic_flag = false
             self.title = "Error Reported...."
             print("error Code has been caught... error should be displayed....")
             // genericErrorDisplay.isHidden = false
@@ -425,7 +464,7 @@ var tripDateShow = Bool()
             let real_titleAlert = "Network Problem:" + errorCode_generic
             let real_titleMessage = errorMessage_generic
             print("Error:101: \(real_titleMessage)")
-            let display_message = "Please Try Again after checking your internet connection"
+            let display_message = real_titleMessage
             let alert = UIAlertController(title: real_titleAlert, message: display_message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

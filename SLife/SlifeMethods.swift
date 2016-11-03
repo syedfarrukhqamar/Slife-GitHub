@@ -795,13 +795,15 @@ class SlifeMethods {
         print("json object downloaded::::\(jsonObjectDownloaded.allKeys)")
         for (key,value) in jsonObjectDownloaded {
             let keyName = String(describing: key)
+            
             if (keyName == "errorCode" || keyName == "errorText"){
                 errorCode_generic_flag = true
                 errorCode_generic = jsonObjectDownloaded["errorCode"] as! String // "Error Code generic"//
                 errorMessage_generic = jsonObjectDownloaded["errorText"] as! String //"Error Code Message......."//
                 
                 print("error code flag==:: \(errorCode_generic_flag)")
-                print("error code generic in check for errorMessage:: \(errorMessage_generic)")
+                print("error code generic in check for errorCode_generic:: \(errorCode_generic)")
+                print("error code generic in check for errorMessage_generic:: \(errorMessage_generic)")
                 print("errorCode has been Caught BEEN CAUGHT CAUGHT CAUGHT CAUGHT............")
            
             }

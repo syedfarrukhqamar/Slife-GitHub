@@ -399,6 +399,14 @@ class SearchFrom_To_Controller:UITableViewController,UISearchResultsUpdating {
             station.x = dictResponseData["X"] as! String
             station.y = dictResponseData["Y"] as! String
             print("------tempDict.Count = 4 = \(station.name)")
+            print("---------_Row Selected:::::::::")
+            print("---station.name--\(station.name)")
+            print("---station.type--\(station.type)")
+            print("---station.name--\(station.site_id)")
+            print("---station.x--\(station.x)")
+            print("---station.y--\(station.y)")
+            
+            
         }
         else if (tempDict.count == 2) {
             print("tableData name = \(tableData[indexPath.row])")

@@ -111,6 +111,7 @@
 		D47371A51DB613A2008AA0BE /* Slife Launch Screen@3.png in Resources */ = {isa = PBXBuildFile; fileRef = D47371A41DB613A2008AA0BE /* Slife Launch Screen@3.png */; };
 		D47371A81DB61637008AA0BE /* Slife-Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D47371A61DB61637008AA0BE /* Slife-Launch-Screen.png */; };
 		D47371A91DB61637008AA0BE /* Slife-Launch-Screen@2.png in Resources */ = {isa = PBXBuildFile; fileRef = D47371A71DB61637008AA0BE /* Slife-Launch-Screen@2.png */; };
+		D476FF801DCB4303007EE613 /* CustomTextFieldClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */; };
 		D48306311D477B1400FA42A3 /* ShowMap.png in Resources */ = {isa = PBXBuildFile; fileRef = D483062D1D477B1400FA42A3 /* ShowMap.png */; };
 		D48306321D477B1400FA42A3 /* ShowMap.svg in Resources */ = {isa = PBXBuildFile; fileRef = D483062E1D477B1400FA42A3 /* ShowMap.svg */; };
 		D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D483062F1D477B1400FA42A3 /* ShowMap@2x.png */; };
@@ -347,6 +348,7 @@
 		D47371A41DB613A2008AA0BE /* Slife Launch Screen@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slife Launch Screen@3.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LaunchScreen/Slife Launch Screen@3.png"; sourceTree = "<group>"; };
 		D47371A61DB61637008AA0BE /* Slife-Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slife-Launch-Screen.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LaunchScreen/Slife-Launch-Screen.png"; sourceTree = "<group>"; };
 		D47371A71DB61637008AA0BE /* Slife-Launch-Screen@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slife-Launch-Screen@2.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LaunchScreen/Slife-Launch-Screen@2.png"; sourceTree = "<group>"; };
+		D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldClass.swift; path = Slife/CustomTextFieldClass.swift; sourceTree = SOURCE_ROOT; };
 		D483062D1D477B1400FA42A3 /* ShowMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowMap.png; sourceTree = "<group>"; };
 		D483062E1D477B1400FA42A3 /* ShowMap.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShowMap.svg; sourceTree = "<group>"; };
 		D483062F1D477B1400FA42A3 /* ShowMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMap@2x.png"; sourceTree = "<group>"; };
@@ -701,6 +703,7 @@
 			isa = PBXGroup;
 			children = (
 				D4990F711D75C617003CCB0B /* Main.storyboard */,
+				D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */,
 				D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */,
 				D4A411AD1D5F958C002CCBF7 /* Map */,
 				D421F92C1D522EBC00DA5EF3 /* FavouritesRecentTrips */,
@@ -1128,6 +1131,7 @@
 				D46E2EB31D12DACE00F091F1 /* IntermediateStops.swift in Sources */,
 				D40421FB1CC7AAD000D916C7 /* LegTravel.swift in Sources */,
 				D48957461D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift in Sources */,
+				D476FF801DCB4303007EE613 /* CustomTextFieldClass.swift in Sources */,
 				D46E2EAD1D12D56500F091F1 /* Directions.swift in Sources */,
 				D42083C11CEB14DA00042E7D /* TrafficStatusMethods.swift in Sources */,
 				D4426B721CC1267500199A71 /* Address.swift in Sources */,
