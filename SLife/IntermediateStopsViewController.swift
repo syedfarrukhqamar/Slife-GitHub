@@ -35,10 +35,6 @@ var dataSource_intermediateStops_StatusCode = NSMutableDictionary()
 let test = "https://api.sl.se/api2/trafficsituation.json?key="
 let intermediateStops_URL = "https://api.sl.se/api2/TravelplannerV2/journeydetail.json?key=28650f61c688449cb9e87c13fbbf8b5b&"
 class IntermediateStopsViewController:UITableViewController {
-    
-    
-    
-    
     //let tableData = ["Current Location","AltaCentrum","Three","Twenty-One"]
     @IBAction func back_Action(_ sender: UIBarButtonItem) {
         print("back button is pressed....")

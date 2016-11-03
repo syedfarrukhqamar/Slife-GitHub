@@ -14,6 +14,8 @@
 import UIKit
 import AVFoundation
 
+var recent_from_flag = true
+var recentr_to_flag = true
 
 let FROM_ORIGIN = "From"
 let TO_DESTINATION = "To"
@@ -179,7 +181,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
  @IBAction func dateTimeTripAction(sender: UIButton) {
         
 // MARK: Swift 3
-    print("date time trip action:::::: test in main simple search")
+        print("date time trip action:::::: test in main simple search")
         let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
         let nav = UINavigationController(rootViewController: popoverContent)
         
@@ -285,20 +287,33 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         if (simple_earliestDepartLatestArrival_flag == true) {
             
-            //            Buttons.enableButton(button: now, title: "")
-            Buttons.disableButton(button: now, title: "")
+            //     Buttons.enableButton(button: now, title: "")
+           
+            if(simple_earliestDepartLatestArrival_Value == 1){
+            // latest arrival is 1
+            
+            Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: latestArrivalOutlet, disableButtonSecond: now, disableButtonThird: earliestDeparture)
+            
+            } else if (simple_earliestDepartLatestArrival_Value == 0){
+            // earliest dep is 0
+                
+            Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: earliestDeparture, disableButtonSecond: now, disableButtonThird: latestArrivalOutlet)
+            
+            }
+            
+            //Buttons.disableButton(button: now, title: "")
             
             dateTimeTrip.isUserInteractionEnabled = true
             
         } else
             
         {
-            
             dateTimeTrip.isUserInteractionEnabled = false
+            Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDeparture, disableButtonThird: latestArrivalOutlet)
             
+            dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
             
-            
-            Buttons.enableButton(button: now, title: "")
+            // Buttons.enableButton(button: now, title: "")
             
         }
 
@@ -411,17 +426,23 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             let toStation_Name = "toStation_Name"
             
             // set from and to values same as first index
-            from_Origin_Input.setTitle("New Value", for: .normal)
-            to_destination_Input.setTitle("New Value 2", for: .normal)
+//            from_Origin_Input.setTitle("From", for: .normal)
+//            to_destination_Input.setTitle("To", for: .normal)
+
             let typeTrip_display = rec_array.firstObject as! NSDictionary
-            
-            from_Origin_Input.setTitle(typeTrip_display.value(forKey: fromStationName) as? String, for: .normal)
-            
-            to_destination_Input.setTitle(typeTrip_display.value(forKey: toStation_Name)   as? String, for: .normal)
-            
-            origin_StationId = (typeTrip_display.value(forKey: fromStationId)  as? String)!
-            destination_StationId = (typeTrip_display.value(forKey: toStationId)  as? String)!
-            
+//            if (recent_from_flag == true){
+//            from_Origin_Input.setTitle(typeTrip_display.value(forKey: fromStationName) as? String, for: .normal)
+//            
+//            
+//            origin_StationId = (typeTrip_display.value(forKey: fromStationId)  as? String)!
+//            
+//            }
+//            if (recentr_to_flag == true){
+//                to_destination_Input.setTitle(typeTrip_display.value(forKey: toStation_Name)   as? String, for: .normal)
+//            
+//                
+//                destination_StationId = (typeTrip_display.value(forKey: toStationId)  as? String)!
+//            }
             print("-------SETTING DEFAULT VALUES----------------------")
             print("-------Origin Name= \(typeTrip_display.value(forKey: fromStationName) as? String)")
             print("-------Destination Name= \(typeTrip_display.value(forKey: fromStationId)   as? String)")
@@ -760,8 +781,8 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //            error_Title_Display_Outlet.setTitleColor(UIColor.red, for: .normal)
 //            error_Message_Display_Outlet.setTitleColor(UIColor.red, for: .normal)
             
-            
-            dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
+            // MARK: Temp Date Test
+            // dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
             
            // genericErrorDisplay.backgroundColor = UIColor.white
             print("Error Code flag is White:: No Error Found..........")
@@ -787,15 +808,18 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         print("station.name:::::::::= \(station.name)")
         
         print("from_to_value=\(from_to_value)")
-        
+        // MARK: Date Button Settings
         // earliest and latest arrival setting
         
         if (simple_earliestDepartLatestArrival_flag == true) {
         
 //            Buttons.enableButton(button: now, title: "")
-      Buttons.disableButton(button: now, title: "")
+      
+            Buttons.disableButton(button: now, title: "")
+            
             
     dateTimeTrip.isUserInteractionEnabled = true
+            
         
         } else
         
@@ -804,8 +828,10 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             dateTimeTrip.isUserInteractionEnabled = false
             
             
+         Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDeparture, disableButtonThird: latestArrivalOutlet)
+            
+            //Buttons.enableButton(button: now, title: "")
         
-            Buttons.enableButton(button: now, title: "")
             
         }
         
@@ -836,9 +862,9 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         }
         // MARK: Default Values Setting
         
-//        from_Origin_Input.setTitle(origin, for: .normal)
-//        to_destination_Input.setTitle(destination, for: .normal)
-//        
+        from_Origin_Input.setTitle(origin, for: .normal)
+        to_destination_Input.setTitle(destination, for: .normal)
+//
        // print("1) from_Origin_Input.titleLabel = \(from_Origin_Input.titleLabel?.text!)")
         print("010-----origin = \(origin)")
         print("010------station.site_id-----\(station.site_id)")
@@ -954,7 +980,12 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         }
         if (segue.identifier == "From") {
-          realTimeFlag = false
+         
+//            origin_StationId = (from_Origin_Input.titleLabel?.text)!
+//            destination_StationId = (to_destination_Input.titleLabel?.text)!
+//            
+//            recent_from_flag = false
+            realTimeFlag = false
             advancedOptionsFlag = false
             
             print("from segue has been caught")
@@ -962,6 +993,12 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             
         }
         else if (segue.identifier == "To"){
+            
+//            origin_StationId = (from_Origin_Input.titleLabel?.text)!
+//            destination_StationId = (to_destination_Input.titleLabel?.text)!
+//            
+//            
+//            recentr_to_flag = false
             from_to_flag = TO_DESTINATION
             realTimeFlag = false
             advancedOptionsFlag = false
@@ -1002,6 +1039,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         dateTimeTrip.titleLabel?.text = showSelectedDateAndTime
         dateTimeTrip.setTitle(showSelectedDateAndTime, for: UIControlState.normal)
+        
         
         print("2-----delegate has returned value= \(dateTimeTrip.titleLabel?.text)")
         
