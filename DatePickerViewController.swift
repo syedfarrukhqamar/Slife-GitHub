@@ -13,7 +13,9 @@ protocol popOverValue: class {
     func receiveValueFromPopOver(Date: String, Time: String)
 }
 var dateAndTimeSelection = String()
+
 class DatePickerViewController: UIViewController {
+    
     @IBAction func Done(_ sender: UIBarButtonItem) {
         
         simple_earliestDepartLatestArrival_flag = true
@@ -85,6 +87,6 @@ class DatePickerViewController: UIViewController {
 //        <#code#>
 //    }
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print("prepare for segue has been called")
+        print("prepare for segue has been called---date picker")
     }
 }

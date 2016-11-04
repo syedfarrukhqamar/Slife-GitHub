@@ -134,6 +134,9 @@ class TripSuggestionsTViewController: UITableViewController {
         
         
         if (advancedOptionsFlag == false){
+            // coming from simple screen
+            self.title = simple_expectedTripDate + "-" + simple_expectedTripTime
+            
             url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
             
             // from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
@@ -141,7 +144,9 @@ class TripSuggestionsTViewController: UITableViewController {
 //             from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             
         } else if (advancedOptionsFlag == true){
-        
+            
+        self.title = expectedTripDate + "-" + expectedTripTime
+            
 //        url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
             url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
             
@@ -235,7 +240,8 @@ class TripSuggestionsTViewController: UITableViewController {
             print("json downloading in progres........4........")
             json = try JSONSerialization.jsonObject(with: jsonData as Data, options: []) as! AnyObject?
             print("json just downloaded.......5........\(json?.allKeys)")
-            print("json just downloaded.......5........\((json?["TripList"]!! as AnyObject).description)")
+            //MARK: Nil
+            //print("json just downloaded.......5........\((json?["TripList"]!! as AnyObject).description)")
             
             // load this json into Trip---start
             // load this json intro trip end here
@@ -1012,7 +1018,10 @@ class TripSuggestionsTViewController: UITableViewController {
     
     
     // MARK: Height of row
-    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let titleHeader = "SLife:" + String(section)
+        return titleHeader
+    }
      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             let tripCell = newTrip[section] as! Trip
             print("heightForHeaderInSection...........\(section).")

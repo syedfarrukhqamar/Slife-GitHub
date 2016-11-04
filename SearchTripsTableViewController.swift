@@ -78,7 +78,9 @@ var timeBetweenChangesDataSource = ["2 min","5 min","10 min","15 min"]
 var  changesPickerDataSource = ["No Restriction","No Changes","Max 1 Change","Max 2 Changes","Max 3 Changes"]
 
 
-class SearchTripsTableViewController: UITableViewController {
+class SearchTripsTableViewController: UITableViewController,UIPopoverPresentationControllerDelegate,popOverValue  {
+
+     weak var mDelegate:MyProtocol?
     
  //   @IBOutlet weak var showLineNumbers: UILabel!
     var fromStation_SiteId = String()
@@ -169,6 +171,7 @@ var tripDateShow = Bool()
         
     }
     
+    /*
     @IBAction func currentDateShow(sender: UIButton) {
        
         print("tripDateShow value should be true")
@@ -193,7 +196,7 @@ var tripDateShow = Bool()
         tripDateShow = true
         print("tripDateShow value should be true now = \(tripDateShow)")
     }
-    
+    */
     @IBAction func latestArrival(sender: UIButton) {
         whenTripDateShow.isUserInteractionEnabled = true
          earliestDepartLatestArrival_Value = 1
@@ -243,11 +246,15 @@ var tripDateShow = Bool()
         earliestDepartLatestArrival_flag = false
         earliestDepartureOutlet.backgroundColor = UIColor.white
         latestArrivalOutlet.backgroundColor = UIColor.white
+        
         earliestDepartureOutlet.setTitleColor(UIColor.blue, for: UIControlState.normal)
         latestArrivalOutlet.setTitleColor(UIColor.blue, for: UIControlState.normal)
+        
         expectedTripDate = "yyyy-MM-dd"
         expectedTripTime = "HH:mm"
-         tripDateShow = false
+        tripDateShow = false
+        
+        whenTripDateShow.setTitle(HelpingMethods.currentDateTime(), for: .normal)
         tableView.reloadData()
     }
     
@@ -314,11 +321,14 @@ var tripDateShow = Bool()
         print("Real time: current realTimeFlag Value is = \(realTimeFlag)")
         
     }
-    
+   //MARK: OLD PINK DATE PICKER
+    /*
     @IBOutlet weak var showDateTimePicker: UIButton!
-
-    @IBAction func showDateTimePickerAction(sender: UIButton) {
+ */
+ //MARK: ADVANCE DATE PICKER REAL
+    @IBAction func showDate_advance_Picker(_ sender: UIButton) {
         
+        print("showDate_advance_Picker:::adv:::::1:")
         
         let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
         let nav = UINavigationController(rootViewController: popoverContent)
@@ -326,26 +336,56 @@ var tripDateShow = Bool()
         nav.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover = nav.popoverPresentationController
         // MARK: Swift 3
+        print("showDate_advance_Picker::::adv::::2:")
+        
         popoverContent.preferredContentSize = CGSize(width: 300, height: 250)//CGSizeMake(300,250)
-        //popover!.delegate = self
+        popover!.delegate = self
         popover!.sourceView = self.view
         //        popover!.sourceRect = CGRectMake(100,100,0,0)
-        
+        print("showdate Time Picker Action:::adv:::::3:")
         popover!.sourceRect =  CGRect(origin: CGPoint(x: 0,y:0), size: CGSize(width:0, height:400))
         // CGRectMake(0,400,0,0)
-        
+        print("showdate Time Picker Action::::adv::::4:")
         self.present(nav, animated: true, completion: nil)
         
-       // popoverContent.delegate = self
+        popoverContent.delegate = self
 
     }
+// MARK: OLD PINK DATE PICKER
+    /*
+    @IBAction func showDateTimePickerAction(sender: UIButton) {
+        print("showdate Time Picker Action::::::::1:")
+        
+        let popoverContent = self.storyboard?.instantiateViewController(withIdentifier: "DatePickerViewController") as! DatePickerViewController
+        let nav = UINavigationController(rootViewController: popoverContent)
+        
+        nav.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover = nav.popoverPresentationController
+        // MARK: Swift 3
+        print("showdate Time Picker Action::::::::2:")
+        
+        popoverContent.preferredContentSize = CGSize(width: 300, height: 250)//CGSizeMake(300,250)
+        popover!.delegate = self
+        popover!.sourceView = self.view
+        //        popover!.sourceRect = CGRectMake(100,100,0,0)
+              print("showdate Time Picker Action::::::::3:")
+        popover!.sourceRect =  CGRect(origin: CGPoint(x: 0,y:0), size: CGSize(width:0, height:400))
+        // CGRectMake(0,400,0,0)
+              print("showdate Time Picker Action::::::::4:")
+        self.present(nav, animated: true, completion: nil)
+        
+        popoverContent.delegate = self
 
+    }
+*/
 //    @IBAction func showDate(sender: UIDatePicker) {
 //        
 //        print(tripDate.date)
 //        
 //    }
 // 
+    // MARK: OLD DATE PICKER PINK
+    /*
     @IBAction func doneDatePickAction(sender: UIButton) {
         // whenDoneCell.hidden = false
         // datePickerCell.hidden = true
@@ -376,7 +416,7 @@ var tripDateShow = Bool()
         tableView.reloadData()
     }
     
-    
+    */
     @IBOutlet weak var clearViaOutlet: UIButton!
     @IBAction func allowAlternativeStops(sender: UISwitch) {
     print("allow alternative stops.................")
@@ -450,11 +490,12 @@ var tripDateShow = Bool()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+      
         //MARK: Error Check Alert
         // enabling now button
         if (errorCode_generic_flag == true) {
             errorCode_generic_flag = false
-            self.title = "Error Reported...."
+           //  self.title = "Error Reported...."
             print("error Code has been caught... error should be displayed....")
             // genericErrorDisplay.isHidden = false
             //            error_Title_Display_Outlet.titleLabel?.text = "Network Problem"
@@ -498,28 +539,46 @@ var tripDateShow = Bool()
         print("from origin input.title Label = \(from_Origin_Input.titleLabel?.text)")
         print("to Destination input.title Label = \(to_destination_Input.titleLabel?.text )")
         
-                showDateTimePicker.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
+                //MARK: SET CURRENT DATE
+        //showDateTimePicker.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
         
         if (earliestDepartLatestArrival_flag == false){
         // done
         now.backgroundColor = UIColor.blue
             now.setTitleColor(UIColor.white, for: UIControlState.normal)
             
-            var date = NSDate()
+            let date = NSDate()
             let dateFormat = DateFormatter()
             let timeFormat = DateFormatter()
-            
-            
-            dateFormat.dateFormat = "yyyy:MM:dd"
+             dateFormat.dateFormat = "yyyy:MM:dd"
             timeFormat.dateFormat = "HH:mm"
             let strDate = dateFormat.string(from: date as Date)
             let strtime = timeFormat.string(from: date as Date)
-            let today = strDate + " " + strtime
-            whenTripDateShow.setTitle(today, for: UIControlState.normal)
+            _ = strDate + " " + strtime
+            whenTripDateShow.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
             tripDateShow = true
             whenTripDateShow.isUserInteractionEnabled = false
-            
+            Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDepartureOutlet, disableButtonThird: latestArrivalOutlet)
             tableView.reloadData()
+        } else if (earliestDepartLatestArrival_flag == true){
+        
+            
+            let tripDateTime_Simple = expectedTripDate + "-" + expectedTripTime
+            
+            print("Last Saved Date & Time = \(tripDateTime_Simple)")
+            
+            whenTripDateShow.setTitle(tripDateTime_Simple, for: .normal)
+            
+            
+            if(earliestDepartLatestArrival_Value == 0){
+                
+            Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: earliestDepartureOutlet, disableButtonSecond: now, disableButtonThird: latestArrivalOutlet)
+            
+            } else if (earliestDepartLatestArrival_Value == 1) {
+            
+                
+                Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: latestArrivalOutlet, disableButtonSecond: now, disableButtonThird: earliestDepartureOutlet)
+            }
         }
        //-------from --To---Via---start
         print("-selected index path-----viewWillAppear----)")
@@ -672,7 +731,7 @@ var tripDateShow = Bool()
             }
         }
         
-        
+    
         
         //---------------- end
 
@@ -718,7 +777,48 @@ var tripDateShow = Bool()
             return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
+    // MARK: Date Set
+    func receiveValueFromPopOver(Date: String, Time: String) {
+        expectedTripDate = Date
+        expectedTripTime = Time
+        
+//        simple_expectedTripDate = Date
+//        simple_expectedTripTime = Time
+
+        let showSelectedDateAndTime = Date + " " + Time
+        
+        print("1--advance---delegate has returned value= \("valueRecieve= \(showSelectedDateAndTime)")")
+        
+        
+        whenTripDateShow.titleLabel?.text = showSelectedDateAndTime
+        whenTripDateShow.setTitle(showSelectedDateAndTime, for: UIControlState.normal)
+        
+        
+        print("2--advance---delegate has returned value= \(whenTripDateShow.titleLabel?.text)")
+        
+        
+        print("3--advance---delegate has returned value= \("valueRecieve= \(showSelectedDateAndTime)")")
+        
+    }
+    
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "showDate_advance"){
+            
+            //            mDelegate  = self
+            
+            print("step 1")
+            let popOverViewController = segue.destination.popoverPresentationController
+            print("step 2")
+          //  popOverViewController!.delegate = self
+            
+            
+        }
+        
+
+        
         
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

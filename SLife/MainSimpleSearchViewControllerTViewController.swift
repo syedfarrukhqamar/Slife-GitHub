@@ -1,8 +1,3 @@
-
-
-
-
-
 //
 //  FirstViewController.swift
 //  SLife
@@ -812,13 +807,29 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         // earliest and latest arrival setting
         
         if (simple_earliestDepartLatestArrival_flag == true) {
-        
+            
+            let tripDateTime_Simple = simple_expectedTripDate + "-" + simple_expectedTripTime
+            print("Last Saved Date & Time = \(tripDateTime_Simple)")
+            dateTimeTrip.setTitle(tripDateTime_Simple, for: .normal)
+            
+            if(earliestDepartLatestArrival_Value == 0){
+                
+                Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: earliestDeparture, disableButtonSecond: now, disableButtonThird: latestArrivalOutlet)
+                dateTimeTrip.isUserInteractionEnabled = true
+                
+            } else if (earliestDepartLatestArrival_Value == 1) {
+                
+                
+                Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: latestArrivalOutlet, disableButtonSecond: now, disableButtonThird: earliestDeparture)
+    dateTimeTrip.isUserInteractionEnabled = true
+            }
+
+            
 //            Buttons.enableButton(button: now, title: "")
       
-            Buttons.disableButton(button: now, title: "")
-            
-            
-    dateTimeTrip.isUserInteractionEnabled = true
+//            Buttons.disableButton(button: now, title: "")
+//            
+    
             
         
         } else
@@ -946,7 +957,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         if(segue.identifier == "showDate"){
             
 //            mDelegate  = self
-            
+            print("simple date picker called ")
         print("step 1")
         let popOverViewController = segue.destination.popoverPresentationController
         print("step 2")
