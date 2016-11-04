@@ -28,6 +28,7 @@ class BaseTabBar_SLife_Controller: UITabBarController,UITabBarControllerDelegate
 
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
          print("--tabBar.selectedItem----\(tabBar.selectedItem?.accessibilityIdentifier)")
        //  print("--tab bar item----\(item.title!)")
          print("--tab bar item----\(item.tag)")
@@ -40,6 +41,11 @@ class BaseTabBar_SLife_Controller: UITabBarController,UITabBarControllerDelegate
         advancedOptionsFlag = false
             print("--new real time flag value ------------\(real_time_flag)")
 
+        }
+        else if (item.tag == 100){
+            real_time_flag = false
+            
+        
         }
         
     }

@@ -124,17 +124,13 @@ class TripSuggestionsTViewController: UITableViewController {
         print("to = = = = = \(to)")
         
         // recent trips addition
-        
-        
-        
-          SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
+           SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
 //        
 //        if (advancedOptionsFlag == false){
 //         url = searchTrips.constructURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
-        
-        
-        if (advancedOptionsFlag == false){
+         if (advancedOptionsFlag == false){
             // coming from simple screen
+            
             self.title = simple_expectedTripDate + "-" + simple_expectedTripTime
             
             url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
@@ -151,11 +147,16 @@ class TripSuggestionsTViewController: UITableViewController {
             url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
             
         }
+        
         print("-------------------url----\(url)")
         
         get_data_from_url(url: url)
         print("-----------------------ended--090")
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("view will current real_time_flag value is ==== \(real_time_flag)")
+
     }
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

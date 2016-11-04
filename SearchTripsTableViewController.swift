@@ -435,7 +435,7 @@ var tripDateShow = Bool()
         
         clearViaOutlet.backgroundColor = UIColor.white
         clearViaOutlet.setTitle("Via", for: UIControlState.normal)
-        clearViaOutlet.setTitleColor(UIColor.white, for: UIControlState.normal)
+       // clearViaOutlet.setTitleColor(UIColor.white, for: UIControlState.normal)
         via_Input.setTitle("Via", for: UIControlState.normal)
         stopOverMinutesInput.backgroundColor = UIColor.lightGray
         stopOverMinutesInput.text = "0"
@@ -559,6 +559,10 @@ var tripDateShow = Bool()
             tripDateShow = true
             whenTripDateShow.isUserInteractionEnabled = false
             Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDepartureOutlet, disableButtonThird: latestArrivalOutlet)
+           
+            expectedTripTime = HelpingMethods.currentTime24Hour()
+            expectedTripDate = HelpingMethods.currentDate()
+            
             tableView.reloadData()
         } else if (earliestDepartLatestArrival_flag == true){
         

@@ -391,6 +391,7 @@ class SearchFrom_To_Controller:UITableViewController,UISearchResultsUpdating {
             //            Could not cast value of type '__NSDictionaryI' (0x1a87d40d8) to 'NSArray' (0x1a87d3d18).
             //            2016-10-28 10:00:48.080142 SLife[1846:416931] Could not cast value of type '__NSDictionaryI' (0x1a87d40d8) to 'NSArray' (0x1a87d3d18).
 //            (lldb)
+            // when searched for Slussen may be
             let responseData = tempDict["ResponseData"] as! NSArray
             let dictResponseData = responseData[indexPath.row] as! [String:AnyObject]
             station.name = dictResponseData["Name"] as! String

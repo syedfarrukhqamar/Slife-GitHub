@@ -133,6 +133,11 @@ var recentTrips_History_array = NSMutableArray()
             favouriteCell.from_station_id.text = favDict[FROM_STATION_ID_obj_ser] as! String
             favouriteCell.to_station_id.text = favDict[TO__STATION_ID_obj_ser] as! String
             
+            
+            favouriteCell.to_station_id.isHidden = true
+            favouriteCell.from_station_id.isHidden = true
+            
+            
             print("fromStationName:::::::=:::::")
             print(favDict["fromStationName"] as! String)
             
@@ -191,6 +196,9 @@ var recentTrips_History_array = NSMutableArray()
             
             recentTripsCell.keyName.text = RECENTTRIPS
             recentTripsCell.currentIndex.text = String(i)
+            
+            recentTripsCell.from_station_id.isHidden = true
+            recentTripsCell.to_station_id.isHidden = true
             
             
             // MARK: Hidden Cells Recentr Trips

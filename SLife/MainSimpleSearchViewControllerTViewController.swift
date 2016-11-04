@@ -4,7 +4,6 @@
 //
 //  Created by syed farrukh Qamar on 05/04/16.
 //  Copyright © 2016 Be My Competence AB. All rights reserved.
-//
 
 import UIKit
 import AVFoundation
@@ -210,8 +209,11 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
     
         dateTimeTrip.isUserInteractionEnabled = false
         dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
+       
         simple_earliestDepartLatestArrival_flag = false
         simple_earliestDepartLatestArrival_Value = 0
+        simple_expectedTripTime = HelpingMethods.currentDateTime()
+        simple_expectedTripDate = HelpingMethods.currentDateTime()
         
         Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDeparture, disableButtonThird: latestArrivalOutlet)
     }
@@ -305,7 +307,10 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         {
             dateTimeTrip.isUserInteractionEnabled = false
             Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDeparture, disableButtonThird: latestArrivalOutlet)
-            
+              simple_expectedTripTime = HelpingMethods.currentTime24Hour()
+            simple_expectedTripDate = HelpingMethods.currentDate()
+           
+           
             dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
             
             // Buttons.enableButton(button: now, title: "")
