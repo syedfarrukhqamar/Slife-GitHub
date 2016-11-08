@@ -8,9 +8,9 @@
 
 import UIKit
 
+@available(iOS 9.0, *)
 class TripSuggestionsCell_new: UITableViewCell {
-    
-    
+     
     @IBOutlet weak var PriceInfo: UILabel!
     @IBOutlet weak var from_time: UILabel!
     @IBOutlet weak var from_station: UILabel!

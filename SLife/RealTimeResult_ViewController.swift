@@ -321,11 +321,7 @@ get_data_from_url(url: url)
          }
          */
     }
-    
-    
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! RealTimeInfoDetailCells
  
         // 3
@@ -337,14 +333,9 @@ get_data_from_url(url: url)
         var transportID = String()
         var message = String()
         var transportModeImageName = "BUS.png"
-        
         if (jsonLoaded == true){
-            
         if (currentSelection == BUSES){
              transportModeImageName = "BUS.png"
-       
-            
-            
         print("--------buses found-----------table data keys \(tableData.allKeys)-----")
         let bussFound = tableData[currentSelection] as! NSArray
 
@@ -354,23 +345,21 @@ get_data_from_url(url: url)
             print("StopPointDesignation= \(busRecord.StopPointDesignation)")
             print("DisplayTime= \(busRecord.realTimeCommonTransportModeInfo.DisplayTime)")
              print("destination= \(busRecord.realTimeCommonTransportModeInfo.Destination)")
-            
             time = busRecord.realTimeCommonTransportModeInfo.DisplayTime
             lineNo = busRecord.realTimeCommonTransportModeInfo.LineNumber
             Destination = busRecord.realTimeCommonTransportModeInfo.Destination
             transportID = busRecord.realTimeCommonTransportModeInfo.LineNumber
-            
-           
-            
-        } else if (currentSelection == METROS)
+                  }
+        else if (currentSelection == METROS)
         {
             
-              transportModeImageName = "METRO.png"
-        let metroFound = tableData[currentSelection] as! NSArray
+            transportModeImageName = "METRO.png"
+            let metroFound = tableData[currentSelection] as! NSArray
             let metroRecord = metroFound[indexPath.row] as! Metros
             print("--------metros found-----------metroFound destination \(metroFound.count))----")
             time = metroRecord.DisplayTime
             lineNo = metroRecord.GroupOfLine
+            
             Destination = metroRecord.Destination
             transportID = metroRecord.TransportMode
             print("-----lineNo---metros found-----------metroFound destination \(lineNo))----")
@@ -435,6 +424,8 @@ get_data_from_url(url: url)
         cell.lineNo.text = lineNo
         cell.message.text = Destination
         cell.transportID.text = transportID
+        cell.transportID.isHidden = true
+        
         return cell
         
         /*

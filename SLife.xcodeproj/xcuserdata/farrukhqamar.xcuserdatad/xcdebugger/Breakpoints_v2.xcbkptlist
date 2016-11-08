@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/LineChoicesVController.swift"
-            timestampString = "487106064.248183"
+            timestampString = "500292103.676009"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
+            startingLineNumber = "424"
+            endingLineNumber = "424"
             landmarkName = "LineChoicesVController"
             landmarkType = "3">
          </BreakpointContent>
@@ -144,22 +144,6 @@
             startingLineNumber = "402"
             endingLineNumber = "402"
             landmarkName = "getTrips(json:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SLife/SlifeMethods.swift"
-            timestampString = "500280778.706419"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "630"
-            endingLineNumber = "630"
-            landmarkName = "serializeObject(fromStationName:fromStationId:toStation_Name:toStationId:objectToSerialize_keyName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

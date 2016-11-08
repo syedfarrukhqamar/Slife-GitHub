@@ -391,9 +391,26 @@ class SearchFrom_To_Controller:UITableViewController,UISearchResultsUpdating {
             //            Could not cast value of type '__NSDictionaryI' (0x1a87d40d8) to 'NSArray' (0x1a87d3d18).
             //            2016-10-28 10:00:48.080142 SLife[1846:416931] Could not cast value of type '__NSDictionaryI' (0x1a87d40d8) to 'NSArray' (0x1a87d3d18).
 //            (lldb)
-            // when searched for Slussen may be
+//            // when searched for Slussen may be
+//     (2)    current row is selected = search from to Controller Sundbybergs centrum (Sundbyberg)
+//            tempDict count is = 4
+//            Could not cast value of type '__NSCFDictionary' (0x13b245c) to 'NSArray' (0x13b218c).
+            print("Search From To Controller tempDict[ResponseData]  ===== \(tempDict["ResponseData"].debugDescription)")
+            
+//            let test = tempDict["ResponseData"] as! NSDictionary
+//            print("test test test\(test.allKeys)")
+            
+            if let responseDataisArray = tempDict["ResponseData"] as? (NSArray) {
+                // obj is a string array. Do something with stringArray
+            
+            
+            
+            
             let responseData = tempDict["ResponseData"] as! NSArray
+            print("response Data Count = \(responseData.count)")
             let dictResponseData = responseData[indexPath.row] as! [String:AnyObject]
+//            print(dictResponseData.all)
+            
             station.name = dictResponseData["Name"] as! String
             station.type = dictResponseData["Type"] as! String
             station.site_id = dictResponseData["SiteId"] as! String
@@ -406,7 +423,14 @@ class SearchFrom_To_Controller:UITableViewController,UISearchResultsUpdating {
             print("---station.name--\(station.site_id)")
             print("---station.x--\(station.x)")
             print("---station.y--\(station.y)")
-            
+            }
+            else {
+                // obj is not a string array
+                let responseDataisDict = tempDict["ResponseData"] as? (NSDictionary)
+                
+                print("response Data is Dict = \(responseDataisDict?.allKeys)")
+                
+            }
             
         }
         else if (tempDict.count == 2) {

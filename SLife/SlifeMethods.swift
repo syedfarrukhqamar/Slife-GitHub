@@ -609,123 +609,116 @@ class SlifeMethods {
         return deSerializedObject
     }
     
-        static func serializeObject (fromStationName: String, fromStationId: String,toStation_Name: String,toStationId: String, objectToSerialize_keyName: String)  {
+        static func serializeObject (fromStationName: String, fromStationId: String,toStation_Name: String,toStationId: String, objectToSerialize_keyName: String)-> Bool  {
         
-        let defaults = UserDefaults.standard
-        let dictToAdd = NSMutableDictionary()
-        let objectToSerialize = NSMutableArray()
-        // from station
-        dictToAdd.setValue(fromStationName, forKey: FROM_STATION_NAME_obj_ser)
-        dictToAdd.setValue(fromStationId, forKey: FROM_STATION_ID_obj_ser)
-        
-        // to station
-        
-        dictToAdd.setValue(toStation_Name, forKey: TO_STATION_NAME_obj_ser)
-        dictToAdd.setValue(toStationId, forKey: TO__STATION_ID_obj_ser)
-        
-        objectToSerialize.add(dictToAdd)
-       
-        // MARK: check for redundant object
             
-        // check if the object exists already or not
-        print("- checking if the object exists or not \(defaults.objectIsForced(forKey: objectToSerialize_keyName))")
+            // MARK: Object Serialization Check Null
+        let char_from_station_id = FROM_STATION_ID_obj_ser.characters.count
+        let char_to_station_id = TO__STATION_ID_obj_ser.characters.count
             
-        print(defaults.object(forKey: objectToSerialize_keyName))
-       
-            if (defaults.object(forKey: objectToSerialize_keyName) == nil){
+            if (char_from_station_id <= 3) || (char_from_station_id <= 3){
+            // Null caught
             
-            print("nil found in the old object array place..........")
-                defaults.set(objectToSerialize, forKey: objectToSerialize_keyName)
+                return false
                 
             } else {
-              
-                let oldObjectArray = (defaults.object(forKey: objectToSerialize_keyName)! as! NSArray).mutableCopy() as! NSMutableArray
-                
-                print("-------old object array last count = \(oldObjectArray.count)")
-                
-                print("old object added ::::::::: with key name : \(objectToSerialize_keyName):")
-                
-            let recentTripLimits = 5
-                
-                if (oldObjectArray.count >= recentTripLimits){
-                    print(" removing extra objects = oldObjectArray.count \(oldObjectArray.count)")
-                oldObjectArray.removeObject(at: 0)
-                
-                }
-                
-                print("dictToAdd =213=  \(dictToAdd.allKeys)")
-                print("dictToAdd = \(dictToAdd)")
-                // iterate through the oldObjectArray
-                var stationFlag = false
-                var i = Int(0)
-                for index in oldObjectArray {
-                let old_ObjectDict = oldObjectArray[i] as! NSDictionary
-                let old_from_StationId = old_ObjectDict.value(forKey: "fromStationId") as! String
-                let old_to_StationId = old_ObjectDict.value(forKey: "toStation_Name") as! String
-                let new_ObjectDict = dictToAdd as! NSDictionary
-                let new_from_StationId = new_ObjectDict.value(forKey: "fromStationId") as! String
-                let new_to_StationId = new_ObjectDict.value(forKey: "toStation_Name") as! String
-                let old_From_Station_id_alone = old_from_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                let old_to_Station_id_alone = new_from_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                let new_From_Station_id_alone = old_to_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                let new_to_Station_id_alone = new_to_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-                    if (old_From_Station_id_alone == old_to_Station_id_alone && new_From_Station_id_alone == new_to_Station_id_alone){
-                   
-                    print("-------------------checking if from and to station are same........")
-                        
-                    print("old_From_Station_id_alone \(new_From_Station_id_alone)")
-                    print("old_to_Station_id_alone\(old_to_Station_id_alone)")
-                    print("old_From_Station_id_alone \(new_From_Station_id_alone)")
-                    print("old_to_Station_id_alone\(old_to_Station_id_alone)")
-                        stationFlag = true
-                        
-                    
-                    }
             
+            // let it add
+                let defaults = UserDefaults.standard
+                let dictToAdd = NSMutableDictionary()
+                let objectToSerialize = NSMutableArray()
+                // from station
+                dictToAdd.setValue(fromStationName, forKey: FROM_STATION_NAME_obj_ser)
+                dictToAdd.setValue(fromStationId, forKey: FROM_STATION_ID_obj_ser)
+                
+                // to station
+                
+                dictToAdd.setValue(toStation_Name, forKey: TO_STATION_NAME_obj_ser)
+                dictToAdd.setValue(toStationId, forKey: TO__STATION_ID_obj_ser)
+                
+                objectToSerialize.add(dictToAdd)
+                
+                // MARK: check for redundant object
+                
+                // check if the object exists already or not
+                print("- checking if the object exists or not \(defaults.objectIsForced(forKey: objectToSerialize_keyName))")
+                
+                print(defaults.object(forKey: objectToSerialize_keyName))
+                
+                if (defaults.object(forKey: objectToSerialize_keyName) == nil){
                     
-               i += 1
+                    print("nil found in the old object array place..........")
+                    defaults.set(objectToSerialize, forKey: objectToSerialize_keyName)
                     
-                
-                print("index in old object array is being printed == \(oldObjectArray)")
-                
-                
+                } else {
+                    
+                    let oldObjectArray = (defaults.object(forKey: objectToSerialize_keyName)! as! NSArray).mutableCopy() as! NSMutableArray
+                    
+                    print("-------old object array last count = \(oldObjectArray.count)")
+                    
+                    print("old object added ::::::::: with key name : \(objectToSerialize_keyName):")
+                    
+                    let recentTripLimits = 5
+                    
+                    if (oldObjectArray.count >= recentTripLimits){
+                        print(" removing extra objects = oldObjectArray.count \(oldObjectArray.count)")
+                        oldObjectArray.removeObject(at: 0)
+                        
+                    }
+                    
+                    print("dictToAdd =213=  \(dictToAdd.allKeys)")
+                    print("dictToAdd = \(dictToAdd)")
+                    // iterate through the oldObjectArray
+                    var stationFlag = false
+                    var i = Int(0)
+                    for index in oldObjectArray {
+                        let old_ObjectDict = oldObjectArray[i] as! NSDictionary
+                        let old_from_StationId = old_ObjectDict.value(forKey: "fromStationId") as! String
+                        let old_to_StationId = old_ObjectDict.value(forKey: "toStation_Name") as! String
+                        let new_ObjectDict = dictToAdd as! NSDictionary
+                        let new_from_StationId = new_ObjectDict.value(forKey: "fromStationId") as! String
+                        let new_to_StationId = new_ObjectDict.value(forKey: "toStation_Name") as! String
+                        let old_From_Station_id_alone = old_from_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                        let old_to_Station_id_alone = new_from_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                        let new_From_Station_id_alone = old_to_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                        let new_to_Station_id_alone = new_to_StationId.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+                        if (old_From_Station_id_alone == old_to_Station_id_alone && new_From_Station_id_alone == new_to_Station_id_alone){
+                            
+                            print("-------------------checking if from and to station are same........")
+                            
+                            print("old_From_Station_id_alone \(new_From_Station_id_alone)")
+                            print("old_to_Station_id_alone\(old_to_Station_id_alone)")
+                            print("old_From_Station_id_alone \(new_From_Station_id_alone)")
+                            print("old_to_Station_id_alone\(old_to_Station_id_alone)")
+                            stationFlag = true
+                        }
+                        i += 1
+                        print("index in old object array is being printed == \(oldObjectArray)")
+                    }
+                    
+                    if (stationFlag == false){
+                        oldObjectArray.add(dictToAdd)
+                        print("Just added stations because they are same.......")
+                    }
+                    else {
+                        
+                        print("not adding stations because they are same.......")
+                    }
+                    
+                    print("-------check 1----")
+                    
+                    defaults.set(oldObjectArray, forKey: objectToSerialize_keyName)
+                    print("-------check 2----")
+                    
                 }
-                
-                
-                
-//                for(index in oldObjectArray){
-//                
-//                
-//                
-//                
-//                }
-                // extract keys like
-                // [fromStationName, toStationId, fromStationId, toStation_Name]
-                // check dictToAdd [fromStationName, toStationId, fromStationId, toStation_Name]
-                // if from and to both present then skip adding object
-                
-                
-                if (stationFlag == false){
-                oldObjectArray.add(dictToAdd)
-                    print("Just added stations because they are same.......")
-                }
-                else {
-                
-                print("not adding stations because they are same.......")
-                }
-                
-                print("-------check 1----")
-                
-                defaults.set(oldObjectArray, forKey: objectToSerialize_keyName)
-                print("-------check 2----")
+
+                // added successfully
+                return true
                 
             }
-        
-//        print("---------------------------------------------- printing serialized objects ")
-//        print(defaults.objectForKey("Favourites"))
-//        print("---------------------------------------------- printing serialized objects ")
-//        print(defaults.objectForKey("RecentTrips"))
-//        
+            // couldnt add
+            return false
+            
     }
     
     
@@ -735,26 +728,6 @@ class SlifeMethods {
     static func deleteFromserializeObject (deleteIndex: String,keyName: String)  {
         
         let defaults = UserDefaults.standard
-//        
-//        let dictToAdd = NSMutableDictionary()
-//        
-//        let objectToSerialize = NSMutableArray()
-//        // from station
-//        dictToAdd.setValue(fromStationName, forKey: "fromStationName")
-//        dictToAdd.setValue(fromStationId, forKey: "fromStationId")
-//        
-//        // to station
-//        
-//        dictToAdd.setValue(toStation_Name, forKey: "toStation_Name")
-//        dictToAdd.setValue(toStationId, forKey: "toStationId")
-//        
-//        objectToSerialize.addObject(dictToAdd)
-//        
-//        
-//        // check if the object exists already or not
-//        print("- checking if the object exists or not \(defaults.objectIsForcedForKey(objectToSerialize_keyName))")
-//        
-//        print(defaults.objectForKey(objectToSerialize_keyName))
         
         if (defaults.object(forKey: keyName) == nil){
             
@@ -783,13 +756,7 @@ class SlifeMethods {
            
             
         }
-        
-        //        print("---------------------------------------------- printing serialized objects ")
-        //        print(defaults.objectForKey("Favourites"))
-        //        print("---------------------------------------------- printing serialized objects ")
-        //        print(defaults.objectForKey("RecentTrips"))
-        //
-    }
+         }
     
     
     //MARK: Function Check Error in Trip Suggestion check for generic Error

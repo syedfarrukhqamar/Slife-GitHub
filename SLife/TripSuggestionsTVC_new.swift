@@ -65,8 +65,8 @@ class TripSuggestionsTVC_new: UITableViewController {
 //            DispatchQueue.main.asynchronously(execute: {
                 self.extract_json(jsonData: data! as NSData)
                 print("-trip--7.1--about to return after parsing")
-                
-                let tripArray = (convertedJsonIntoNSDict["TripList"]! as! [String:Any])["Trip"] as! NSArray
+                // MARK: 
+                _ = (convertedJsonIntoNSDict["TripList"]! as! [String:Any])["Trip"] as! NSArray
                 
                 self.getTrips(json: convertedJsonIntoNSDict)
                 //--for-1--------------------------------------------------------------------------------------------------
