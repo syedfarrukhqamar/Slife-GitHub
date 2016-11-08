@@ -31,17 +31,29 @@ class TripSuggestionsTViewController: UITableViewController {
     
   //  @IBOutlet weak var mapReferenceAction: UIButton!
 //    MARK:- showTripOnMapAction
-    
+    var addToFav_flag = false
     @IBAction func addToFavourite(sender: UIBarButtonItem) {
+        
         print("--------from-------------")
         print(sr_fromStation_name)
         print(sr_fromStation_id)
          print("--------To-------------")
         print(sr_toStation_name)
         print(sr_toStation_ID)
-        
+       
+        if (addToFav_flag == false){
+            print("--------from---inside add to fav----------")
+            
         SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: FAVOURITES)
+        addToFav_flag = true
+            
+            
+        }
+        else {
+            
+            print("Already added......")
         
+        }
     }
     
     @IBAction func showTripOnMapAction(sender: UIButton) {
@@ -124,6 +136,12 @@ class TripSuggestionsTViewController: UITableViewController {
         print("to = = = = = \(to)")
         
         // recent trips addition
+        // MARK: Recent Trips Adding
+        
+        
+       print(" sr_fromStation_id \(sr_fromStation_id) && count is \(sr_fromStation_id.characters.count)")
+        print(" sr_fromStation_id \(sr_toStation_ID) && count is \(sr_toStation_ID.characters.count)")
+        
            SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
 //        
 //        if (advancedOptionsFlag == false){
@@ -202,8 +220,10 @@ class TripSuggestionsTViewController: UITableViewController {
                 print("about to check the generic error---------")
               // Mark: Release check error
                 // in slife method, produce error out of nil some how and see what happens
+                
                 let errorCheckFlag =   SlifeMethods.checkForErrorMessage(jsonObjectDownloaded: (convertedJsonIntoNSDict1["TripList"]! as! NSDictionary))
-                 print("about to check ErrorCheckFlag....inside.......")
+               
+                print("about to check ErrorCheckFlag....inside..errorCheckFlag =....\(errorCheckFlag)")
                 
                 
                // Error Check code. call slifemethod and send nsdictionary to see if it has error code key or not, if yes then change the central error values and move back
@@ -1039,8 +1059,8 @@ class TripSuggestionsTViewController: UITableViewController {
         
         
         
-        var icon_Count_Total = tripCell.LegList.count
-        var screenWidth = UIScreen.main.bounds.width
+        let icon_Count_Total = tripCell.LegList.count
+        let screenWidth = UIScreen.main.bounds.width
        
         
         let total_icon_lines = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(60.0))

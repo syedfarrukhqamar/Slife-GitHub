@@ -833,11 +833,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //            Buttons.enableButton(button: now, title: "")
       
 //            Buttons.disableButton(button: now, title: "")
-//            
-    
-            
-        
-        } else
+         } else
         
         {
             
@@ -847,9 +843,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
          Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDeparture, disableButtonThird: latestArrivalOutlet)
             
             //Buttons.enableButton(button: now, title: "")
-        
-            
-        }
+         }
         
         // print("from_Origin_Input.titleLabel = \(from_Origin_Input.titleLabel?.text!)")
         

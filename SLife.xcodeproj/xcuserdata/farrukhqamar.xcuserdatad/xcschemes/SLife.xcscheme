@@ -106,6 +106,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Slife Travel Planner"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

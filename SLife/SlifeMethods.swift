@@ -601,7 +601,10 @@ class SlifeMethods {
         //MARK: Nill Found
 //        //Could not cast value of type '__NSArrayI' (0x1b170bcc8) to 'NSMutableArray' (0x1b170bd90).
 //        2016-10-11 14:48:42.954104 SLife[6521:2048130] Could not cast value of type '__NSArrayI' (0x1b170bcc8) to 'NSMutableArray' (0x1b170bd90).
-        let deSerializedObject = defaults.object(forKey: objectKeyNameToDeserialize) as! NSArray
+      
+        let deSerializedObject = (defaults.object(forKey: objectKeyNameToDeserialize) as! NSArray).mutableCopy() as! NSMutableArray
+//        let deSerializedObject = defaults.object(forKey: objectKeyNameToDeserialize) as! NSMutableArray
+        //).mutableCopy() as! NSMutableArray
         print("---------3---- deserialize......")
         return deSerializedObject
     }
