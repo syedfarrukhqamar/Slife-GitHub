@@ -301,7 +301,8 @@ get_data_from_url(url: url)
            
           //  disableTransportModesNotAvailable(tableData)
             print("--------JSON LOADED --------\(tableData.allKeys)--------------")
-            
+            //MARK: Nil found
+            // when searched for slussen
             let rows = tableData[currentSelection] as! NSArray
             
             //   print("--------buses test --------\((tableData[currentSelection]? as AnyObject).count)--------------")
@@ -337,8 +338,22 @@ get_data_from_url(url: url)
         if (currentSelection == BUSES){
              transportModeImageName = "BUS.png"
         print("--------buses found-----------table data keys \(tableData.allKeys)-----")
-        let bussFound = tableData[currentSelection] as! NSArray
+            
+            
+            
+            let bussFound = RealTidMethods.checkNullForNSArray(someValue: tableData, keyName: currentSelection)
+            
+            if (bussFound.count == 0){
+                
+            print("null found in bus Found Check Array ......")
+            
+            
+            } else
+            {
+            
+                //let bussFound = tableData[currentSelection] as! NSArray
 
+            
             print("--------buses found-----------buss found destination \(bussFound.count))----")
             let busRecord = bussFound[indexPath.row] as! Buses
             print("GroupOfLine= \(busRecord.GroupOfLine)")
@@ -349,16 +364,36 @@ get_data_from_url(url: url)
             lineNo = busRecord.realTimeCommonTransportModeInfo.LineNumber
             Destination = busRecord.realTimeCommonTransportModeInfo.Destination
             transportID = busRecord.realTimeCommonTransportModeInfo.LineNumber
+            
+        
+            print("busRecord.realTimeCommonTransportModeInfo.deviations = \(busRecord.realTimeCommonTransportModeInfo.deviations.count)")
+            
+            }
                   }
         else if (currentSelection == METROS)
         {
             
             transportModeImageName = "METRO.png"
-            let metroFound = tableData[currentSelection] as! NSArray
+            
+            
+            let metroFound = RealTidMethods.checkNullForNSArray(someValue: tableData, keyName: currentSelection)
+            
+            if (metroFound.count == 0){
+                
+                print("null found in bus Found Check Array ...metroFound...")
+                
+                
+            } else
+            {
+            
+                
+            //let metroFound = tableData[currentSelection] as! NSArray
+            
             let metroRecord = metroFound[indexPath.row] as! Metros
             print("--------metros found-----------metroFound destination \(metroFound.count))----")
             time = metroRecord.DisplayTime
-            lineNo = metroRecord.GroupOfLine
+            lineNo = metroRecord.LineNumber
+            
             
             Destination = metroRecord.Destination
             transportID = metroRecord.TransportMode
@@ -369,49 +404,79 @@ get_data_from_url(url: url)
 //            time = metro.
 //            line = metroFound.LineNumber
 //            Destination = metroFound.Destination
-//            
-        }
+//
+            }
+            }
         else if (currentSelection == TRAINS){
+            transportModeImageName = "TRAIN.png"
+
+            let trainsFound = RealTidMethods.checkNullForNSArray(someValue: tableData, keyName: currentSelection)
             
-             transportModeImageName = "TRAIN.png"
+            if (trainsFound.count == 0){
+                
+                print("null found in bus Found Check Array ...trainsFound...")
+                
+            } else
+            {
             
-        
-            
-            
-            let trainsFound = tableData[currentSelection] as! NSArray
+//          let trainsFound = tableData[currentSelection] as! NSArray
             let trainsRecord = trainsFound[indexPath.row] as! Trains
-          
             time = trainsRecord.realTimeCommonTransportModeInfo.DisplayTime
             lineNo = trainsRecord.realTimeCommonTransportModeInfo.LineNumber
             Destination = trainsRecord.realTimeCommonTransportModeInfo.Destination
-             transportID = trainsRecord.realTimeCommonTransportModeInfo.TransportMode
-        
+            transportID = trainsRecord.realTimeCommonTransportModeInfo.TransportMode
+            
+            }
         
         }
         else if (currentSelection == TRAMS){
              transportModeImageName = "TRAM.png"
             let tramsFound = tableData[currentSelection] as! NSArray
+            
+            
+            
+            let tramsRecord = RealTidMethods.checkNullForNSArray(someValue: tableData, keyName: currentSelection)
+            
+            if (tramsRecord.count == 0){
+                
+                print("null found in bus Found Check Array ...tramsRecord...")
+                
+            } else
+            {
+
             let tramsRecord = tramsFound[indexPath.row] as! Trams
             
             time = tramsRecord.realTimeCommonTransportModeInfo.DisplayTime
             lineNo = tramsRecord.realTimeCommonTransportModeInfo.LineNumber
             Destination = tramsRecord.realTimeCommonTransportModeInfo.Destination
                transportID = tramsRecord.realTimeCommonTransportModeInfo.TransportMode
-            
+            }
             
         }
         else if (currentSelection == SHIPS){
              transportModeImageName = "SHIP.png"
-            let shipFound = tableData[currentSelection] as! NSArray
+            
+          //  let shipFound = tableData[currentSelection] as! NSArray
+            
+            
+            
+            let shipFound = RealTidMethods.checkNullForNSArray(someValue: tableData, keyName: currentSelection)
+            
+            if (shipFound.count == 0){
+                
+                print("null found in bus Found Check Array ...shipFounda...")
+                
+            } else
+            {
+
              let shipsRecord = shipFound[indexPath.row] as! Ships
             
             time = shipsRecord.realTimeCommonTransportModeInfo.DisplayTime
             lineNo = shipsRecord.realTimeCommonTransportModeInfo.LineNumber
             Destination = shipsRecord.realTimeCommonTransportModeInfo.StopAreaName
             transportID = shipsRecord.realTimeCommonTransportModeInfo.TransportMode
-            
-        
-        }
+            }
+            }
         }
         
         print("-----Time : \(time)")
@@ -422,6 +487,7 @@ get_data_from_url(url: url)
         
         cell.time.text = time
         cell.lineNo.text = lineNo
+        
         cell.message.text = Destination
         cell.transportID.text = transportID
         cell.transportID.isHidden = true

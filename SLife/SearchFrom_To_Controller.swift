@@ -359,7 +359,52 @@ class SearchFrom_To_Controller:UITableViewController,UISearchResultsUpdating {
         } else {
         
             // MARK:- Error some times 1
-        let responseData = tempDict["ResponseData"] as! NSArray
+            // wrote Öxelvägan 31 Älta
+            // check what comes in response data
+            // entered tariq block new garden town
+            print("tempDict:response data: search from to controller::: \(tempDict.allKeys)")
+        
+            let responseData = RealTidMethods.checkNullForNSArray(someValue: tempDict, keyName: "ResponseData")
+            print("1----response Data values realtid Method === \(responseData.count)")
+            if (responseData.count == 0){
+//            let message = RealTidMethods.checkNullForNSArray(someValue: tempDict, keyName: "Message")
+                print("2--count 0 found--response Data values realtid Method === \(responseData.count)")
+                // temp switching it off
+                // if you switch on error message then we need to write code to switch of user interaction
+                /*
+                let message_exists_flag = RealTidMethods.checkIfKeyExists(objectToCheck: tempDict, keyName: "Message")
+               print("message exists flag value is = \(message_exists_flag)")
+                
+                if (message_exists_flag == false){
+                
+                    
+                    if(tempDict.allKeys.count == 2){
+                    let message = "Message" + (tempDict["Message"] as! String)
+                    print("message value is  = \(message)")
+                    
+                    tableData.add(message)
+                    // check for station code
+                    let statusCode = "Status Code:" + String((tempDict["StatusCode"] as! Int))
+                        tableData.add(message)
+                        
+                    } else {
+                    
+                        tableData.add("Please try again .....")
+
+                    }
+//                
+                    //    tableData.add(message)
+                    
+                    
+                
+                }
+                */
+                
+                
+            
+            } else {
+            
+            //  let responseData = tempDict["ResponseData"] as! NSArray
             // MARK: Swift 3
             // responseData -> (responseData as? [[String:Any]])
             
@@ -370,6 +415,7 @@ class SearchFrom_To_Controller:UITableViewController,UISearchResultsUpdating {
         print("station is = \(platsName)")
         tableData.add(platsName)
         }
+            }
         }
         self.tableView.reloadData()
         print("-after----tabledata count AFTER-= \(tableData.count)")

@@ -346,7 +346,7 @@ class WebServiceHandler {
    static func constructURL_Sl_plats ( searchString: String, stationOnly: Bool )-> String
     {
         //var finalisedURLtoConnectConstruct = NSURL()
-        print("---webservice handler------111--------")
+        print("---webservice handler------111---from to-----")
         var finalisedURLtoConnectConstruct = String()
         finalisedURLtoConnectConstruct  = url_from_to_1
         finalisedURLtoConnectConstruct += keyID_SL_plats_from_to_2
