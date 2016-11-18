@@ -16,6 +16,9 @@ var rootMap_Ref_Dict = NSMutableDictionary()
 
 
 class TripSuggestionsTViewController: UITableViewController {
+
+    var showTripDetail_Dict = NSMutableDictionary()
+    
     var transportTypeFlag = String()
     
    // show hide trip info
@@ -26,7 +29,7 @@ class TripSuggestionsTViewController: UITableViewController {
     //Mark: Autolayout Variables
     var legIconsLineCounter = 0
     let legIconsHeight = 22
-    let headerCellHeight = 60
+    let headerCellHeight = 80 //60
     var legIconsLineTerminateCount = 1
     
   //  @IBOutlet weak var mapReferenceAction: UIButton!
@@ -46,8 +49,6 @@ class TripSuggestionsTViewController: UITableViewController {
             
         SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: FAVOURITES)
         addToFav_flag = true
-            
-            
         }
         else {
             
@@ -95,8 +96,115 @@ class TripSuggestionsTViewController: UITableViewController {
         print("section button is pressed with : ")
         print(sender.tag)
         sectionShow = sender.tag
-        tableView.reloadData()
+    
+        //let showFlag = showTripDetail_Dict.value(forKey: String(sender.tag)) as! Bool
+        // MARK: toggle trip detail
+        // Check Null
+      //  RealTidMethods
+//        let trip_detail_flag = RealTidMethods.checkIfKeyExists(objectToCheck: showTripDetail_Dict, keyName: String(sectionShow))
+//        
+        // check for null
         
+        // null found , set the value to true
+        
+        let trip_detail_flag = RealTidMethods.checkNullForBool(someValue: showTripDetail_Dict, keyName: String(sectionShow))
+        print("---------show more pressed............trip_detail_flag=\(trip_detail_flag)")
+        
+        /*
+        if (trip_detail_flag == false){
+            
+            print("inside else ............. and null found....")
+            // add the value
+             showTripDetail_Dict.setValue(true, forKey: String(sectionShow))
+            
+        }
+        
+        // if not null then
+        else {
+            
+            
+            let value_showMore_flag = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+            
+            // extract the value
+            print("inside else ............. and not null found....")
+            //  check existing value
+            
+            if (value_showMore_flag == true){
+                //  if true then set for false
+                showTripDetail_Dict.setValue(true, forKey: String(sectionShow))
+                let flagValue = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+                
+                print("trip detail flag contained : true now value = \(flagValue)")
+            }
+            else {
+                //  vice versa if false then set for true
+                showTripDetail_Dict.setValue(false, forKey: String(sectionShow))
+                let flagValue = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+                
+                print("trip detail flag contained : false now value = \(flagValue)")
+
+            }
+            
+            //  next step is to run and see output
+            
+            //  after that apply these values on section header level to switch on and off
+        
+        }
+        */
+        print("---------show more pressed............end")
+        
+        if (trip_detail_flag.contains("null"))
+        {
+//             let valueNowb4 = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+//            
+            print("-------null caught on section === \(sectionShow))")
+         
+            
+            showTripDetail_Dict.setValue(true, forKey: String(
+            sectionShow))
+            let valueNow = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+            
+            print("now = in null \(valueNow)")
+            
+        }
+            else
+            {
+            
+            
+            let  valueNowb4_true = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+            
+                
+                print("-------NOT null caught on section === \(sectionShow))")
+                
+                if (valueNowb4_true == true){
+                    print("value was true ........")
+                    showTripDetail_Dict.setValue(false, forKey: String(
+                        sectionShow))
+                    
+                
+                }
+                else if (valueNowb4_true == false) {
+                    
+                    print("value was false ........")
+                    
+                    showTripDetail_Dict.setValue(true, forKey: String(
+                        sectionShow))
+                    
+                
+                }
+         //   print("current value of flag is=b4=true = \(valueNowb4_true)")
+            let valueNow = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
+            print("-------------section #  \(sectionShow)")
+                
+            print("--------------------------------------now = \(valueNow)")
+                print("Total keys in showtripDetail Dict = \(showTripDetail_Dict.allKeys)")
+                print("key count is = \(showTripDetail_Dict.count)")
+                
+            
+        }
+        
+        tableView.reloadData()
+     
     }
     
     let firstLegImage   = "firstLeg.png"
@@ -218,20 +326,31 @@ class TripSuggestionsTViewController: UITableViewController {
                 // check if
                 
                 print("about to check the generic error---------")
-              // Mark: Release check error
+                // Mark: Release check error
                 // in slife method, produce error out of nil some how and see what happens
-                
-                let errorCheckFlag =   SlifeMethods.checkForErrorMessage(jsonObjectDownloaded: (convertedJsonIntoNSDict1["TripList"]! as! NSDictionary))
-               
-                print("about to check ErrorCheckFlag....inside..errorCheckFlag =....\(errorCheckFlag)")
+                // check for null
+                // if null then go back with error message
+                // else if not null then go below
+                print("about to check ErrorCheckFlag....inside..errorCheckFlag =....before.....")
                 
                 
                // Error Check code. call slifemethod and send nsdictionary to see if it has error code key or not, if yes then change the central error values and move back
-                if (errorCheckFlag == true){
+              let nullCheck = RealTidMethods.checkIfKeyExists(objectToCheck: convertedJsonIntoNSDict1, keyName: "TripList")
+                
+                if (nullCheck == false){
+                
+                    self.navigationController?.popViewController(animated: true)
+                    print("AFTER dissmissing because ERROR CODE HAS BEEN RECEIVED......null........")
+                    
+                } else {
+                    
+                    let errorCheckFlag =   SlifeMethods.checkForErrorMessage(jsonObjectDownloaded: (convertedJsonIntoNSDict1["TripList"]! as! NSDictionary))
+             
+                    if (errorCheckFlag == true){
                 print("errorCheckFlag....inside.......")
                     //MARK: release nil found
                     self.navigationController?.popViewController(animated: true)
-                    print("AFTER dissmissing because ERROR CODE HAS BEEN RECEIVED..............")
+                    print("AFTER dissmissing because ERROR CODE HAS BEEN RECEIVED.......error.......")
                    
                 }
                 else if (errorCheckFlag == false){
@@ -244,6 +363,7 @@ class TripSuggestionsTViewController: UITableViewController {
                  print("-trip--7.2--about to return after parsing")
                 // reload the table here
                 self.tableView.reloadData()
+                }
                 }
      // dispatch_async(dispatch_get_main_queue(), {
                 print("before return....")
@@ -742,36 +862,18 @@ class TripSuggestionsTViewController: UITableViewController {
                 print("check if Key Exist or not ======== \(checkKeyExist)")
                 // MARK: Leg Population
                 let leg =  Leg(journeyType: journeyType, name: nameValue, type: typeValue, idx: idxValue, geomRef: geometryReference, dist: distValue, hide: hideValue, dir: dirValue, line: lineValue, journeyDetailRef: journeyDetailRefValue, origin: originDetail, destination: destinDetail,legImageName: legImageName!,rtu_Message_Flag: checkKeyExist,rtu_Message: rtuMessageString)
-                
-                print("rtu message status from leg = flag = \(leg.rtu_Message_Flag)")
+                 print("rtu message status from leg = flag = \(leg.rtu_Message_Flag)")
                 print("rtu message status from leg = message = \(leg.rtu_Message)")
-                
                 trip.LegList.add(leg)
-                
-                
-                forMain11 += 1
-                
-           
-                
-                //----------------if condition walk & travel----------end
-                
-                
-                
-                
-       
-            }
-            
+                 forMain11 += 1
+                 //----------------if condition walk & travel----------end
+             }
             print("---LegList.allKeys----duration being entered is :\(dur)")
             self.newTrip.add(trip)
             print("--End--------------End------------------forMain1  \(forMain1)-----")
             forMain1 += 1
-            
-           
         }
-        
-        
-        
-    }
+     }
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -872,23 +974,54 @@ class TripSuggestionsTViewController: UITableViewController {
        // return newTrip[section].legList.count
         let legList = newTrip[section] as! Trip
         print("----LegList Count is in number of rows in section=\(legList.LegList.count)")
+        print("section show value in number of rows in section = \(sectionShow)")
+      
+        // extract value of section if not null
+        // check if it is true then show
+        // else return 0
+        
+        // check for null
+        print("section # is \(section)")
+        let section_null_or_not = RealTidMethods.checkNullForBool(someValue: showTripDetail_Dict, keyName: String(section))
+        
+            
+            if (section_null_or_not.contains("null")){
+            
+            
+            
+            print("section null or not contains===== false = \(section_null_or_not)")
+
+            
+            } else if (section_null_or_not.contains("true")) {
+            
+                
+                
+                print("section null or not contains===== True = \(section_null_or_not)")
+                
+                print(" \(legList.LegList.count)")
+                return legList.LegList.count
+                
+            
+            }
+        // if not null then check if true
+//            rip_detail_flag.contains("null")
+            
+        // if true then return leglist as below
+        
+        /*
         if (section == sectionShow){
         
-        
-        
-        
+        print(" \(legList.LegList.count)")
         return legList.LegList.count
             }
+        */
+        //-------------------------
         return 0
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! LegListCells
-        
-        
         print("-Printing Cells--[Sections]=\(indexPath.section)--[Rows] = \(indexPath.row)")
         // 3
         // Configure the cell...
@@ -919,22 +1052,17 @@ class TripSuggestionsTViewController: UITableViewController {
         print("leg.journeyType ==\(leg.journeyType)")
         print("leg.name ==\(leg.name)")
         print("leg.origin ==\(leg.origin)")
-        
-        
-        
         // legList.originDetail.name
-       
         //----#1-----#2------------------------ Origin Station....Leg
         cell.from_station.text = leg.origin.name
         print("cell.from_station.text::::\(cell.from_station.text)")
         // temp cell.from_time.text = legList.originDetail.time
-        
         cell.from_time.text = leg.origin.time
         // MARK: RTU Message Cell Level
         if (leg.rtu_Message_Flag == true){
              print("cell:: RTU Message ::::")
         print(leg.rtu_Message)
-       cell.rtuMessage.isHidden = false
+        cell.rtuMessage.isHidden = false
             cell.rtuMessage.text = leg.rtu_Message
             cell.rtuMessage.textColor = UIColor.red
         } else {
@@ -1091,10 +1219,14 @@ class TripSuggestionsTViewController: UITableViewController {
         
         print(tableView.rowHeight)
         headerCell.sectionSelected.tag = section
+        // MARK: ShowTripDetail_Dict
+        
+//        print("before setting dict values..................")
+//        showTripDetail_Dict.setValue(false, forKey: String(section))
+        
         print("tableView.frame.size.height ........")
         print(tableView.frame.size.height)
         print("headerCell.frame.size.height ........")
-
         print(headerCell.frame.size.height)
         print("--heADER CELL BUTTON ID-")
         print(headerCell.sectionSelected)
@@ -1241,7 +1373,8 @@ class TripSuggestionsTViewController: UITableViewController {
         let evenOrNot = even(number: section)
         
         if (evenOrNot){
-        headerCell.backgroundColor = UIColor.lightGray
+            
+       // headerCell.backgroundColor = UIColor.lightGray
         }
         
         print("section::::::header:::\(section)")

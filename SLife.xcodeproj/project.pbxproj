@@ -16,6 +16,18 @@
 		D40421F91CC7AAC400D916C7 /* LegWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40421F81CC7AAC400D916C7 /* LegWalk.swift */; };
 		D40421FB1CC7AAD000D916C7 /* LegTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40421FA1CC7AAD000D916C7 /* LegTravel.swift */; };
 		D407CE0F1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D407CE0E1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift */; };
+		D40ADC9F1DDDA1C400AA383B /* WALK.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9B1DDDA1C300AA383B /* WALK.png */; };
+		D40ADCA01DDDA1C400AA383B /* WALK.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9C1DDDA1C400AA383B /* WALK.svg */; };
+		D40ADCA11DDDA1C400AA383B /* WALK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9D1DDDA1C400AA383B /* WALK@2x.png */; };
+		D40ADCA21DDDA1C400AA383B /* WALK@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9E1DDDA1C400AA383B /* WALK@3x.png */; };
+		D40ADCAB1DDDAC0300AA383B /* Plus_Close.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA31DDDAC0300AA383B /* Plus_Close.png */; };
+		D40ADCAC1DDDAC0300AA383B /* Plus_Close.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA41DDDAC0300AA383B /* Plus_Close.svg */; };
+		D40ADCAD1DDDAC0300AA383B /* Plus_Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA51DDDAC0300AA383B /* Plus_Close@2x.png */; };
+		D40ADCAE1DDDAC0300AA383B /* Plus_Close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA61DDDAC0300AA383B /* Plus_Close@3x.png */; };
+		D40ADCAF1DDDAC0300AA383B /* Plus_options.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA71DDDAC0300AA383B /* Plus_options.png */; };
+		D40ADCB01DDDAC0300AA383B /* Plus_options.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA81DDDAC0300AA383B /* Plus_options.svg */; };
+		D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */; };
+		D40ADCB21DDDAC0300AA383B /* Plus_options@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */; };
 		D40B3B331D158747004AF71C /* MapTripViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40B3B321D158747004AF71C /* MapTripViewControllers.swift */; };
 		D40D44701DB61EDB006BD413 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */; };
 		D42083C11CEB14DA00042E7D /* TrafficStatusMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */; };
@@ -178,10 +190,6 @@
 		D4ADAAF51D3FFA050035B5D5 /* SHIP.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF11D3FFA050035B5D5 /* SHIP.svg */; };
 		D4ADAAF61D3FFA050035B5D5 /* SHIP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */; };
 		D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */; };
-		D4ADAB1C1D413B930035B5D5 /* WALK.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAB181D413B930035B5D5 /* WALK.png */; };
-		D4ADAB1D1D413B930035B5D5 /* WALK.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAB191D413B930035B5D5 /* WALK.svg */; };
-		D4ADAB1E1D413B930035B5D5 /* WALK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAB1A1D413B930035B5D5 /* WALK@2x.png */; };
-		D4ADAB1F1D413B930035B5D5 /* WALK@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAB1B1D413B930035B5D5 /* WALK@3x.png */; };
 		D4B24B5C1CCE7060009F183F /* TripSuggestionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */; };
 		D4BA57EE1D22A05C00A91975 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */; };
 		D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */; };
@@ -204,14 +212,6 @@
 		D4CD23771DC24A8A007E580F /* onlyLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23671DC24A8A007E580F /* onlyLeg@3x.png */; };
 		D4CD237A1DC24B62007E580F /* middleLeg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23781DC24B62007E580F /* middleLeg_1@2x.png */; };
 		D4CD237B1DC24B62007E580F /* middleLeg_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23791DC24B62007E580F /* middleLeg_1@3x.png */; };
-		D4CD28511D46A0D9000BD0FE /* ShowMore.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD28491D46A0D9000BD0FE /* ShowMore.png */; };
-		D4CD28521D46A0D9000BD0FE /* ShowMore.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4CD284A1D46A0D9000BD0FE /* ShowMore.svg */; };
-		D4CD28531D46A0D9000BD0FE /* ShowMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD284B1D46A0D9000BD0FE /* ShowMore@2x.png */; };
-		D4CD28541D46A0D9000BD0FE /* ShowMore@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD284C1D46A0D9000BD0FE /* ShowMore@3x.png */; };
-		D4CD28551D46A0D9000BD0FE /* ShowMoreOpened.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD284D1D46A0D9000BD0FE /* ShowMoreOpened.png */; };
-		D4CD28561D46A0D9000BD0FE /* ShowMoreOpened.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4CD284E1D46A0D9000BD0FE /* ShowMoreOpened.svg */; };
-		D4CD28571D46A0D9000BD0FE /* ShowMoreOpened@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD284F1D46A0D9000BD0FE /* ShowMoreOpened@2x.png */; };
-		D4CD28581D46A0D9000BD0FE /* ShowMoreOpened@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD28501D46A0D9000BD0FE /* ShowMoreOpened@3x.png */; };
 		D4DCCAD01CCEA49B0075117C /* TripSuggestionsTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */; };
 		D4DCCAD21CCEA92A0075117C /* TripSuggestionHeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */; };
 		D4E56BCB1DC1FA14007BC822 /* Favoutites.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E56BC71DC1FA14007BC822 /* Favoutites.png */; };
@@ -224,6 +224,14 @@
 		D4E56BD61DC1FA66007BC822 /* Station Swap@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E56BD21DC1FA66007BC822 /* Station Swap@3x.png */; };
 		D4E7915E1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7915D1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift */; };
 		D4E791601D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7915F1D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift */; };
+		D4EF1FA01DDF0B4700BC25D2 /* nClock.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F981DDF0B4700BC25D2 /* nClock.png */; };
+		D4EF1FA11DDF0B4700BC25D2 /* nClock.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F991DDF0B4700BC25D2 /* nClock.svg */; };
+		D4EF1FA21DDF0B4700BC25D2 /* nClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F9A1DDF0B4700BC25D2 /* nClock@2x.png */; };
+		D4EF1FA31DDF0B4700BC25D2 /* nClock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F9B1DDF0B4700BC25D2 /* nClock@3x.png */; };
+		D4EF1FB41DDF0DFF00BC25D2 /* mStationSeperator.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */; };
+		D4EF1FB51DDF0DFF00BC25D2 /* mStationSeperator.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */; };
+		D4EF1FB61DDF0DFF00BC25D2 /* mStationSeperator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */; };
+		D4EF1FB71DDF0DFF00BC25D2 /* mStationSeperator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB31DDF0DFF00BC25D2 /* mStationSeperator@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,6 +259,18 @@
 		D40421F81CC7AAC400D916C7 /* LegWalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegWalk.swift; sourceTree = "<group>"; };
 		D40421FA1CC7AAD000D916C7 /* LegTravel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegTravel.swift; sourceTree = "<group>"; };
 		D407CE0E1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotations_IntermediateStations.swift; sourceTree = "<group>"; };
+		D40ADC9B1DDDA1C300AA383B /* WALK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WALK.png; sourceTree = "<group>"; };
+		D40ADC9C1DDDA1C400AA383B /* WALK.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WALK.svg; sourceTree = "<group>"; };
+		D40ADC9D1DDDA1C400AA383B /* WALK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WALK@2x.png"; sourceTree = "<group>"; };
+		D40ADC9E1DDDA1C400AA383B /* WALK@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WALK@3x.png"; sourceTree = "<group>"; };
+		D40ADCA31DDDAC0300AA383B /* Plus_Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plus_Close.png; sourceTree = "<group>"; };
+		D40ADCA41DDDAC0300AA383B /* Plus_Close.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Plus_Close.svg; sourceTree = "<group>"; };
+		D40ADCA51DDDAC0300AA383B /* Plus_Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_Close@2x.png"; sourceTree = "<group>"; };
+		D40ADCA61DDDAC0300AA383B /* Plus_Close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_Close@3x.png"; sourceTree = "<group>"; };
+		D40ADCA71DDDAC0300AA383B /* Plus_options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plus_options.png; sourceTree = "<group>"; };
+		D40ADCA81DDDAC0300AA383B /* Plus_options.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Plus_options.svg; sourceTree = "<group>"; };
+		D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_options@2x.png"; sourceTree = "<group>"; };
+		D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_options@3x.png"; sourceTree = "<group>"; };
 		D40B3B321D158747004AF71C /* MapTripViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTripViewControllers.swift; sourceTree = "<group>"; };
 		D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsViewController.swift; path = Slife/ContactUsViewController.swift; sourceTree = SOURCE_ROOT; };
 		D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusMethods.swift; sourceTree = "<group>"; };
@@ -413,10 +433,6 @@
 		D4ADAAF11D3FFA050035B5D5 /* SHIP.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SHIP.svg; sourceTree = "<group>"; };
 		D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHIP@2x.png"; sourceTree = "<group>"; };
 		D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHIP@3x.png"; sourceTree = "<group>"; };
-		D4ADAB181D413B930035B5D5 /* WALK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WALK.png; sourceTree = "<group>"; };
-		D4ADAB191D413B930035B5D5 /* WALK.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WALK.svg; sourceTree = "<group>"; };
-		D4ADAB1A1D413B930035B5D5 /* WALK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WALK@2x.png"; sourceTree = "<group>"; };
-		D4ADAB1B1D413B930035B5D5 /* WALK@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WALK@3x.png"; sourceTree = "<group>"; };
 		D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripSuggestionHeaderCell.swift; path = ../TripSuggestionHeaderCell.swift; sourceTree = "<group>"; };
 		D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
 		D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC_new.swift; sourceTree = "<group>"; };
@@ -439,14 +455,6 @@
 		D4CD23671DC24A8A007E580F /* onlyLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "onlyLeg@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/onlyLeg@3x.png"; sourceTree = "<group>"; };
 		D4CD23781DC24B62007E580F /* middleLeg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "middleLeg_1@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/middleLeg_1@2x.png"; sourceTree = "<group>"; };
 		D4CD23791DC24B62007E580F /* middleLeg_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "middleLeg_1@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/middleLeg_1@3x.png"; sourceTree = "<group>"; };
-		D4CD28491D46A0D9000BD0FE /* ShowMore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowMore.png; sourceTree = "<group>"; };
-		D4CD284A1D46A0D9000BD0FE /* ShowMore.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShowMore.svg; sourceTree = "<group>"; };
-		D4CD284B1D46A0D9000BD0FE /* ShowMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMore@2x.png"; sourceTree = "<group>"; };
-		D4CD284C1D46A0D9000BD0FE /* ShowMore@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMore@3x.png"; sourceTree = "<group>"; };
-		D4CD284D1D46A0D9000BD0FE /* ShowMoreOpened.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowMoreOpened.png; sourceTree = "<group>"; };
-		D4CD284E1D46A0D9000BD0FE /* ShowMoreOpened.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShowMoreOpened.svg; sourceTree = "<group>"; };
-		D4CD284F1D46A0D9000BD0FE /* ShowMoreOpened@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMoreOpened@2x.png"; sourceTree = "<group>"; };
-		D4CD28501D46A0D9000BD0FE /* ShowMoreOpened@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMoreOpened@3x.png"; sourceTree = "<group>"; };
 		D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTViewController.swift; sourceTree = "<group>"; };
 		D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionHeaderCells.swift; sourceTree = "<group>"; };
 		D4E56BC71DC1FA14007BC822 /* Favoutites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Favoutites.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Favoutites.png"; sourceTree = "<group>"; };
@@ -459,6 +467,14 @@
 		D4E56BD21DC1FA66007BC822 /* Station Swap@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Station Swap@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Station Swap@3x.png"; sourceTree = "<group>"; };
 		D4E7915D1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStopOriginCell.swift; sourceTree = "<group>"; };
 		D4E7915F1D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStopsDestinationCell.swift; sourceTree = "<group>"; };
+		D4EF1F981DDF0B4700BC25D2 /* nClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nClock.png; sourceTree = "<group>"; };
+		D4EF1F991DDF0B4700BC25D2 /* nClock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nClock.svg; sourceTree = "<group>"; };
+		D4EF1F9A1DDF0B4700BC25D2 /* nClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nClock@2x.png"; sourceTree = "<group>"; };
+		D4EF1F9B1DDF0B4700BC25D2 /* nClock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nClock@3x.png"; sourceTree = "<group>"; };
+		D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mStationSeperator.png; sourceTree = "<group>"; };
+		D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mStationSeperator.svg; sourceTree = "<group>"; };
+		D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mStationSeperator@2x.png"; sourceTree = "<group>"; };
+		D4EF1FB31DDF0DFF00BC25D2 /* mStationSeperator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mStationSeperator@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -548,6 +564,26 @@
 		D42A025A1CCB6BA400E4C540 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */,
+				D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */,
+				D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */,
+				D4EF1FB31DDF0DFF00BC25D2 /* mStationSeperator@3x.png */,
+				D4EF1F981DDF0B4700BC25D2 /* nClock.png */,
+				D4EF1F991DDF0B4700BC25D2 /* nClock.svg */,
+				D4EF1F9A1DDF0B4700BC25D2 /* nClock@2x.png */,
+				D4EF1F9B1DDF0B4700BC25D2 /* nClock@3x.png */,
+				D40ADCA31DDDAC0300AA383B /* Plus_Close.png */,
+				D40ADCA41DDDAC0300AA383B /* Plus_Close.svg */,
+				D40ADCA51DDDAC0300AA383B /* Plus_Close@2x.png */,
+				D40ADCA61DDDAC0300AA383B /* Plus_Close@3x.png */,
+				D40ADCA71DDDAC0300AA383B /* Plus_options.png */,
+				D40ADCA81DDDAC0300AA383B /* Plus_options.svg */,
+				D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */,
+				D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */,
+				D40ADC9B1DDDA1C300AA383B /* WALK.png */,
+				D40ADC9C1DDDA1C400AA383B /* WALK.svg */,
+				D40ADC9D1DDDA1C400AA383B /* WALK@2x.png */,
+				D40ADC9E1DDDA1C400AA383B /* WALK@3x.png */,
 				D46D62841DC2776F00792CD7 /* LegBase.png */,
 				D46D62851DC2776F00792CD7 /* LegBase.svg */,
 				D46D62861DC2776F00792CD7 /* LegBase@2x.png */,
@@ -625,18 +661,6 @@
 				D483062E1D477B1400FA42A3 /* ShowMap.svg */,
 				D483062F1D477B1400FA42A3 /* ShowMap@2x.png */,
 				D48306301D477B1400FA42A3 /* ShowMap@3x.png */,
-				D4CD28491D46A0D9000BD0FE /* ShowMore.png */,
-				D4CD284A1D46A0D9000BD0FE /* ShowMore.svg */,
-				D4CD284B1D46A0D9000BD0FE /* ShowMore@2x.png */,
-				D4CD284C1D46A0D9000BD0FE /* ShowMore@3x.png */,
-				D4CD284D1D46A0D9000BD0FE /* ShowMoreOpened.png */,
-				D4CD284E1D46A0D9000BD0FE /* ShowMoreOpened.svg */,
-				D4CD284F1D46A0D9000BD0FE /* ShowMoreOpened@2x.png */,
-				D4CD28501D46A0D9000BD0FE /* ShowMoreOpened@3x.png */,
-				D4ADAB181D413B930035B5D5 /* WALK.png */,
-				D4ADAB191D413B930035B5D5 /* WALK.svg */,
-				D4ADAB1A1D413B930035B5D5 /* WALK@2x.png */,
-				D4ADAB1B1D413B930035B5D5 /* WALK@3x.png */,
 				D4ADAAF01D3FFA050035B5D5 /* SHIP.png */,
 				D4ADAAF11D3FFA050035B5D5 /* SHIP.svg */,
 				D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */,
@@ -927,40 +951,44 @@
 			files = (
 				D4CD236A1DC24A8A007E580F /* firstLeg@2x.png in Resources */,
 				D4990F721D75C617003CCB0B /* Main.storyboard in Resources */,
+				D40ADCAF1DDDAC0300AA383B /* Plus_options.png in Resources */,
 				D48306321D477B1400FA42A3 /* ShowMap.svg in Resources */,
+				D40ADCAC1DDDAC0300AA383B /* Plus_Close.svg in Resources */,
 				D47371A91DB61637008AA0BE /* Slife-Launch-Screen@2.png in Resources */,
 				D4679FD21D3E271F00E477D6 /* BUS.png in Resources */,
 				D46D62891DC2776F00792CD7 /* LegBase.svg in Resources */,
 				D46CD98E1CF8B71D00B91DC8 /* BUS1.png in Resources */,
 				D45D34201DB79D3F00B7742E /* TrafficStatus.png in Resources */,
+				D40ADCA21DDDA1C400AA383B /* WALK@3x.png in Resources */,
 				D46E7F291DABDAB300C59C9B /* RadioButtonOn@2x.png in Resources */,
+				D4EF1FB41DDF0DFF00BC25D2 /* mStationSeperator.png in Resources */,
 				D483064E1D4A547300FA42A3 /* EventGood@3x.png in Resources */,
 				D4E56BCC1DC1FA14007BC822 /* Favoutites.svg in Resources */,
-				D4CD28531D46A0D9000BD0FE /* ShowMore@2x.png in Resources */,
-				D4ADAB1C1D413B930035B5D5 /* WALK.png in Resources */,
 				D4679FDD1D3E5EBA00E477D6 /* METRO@3x.png in Resources */,
 				D4ADAAE71D3FF39E0035B5D5 /* TRAM@3x.png in Resources */,
 				D4E56BCE1DC1FA14007BC822 /* Favoutites@3x.png in Resources */,
+				D4EF1FA11DDF0B4700BC25D2 /* nClock.svg in Resources */,
 				D4CD237B1DC24B62007E580F /* middleLeg_1@3x.png in Resources */,
 				D46E7F271DABDAB300C59C9B /* RadioButtonOn.png in Resources */,
 				D4CD23741DC24A8A007E580F /* onlyLeg.png in Resources */,
-				D4CD28551D46A0D9000BD0FE /* ShowMoreOpened.png in Resources */,
 				D4CD236B1DC24A8A007E580F /* firstLeg@3x.png in Resources */,
 				D45D341C1DB77B5D00B7742E /* SearchTripsDefaultSelected.png in Resources */,
 				D4A957B51DB734BD0047D630 /* Slife-App-Icon-Launch-Screen@2.png in Resources */,
+				D4EF1FA21DDF0B4700BC25D2 /* nClock@2x.png in Resources */,
 				D48306341D477B1400FA42A3 /* ShowMap@3x.png in Resources */,
 				D4ADAAE61D3FF39E0035B5D5 /* TRAM@2x.png in Resources */,
 				D4CD236C1DC24A8A007E580F /* lastLeg.png in Resources */,
 				D48306511D4A547300FA42A3 /* EventMinor@2x.png in Resources */,
 				D47371A51DB613A2008AA0BE /* Slife Launch Screen@3.png in Resources */,
+				D40ADCAB1DDDAC0300AA383B /* Plus_Close.png in Resources */,
 				D483064A1D4A547300FA42A3 /* EventDefault@3x.png in Resources */,
 				D46E7F391DAC03B200C59C9B /* LabelBackground@2x.png in Resources */,
+				D4EF1FB71DDF0DFF00BC25D2 /* mStationSeperator@3x.png in Resources */,
 				D4ADAAF41D3FFA050035B5D5 /* SHIP.png in Resources */,
 				D45D34271DB7B6AC00B7742E /* ContactUs.png in Resources */,
 				D48FAAB61D65D38B00BEA95A /* stopsCircle.svg in Resources */,
 				D4CD236D1DC24A8A007E580F /* lastLeg.svg in Resources */,
-				D4ADAB1F1D413B930035B5D5 /* WALK@3x.png in Resources */,
-				D4CD28521D46A0D9000BD0FE /* ShowMore.svg in Resources */,
+				D40ADCA11DDDA1C400AA383B /* WALK@2x.png in Resources */,
 				D46E7F2A1DABDAB300C59C9B /* RadioButtonOn@3x.png in Resources */,
 				D46E7F381DAC03B200C59C9B /* LabelBackground.svg in Resources */,
 				D48FAAB71D65D38B00BEA95A /* stopsCircle.png in Resources */,
@@ -969,9 +997,11 @@
 				D46E7F231DABDAB300C59C9B /* RadioButtonOff.png in Resources */,
 				D4A411B51D61FCE6002CCBF7 /* CustomCalloutView.xib in Resources */,
 				D43962E51D3F824A00C80F57 /* TRAIN.png in Resources */,
+				D40ADC9F1DDDA1C400AA383B /* WALK.png in Resources */,
 				D483064C1D4A547300FA42A3 /* EventGood.svg in Resources */,
 				D46E7F371DAC03B200C59C9B /* LabelBackground.png in Resources */,
 				D4CD23681DC24A8A007E580F /* firstLeg.png in Resources */,
+				D40ADCB01DDDAC0300AA383B /* Plus_options.svg in Resources */,
 				D4E56BCB1DC1FA14007BC822 /* Favoutites.png in Resources */,
 				D48306541D4A547300FA42A3 /* EventPlanned.svg in Resources */,
 				D4A957B41DB734BD0047D630 /* Slife-App-Icon-Launch-Screen.png in Resources */,
@@ -981,28 +1011,29 @@
 				D4ADAAF51D3FFA050035B5D5 /* SHIP.svg in Resources */,
 				D4E56BD51DC1FA66007BC822 /* Station Swap@2x.png in Resources */,
 				D46E7F321DABE67A00C59C9B /* Buttons@3x.png in Resources */,
-				D4CD28571D46A0D9000BD0FE /* ShowMoreOpened@2x.png in Resources */,
 				D4ADAAF61D3FFA050035B5D5 /* SHIP@2x.png in Resources */,
 				D4679FD41D3E271F00E477D6 /* BUS@2x.png in Resources */,
 				D4CD23701DC24A8A007E580F /* middleLeg.png in Resources */,
 				D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */,
 				D4679FD31D3E271F00E477D6 /* BUS.svg in Resources */,
 				D4679FDB1D3E5EBA00E477D6 /* METRO.svg in Resources */,
+				D4EF1FB61DDF0DFF00BC25D2 /* mStationSeperator@2x.png in Resources */,
 				D4ADAAE41D3FF39E0035B5D5 /* TRAM.png in Resources */,
 				D483064D1D4A547300FA42A3 /* EventGood@2x.png in Resources */,
+				D40ADCB21DDDAC0300AA383B /* Plus_options@3x.png in Resources */,
 				D43962E81D3F824A00C80F57 /* TRAIN.svg in Resources */,
 				D4A957B61DB734BD0047D630 /* Slife-App-Icon-Launch-Screen@3.png in Resources */,
 				D48306521D4A547300FA42A3 /* EventMinor@3x.png in Resources */,
 				D45D341E1DB79D2300B7742E /* TrafficStatus Selected.png in Resources */,
+				D4EF1FA01DDF0B4700BC25D2 /* nClock.png in Resources */,
 				D46D628B1DC2776F00792CD7 /* LegBase@3x.png in Resources */,
 				D47371A81DB61637008AA0BE /* Slife-Launch-Screen.png in Resources */,
 				D45D341A1DB7792600B7742E /* SearchTripsDefault.png in Resources */,
-				D4CD28541D46A0D9000BD0FE /* ShowMore@3x.png in Resources */,
+				D40ADCA01DDDA1C400AA383B /* WALK.svg in Resources */,
 				D4CD236E1DC24A8A007E580F /* lastLeg@2x.png in Resources */,
 				D46965001CB3F37C00C6CFE1 /* LaunchScreen.storyboard in Resources */,
 				D4679FD51D3E271F00E477D6 /* BUS@3x.png in Resources */,
 				D45D34231DB7AB4700B7742E /* RealTime.png in Resources */,
-				D4ADAB1D1D413B930035B5D5 /* WALK.svg in Resources */,
 				D4A957B31DB734BD0047D630 /* Slife App Icon Launch Screen.svg in Resources */,
 				D48306481D4A547300FA42A3 /* EventDefault.svg in Resources */,
 				D46CD9961CF8B7AA00B91DC8 /* Default.png in Resources */,
@@ -1012,12 +1043,11 @@
 				D48306551D4A547300FA42A3 /* EventPlanned@2x.png in Resources */,
 				D4CD23761DC24A8A007E580F /* onlyLeg@2x.png in Resources */,
 				D4E56BD41DC1FA66007BC822 /* Station Swap.svg in Resources */,
-				D4CD28581D46A0D9000BD0FE /* ShowMoreOpened@3x.png in Resources */,
 				D4CD236F1DC24A8A007E580F /* lastLeg@3x.png in Resources */,
 				D46D628A1DC2776F00792CD7 /* LegBase@2x.png in Resources */,
-				D4CD28561D46A0D9000BD0FE /* ShowMoreOpened.svg in Resources */,
 				D48306501D4A547300FA42A3 /* EventMinor.svg in Resources */,
 				D4E56BCD1DC1FA14007BC822 /* Favoutites@2x.png in Resources */,
+				D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */,
 				D43962E71D3F824A00C80F57 /* TRAIN@3x.png in Resources */,
 				D46E7F311DABE67A00C59C9B /* Buttons@2x.png in Resources */,
 				D48306491D4A547300FA42A3 /* EventDefault@2x.png in Resources */,
@@ -1029,21 +1059,23 @@
 				D45D34241DB7AB4700B7742E /* RealTimeSelected.png in Resources */,
 				D48306471D4A547300FA42A3 /* EventDefault.png in Resources */,
 				D492907C1CCE568A0029B846 /* TripSuggestionsHeaderView.xib in Resources */,
-				D4CD28511D46A0D9000BD0FE /* ShowMore.png in Resources */,
 				D48FAAB91D65D38B00BEA95A /* stopsCircle@3x.png in Resources */,
 				D46E7F241DABDAB300C59C9B /* RadioButtonOff.svg in Resources */,
 				D4679FDA1D3E5EBA00E477D6 /* METRO.png in Resources */,
 				D46E7F261DABDAB300C59C9B /* RadioButtonOff@3x.png in Resources */,
 				D4CD23711DC24A8A007E580F /* middleLeg.svg in Resources */,
+				D40ADCAD1DDDAC0300AA383B /* Plus_Close@2x.png in Resources */,
 				D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */,
 				D46E7F281DABDAB300C59C9B /* RadioButtonOn.svg in Resources */,
+				D40ADCAE1DDDAC0300AA383B /* Plus_Close@3x.png in Resources */,
+				D4EF1FB51DDF0DFF00BC25D2 /* mStationSeperator.svg in Resources */,
 				D43962E61D3F824A00C80F57 /* TRAIN@2x.png in Resources */,
 				D46E7F251DABDAB300C59C9B /* RadioButtonOff@2x.png in Resources */,
+				D4EF1FA31DDF0B4700BC25D2 /* nClock@3x.png in Resources */,
 				D47371A11DB612FC008AA0BE /* Slife Launch Screen.svg in Resources */,
 				D46E7F3A1DAC03B200C59C9B /* LabelBackground@3x.png in Resources */,
 				D4ADAAE51D3FF39E0035B5D5 /* TRAM.svg in Resources */,
 				D46E7F2F1DABE67A00C59C9B /* Buttons.png in Resources */,
-				D4ADAB1E1D413B930035B5D5 /* WALK@2x.png in Resources */,
 				D4CD237A1DC24B62007E580F /* middleLeg_1@2x.png in Resources */,
 				D483064B1D4A547300FA42A3 /* EventGood.png in Resources */,
 				D46E7F301DABE67A00C59C9B /* Buttons.svg in Resources */,

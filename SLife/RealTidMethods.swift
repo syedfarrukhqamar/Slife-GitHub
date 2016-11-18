@@ -341,6 +341,7 @@ if (jsonObject.count == 0){
         return valueString
     }
     
+    
     static  func checkNullForNSArray(someValue: NSDictionary,keyName:String)-> NSArray {
         print("going to check for NSARRAY = \(keyName)")
 
