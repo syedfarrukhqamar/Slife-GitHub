@@ -1231,7 +1231,7 @@ class TripSuggestionsTViewController: UITableViewController {
         print("--heADER CELL BUTTON ID-")
         print(headerCell.sectionSelected)
         //    let cell = tableView.dequeueReusableCellWithIdentifier("headerCell", forIndexPath: indexPath) as! TripSuggestionsCell_new
-     //   headerCell.backgroundColor = UIColor.lightGrayColor()
+       // headerCell.backgroundColor = UIColor.blue
         print("cell-header cell---\(headerCell)")
         
         let head = newTrip[section] as! Trip
@@ -1374,7 +1374,7 @@ class TripSuggestionsTViewController: UITableViewController {
         
         if (evenOrNot){
             
-       // headerCell.backgroundColor = UIColor.lightGray
+        headerCell.backgroundColor = UIColor.lightGray
         }
         
         print("section::::::header:::\(section)")
