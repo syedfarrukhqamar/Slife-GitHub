@@ -29,6 +29,7 @@
 		D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */; };
 		D40ADCB21DDDAC0300AA383B /* Plus_options@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */; };
 		D40B3B331D158747004AF71C /* MapTripViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40B3B321D158747004AF71C /* MapTripViewControllers.swift */; };
+		D40C29781DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40C29771DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift */; };
 		D40D44701DB61EDB006BD413 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */; };
 		D42083C11CEB14DA00042E7D /* TrafficStatusMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */; };
 		D421F9291D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D421F9281D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift */; };
@@ -38,6 +39,7 @@
 		D4272F3D1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4272F3C1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift */; };
 		D4272F3F1CDA1B260040BC3D /* RealTimeResult_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4272F3E1CDA1B260040BC3D /* RealTimeResult_ViewController.swift */; };
 		D42A024D1CCB2C8B00E4C540 /* SlifeMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A024C1CCB2C8B00E4C540 /* SlifeMethods.swift */; };
+		D431BD0B1DEF24A10036F1F3 /* CustomTripMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431BD0A1DEF24A10036F1F3 /* CustomTripMethods.swift */; };
 		D43962E51D3F824A00C80F57 /* TRAIN.png in Resources */ = {isa = PBXBuildFile; fileRef = D43962E11D3F824A00C80F57 /* TRAIN.png */; };
 		D43962E61D3F824A00C80F57 /* TRAIN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D43962E21D3F824A00C80F57 /* TRAIN@2x.png */; };
 		D43962E71D3F824A00C80F57 /* TRAIN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D43962E31D3F824A00C80F57 /* TRAIN@3x.png */; };
@@ -151,6 +153,10 @@
 		D48827E51CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
 		D48827EB1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */; };
 		D48827ED1CBBE108002A0A87 /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827EC1CBBE108002A0A87 /* Trips.swift */; };
+		D4888A371DF80AE30024EBAD /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = D4888A331DF80AE30024EBAD /* Map.png */; };
+		D4888A381DF80AE30024EBAD /* Map.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4888A341DF80AE30024EBAD /* Map.svg */; };
+		D4888A391DF80AE30024EBAD /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4888A351DF80AE30024EBAD /* Map@2x.png */; };
+		D4888A3A1DF80AE30024EBAD /* Map@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4888A361DF80AE30024EBAD /* Map@3x.png */; };
 		D48957421D099AE600055D1D /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48957411D099AE600055D1D /* Buttons.swift */; };
 		D48957461D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48957451D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift */; };
 		D48957481D09F74300055D1D /* HelpingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48957471D09F74300055D1D /* HelpingMethods.swift */; };
@@ -167,6 +173,14 @@
 		D48FAAB81D65D38B00BEA95A /* stopsCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48FAAB41D65D38B00BEA95A /* stopsCircle@2x.png */; };
 		D48FAAB91D65D38B00BEA95A /* stopsCircle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48FAAB51D65D38B00BEA95A /* stopsCircle@3x.png */; };
 		D492907C1CCE568A0029B846 /* TripSuggestionsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D492907B1CCE568A0029B846 /* TripSuggestionsHeaderView.xib */; };
+		D4959F701DF0B4A2009A9B51 /* TripInfoDepartures.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F681DF0B4A2009A9B51 /* TripInfoDepartures.png */; };
+		D4959F711DF0B4A2009A9B51 /* TripInfoDepartures.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4959F691DF0B4A2009A9B51 /* TripInfoDepartures.svg */; };
+		D4959F721DF0B4A2009A9B51 /* TripInfoDepartures@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6A1DF0B4A2009A9B51 /* TripInfoDepartures@2x.png */; };
+		D4959F731DF0B4A2009A9B51 /* TripInfoDepartures@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6B1DF0B4A2009A9B51 /* TripInfoDepartures@3x.png */; };
+		D4959F741DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6C1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png */; };
+		D4959F751DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6D1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg */; };
+		D4959F761DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6E1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png */; };
+		D4959F771DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6F1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png */; };
 		D4990F721D75C617003CCB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4990F711D75C617003CCB0B /* Main.storyboard */; };
 		D4A411AF1D5F95AF002CCBF7 /* StationsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A411AE1D5F95AF002CCBF7 /* StationsLocation.swift */; };
 		D4A411B11D5F96AE002CCBF7 /* StationsLocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A411B01D5F96AE002CCBF7 /* StationsLocationList.swift */; };
@@ -191,6 +205,14 @@
 		D4ADAAF61D3FFA050035B5D5 /* SHIP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */; };
 		D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */; };
 		D4B24B5C1CCE7060009F183F /* TripSuggestionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */; };
+		D4B487041DEE0832008FB436 /* LegBorderStart.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FC1DEE0832008FB436 /* LegBorderStart.png */; };
+		D4B487051DEE0832008FB436 /* LegBorderStart.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FD1DEE0832008FB436 /* LegBorderStart.svg */; };
+		D4B487061DEE0832008FB436 /* LegBorderStart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FE1DEE0832008FB436 /* LegBorderStart@2x.png */; };
+		D4B487071DEE0832008FB436 /* LegBorderStart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FF1DEE0832008FB436 /* LegBorderStart@3x.png */; };
+		D4B487081DEE0832008FB436 /* LegBorderStop.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B487001DEE0832008FB436 /* LegBorderStop.png */; };
+		D4B487091DEE0832008FB436 /* LegBorderStop.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4B487011DEE0832008FB436 /* LegBorderStop.svg */; };
+		D4B4870A1DEE0832008FB436 /* LegBorderStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B487021DEE0832008FB436 /* LegBorderStop@2x.png */; };
+		D4B4870B1DEE0832008FB436 /* LegBorderStop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B487031DEE0832008FB436 /* LegBorderStop@3x.png */; };
 		D4BA57EE1D22A05C00A91975 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */; };
 		D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */; };
 		D4C9B48C1CBEAA9100978546 /* TripStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B48B1CBEAA9100978546 /* TripStocks.swift */; };
@@ -272,6 +294,7 @@
 		D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_options@2x.png"; sourceTree = "<group>"; };
 		D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_options@3x.png"; sourceTree = "<group>"; };
 		D40B3B321D158747004AF71C /* MapTripViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTripViewControllers.swift; sourceTree = "<group>"; };
+		D40C29771DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripLegIconsCollectionViewCell.swift; path = Slife/TripLegIconsCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsViewController.swift; path = Slife/ContactUsViewController.swift; sourceTree = SOURCE_ROOT; };
 		D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusMethods.swift; sourceTree = "<group>"; };
 		D421F9281D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavouritesResentTrips_ViewController.swift; path = ../FavouritesResentTrips_ViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +304,7 @@
 		D4272F3C1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBar_SLife_Controller.swift; sourceTree = "<group>"; };
 		D4272F3E1CDA1B260040BC3D /* RealTimeResult_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeResult_ViewController.swift; sourceTree = "<group>"; };
 		D42A024C1CCB2C8B00E4C540 /* SlifeMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlifeMethods.swift; sourceTree = "<group>"; };
+		D431BD0A1DEF24A10036F1F3 /* CustomTripMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTripMethods.swift; path = Slife/CustomTripMethods.swift; sourceTree = SOURCE_ROOT; };
 		D43962E11D3F824A00C80F57 /* TRAIN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TRAIN.png; sourceTree = "<group>"; };
 		D43962E21D3F824A00C80F57 /* TRAIN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TRAIN@2x.png"; sourceTree = "<group>"; };
 		D43962E31D3F824A00C80F57 /* TRAIN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TRAIN@3x.png"; sourceTree = "<group>"; };
@@ -394,6 +418,10 @@
 		D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsCell.swift; sourceTree = "<group>"; };
 		D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC.swift; sourceTree = "<group>"; };
 		D48827EC1CBBE108002A0A87 /* Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
+		D4888A331DF80AE30024EBAD /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		D4888A341DF80AE30024EBAD /* Map.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Map.svg; sourceTree = "<group>"; };
+		D4888A351DF80AE30024EBAD /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
+		D4888A361DF80AE30024EBAD /* Map@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@3x.png"; sourceTree = "<group>"; };
 		D48957411D099AE600055D1D /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Buttons.swift; path = HelpingMethods/Buttons.swift; sourceTree = "<group>"; };
 		D48957451D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSimpleSearchViewControllerTViewController.swift; sourceTree = "<group>"; };
 		D48957471D09F74300055D1D /* HelpingMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpingMethods.swift; path = HelpingMethods/HelpingMethods.swift; sourceTree = "<group>"; };
@@ -410,6 +438,14 @@
 		D48FAAB41D65D38B00BEA95A /* stopsCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopsCircle@2x.png"; sourceTree = "<group>"; };
 		D48FAAB51D65D38B00BEA95A /* stopsCircle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopsCircle@3x.png"; sourceTree = "<group>"; };
 		D492907B1CCE568A0029B846 /* TripSuggestionsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripSuggestionsHeaderView.xib; sourceTree = "<group>"; };
+		D4959F681DF0B4A2009A9B51 /* TripInfoDepartures.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TripInfoDepartures.png; sourceTree = "<group>"; };
+		D4959F691DF0B4A2009A9B51 /* TripInfoDepartures.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TripInfoDepartures.svg; sourceTree = "<group>"; };
+		D4959F6A1DF0B4A2009A9B51 /* TripInfoDepartures@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDepartures@2x.png"; sourceTree = "<group>"; };
+		D4959F6B1DF0B4A2009A9B51 /* TripInfoDepartures@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDepartures@3x.png"; sourceTree = "<group>"; };
+		D4959F6C1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TripInfoDeparturesSelected.png; sourceTree = "<group>"; };
+		D4959F6D1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TripInfoDeparturesSelected.svg; sourceTree = "<group>"; };
+		D4959F6E1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDeparturesSelected@2x.png"; sourceTree = "<group>"; };
+		D4959F6F1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDeparturesSelected@3x.png"; sourceTree = "<group>"; };
 		D4990F711D75C617003CCB0B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D4A411AE1D5F95AF002CCBF7 /* StationsLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsLocation.swift; sourceTree = "<group>"; };
 		D4A411B01D5F96AE002CCBF7 /* StationsLocationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsLocationList.swift; sourceTree = "<group>"; };
@@ -434,6 +470,14 @@
 		D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHIP@2x.png"; sourceTree = "<group>"; };
 		D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHIP@3x.png"; sourceTree = "<group>"; };
 		D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripSuggestionHeaderCell.swift; path = ../TripSuggestionHeaderCell.swift; sourceTree = "<group>"; };
+		D4B486FC1DEE0832008FB436 /* LegBorderStart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegBorderStart.png; sourceTree = "<group>"; };
+		D4B486FD1DEE0832008FB436 /* LegBorderStart.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LegBorderStart.svg; sourceTree = "<group>"; };
+		D4B486FE1DEE0832008FB436 /* LegBorderStart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStart@2x.png"; sourceTree = "<group>"; };
+		D4B486FF1DEE0832008FB436 /* LegBorderStart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStart@3x.png"; sourceTree = "<group>"; };
+		D4B487001DEE0832008FB436 /* LegBorderStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegBorderStop.png; sourceTree = "<group>"; };
+		D4B487011DEE0832008FB436 /* LegBorderStop.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LegBorderStop.svg; sourceTree = "<group>"; };
+		D4B487021DEE0832008FB436 /* LegBorderStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStop@2x.png"; sourceTree = "<group>"; };
+		D4B487031DEE0832008FB436 /* LegBorderStop@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStop@3x.png"; sourceTree = "<group>"; };
 		D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
 		D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC_new.swift; sourceTree = "<group>"; };
 		D4C9B48B1CBEAA9100978546 /* TripStocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStocks.swift; sourceTree = "<group>"; };
@@ -535,6 +579,7 @@
 			children = (
 				D4272F3A1CD903290040BC3D /* Station.swift */,
 				D42A024C1CCB2C8B00E4C540 /* SlifeMethods.swift */,
+				D431BD0A1DEF24A10036F1F3 /* CustomTripMethods.swift */,
 				D4426B7D1CC1FB1B00199A71 /* Travel.swift */,
 				D48827EC1CBBE108002A0A87 /* Trips.swift */,
 				D4426B751CC139D700199A71 /* Trip.swift */,
@@ -564,6 +609,26 @@
 		D42A025A1CCB6BA400E4C540 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D4888A331DF80AE30024EBAD /* Map.png */,
+				D4888A341DF80AE30024EBAD /* Map.svg */,
+				D4888A351DF80AE30024EBAD /* Map@2x.png */,
+				D4888A361DF80AE30024EBAD /* Map@3x.png */,
+				D4959F681DF0B4A2009A9B51 /* TripInfoDepartures.png */,
+				D4959F691DF0B4A2009A9B51 /* TripInfoDepartures.svg */,
+				D4959F6A1DF0B4A2009A9B51 /* TripInfoDepartures@2x.png */,
+				D4959F6B1DF0B4A2009A9B51 /* TripInfoDepartures@3x.png */,
+				D4959F6C1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png */,
+				D4959F6D1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg */,
+				D4959F6E1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png */,
+				D4959F6F1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png */,
+				D4B486FC1DEE0832008FB436 /* LegBorderStart.png */,
+				D4B486FD1DEE0832008FB436 /* LegBorderStart.svg */,
+				D4B486FE1DEE0832008FB436 /* LegBorderStart@2x.png */,
+				D4B486FF1DEE0832008FB436 /* LegBorderStart@3x.png */,
+				D4B487001DEE0832008FB436 /* LegBorderStop.png */,
+				D4B487011DEE0832008FB436 /* LegBorderStop.svg */,
+				D4B487021DEE0832008FB436 /* LegBorderStop@2x.png */,
+				D4B487031DEE0832008FB436 /* LegBorderStop@3x.png */,
 				D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */,
 				D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */,
 				D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */,
@@ -767,6 +832,7 @@
 				D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */,
 				D42A025A1CCB6BA400E4C540 /* images */,
 				D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */,
+				D40C29771DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift */,
 				D4CB863D1CCFD70900AE2665 /* LegListCells.swift */,
 				D46964FE1CB3F37C00C6CFE1 /* LaunchScreen.storyboard */,
 				D46965011CB3F37C00C6CFE1 /* Info.plist */,
@@ -904,7 +970,7 @@
 				TargetAttributes = {
 					D46964EF1CB3F37C00C6CFE1 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 5CVAFDS3BY;
+						DevelopmentTeam = ZA74DZ693N;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -949,10 +1015,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B487081DEE0832008FB436 /* LegBorderStop.png in Resources */,
 				D4CD236A1DC24A8A007E580F /* firstLeg@2x.png in Resources */,
 				D4990F721D75C617003CCB0B /* Main.storyboard in Resources */,
 				D40ADCAF1DDDAC0300AA383B /* Plus_options.png in Resources */,
+				D4959F741DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png in Resources */,
+				D4888A381DF80AE30024EBAD /* Map.svg in Resources */,
 				D48306321D477B1400FA42A3 /* ShowMap.svg in Resources */,
+				D4B487071DEE0832008FB436 /* LegBorderStart@3x.png in Resources */,
 				D40ADCAC1DDDAC0300AA383B /* Plus_Close.svg in Resources */,
 				D47371A91DB61637008AA0BE /* Slife-Launch-Screen@2.png in Resources */,
 				D4679FD21D3E271F00E477D6 /* BUS.png in Resources */,
@@ -972,7 +1042,9 @@
 				D46E7F271DABDAB300C59C9B /* RadioButtonOn.png in Resources */,
 				D4CD23741DC24A8A007E580F /* onlyLeg.png in Resources */,
 				D4CD236B1DC24A8A007E580F /* firstLeg@3x.png in Resources */,
+				D4959F731DF0B4A2009A9B51 /* TripInfoDepartures@3x.png in Resources */,
 				D45D341C1DB77B5D00B7742E /* SearchTripsDefaultSelected.png in Resources */,
+				D4888A391DF80AE30024EBAD /* Map@2x.png in Resources */,
 				D4A957B51DB734BD0047D630 /* Slife-App-Icon-Launch-Screen@2.png in Resources */,
 				D4EF1FA21DDF0B4700BC25D2 /* nClock@2x.png in Resources */,
 				D48306341D477B1400FA42A3 /* ShowMap@3x.png in Resources */,
@@ -998,6 +1070,7 @@
 				D4A411B51D61FCE6002CCBF7 /* CustomCalloutView.xib in Resources */,
 				D43962E51D3F824A00C80F57 /* TRAIN.png in Resources */,
 				D40ADC9F1DDDA1C400AA383B /* WALK.png in Resources */,
+				D4888A3A1DF80AE30024EBAD /* Map@3x.png in Resources */,
 				D483064C1D4A547300FA42A3 /* EventGood.svg in Resources */,
 				D46E7F371DAC03B200C59C9B /* LabelBackground.png in Resources */,
 				D4CD23681DC24A8A007E580F /* firstLeg.png in Resources */,
@@ -1017,7 +1090,9 @@
 				D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */,
 				D4679FD31D3E271F00E477D6 /* BUS.svg in Resources */,
 				D4679FDB1D3E5EBA00E477D6 /* METRO.svg in Resources */,
+				D4888A371DF80AE30024EBAD /* Map.png in Resources */,
 				D4EF1FB61DDF0DFF00BC25D2 /* mStationSeperator@2x.png in Resources */,
+				D4959F771DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png in Resources */,
 				D4ADAAE41D3FF39E0035B5D5 /* TRAM.png in Resources */,
 				D483064D1D4A547300FA42A3 /* EventGood@2x.png in Resources */,
 				D40ADCB21DDDAC0300AA383B /* Plus_options@3x.png in Resources */,
@@ -1040,19 +1115,26 @@
 				D4E56BD31DC1FA66007BC822 /* Station Swap.png in Resources */,
 				D48FAAB81D65D38B00BEA95A /* stopsCircle@2x.png in Resources */,
 				D4679FDC1D3E5EBA00E477D6 /* METRO@2x.png in Resources */,
+				D4B487051DEE0832008FB436 /* LegBorderStart.svg in Resources */,
 				D48306551D4A547300FA42A3 /* EventPlanned@2x.png in Resources */,
 				D4CD23761DC24A8A007E580F /* onlyLeg@2x.png in Resources */,
 				D4E56BD41DC1FA66007BC822 /* Station Swap.svg in Resources */,
+				D4B4870B1DEE0832008FB436 /* LegBorderStop@3x.png in Resources */,
 				D4CD236F1DC24A8A007E580F /* lastLeg@3x.png in Resources */,
 				D46D628A1DC2776F00792CD7 /* LegBase@2x.png in Resources */,
 				D48306501D4A547300FA42A3 /* EventMinor.svg in Resources */,
+				D4959F751DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg in Resources */,
 				D4E56BCD1DC1FA14007BC822 /* Favoutites@2x.png in Resources */,
 				D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */,
+				D4959F701DF0B4A2009A9B51 /* TripInfoDepartures.png in Resources */,
 				D43962E71D3F824A00C80F57 /* TRAIN@3x.png in Resources */,
 				D46E7F311DABE67A00C59C9B /* Buttons@2x.png in Resources */,
 				D48306491D4A547300FA42A3 /* EventDefault@2x.png in Resources */,
 				D46964FD1CB3F37C00C6CFE1 /* Assets.xcassets in Resources */,
+				D4959F721DF0B4A2009A9B51 /* TripInfoDepartures@2x.png in Resources */,
+				D4B487061DEE0832008FB436 /* LegBorderStart@2x.png in Resources */,
 				D483064F1D4A547300FA42A3 /* EventMinor.png in Resources */,
+				D4B487091DEE0832008FB436 /* LegBorderStop.svg in Resources */,
 				D4CD23771DC24A8A007E580F /* onlyLeg@3x.png in Resources */,
 				D48306561D4A547300FA42A3 /* EventPlanned@3x.png in Resources */,
 				D46D62881DC2776F00792CD7 /* LegBase.png in Resources */,
@@ -1067,10 +1149,12 @@
 				D40ADCAD1DDDAC0300AA383B /* Plus_Close@2x.png in Resources */,
 				D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */,
 				D46E7F281DABDAB300C59C9B /* RadioButtonOn.svg in Resources */,
+				D4959F761DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png in Resources */,
 				D40ADCAE1DDDAC0300AA383B /* Plus_Close@3x.png in Resources */,
 				D4EF1FB51DDF0DFF00BC25D2 /* mStationSeperator.svg in Resources */,
 				D43962E61D3F824A00C80F57 /* TRAIN@2x.png in Resources */,
 				D46E7F251DABDAB300C59C9B /* RadioButtonOff@2x.png in Resources */,
+				D4B4870A1DEE0832008FB436 /* LegBorderStop@2x.png in Resources */,
 				D4EF1FA31DDF0B4700BC25D2 /* nClock@3x.png in Resources */,
 				D47371A11DB612FC008AA0BE /* Slife Launch Screen.svg in Resources */,
 				D46E7F3A1DAC03B200C59C9B /* LabelBackground@3x.png in Resources */,
@@ -1078,7 +1162,9 @@
 				D46E7F2F1DABE67A00C59C9B /* Buttons.png in Resources */,
 				D4CD237A1DC24B62007E580F /* middleLeg_1@2x.png in Resources */,
 				D483064B1D4A547300FA42A3 /* EventGood.png in Resources */,
+				D4B487041DEE0832008FB436 /* LegBorderStart.png in Resources */,
 				D46E7F301DABE67A00C59C9B /* Buttons.svg in Resources */,
+				D4959F711DF0B4A2009A9B51 /* TripInfoDepartures.svg in Resources */,
 				D4E56BD61DC1FA66007BC822 /* Station Swap@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1149,6 +1235,7 @@
 				D40229221CDBC3EB00CD7E5F /* Buses.swift in Sources */,
 				D4272F3D1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift in Sources */,
 				D468FC5C1CE3C8DB003E4249 /* Trains.swift in Sources */,
+				D40C29781DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift in Sources */,
 				D46E2EAF1D12D58300F091F1 /* Lines.swift in Sources */,
 				D42A024D1CCB2C8B00E4C540 /* SlifeMethods.swift in Sources */,
 				D4AC55491CFE025D0043D21E /* SearchTripsTableViewController.swift in Sources */,
@@ -1170,6 +1257,7 @@
 				D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */,
 				D46E2EAA1D11962F00F091F1 /* IntermediateStopsCell.swift in Sources */,
 				D46E2EB11D12D5C500F091F1 /* Stops.swift in Sources */,
+				D431BD0B1DEF24A10036F1F3 /* CustomTripMethods.swift in Sources */,
 				D468FC6A1CE4C8F2003E4249 /* StopPointDeviations.swift in Sources */,
 				D4E7915E1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift in Sources */,
 				D48A953B1CEA48B300D59306 /* TrafficEventCell.swift in Sources */,
@@ -1333,11 +1421,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5CVAFDS3BY;
+				DEVELOPMENT_TEAM = ZA74DZ693N;
 				INFOPLIST_FILE = SLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BMCSLIFE794;
+				PRODUCT_BUNDLE_IDENTIFIER = BMCSLIFE2017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1348,11 +1436,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5CVAFDS3BY;
+				DEVELOPMENT_TEAM = ZA74DZ693N;
 				INFOPLIST_FILE = SLife/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = BMCSLIFE794;
+				PRODUCT_BUNDLE_IDENTIFIER = BMCSLIFE2017;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

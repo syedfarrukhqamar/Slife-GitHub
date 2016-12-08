@@ -4,13 +4,13 @@
 //
 //  Created by syed farrukh Qamar on 11/04/16.
 //  Copyright © 2016 Be My Competence AB. All rights reserved.
-//
 
 import UIKit
 
 @available(iOS 9.0, *)
 class TripSuggestionsCell_new: UITableViewCell {
      
+  //  @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var PriceInfo: UILabel!
     @IBOutlet weak var from_time: UILabel!
     @IBOutlet weak var from_station: UILabel!
@@ -45,8 +45,14 @@ class TripSuggestionsCell_new: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
+        // Configure the view for the selected state
+        
+        
+        // Collection view binding
+        
+        //MARK:- Setup collectionView datasource and delegate
+        
+           
     
 }

@@ -12,11 +12,45 @@ var tripRootMapFlag = false
 var rootMap_Geom_Ref = String()
 var rootMap_Ref = String()
 var rootMap_Ref_Dict = NSMutableDictionary()
+var colorFlag = true
+// Being used in custom trips for next departures in trip info
+ let headerBorderWidth = CGFloat(4.0)
+let cellBorderWidth = CGFloat(4.0)
+
+// icon & row sizes
+var headerHeightDict = NSMutableDictionary()
+// stack view height is 68
+let headerCell_StackView_Height = 15 + 70 + 15
+
+//let default_startingPoint = CGPoint(x: 5.0,y: legIcons_y!)
+let defaultBottomSpaceLeave = 15.0
+let defaultTopSpaceLeave = 15.0
+let defaultStackViewBottomSpaceBeforeIconLeave = 10
+
+let default_startingSize = CGSize(width:30.0,height:30.0)
+let default_orientation = "x"  // x, y, or xy
+let default_innerSpacing = CGPoint(x:-1,y:0)
+let default_innerLegSpacing = CGPoint(x:10,y:0)
+let default_sizeFactor = CGSize(width: 0.0,height: 0.0)
+
+let cellBackgroundColor = UIColor(red: (235/255), green: (236/255), blue: (237/255), alpha: 1.0)
+let headerRowSelectedColor =  UIColor(red: (206/255), green: (229/255), blue: (242/255), alpha: 1.0)
+let headerRowDefaultColor =  UIColor.white
+
+var custom_Trip_NextDepartures_Dict = NSMutableDictionary()
 
 
+let studentName = ["Stockholm","London","Paris","Oslo","Stockholm","London","Paris","Oslo","Stockholm","London","Paris","Oslo"]
 
-class TripSuggestionsTViewController: UITableViewController {
 
+let firstLegImage   = "firstLeg.png"
+let middleLegImage  = "middleLeg.png"
+let lastLegImage    = "lastLeg.png"
+let onlyLegImage    = "onlyLeg.png"
+
+class TripSuggestionsTViewController: UITableViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+
+  //  @IBOutlet weak var showNextDeparturesIn_TripInfoAction: UIButton!
     var showTripDetail_Dict = NSMutableDictionary()
     
     var transportTypeFlag = String()
@@ -28,8 +62,8 @@ class TripSuggestionsTViewController: UITableViewController {
 
     //Mark: Autolayout Variables
     var legIconsLineCounter = 0
-    let legIconsHeight = 22
-    let headerCellHeight = 80 //60
+    let legIconsHeight = default_startingSize.height
+    let headerCellHeight = 90 //100 //80 //60
     var legIconsLineTerminateCount = 1
     
   //  @IBOutlet weak var mapReferenceAction: UIButton!
@@ -91,12 +125,50 @@ class TripSuggestionsTViewController: UITableViewController {
         print("map Referrence Action = \(rootMap_Ref)")
      }
     
+    @IBAction func showNextDepartures_InTripInfo(_ sender: UIButton) {
+        
+       
+//     let currentCell = sender.superview as! LegListCells
+        
+        let button = sender as! UIButton
+        let view = button.superview!
+        let currentCell = view.superview as! LegListCells
+    
+        let customTripClass = CustomTripMethods()
+        customTripClass.get_data_from_url(from: currentCell.from_station.text!, to: currentCell.to_station.text!, tableView: tableView, headerSectionId: currentCell.sectionInfo, legRow_id: currentCell.rowInfo)
+        
+        print("current button tag =  \(sender.tag)" )
+        
+       // let indexPath = itemTable.indexPathForCell(currentCell)
+        
+        print("currentcell.sectioninfo & row = \(currentCell.sectionInfo) & \(currentCell.rowInfo)")
+        
+        print("currentCell.from_station.text station= \(currentCell.from_station.text)")
+        
+        print("current cell values  to station = \(currentCell.to_station.text)")
+        
+        
+    }
     // Leg Image Names
+    //MARK: Show Trip Details
     @IBAction func sectionAction(sender: UIButton) {
         print("section button is pressed with : ")
         print(sender.tag)
         sectionShow = sender.tag
     
+        
+//        let button = sender as! UIButton
+//        let view = button.superview
+// 
+//        print("table view total count::::\(tableView.visibleCells.count)")
+//        let someCell = tableView.visibleCells[0] as! TripSuggestionsCell_new
+//        someCell.backgroundColor = UIColor.green
+//        let stackView = (((((((((((((((((((view?.superview as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView) as! UIStackView)
+//        
+//        let currentCell = view?.superview as! TripSuggestionsCell_new
+//        currentCell.backgroundColor = UIColor.red
+//        
+        
         //let showFlag = showTripDetail_Dict.value(forKey: String(sender.tag)) as! Bool
         // MARK: toggle trip detail
         // Check Null
@@ -153,6 +225,9 @@ class TripSuggestionsTViewController: UITableViewController {
         */
         print("---------show more pressed............end")
         
+//        let testing = sender.superview as! HeaderCells
+//        testing.backgroundColor = UIColor.red
+//        
         if (trip_detail_flag.contains("null"))
         {
 //             let valueNowb4 = showTripDetail_Dict.value(forKey: String(sectionShow)) as! Bool
@@ -186,7 +261,7 @@ class TripSuggestionsTViewController: UITableViewController {
                 else if (valueNowb4_true == false) {
                     
                     print("value was false ........")
-                    
+                
                     showTripDetail_Dict.setValue(true, forKey: String(
                         sectionShow))
                     
@@ -207,10 +282,7 @@ class TripSuggestionsTViewController: UITableViewController {
      
     }
     
-    let firstLegImage   = "firstLeg.png"
-    let middleLegImage  = "middleLeg.png"
-    let lastLegImage    = "lastLeg.png"
-    let onlyLegImage    = "onlyLeg.png"
+    //MARK: Old Leg Image Constant Place
     
     // Header Data Source--( Sections
     var newTrip = NSMutableArray()
@@ -228,13 +300,14 @@ class TripSuggestionsTViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // MARK: AutoRowHeight
-         tableView.estimatedRowHeight = 150.0
-       tableView.rowHeight = UITableViewAutomaticDimension
+         // tableView.backgroundColor = UIColor.white
+        tableView.estimatedRowHeight = 150.0
+         tableView.rowHeight = UITableViewAutomaticDimension
        
 //        tableView.estimatedSectionHeaderHeight = 100
 //        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
         
-        tripRootMapFlag = false
+         tripRootMapFlag = false
         
        // print("-selected index path---------\(self.tableView.indexPathForSelectedRow)")
         let searchTrips = WebServiceHandler()
@@ -281,8 +354,13 @@ class TripSuggestionsTViewController: UITableViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        
+        
+//        tableView.backgroundColor = UIColor.white
+        
         print("view will current real_time_flag value is ==== \(real_time_flag)")
 
+        
     }
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -294,6 +372,8 @@ class TripSuggestionsTViewController: UITableViewController {
     func get_data_from_url(url:String)
     {
         
+        
+        print("Trip Suggestions inside url : \(url)")
         let url:NSURL = NSURL(string: url)!
         let session = URLSession.shared
         
@@ -875,7 +955,6 @@ class TripSuggestionsTViewController: UITableViewController {
         }
      }
     
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // 1
         // Return the number of sections.
@@ -1019,32 +1098,355 @@ class TripSuggestionsTViewController: UITableViewController {
         return 0
     }
     
+    // MARk: Collection View Methods
     
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+        // triplegiconscollection view cell name is old but now it is being used for next departures collection view show
+
+//          tableView.backgroundColor = UIColor.white
+        print("-------------Section = \(indexPath.section) & Row = \(indexPath.row)")
+       
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewReuseIdentifier", for: indexPath as IndexPath) as! TripLegIconsCollectionViewCell
+        if (colorFlag == true){
+            
+            cell.backgroundColor = UIColor.lightGray
+            cell.from_time.textColor = UIColor.white
+            cell.to_time.textColor = UIColor.white
+            
+            colorFlag = false
+        } else {
+            
+            cell.backgroundColor = UIColor.white
+            cell.from_time.textColor = UIColor.black
+            cell.to_time.textColor = UIColor.black
+            
+            colorFlag = true
+        
+        }
+        
+//        if(indexPath.row == 2){
+//            
+//            cell.backgroundColor = UIColor.red
+//            
+//        }
+        
+        
+        
+        var layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        
+        
+        //layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+    
+        if (custom_Trip_NextDepartures_Dict.count > 0 ){
+        
+            let currentSection = String(indexPath.section)
+            let currentRow = String(indexPath.row)
+            let view = collectionView.superview!
+            let currentCell = view.superview as! LegListCells
+            let keyNameTemp = currentCell.keyName
+            print("printing cells..keyname temp from current cell = \(keyNameTemp)")
+            let keyName = currentSection + currentRow
+            print("Collection ALL KEYS = \(custom_Trip_NextDepartures_Dict.allKeys)")
+            print("generated current key via indexpth.section and row = \(keyNameTemp)")
+            print("index path row values in collection cell for = \(indexPath.row)")
+            
+             if let collection_Values_flag = custom_Trip_NextDepartures_Dict[keyNameTemp]
+            {
+            
+            //if (collection_Values_flag == true){
+                let customDepTripArray = custom_Trip_NextDepartures_Dict[keyNameTemp] as! NSMutableArray
+                
+                print("customDepTripArray Count = \(customDepTripArray.count)")
+                
+                print("-----test 10989")
+                let tripCustom = customDepTripArray[indexPath.row] as! Trip
+                
+               
+                
+                
+                print("firstTripDep =\(tripCustom.originDetail.name) ")
+                //   let tripCustom = custom_Trip_NextDepartures_Dict[0] as! Trip
+                
+           //     let legList = newTrip[indexPath.section] as! Trip
+                print("generated current key via indexpth.section and row = \(keyNameTemp)")
+                
+                print("dddddd = \(tripCustom.originDetail.time)")
+                print("dddddd = \(tripCustom.destinationDetail.time)")
+                
+                
+//              cell.to_time.setTitle(tripCustom.destinationDetail.time, for: .normal)
+                
+                //let legList = newTrip[indexPath.section] as! Trip
+                //print("From Station id = \(legList.originDetail)")
+                let testCollectionMArray = NSMutableArray()
+                
+                testCollectionMArray.add(tripCustom.LegList.firstObject)
+
+                //MARK: Collection View Cell Background Image
+                
+//                let View=UIView()
+//                View.backgroundColor=UIColor(patternImage:UIImage(named:"LegBorderStart.png")!)
+//        
+//                cell.backgroundView = View
+        //print("cell size = \()")
+                
+                let x = cell.from_time.frame.size.width
+                let y = cell.from_time.frame.origin.y
+                
+                let startingPoint = CGPoint(x: x,y: y)
+                // let startingPoint = CGPoint(x: 35.0,y: -130.0)
+                let startingSize = default_startingSize //CGSize(width:20.0,height:20.0)
+                let orientation = "x"  // x, y, or xy
+                let innerSpacing = default_innerSpacing //CGPoint(x:10,y:0)
+                let innerLegSpacing = default_innerLegSpacing //CGPoint(x:25,y:0)
+                let sizeFactor = CGSize(width: 0.0,height: 0.0)
+                   // line color and line number ?
+               // cell.line_number.text = tripCustom.chg
+                
+                print("-------------Section = \(indexPath.section) & Row = \(indexPath.row)")
+
+                print("tripCustom.leglist.count = \(tripCustom.LegList.count)")
+                let leg = tripCustom.LegList.firstObject as! Leg
+                print("test 1")
+               
+                print("-Section = \(indexPath.section)--R=\(indexPath.row)--------key name is ==== \(keyNameTemp)")
+                
+                print("String(leg.line) = \(leg.line)")
+                print("------------key name is ==== \(keyNameTemp)")
+                
+                //let some = Int(cell.from_time.frame.size.width)
+                
+                cell.to_time.frame.origin.x = cell.from_time.frame.size.width + startingSize.width + startingSize.width
+                
+                
+              //  SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+                
+                SlifeMethods.drawLegsCollectionView(startingPoint: startingPoint, startingSize: startingSize, legs: testCollectionMArray, collectionViewCell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+                
+                
+                //cell.line_number.text = String(leg.line)
+                print("test 2")
+                cell.from_time.text = leg.origin.time
+                cell.to_time.text = leg.destination.time
+                
+                //cell.from_time.setTitle(leg.origin.time, for: .normal)
+                print("test 3")
+                //cell.to_time.setTitle(leg.destination.time, for: .normal)
+                print("test 4")
+//                cell.from_time.setTitle(tripCustom.originDetail.time, for: .normal)
+      }
+            else {
+            
+            print("nothing.....in collection num itms")
+            }
+        
+            
+            print("-----end--------Section = \(indexPath.section) & Row = \(indexPath.row)")
+    
+            
+        }
+        
+        
+//        if let collectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            
+//            
+//    
+//            // Use collectionViewFlowLayout
+//            
+//        }
+        
+        collectionView.setNeedsLayout()
+        
+//        collectionView.set
+        
+        print("---collectionView.collectionViewLayout.collectionViewContentSize.width\(collectionView.collectionViewLayout.collectionViewContentSize.width)")
+        
+      //  cell.legLineNo.setTitle("11", for: .normal)
+      // cell.legImage.backgroundColor = UIColor.yellow
+       // cell.contentView.frame.size.width = 10.0
+        
+        print("collectionView.frame.width = \(collectionView.frame.width)")
+        
+        
+        print("collectionView.frame.width = \(collectionView.frame.width)")
+        
+
+        print("collectionView.intrinsicContentSize = \(collectionView.intrinsicContentSize)")
+        
+        
+        print("collectionView.contentSize.width = \(collectionView.contentSize.width)")
+        
+        
+        print("collectionView.contentSize.width = \(collectionView.contentSize.width)")
+        
+        
+        print("in collection view number of items in section---cell--\(indexPath.row)--")
+        return cell
+        
+    }
+    
+    
+    /*
+     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        cell.contentView.backgroundColor = UIColor.blue
+        
+     //   let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, 120))
+        
+        
+        //CGPoint(x: <#T##CGFloat#>, y: <#T##CGFloat#>)
+//        CGSize(width: <#T##CGFloat#>, height: <#T##CGFloat#>)
+        
+        let whiteRoundedView : UIView = UIView(frame: CGRect(origin: CGPoint(x:0,y:10), size: CGSize(width: self.view.frame.width,height: 120)))
+       
+        
+        whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+        whiteRoundedView.layer.masksToBounds = false
+        whiteRoundedView.layer.cornerRadius = 2.0
+            
+       // whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
+        whiteRoundedView.layer.shadowOffset = CGSize(width:-1,height: 1)
+        whiteRoundedView.layer.shadowOpacity = 0.2
+        print("size of white rounder is = \(whiteRoundedView.frame.width) : \(whiteRoundedView.frame.height)")
+        cell.contentView.addSubview(whiteRoundedView)
+        cell.contentView.sendSubview(toBack: whiteRoundedView)
+    }
+    */
+
+    
+    @available(iOS 6.0, *)
+    
+ 
+
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+//        let tripCell = newTrip[section] as! Trip
+//        
+//        print("Trip Cell (Number of items in section--\(tripCell.LegList.count)")
+//        return tripCell.LegList.count
+//    
+
+        var number = 0
+        
+        if (custom_Trip_NextDepartures_Dict.count > 0){
+        
+            
+            let currentSection = String(section)
+            
+            //let currentRow = String(indexPath.row)
+            
+            let view = collectionView.superview!
+            let currentCell = view.superview as! LegListCells
+            let keyNameTemp = currentCell.keyName
+           print("cell.tag current = \(currentCell.tag)")
+            print("keyname temp from current cell = \(keyNameTemp)")
+            
+           // let keyName = currentSection + currentRow
+            print("key name temp = \(keyNameTemp)")
+            print("num sections customtrip next departures total count = \(custom_Trip_NextDepartures_Dict.count)")
+            
+            print("num sections -customtrip next departures total count = \(custom_Trip_NextDepartures_Dict.allKeys)")
+            
+//           if let collection_Values_flag = RealTidMethods.checkIfKeyExists(objectToCheck: custom_Trip_NextDepartures_Dict, keyName: keyNameTemp)
+//            
+          //  if (collection_Values_flag == true){
+            if let customDepTrip = custom_Trip_NextDepartures_Dict[keyNameTemp] {
+                let customDepTripArray = custom_Trip_NextDepartures_Dict[keyNameTemp] as! NSMutableArray
+                print("customDepTripArray Count = \(customDepTripArray.count)")
+                
+              number = customDepTripArray.count
+                
+                //  return customDepTripArray.count
+            }
+            
+        }
+        
+        print("custom_Trip_NextDepartures_Dict = count = \(custom_Trip_NextDepartures_Dict.count)")
+        print("Section for collection view count = \(section) ")
+        print("Count for collection view count = \(number) ")
+        
+        return number
+        
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! LegListCells
+        cell.backgroundColor = UIColor.white
         print("-Printing Cells--[Sections]=\(indexPath.section)--[Rows] = \(indexPath.row)")
+       
+       //MARK:BorderTripInfo
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = cellBorderWidth
+        
+        //headerCell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        tableView.backgroundColor = UIColor.lightGray
+//
+//        
+//        let border = CALayer()
+//        let width = CGFloat(15.0)
+//        border.borderColor = UIColor.darkGray.cgColor
+//        border.frame = CGRect(x: 0, y: tableView.frame.size.height - width, width:  tableView.frame.size.width, height: tableView.frame.size.height)
+//        
+//        border.borderWidth = width
+//        tableView.layer.addSublayer(border)
+//        tableView.layer.masksToBounds = true
+        
+        
+ /*
+        cell.layer.borderWidth = 10.0
+        cell.layer.borderColor = UIColor.green.cgColor
+ 
+        */
+        
+        cell.tag = indexPath.row
+        cell.nextDeparturesOutlet.tag = indexPath.row
+        
+        cell.sectionInfo = String(indexPath.section)
+        cell.rowInfo = String(indexPath.row)
+        
+        cell.keyName = cell.sectionInfo + cell.rowInfo
+        
+        print("Current Section = \(indexPath.section).self && Current Row = \(indexPath.row)")
+        cell.name.isHidden = true
+        //cell.nextDeparturesOutlet.backgroundColor = UIColor.lightGray
+    cell.towards_or_walk.isHidden = true
+    
+        // MARK# Collection View
+        // MARK: cell
+        
+        //MARK: CollectionView
+        cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
+        
+        //headerCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: section)
+        
         // 3
         // Configure the cell...
+        // MARK: Move to collection 1
         let legList = newTrip[indexPath.section] as! Trip
+        print("From Station id = \(legList.originDetail)")
         let test = NSMutableArray()
         
         test.add(legList.LegList[indexPath.row])
         let startingPoint = CGPoint(x: 35.0,y: 30.0)
        // let startingPoint = CGPoint(x: 35.0,y: -130.0)
-        let startingSize = CGSize(width:20.0,height:20.0)
+        let startingSize = default_startingSize //CGSize(width:20.0,height:20.0)
         let orientation = "x"  // x, y, or xy
-        let innerSpacing = CGPoint(x:10,y:0)
-        let innerLegSpacing = CGPoint(x:25,y:0)
+        let innerSpacing = default_innerSpacing //CGPoint(x:10,y:0)
+        let innerLegSpacing = default_innerLegSpacing //CGPoint(x:25,y:0)
         let sizeFactor = CGSize(width: 0.0,height: 0.0)
-       // ------------setting Leg Images---------START
+        // MARK: Move to collection 1 ---end
+        // ------------setting Leg Images---------START
         print("--Row = \(indexPath.row)----count = \(legList.LegList.count)")
         var count = legList.LegList.count
         count = count - 1
         print("--Row = \(indexPath.row)----count = \(count)")
         let leg = legList.LegList[indexPath.row] as! Leg
         
-      cell.legImage.image = UIImage(named: leg.legImageName)
-       // MARK: Leg
+        cell.legImage.image = UIImage(named: leg.legImageName)
+        // MARK: Leg
         print("cell for row  at index ===\(indexPath)-------------------------")
         print("leg image name ==\(leg.legImageName)")
         print("leg.line ==\(leg.line)")
@@ -1087,8 +1489,10 @@ class TripSuggestionsTViewController: UITableViewController {
         print("current Geom Ref is journeyDetailRef...........= \(leg.journeyDetailRef)")
         
         //-----#3------Visual Leg
-        print()
+
         print(test.count)
+        // MARK: Move to collection 2
+        
         SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
         print("startingPoint_101001----\(startingPoint)")
         //----#4------
@@ -1165,42 +1569,59 @@ class TripSuggestionsTViewController: UITableViewController {
 //    }
     
     
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 140
+    }
     // MARK: Height of row
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let titleHeader = "SLife:" + String(section)
         return titleHeader
     }
+    
      override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        let headerCellTemp = tableView.viewWithTag(section) as!TripSuggestionsCell_new
+//        
+//        print("HeaderCellTemp tag value is = \(headerCellTemp.tag)")
+//        
+//print("TableView Subview Counts = \(tableView.subviews.count)")
+        
+        //let headerCellTemp = tableView.subviews[section]. as! TripSuggestionsCell_new
+        
+  //              print("HeaderCellTemp tag value is = \(headerCellTemp.tag)")
+        
             let tripCell = newTrip[section] as! Trip
             print("heightForHeaderInSection...........\(section).")
             print(legIconsLineCounter)
             print(tripCell.LegList.count)
             var lineCount = (tripCell.LegList.count*2) / legIconsLineTerminateCount
-            let remainder = (tripCell.LegList.count*2) % legIconsLineTerminateCount
-            if (remainder != 0){
+        
+        let remainder = (tripCell.LegList.count*2) % legIconsLineTerminateCount
+//        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+//        
+        
+        print("Line count is  = \(lineCount)")
+        print("remainder is (header) \(remainder) ")
+        if (remainder != 0){
             lineCount+=1
                 print("total line count is =inside heighForHeader==for section \(section)==is=\(lineCount)")
             
-            }
-        
-        
-        
+        }
         
         let icon_Count_Total = tripCell.LegList.count
         let screenWidth = UIScreen.main.bounds.width
        
-        
-        let total_icon_lines = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(60.0))
+        print("heightForHeaderInSection-----section  = \(section)")
+        let total_icon_lines = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(60.0 + 10.0))
        // print("leg Icons Line Termination Count-iconLimits = \(iconLimits)")
        
         
-        
-        let headerCellTotalHeight = (legIconsHeight * total_icon_lines.lineCount) + headerCellHeight
+        //MARK: Header Height Section
+        print("header height : : SECTION = \(section) total icon lines = \(total_icon_lines)")
+        let headerCellTotalHeight = (Int(legIconsHeight) * total_icon_lines.lineCount) + headerCellHeight
         print("headerCellTotalHeight = \(headerCellTotalHeight)")
         print("legIconsHeight = \(legIconsHeight)")
         print("lineCount = \(lineCount)")
-        
         print("CGFloat::\(headerCellTotalHeight)")
         
         //heightFixed = true
@@ -1209,13 +1630,89 @@ class TripSuggestionsTViewController: UITableViewController {
        // print("line Test is = \(lineTest)")
 //        var icon_counts = SlifeMethods.iconCountsToDisplayIcons(availableWidth: UIScreen.main.bounds.width, iconsCount: icon_Count_Total, iconWidth: CGFloat(20.0))
       //  print("icon counts total = \(icon_counts)")
-        return CGFloat(headerCellTotalHeight)
+        
+        
+        print("headerHeightDict==== \(headerHeightDict.allKeys)")
+        // -----------header height cell testing
+//        let defaultBottomSpaceLeave = 15.0
+//        let defaultTopSpaceLeave = 15.0
+//        let defaultStackViewBottomSpaceBeforeIconLeave = 10
+
+        
+        let headerHeightCalculation = headerCell_StackView_Height + (total_icon_lines.lineCount * Int(default_startingSize.height))
+        
+        // -----------header height cell testing end
+        
+        print(".---------------------------------------------------Height Calculation HeaderCEll---.")
+        print("total ICon Lines = \(total_icon_lines)")
+        print("DefaultBottomSpace Leave = \(defaultBottomSpaceLeave)")
+        print("(total_icon_lines * defaultBottomSpaceLeave) = \(defaultBottomSpaceLeave)")
+        print("HeaderCell_StackViewHeight = \(headerCell_StackView_Height)")
+        
+        print("Returning with HeaderCell Trip Suggestion Height = \(headerHeightCalculation)")
+        print(".-----------------------------------------------------.")
+        return CGFloat(headerHeightCalculation)
+        
+       // temp check on above headerheightcalculation return CGFloat(headerCellTotalHeight)
         
     }
-     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
   
         
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCells") as! TripSuggestionsCell_new
+   
+        headerCell.tag = section
+        print("header cell tag = \(headerCell.tag)")
+        let stackView = headerCell.viewWithTag(10)
+        print("stackView?.frame.height StackView Height = \(stackView?.frame.height)")
+        //MARK: Header Cell Selected Check
+        
+//    check for count of dict
+//        check for null value if value not found then ?
+//        if null then set value as false ?
+//        or just if null  or false returned then set white
+
+        
+        let headerSelectionFlagNull = RealTidMethods.checkNullForBool(someValue: showTripDetail_Dict, keyName: String(section))
+        
+        
+        print("header selection flag null = \(headerSelectionFlagNull)")
+        
+        
+        if (headerSelectionFlagNull.contains("null") || headerSelectionFlagNull.contains("false")){
+            headerCell.backgroundColor = headerRowDefaultColor
+        print("null or false is here .... \(headerSelectionFlagNull)")
+        
+        }
+        else if (headerSelectionFlagNull.contains("true")){
+        headerCell.backgroundColor = headerRowSelectedColor
+            
+            print("True is here .... \(headerSelectionFlagNull)")
+        }
+        
+        
+        //MARK: TripSuggestionBorder 
+        //MARK: Corner Radius
+        /*
+        headerCell.layer.cornerRadius = 6 //set corner radius here
+        headerCell.layer.borderColor = UIColor.lightGray.cgColor  // set cell border color here
+        headerCell.layer.borderWidth = 2 // set border width here
+        */
+        //MARK: HeaderRowColor
+     //   headerCell.backgroundColor = headerRowSelectedColor
+        //___________________________
+        headerCell.layer.masksToBounds = true
+        headerCell.layer.borderWidth = headerBorderWidth
+//        headerCell.layer.borderColor = UIColor.gray.cgColor
+        headerCell.layer.borderColor = UIColor.lightGray.cgColor
+        
+
+//        let border = CALayer()
+//        let width = CGFloat(2.0)
+//        border.borderColor = UIColor.darkGray.cgColor
+//        border.frame = CGRect(x: 0, y: tableView.frame.size.height - width, width:  tableView.frame.size.width, height: tableView.frame.size.height)
+
         
         print(tableView.rowHeight)
         headerCell.sectionSelected.tag = section
@@ -1268,11 +1765,11 @@ class TripSuggestionsTViewController: UITableViewController {
         // old starting vlaue of y is = 100
         
         print("y positions is ==== \(legIcons_y)")
-        var startingPoint = CGPoint(x: 5.0,y: legIcons_y!)
-        let startingSize = CGSize(width:20.0,height:20.0)
+        var startingPoint = CGPoint(x: 5.0,y: (legIcons_y! + 20.0))
+        let startingSize = default_startingSize // CGSize(width:30.0,height:30.0)
         let orientation = "x"  // x, y, or xy
-        let innerSpacing = CGPoint(x:10,y:0)
-        let innerLegSpacing = CGPoint(x:25,y:0)
+        let innerSpacing = CGPoint(x:-1,y:0)
+        let innerLegSpacing = CGPoint(x:10,y:0)
         let sizeFactor = CGSize(width: 0.0,height: 0.0)
         // MARK: Draw Leg Icons
         print("tripCell.LegList.Count ==== \(tripCell.LegList.count)")
@@ -1284,41 +1781,106 @@ class TripSuggestionsTViewController: UITableViewController {
         var column = 1
         var icon_Count_Total = tripCell.LegList.count
         var screenWidth = UIScreen.main.bounds.width
-        let iconLimits = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(60.0))
+        // MARK: Leg Image width required
+        let iconLimits = SlifeMethods.iconCountsToDisplayIcons(availableWidth: screenWidth , iconsCount: icon_Count_Total, iconWidth: CGFloat(70.0))
         print("leg Icons Line Termination Count-iconLimits = \(iconLimits)")
          // MARK: Line Termination
+        /*
         for index in tripCell.LegList {
+            
             iconLegLine += 1
             
-            if(iconLegLine == iconLimits.iconCount){
-                
-           // if(iconLegLine == legIconsLineTerminateCount){
-                legIconsLineCounter += 1
-                print("legIconsLineCounter = \(legIconsLineCounter) for section : \(section)")
-                startingPoint.x = 5.0
-                startingPoint.y+=20.0
-                iconLegLine = 0
-                print("Update ::: New Line:::: Line = \(line) column = \(column)")
-                line += 1
-                column = 1
-                
-                //tableView.reloadData()
-             }
-            else if (y != 0){
-                
-                
-                print("Update ::: New Column::Line = \(line) column = \(column)")
-            startingPoint.x+=60.0
-                column += 1
-            }
+                if(iconLegLine == iconLimits.iconCount){
+                    
+                    // if(iconLegLine == legIconsLineTerminateCount){
+                    legIconsLineCounter += 1
+                    print("legIconsLineCounter = \(legIconsLineCounter) for section : \(section)")
+                    startingPoint.x = 5.0
+                    startingPoint.y += 30.0
+                    iconLegLine = 0
+                    print("Update ::: New Line:::: Line = \(line) column = \(column)")
+                    line += 1
+                    column = 1
+                    
+                    //tableView.reloadData()
+                }
+                    
+                else if (y != 0){
+                    
+                    
+                    print("Update ::: New Column::Line = \(line) column = \(column)")
+                    startingPoint.x+=60.0
+                    column += 1
+                }
             
             let ns = NSMutableArray()
             ns.add(tripCell.LegList[y])
-            SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: ns , cell: headerCell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+            print("leglist to print = \(ns.count)")
+            SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: default_startingSize, legs: ns , cell: headerCell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
             y += 1
-         
+            
+        }
+        */
+        
+        var iconLiveCount = 1
+        var iconLineLiveCount = 0
+        var increment = 0
+        // move this to above
+        let legIconTopSpace = 10.0
+        var defaultPositionToStart =  CGPoint(x: 5.0,y: (legIcons_y! + 10.0))
+        let iconVerticalSpaceFactor = 2.0
+        
+        let iconHorizontalSpaceFactor = 2.0
+        
+        for index in tripCell.LegList {
+        print("Top:iconLiveCount= \(iconLiveCount) && iconLimits.IconCount = \(iconLimits.iconCount)")
+            
+        // change to next line if icon printing limit has reached
+            if (iconLiveCount == iconLimits.iconCount){
+                print("if:iconLiveCount= \(iconLiveCount) && iconLimits.IconCount = \(iconLimits.iconCount)")
+                
+            iconLiveCount = 1
+            iconLineLiveCount += 1
+            startingPoint.x = defaultPositionToStart.x
+            startingPoint.y += startingSize.height //+ iconVerticalSpaceFactor
+            
+            
+            }
+            
+            else if (increment != 0) {
+                print("Else:iconLiveCount= \(iconLiveCount) && iconLimits.IconCount = \(iconLimits.iconCount)")
+                
+            startingPoint.x += startingSize.width +  startingSize.width //+ iconHorizontalSpaceFactor
+            iconLiveCount += 1
+            
+            
+            }
+            // keep printing icons
+            
+            
+            let ns = NSMutableArray()
+            ns.add(tripCell.LegList[increment])
+            print("leglist to print = \(ns.count)")
+            SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: default_startingSize, legs: ns , cell: headerCell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+            increment += 1
+
+        
+        
         }
         
+        
+        
+        // create header cell height dict bank
+        
+        // add section as key
+        
+        // calculate height by 
+     
+        var heightHeaderCalculation = 20 + Int((headerCell.viewWithTag(10)?.frame.height)!) + (line * 30)
+        headerHeightDict.setValue(heightHeaderCalculation, forKey: String(section))
+        print("headerheight5dict has value of header cell = \(heightHeaderCalculation)")
+        //MARK: header cell section line column
+        print("HeaderCell:View: Section = \(section) Line : \(line) Column: \(column)")
         print("------from station = \(tripCell.originDetail.name)")
         print("------from time = \(tripCell.originDetail.time)")
         
@@ -1358,6 +1920,11 @@ class TripSuggestionsTViewController: UITableViewController {
         
         headerCell.ZoneInfo.text = tariffZones_text
         headerCell.PriceInfo.text = tariffRemarks_price
+        // MARK: ZoneInfo Hide
+        //MARK: TariffiInfo Hide
+        headerCell.ZoneInfo.isHidden = true
+        headerCell.PriceInfo.isHidden = true
+        
         print("tripcell.duration is =)")
         // MARK: MapReference
         let leg =  tripCell.LegList[0] as! Leg
@@ -1374,7 +1941,7 @@ class TripSuggestionsTViewController: UITableViewController {
         
         if (evenOrNot){
             
-        headerCell.backgroundColor = UIColor.lightGray
+        // headerCell.backgroundColor = UIColor.lightGray
         }
         
         print("section::::::header:::\(section)")

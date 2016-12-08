@@ -9,11 +9,21 @@
 import UIKit
 
 class LegListCells: UITableViewCell {
+    
+   // @IBOutlet weak var myCollectionView: UICollectionView!
+    var sectionInfo = String()
+    var rowInfo = String()
+    var keyName = String()
+    @IBOutlet weak var nextDeparturesOutlet: UIButton!
+    //@IBOutlet weak var nextdepartures_Outlet: UIButton!
+    @IBOutlet weak var nextDeparturesCollectionView: UICollectionView!
+    
     //-----------------Origin
     @IBOutlet weak var rtuMessage: UILabel!
     
     @IBOutlet weak var transportTypeOutlet: UILabel!
-    @IBOutlet weak var legImage: UIImageView!
+   
+     @IBOutlet weak var legImage: UIImageView!
     @IBOutlet weak var from_time: UILabel!        // 1
     @IBOutlet weak var from_station: UILabel!     // 2
     
@@ -42,5 +52,15 @@ class LegListCells: UITableViewCell {
         
         // Configure the view for the selected state
     }
+    func setCollectionViewDataSourceDelegate
+        <D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>
+        (dataSourceDelegate: D, forRow row: Int) {
+        
+        nextDeparturesCollectionView.delegate = dataSourceDelegate
+        nextDeparturesCollectionView.dataSource = dataSourceDelegate
+        nextDeparturesCollectionView.tag = row
+        nextDeparturesCollectionView.reloadData()
+    }
+
     
 }
