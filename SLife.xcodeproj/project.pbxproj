@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40061021DFAA95E00B4CEE2 /* TripInfoDepartures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40061011DFAA95E00B4CEE2 /* TripInfoDepartures.swift */; };
 		D401B6711CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
 		D401B6721CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
 		D401B6731CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
@@ -126,6 +127,22 @@
 		D47371A81DB61637008AA0BE /* Slife-Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D47371A61DB61637008AA0BE /* Slife-Launch-Screen.png */; };
 		D47371A91DB61637008AA0BE /* Slife-Launch-Screen@2.png in Resources */ = {isa = PBXBuildFile; fileRef = D47371A71DB61637008AA0BE /* Slife-Launch-Screen@2.png */; };
 		D476FF801DCB4303007EE613 /* CustomTextFieldClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */; };
+		D47A6C4C1E00855800972FA0 /* firstLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3C1E00855800972FA0 /* firstLeg.png */; };
+		D47A6C4D1E00855800972FA0 /* firstLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3D1E00855800972FA0 /* firstLeg.svg */; };
+		D47A6C4E1E00855800972FA0 /* firstLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3E1E00855800972FA0 /* firstLeg@2x.png */; };
+		D47A6C4F1E00855800972FA0 /* firstLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3F1E00855800972FA0 /* firstLeg@3x.png */; };
+		D47A6C501E00855800972FA0 /* lastLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C401E00855800972FA0 /* lastLeg.png */; };
+		D47A6C511E00855800972FA0 /* lastLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C411E00855800972FA0 /* lastLeg.svg */; };
+		D47A6C521E00855800972FA0 /* lastLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C421E00855800972FA0 /* lastLeg@2x.png */; };
+		D47A6C531E00855800972FA0 /* lastLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C431E00855800972FA0 /* lastLeg@3x.png */; };
+		D47A6C541E00855800972FA0 /* middleLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C441E00855800972FA0 /* middleLeg.png */; };
+		D47A6C551E00855800972FA0 /* middleLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C451E00855800972FA0 /* middleLeg.svg */; };
+		D47A6C561E00855800972FA0 /* middleLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C461E00855800972FA0 /* middleLeg@2x.png */; };
+		D47A6C571E00855800972FA0 /* middleLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C471E00855800972FA0 /* middleLeg@3x.png */; };
+		D47A6C581E00855800972FA0 /* onlyLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C481E00855800972FA0 /* onlyLeg.png */; };
+		D47A6C591E00855800972FA0 /* onlyLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C491E00855800972FA0 /* onlyLeg.svg */; };
+		D47A6C5A1E00855800972FA0 /* onlyLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C4A1E00855800972FA0 /* onlyLeg@2x.png */; };
+		D47A6C5B1E00855800972FA0 /* onlyLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C4B1E00855800972FA0 /* onlyLeg@3x.png */; };
 		D48306311D477B1400FA42A3 /* ShowMap.png in Resources */ = {isa = PBXBuildFile; fileRef = D483062D1D477B1400FA42A3 /* ShowMap.png */; };
 		D48306321D477B1400FA42A3 /* ShowMap.svg in Resources */ = {isa = PBXBuildFile; fileRef = D483062E1D477B1400FA42A3 /* ShowMap.svg */; };
 		D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D483062F1D477B1400FA42A3 /* ShowMap@2x.png */; };
@@ -218,22 +235,7 @@
 		D4C9B48C1CBEAA9100978546 /* TripStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B48B1CBEAA9100978546 /* TripStocks.swift */; };
 		D4CB863C1CCEAD8500AE2665 /* HeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB863B1CCEAD8500AE2665 /* HeaderCells.swift */; };
 		D4CB863E1CCFD70900AE2665 /* LegListCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB863D1CCFD70900AE2665 /* LegListCells.swift */; };
-		D4CD23681DC24A8A007E580F /* firstLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23581DC24A8A007E580F /* firstLeg.png */; };
-		D4CD23691DC24A8A007E580F /* firstLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23591DC24A8A007E580F /* firstLeg.svg */; };
-		D4CD236A1DC24A8A007E580F /* firstLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD235A1DC24A8A007E580F /* firstLeg@2x.png */; };
-		D4CD236B1DC24A8A007E580F /* firstLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD235B1DC24A8A007E580F /* firstLeg@3x.png */; };
-		D4CD236C1DC24A8A007E580F /* lastLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD235C1DC24A8A007E580F /* lastLeg.png */; };
-		D4CD236D1DC24A8A007E580F /* lastLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4CD235D1DC24A8A007E580F /* lastLeg.svg */; };
-		D4CD236E1DC24A8A007E580F /* lastLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD235E1DC24A8A007E580F /* lastLeg@2x.png */; };
-		D4CD236F1DC24A8A007E580F /* lastLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD235F1DC24A8A007E580F /* lastLeg@3x.png */; };
-		D4CD23701DC24A8A007E580F /* middleLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23601DC24A8A007E580F /* middleLeg.png */; };
-		D4CD23711DC24A8A007E580F /* middleLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23611DC24A8A007E580F /* middleLeg.svg */; };
-		D4CD23741DC24A8A007E580F /* onlyLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23641DC24A8A007E580F /* onlyLeg.png */; };
-		D4CD23751DC24A8A007E580F /* onlyLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23651DC24A8A007E580F /* onlyLeg.svg */; };
-		D4CD23761DC24A8A007E580F /* onlyLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23661DC24A8A007E580F /* onlyLeg@2x.png */; };
-		D4CD23771DC24A8A007E580F /* onlyLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23671DC24A8A007E580F /* onlyLeg@3x.png */; };
-		D4CD237A1DC24B62007E580F /* middleLeg_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23781DC24B62007E580F /* middleLeg_1@2x.png */; };
-		D4CD237B1DC24B62007E580F /* middleLeg_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4CD23791DC24B62007E580F /* middleLeg_1@3x.png */; };
+		D4D243121DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D243111DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift */; };
 		D4DCCAD01CCEA49B0075117C /* TripSuggestionsTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */; };
 		D4DCCAD21CCEA92A0075117C /* TripSuggestionHeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */; };
 		D4E56BCB1DC1FA14007BC822 /* Favoutites.png in Resources */ = {isa = PBXBuildFile; fileRef = D4E56BC71DC1FA14007BC822 /* Favoutites.png */; };
@@ -274,6 +276,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D40061011DFAA95E00B4CEE2 /* TripInfoDepartures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInfoDepartures.swift; sourceTree = "<group>"; };
 		D401B6701CB417150018465C /* tripSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tripSuggestions.swift; sourceTree = "<group>"; };
 		D402291F1CDBBE3200CD7E5F /* RealTimeCommonTransportModeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeCommonTransportModeInfo.swift; sourceTree = "<group>"; };
 		D40229211CDBC3EB00CD7E5F /* Buses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buses.swift; sourceTree = "<group>"; };
@@ -393,6 +396,22 @@
 		D47371A61DB61637008AA0BE /* Slife-Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slife-Launch-Screen.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LaunchScreen/Slife-Launch-Screen.png"; sourceTree = "<group>"; };
 		D47371A71DB61637008AA0BE /* Slife-Launch-Screen@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Slife-Launch-Screen@2.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LaunchScreen/Slife-Launch-Screen@2.png"; sourceTree = "<group>"; };
 		D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldClass.swift; path = Slife/CustomTextFieldClass.swift; sourceTree = SOURCE_ROOT; };
+		D47A6C3C1E00855800972FA0 /* firstLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstLeg.png; sourceTree = "<group>"; };
+		D47A6C3D1E00855800972FA0 /* firstLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = firstLeg.svg; sourceTree = "<group>"; };
+		D47A6C3E1E00855800972FA0 /* firstLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C3F1E00855800972FA0 /* firstLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstLeg@3x.png"; sourceTree = "<group>"; };
+		D47A6C401E00855800972FA0 /* lastLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastLeg.png; sourceTree = "<group>"; };
+		D47A6C411E00855800972FA0 /* lastLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lastLeg.svg; sourceTree = "<group>"; };
+		D47A6C421E00855800972FA0 /* lastLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lastLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C431E00855800972FA0 /* lastLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lastLeg@3x.png"; sourceTree = "<group>"; };
+		D47A6C441E00855800972FA0 /* middleLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middleLeg.png; sourceTree = "<group>"; };
+		D47A6C451E00855800972FA0 /* middleLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = middleLeg.svg; sourceTree = "<group>"; };
+		D47A6C461E00855800972FA0 /* middleLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middleLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C471E00855800972FA0 /* middleLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middleLeg@3x.png"; sourceTree = "<group>"; };
+		D47A6C481E00855800972FA0 /* onlyLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onlyLeg.png; sourceTree = "<group>"; };
+		D47A6C491E00855800972FA0 /* onlyLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = onlyLeg.svg; sourceTree = "<group>"; };
+		D47A6C4A1E00855800972FA0 /* onlyLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onlyLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C4B1E00855800972FA0 /* onlyLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onlyLeg@3x.png"; sourceTree = "<group>"; };
 		D483062D1D477B1400FA42A3 /* ShowMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowMap.png; sourceTree = "<group>"; };
 		D483062E1D477B1400FA42A3 /* ShowMap.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShowMap.svg; sourceTree = "<group>"; };
 		D483062F1D477B1400FA42A3 /* ShowMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMap@2x.png"; sourceTree = "<group>"; };
@@ -483,22 +502,7 @@
 		D4C9B48B1CBEAA9100978546 /* TripStocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStocks.swift; sourceTree = "<group>"; };
 		D4CB863B1CCEAD8500AE2665 /* HeaderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCells.swift; sourceTree = "<group>"; };
 		D4CB863D1CCFD70900AE2665 /* LegListCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegListCells.swift; sourceTree = "<group>"; };
-		D4CD23581DC24A8A007E580F /* firstLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = firstLeg.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/firstLeg.png"; sourceTree = "<group>"; };
-		D4CD23591DC24A8A007E580F /* firstLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = firstLeg.svg; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/firstLeg.svg"; sourceTree = "<group>"; };
-		D4CD235A1DC24A8A007E580F /* firstLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "firstLeg@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/firstLeg@2x.png"; sourceTree = "<group>"; };
-		D4CD235B1DC24A8A007E580F /* firstLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "firstLeg@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/firstLeg@3x.png"; sourceTree = "<group>"; };
-		D4CD235C1DC24A8A007E580F /* lastLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lastLeg.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/lastLeg.png"; sourceTree = "<group>"; };
-		D4CD235D1DC24A8A007E580F /* lastLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lastLeg.svg; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/lastLeg.svg"; sourceTree = "<group>"; };
-		D4CD235E1DC24A8A007E580F /* lastLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lastLeg@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/lastLeg@2x.png"; sourceTree = "<group>"; };
-		D4CD235F1DC24A8A007E580F /* lastLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lastLeg@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/lastLeg@3x.png"; sourceTree = "<group>"; };
-		D4CD23601DC24A8A007E580F /* middleLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = middleLeg.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/middleLeg.png"; sourceTree = "<group>"; };
-		D4CD23611DC24A8A007E580F /* middleLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = middleLeg.svg; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/middleLeg.svg"; sourceTree = "<group>"; };
-		D4CD23641DC24A8A007E580F /* onlyLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onlyLeg.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/onlyLeg.png"; sourceTree = "<group>"; };
-		D4CD23651DC24A8A007E580F /* onlyLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = onlyLeg.svg; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/onlyLeg.svg"; sourceTree = "<group>"; };
-		D4CD23661DC24A8A007E580F /* onlyLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "onlyLeg@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/onlyLeg@2x.png"; sourceTree = "<group>"; };
-		D4CD23671DC24A8A007E580F /* onlyLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "onlyLeg@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/onlyLeg@3x.png"; sourceTree = "<group>"; };
-		D4CD23781DC24B62007E580F /* middleLeg_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "middleLeg_1@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/middleLeg_1@2x.png"; sourceTree = "<group>"; };
-		D4CD23791DC24B62007E580F /* middleLeg_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "middleLeg_1@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Legs/middleLeg_1@3x.png"; sourceTree = "<group>"; };
+		D4D243111DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LegTripNextDeparturesTableViewCell.swift; path = Slife/LegTripNextDeparturesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTViewController.swift; sourceTree = "<group>"; };
 		D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionHeaderCells.swift; sourceTree = "<group>"; };
 		D4E56BC71DC1FA14007BC822 /* Favoutites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Favoutites.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Favoutites.png"; sourceTree = "<group>"; };
@@ -609,6 +613,22 @@
 		D42A025A1CCB6BA400E4C540 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D47A6C3C1E00855800972FA0 /* firstLeg.png */,
+				D47A6C3D1E00855800972FA0 /* firstLeg.svg */,
+				D47A6C3E1E00855800972FA0 /* firstLeg@2x.png */,
+				D47A6C3F1E00855800972FA0 /* firstLeg@3x.png */,
+				D47A6C401E00855800972FA0 /* lastLeg.png */,
+				D47A6C411E00855800972FA0 /* lastLeg.svg */,
+				D47A6C421E00855800972FA0 /* lastLeg@2x.png */,
+				D47A6C431E00855800972FA0 /* lastLeg@3x.png */,
+				D47A6C441E00855800972FA0 /* middleLeg.png */,
+				D47A6C451E00855800972FA0 /* middleLeg.svg */,
+				D47A6C461E00855800972FA0 /* middleLeg@2x.png */,
+				D47A6C471E00855800972FA0 /* middleLeg@3x.png */,
+				D47A6C481E00855800972FA0 /* onlyLeg.png */,
+				D47A6C491E00855800972FA0 /* onlyLeg.svg */,
+				D47A6C4A1E00855800972FA0 /* onlyLeg@2x.png */,
+				D47A6C4B1E00855800972FA0 /* onlyLeg@3x.png */,
 				D4888A331DF80AE30024EBAD /* Map.png */,
 				D4888A341DF80AE30024EBAD /* Map.svg */,
 				D4888A351DF80AE30024EBAD /* Map@2x.png */,
@@ -653,22 +673,6 @@
 				D46D62851DC2776F00792CD7 /* LegBase.svg */,
 				D46D62861DC2776F00792CD7 /* LegBase@2x.png */,
 				D46D62871DC2776F00792CD7 /* LegBase@3x.png */,
-				D4CD23781DC24B62007E580F /* middleLeg_1@2x.png */,
-				D4CD23791DC24B62007E580F /* middleLeg_1@3x.png */,
-				D4CD23581DC24A8A007E580F /* firstLeg.png */,
-				D4CD23591DC24A8A007E580F /* firstLeg.svg */,
-				D4CD235A1DC24A8A007E580F /* firstLeg@2x.png */,
-				D4CD235B1DC24A8A007E580F /* firstLeg@3x.png */,
-				D4CD235C1DC24A8A007E580F /* lastLeg.png */,
-				D4CD235D1DC24A8A007E580F /* lastLeg.svg */,
-				D4CD235E1DC24A8A007E580F /* lastLeg@2x.png */,
-				D4CD235F1DC24A8A007E580F /* lastLeg@3x.png */,
-				D4CD23601DC24A8A007E580F /* middleLeg.png */,
-				D4CD23611DC24A8A007E580F /* middleLeg.svg */,
-				D4CD23641DC24A8A007E580F /* onlyLeg.png */,
-				D4CD23651DC24A8A007E580F /* onlyLeg.svg */,
-				D4CD23661DC24A8A007E580F /* onlyLeg@2x.png */,
-				D4CD23671DC24A8A007E580F /* onlyLeg@3x.png */,
 				D4E56BCF1DC1FA66007BC822 /* Station Swap.png */,
 				D4E56BD01DC1FA66007BC822 /* Station Swap.svg */,
 				D4E56BD11DC1FA66007BC822 /* Station Swap@2x.png */,
@@ -770,6 +774,7 @@
 		D46964E71CB3F37C00C6CFE1 = {
 			isa = PBXGroup;
 			children = (
+				D40061011DFAA95E00B4CEE2 /* TripInfoDepartures.swift */,
 				D46964F21CB3F37C00C6CFE1 /* SLife */,
 				D46965091CB3F37D00C6CFE1 /* SLifeTests */,
 				D46965141CB3F37D00C6CFE1 /* SLifeUITests */,
@@ -792,6 +797,7 @@
 			isa = PBXGroup;
 			children = (
 				D4990F711D75C617003CCB0B /* Main.storyboard */,
+				D4D243111DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift */,
 				D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */,
 				D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */,
 				D4A411AD1D5F958C002CCBF7 /* Map */,
@@ -1016,7 +1022,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4B487081DEE0832008FB436 /* LegBorderStop.png in Resources */,
-				D4CD236A1DC24A8A007E580F /* firstLeg@2x.png in Resources */,
 				D4990F721D75C617003CCB0B /* Main.storyboard in Resources */,
 				D40ADCAF1DDDAC0300AA383B /* Plus_options.png in Resources */,
 				D4959F741DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png in Resources */,
@@ -1030,7 +1035,9 @@
 				D46CD98E1CF8B71D00B91DC8 /* BUS1.png in Resources */,
 				D45D34201DB79D3F00B7742E /* TrafficStatus.png in Resources */,
 				D40ADCA21DDDA1C400AA383B /* WALK@3x.png in Resources */,
+				D47A6C561E00855800972FA0 /* middleLeg@2x.png in Resources */,
 				D46E7F291DABDAB300C59C9B /* RadioButtonOn@2x.png in Resources */,
+				D47A6C4C1E00855800972FA0 /* firstLeg.png in Resources */,
 				D4EF1FB41DDF0DFF00BC25D2 /* mStationSeperator.png in Resources */,
 				D483064E1D4A547300FA42A3 /* EventGood@3x.png in Resources */,
 				D4E56BCC1DC1FA14007BC822 /* Favoutites.svg in Resources */,
@@ -1038,10 +1045,7 @@
 				D4ADAAE71D3FF39E0035B5D5 /* TRAM@3x.png in Resources */,
 				D4E56BCE1DC1FA14007BC822 /* Favoutites@3x.png in Resources */,
 				D4EF1FA11DDF0B4700BC25D2 /* nClock.svg in Resources */,
-				D4CD237B1DC24B62007E580F /* middleLeg_1@3x.png in Resources */,
 				D46E7F271DABDAB300C59C9B /* RadioButtonOn.png in Resources */,
-				D4CD23741DC24A8A007E580F /* onlyLeg.png in Resources */,
-				D4CD236B1DC24A8A007E580F /* firstLeg@3x.png in Resources */,
 				D4959F731DF0B4A2009A9B51 /* TripInfoDepartures@3x.png in Resources */,
 				D45D341C1DB77B5D00B7742E /* SearchTripsDefaultSelected.png in Resources */,
 				D4888A391DF80AE30024EBAD /* Map@2x.png in Resources */,
@@ -1049,7 +1053,6 @@
 				D4EF1FA21DDF0B4700BC25D2 /* nClock@2x.png in Resources */,
 				D48306341D477B1400FA42A3 /* ShowMap@3x.png in Resources */,
 				D4ADAAE61D3FF39E0035B5D5 /* TRAM@2x.png in Resources */,
-				D4CD236C1DC24A8A007E580F /* lastLeg.png in Resources */,
 				D48306511D4A547300FA42A3 /* EventMinor@2x.png in Resources */,
 				D47371A51DB613A2008AA0BE /* Slife Launch Screen@3.png in Resources */,
 				D40ADCAB1DDDAC0300AA383B /* Plus_Close.png in Resources */,
@@ -1059,34 +1062,33 @@
 				D4ADAAF41D3FFA050035B5D5 /* SHIP.png in Resources */,
 				D45D34271DB7B6AC00B7742E /* ContactUs.png in Resources */,
 				D48FAAB61D65D38B00BEA95A /* stopsCircle.svg in Resources */,
-				D4CD236D1DC24A8A007E580F /* lastLeg.svg in Resources */,
+				D47A6C531E00855800972FA0 /* lastLeg@3x.png in Resources */,
 				D40ADCA11DDDA1C400AA383B /* WALK@2x.png in Resources */,
 				D46E7F2A1DABDAB300C59C9B /* RadioButtonOn@3x.png in Resources */,
 				D46E7F381DAC03B200C59C9B /* LabelBackground.svg in Resources */,
 				D48FAAB71D65D38B00BEA95A /* stopsCircle.png in Resources */,
+				D47A6C4E1E00855800972FA0 /* firstLeg@2x.png in Resources */,
 				D48306311D477B1400FA42A3 /* ShowMap.png in Resources */,
 				D48306531D4A547300FA42A3 /* EventPlanned.png in Resources */,
 				D46E7F231DABDAB300C59C9B /* RadioButtonOff.png in Resources */,
 				D4A411B51D61FCE6002CCBF7 /* CustomCalloutView.xib in Resources */,
 				D43962E51D3F824A00C80F57 /* TRAIN.png in Resources */,
+				D47A6C581E00855800972FA0 /* onlyLeg.png in Resources */,
 				D40ADC9F1DDDA1C400AA383B /* WALK.png in Resources */,
 				D4888A3A1DF80AE30024EBAD /* Map@3x.png in Resources */,
 				D483064C1D4A547300FA42A3 /* EventGood.svg in Resources */,
 				D46E7F371DAC03B200C59C9B /* LabelBackground.png in Resources */,
-				D4CD23681DC24A8A007E580F /* firstLeg.png in Resources */,
 				D40ADCB01DDDAC0300AA383B /* Plus_options.svg in Resources */,
 				D4E56BCB1DC1FA14007BC822 /* Favoutites.png in Resources */,
 				D48306541D4A547300FA42A3 /* EventPlanned.svg in Resources */,
 				D4A957B41DB734BD0047D630 /* Slife-App-Icon-Launch-Screen.png in Resources */,
-				D4CD23751DC24A8A007E580F /* onlyLeg.svg in Resources */,
 				D45D34281DB7B6AC00B7742E /* ContactUsSelected.png in Resources */,
-				D4CD23691DC24A8A007E580F /* firstLeg.svg in Resources */,
 				D4ADAAF51D3FFA050035B5D5 /* SHIP.svg in Resources */,
 				D4E56BD51DC1FA66007BC822 /* Station Swap@2x.png in Resources */,
 				D46E7F321DABE67A00C59C9B /* Buttons@3x.png in Resources */,
+				D47A6C5B1E00855800972FA0 /* onlyLeg@3x.png in Resources */,
 				D4ADAAF61D3FFA050035B5D5 /* SHIP@2x.png in Resources */,
 				D4679FD41D3E271F00E477D6 /* BUS@2x.png in Resources */,
-				D4CD23701DC24A8A007E580F /* middleLeg.png in Resources */,
 				D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */,
 				D4679FD31D3E271F00E477D6 /* BUS.svg in Resources */,
 				D4679FDB1D3E5EBA00E477D6 /* METRO.svg in Resources */,
@@ -1102,10 +1104,10 @@
 				D45D341E1DB79D2300B7742E /* TrafficStatus Selected.png in Resources */,
 				D4EF1FA01DDF0B4700BC25D2 /* nClock.png in Resources */,
 				D46D628B1DC2776F00792CD7 /* LegBase@3x.png in Resources */,
+				D47A6C521E00855800972FA0 /* lastLeg@2x.png in Resources */,
 				D47371A81DB61637008AA0BE /* Slife-Launch-Screen.png in Resources */,
 				D45D341A1DB7792600B7742E /* SearchTripsDefault.png in Resources */,
 				D40ADCA01DDDA1C400AA383B /* WALK.svg in Resources */,
-				D4CD236E1DC24A8A007E580F /* lastLeg@2x.png in Resources */,
 				D46965001CB3F37C00C6CFE1 /* LaunchScreen.storyboard in Resources */,
 				D4679FD51D3E271F00E477D6 /* BUS@3x.png in Resources */,
 				D45D34231DB7AB4700B7742E /* RealTime.png in Resources */,
@@ -1113,18 +1115,22 @@
 				D48306481D4A547300FA42A3 /* EventDefault.svg in Resources */,
 				D46CD9961CF8B7AA00B91DC8 /* Default.png in Resources */,
 				D4E56BD31DC1FA66007BC822 /* Station Swap.png in Resources */,
+				D47A6C5A1E00855800972FA0 /* onlyLeg@2x.png in Resources */,
 				D48FAAB81D65D38B00BEA95A /* stopsCircle@2x.png in Resources */,
+				D47A6C591E00855800972FA0 /* onlyLeg.svg in Resources */,
 				D4679FDC1D3E5EBA00E477D6 /* METRO@2x.png in Resources */,
 				D4B487051DEE0832008FB436 /* LegBorderStart.svg in Resources */,
 				D48306551D4A547300FA42A3 /* EventPlanned@2x.png in Resources */,
-				D4CD23761DC24A8A007E580F /* onlyLeg@2x.png in Resources */,
 				D4E56BD41DC1FA66007BC822 /* Station Swap.svg in Resources */,
+				D47A6C501E00855800972FA0 /* lastLeg.png in Resources */,
+				D47A6C551E00855800972FA0 /* middleLeg.svg in Resources */,
 				D4B4870B1DEE0832008FB436 /* LegBorderStop@3x.png in Resources */,
-				D4CD236F1DC24A8A007E580F /* lastLeg@3x.png in Resources */,
 				D46D628A1DC2776F00792CD7 /* LegBase@2x.png in Resources */,
 				D48306501D4A547300FA42A3 /* EventMinor.svg in Resources */,
 				D4959F751DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg in Resources */,
+				D47A6C571E00855800972FA0 /* middleLeg@3x.png in Resources */,
 				D4E56BCD1DC1FA14007BC822 /* Favoutites@2x.png in Resources */,
+				D47A6C4F1E00855800972FA0 /* firstLeg@3x.png in Resources */,
 				D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */,
 				D4959F701DF0B4A2009A9B51 /* TripInfoDepartures.png in Resources */,
 				D43962E71D3F824A00C80F57 /* TRAIN@3x.png in Resources */,
@@ -1135,17 +1141,17 @@
 				D4B487061DEE0832008FB436 /* LegBorderStart@2x.png in Resources */,
 				D483064F1D4A547300FA42A3 /* EventMinor.png in Resources */,
 				D4B487091DEE0832008FB436 /* LegBorderStop.svg in Resources */,
-				D4CD23771DC24A8A007E580F /* onlyLeg@3x.png in Resources */,
 				D48306561D4A547300FA42A3 /* EventPlanned@3x.png in Resources */,
 				D46D62881DC2776F00792CD7 /* LegBase.png in Resources */,
 				D45D34241DB7AB4700B7742E /* RealTimeSelected.png in Resources */,
 				D48306471D4A547300FA42A3 /* EventDefault.png in Resources */,
 				D492907C1CCE568A0029B846 /* TripSuggestionsHeaderView.xib in Resources */,
 				D48FAAB91D65D38B00BEA95A /* stopsCircle@3x.png in Resources */,
+				D47A6C541E00855800972FA0 /* middleLeg.png in Resources */,
 				D46E7F241DABDAB300C59C9B /* RadioButtonOff.svg in Resources */,
+				D47A6C511E00855800972FA0 /* lastLeg.svg in Resources */,
 				D4679FDA1D3E5EBA00E477D6 /* METRO.png in Resources */,
 				D46E7F261DABDAB300C59C9B /* RadioButtonOff@3x.png in Resources */,
-				D4CD23711DC24A8A007E580F /* middleLeg.svg in Resources */,
 				D40ADCAD1DDDAC0300AA383B /* Plus_Close@2x.png in Resources */,
 				D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */,
 				D46E7F281DABDAB300C59C9B /* RadioButtonOn.svg in Resources */,
@@ -1160,9 +1166,9 @@
 				D46E7F3A1DAC03B200C59C9B /* LabelBackground@3x.png in Resources */,
 				D4ADAAE51D3FF39E0035B5D5 /* TRAM.svg in Resources */,
 				D46E7F2F1DABE67A00C59C9B /* Buttons.png in Resources */,
-				D4CD237A1DC24B62007E580F /* middleLeg_1@2x.png in Resources */,
 				D483064B1D4A547300FA42A3 /* EventGood.png in Resources */,
 				D4B487041DEE0832008FB436 /* LegBorderStart.png in Resources */,
+				D47A6C4D1E00855800972FA0 /* firstLeg.svg in Resources */,
 				D46E7F301DABE67A00C59C9B /* Buttons.svg in Resources */,
 				D4959F711DF0B4A2009A9B51 /* TripInfoDepartures.svg in Resources */,
 				D4E56BD61DC1FA66007BC822 /* Station Swap@3x.png in Resources */,
@@ -1266,7 +1272,9 @@
 				D48A95371CEA465300D59306 /* TrafficStatusViewController.swift in Sources */,
 				D4AC554B1CFEF2850043D21E /* TransportModesViewController.swift in Sources */,
 				D468FC6E1CE52994003E4249 /* RealTimeResultMainHeaderCell.swift in Sources */,
+				D40061021DFAA95E00B4CEE2 /* TripInfoDepartures.swift in Sources */,
 				D461D0A11CD3A56900D3ACAB /* SearchFrom_To_Controller.swift in Sources */,
+				D4D243121DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift in Sources */,
 				D48957481D09F74300055D1D /* HelpingMethods.swift in Sources */,
 				D4426B6E1CC0C58200199A71 /* ParseJson.swift in Sources */,
 				D48306361D4A2E9800FA42A3 /* TrafficStatusCentralProcessor.swift in Sources */,

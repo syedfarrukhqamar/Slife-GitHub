@@ -419,6 +419,58 @@ if (jsonObject.count == 0){
      }
   */
     
+    
+    static func checkIfLeg (objectToCheck: AnyObject) -> Bool {
+        print("object to check as is = \(objectToCheck)")
+        var result = Bool()
+        
+        if let a = objectToCheck as? Leg {
+            result = true
+            print("Leg Object Found = true")
+            
+        } else {
+            result = false
+            print("Leg Object couldnt be found: false")
+            
+        }
+        return result
+    }
+    
+    
+    static func checkIfDepartureObject (objectToCheck: AnyObject) -> Bool {
+        
+        var result = Bool()
+        
+        if let a = objectToCheck as? TripInfoDepartures {
+            result = true
+            print("TripInfoDepartures Object Found = true")
+            
+        } else {
+            result = false
+            print("TripInfoDepartures Object couldnt be found: false")
+            
+        }
+        return result
+    }
+    
+    
+    static func checkIfTrip (objectToCheck: AnyObject) -> Bool {
+        
+        var result = Bool()
+        
+        if let a = objectToCheck as? Trip {
+            result = true
+            print("Trip Object Found = true")
+            
+        } else {
+            result = false
+            print("Trip Object couldnt be found: false")
+            
+        }
+        return result
+    }
+    
+    
    static func checkIfDict (objectToCheck: AnyObject) -> Bool {
         
         var result = Bool()

@@ -42,13 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "502882570.983911"
+            timestampString = "503435378.45275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1025"
-            endingLineNumber = "1025"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "4187"
+            endingLineNumber = "4187">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,29 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "502882570.983911"
+            timestampString = "503435378.45275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "779"
-            endingLineNumber = "779"
-            landmarkName = "getTrips(json:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "502882570.983911"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1504"
-            endingLineNumber = "1504"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "3941"
+            endingLineNumber = "3941">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,13 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "502882570.983911"
+            timestampString = "503435378.45275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "595"
-            endingLineNumber = "595"
-            landmarkName = "getTrips(json:)"
-            landmarkType = "7">
+            startingLineNumber = "3757"
+            endingLineNumber = "3757">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,12 +148,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "502882570.983911"
+            timestampString = "503435378.45275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1792"
-            endingLineNumber = "1792"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
+            startingLineNumber = "1492"
+            endingLineNumber = "1492"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,12 +164,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "502882570.983911"
+            timestampString = "503435378.45275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1810"
-            endingLineNumber = "1810"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
+            startingLineNumber = "1497"
+            endingLineNumber = "1497"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

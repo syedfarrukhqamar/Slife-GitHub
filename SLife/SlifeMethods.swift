@@ -87,7 +87,19 @@ class SlifeMethods {
         for legs in legs {
 //            (legs as! Leg).allKeys
 //            print("legs.allKeys === \((legs as ).count)")
-             let leg = legs as! Leg
+    
+            
+//            if (RealTidMethods.checkIfDepartureObject(objectToCheck: legs as AnyObject)){
+//            print("Departure CEll Found = \(legs)")
+//                print("current value of i= dep cell = \(i)")
+//            i += 1
+//            }
+//            else {
+//                print("Normal icons beings printed")
+                
+                print("current value of i= norm cell = \(i)")
+                
+            let leg = legs as! Leg
             print("leg.name =name== \(leg.name)")
             print("leg.name =jtype== \(leg.journeyType)")
             print("leg.name =type== \(leg.type)")
@@ -147,6 +159,7 @@ class SlifeMethods {
 //            spoint.y = spoint.y  + spaceFactor.y
             i += 1
     }
+   // }
         }
     
     

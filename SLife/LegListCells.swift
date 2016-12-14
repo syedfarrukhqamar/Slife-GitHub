@@ -14,9 +14,11 @@ class LegListCells: UITableViewCell {
     var sectionInfo = String()
     var rowInfo = String()
     var keyName = String()
+    var showHideDepartureCell = false
+    
     @IBOutlet weak var nextDeparturesOutlet: UIButton!
     //@IBOutlet weak var nextdepartures_Outlet: UIButton!
-    @IBOutlet weak var nextDeparturesCollectionView: UICollectionView!
+
     
     //-----------------Origin
     @IBOutlet weak var rtuMessage: UILabel!
@@ -52,15 +54,5 @@ class LegListCells: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    func setCollectionViewDataSourceDelegate
-        <D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>
-        (dataSourceDelegate: D, forRow row: Int) {
-        
-        nextDeparturesCollectionView.delegate = dataSourceDelegate
-        nextDeparturesCollectionView.dataSource = dataSourceDelegate
-        nextDeparturesCollectionView.tag = row
-        nextDeparturesCollectionView.reloadData()
-    }
-
-    
+       
 }
