@@ -415,7 +415,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         favourite_Cell_outlet.isUserInteractionEnabled = false
         
         } else {
-            
+            print("recentr trips on the simple screen have been found === ")
             print("-account-\(rec_array.count)------recent trips is not zero...else..")
             
             // MARK: Keys
@@ -752,7 +752,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         // setting default values and presentation
         // enabling now button
         if (errorCode_generic_flag == true) {
-            self.title = "Error Reported...."
+           // self.title = "Error Reported...."
              print("error Code has been caught... error should be displayed....")
            // genericErrorDisplay.isHidden = false
 //            error_Title_Display_Outlet.titleLabel?.text = "Network Problem"

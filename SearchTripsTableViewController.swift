@@ -168,7 +168,6 @@ var tripDateShow = Bool()
         let toValue = to_destination_Input.titleLabel?.text!
         from_Origin.setTitle(toValue, for: UIControlState.normal )
         to_destination_Input.setTitle(fromValue, for: UIControlState.normal )
-        
     }
     
     /*

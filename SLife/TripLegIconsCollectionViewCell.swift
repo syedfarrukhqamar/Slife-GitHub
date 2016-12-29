@@ -9,7 +9,10 @@
 import UIKit
 
 class TripLegIconsCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var from_station: UILabel!
+    @IBOutlet weak var duration: UILabel!
     
+    @IBOutlet weak var to_station: UILabel!
     @IBOutlet weak var from_time: UILabel!
     @IBOutlet weak var to_time: UILabel!
     

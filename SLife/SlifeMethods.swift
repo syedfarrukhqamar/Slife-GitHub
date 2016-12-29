@@ -47,59 +47,32 @@ class SlifeMethods {
     
 
     // use this function on trip suggestion level or trip info level to draw all legs info summary or for one leg
-    static func drawLegs(startingPoint: CGPoint,startingSize:CGSize,legs: NSMutableArray,cell: UITableViewCell,orientation: String,innerLegSpacingFactor: CGPoint, interLegSpacingFactor: CGPoint, sizeFactor: CGSize ){
+    static func drawLegs(startingPoint: CGPoint,startingSize:CGSize,legs: NSMutableArray,cell: UITableViewCell,orientation: String,innerLegSpacingFactor: CGPoint, interLegSpacingFactor: CGPoint, sizeFactor: CGSize,indexValueFromSectionOrRow: Int, indexValueFromCurrentLeg: Int,iconTagIntValue: Int, lineNoIntValue: Int ) -> (iconTagIntReturned: Int,lineNoIntReturned: Int){
     //        getVisualLeg(legs)
          var  i = 0
-        //------------
-        // starting position= s
-//        var startingPosition_x = startingPoint.x
-//        var startingPosition_y = startingPoint.y
         var legStartingPoint = startingPoint
-        //CGPoint(x:startingPosition_x,y:startingPosition_y)
-        // icon size = s
-        var iconSize = startingSize
+         var iconSize = startingSize
         var labelSize = startingSize
-//        var iconSize_w = startingSize.width
-//        var iconSize_h = startingSize.height
-//        
-        // inner leg spacing = ils
-        var innerLegSpacing = innerLegSpacingFactor
-//        var innerLegSpacing_x = innerLegSpacingFactor.x
-//        var innerLegSpacing_y = innerLegSpacingFactor.y
-        // sizeFactor (used to increase size of one of the box. plus it to the box size whoose size is required to be increased
-        let sizeFactor = sizeFactor
-//        let sizeFactor_w = sizeFactor.width
-//        let sizeFactor_h = sizeFactor.height
-        // Leg Spacing Factor
-        let legSpacingFactor = interLegSpacingFactor
-        //let legSpacingFactor_x = interLegSpacingFactor.x
-        //let legSpacingFactor_y = interLegSpacingFactor.y
-        
-        //------------
-        print("leg count is ::legs.count:\(legs.count)")
+       var innerLegSpacing = innerLegSpacingFactor
+       let sizeFactor = sizeFactor
+       let legSpacingFactor = interLegSpacingFactor
+       print("leg count is ::legs.count:\(legs.count)")
         print("starting x = \(startingPoint.x)")
         print("starting y = \(startingPoint.y)")
         
         var yPosition = CGFloat()
         var counter = 0
         
+        var tagValuesReceived = (iconTagIntReturnedMicro:0,lineNoIntReturnedMicro:0)
         
         for legs in legs {
-//            (legs as! Leg).allKeys
-//            print("legs.allKeys === \((legs as ).count)")
-    
             
-//            if (RealTidMethods.checkIfDepartureObject(objectToCheck: legs as AnyObject)){
-//            print("Departure CEll Found = \(legs)")
-//                print("current value of i= dep cell = \(i)")
-//            i += 1
-//            }
-//            else {
-//                print("Normal icons beings printed")
-                
                 print("current value of i= norm cell = \(i)")
-                
+            
+            print("Counter value of i= norm cell = \(counter)")
+            
             let leg = legs as! Leg
+          //  print("leg count in legs = \(leg)")
             print("leg.name =name== \(leg.name)")
             print("leg.name =jtype== \(leg.journeyType)")
             print("leg.name =type== \(leg.type)")
@@ -111,22 +84,18 @@ class SlifeMethods {
                 print("--in loop----start position-.....\(startingPoint)")
 //              print("------size-.....\(size)")
                 print("print name ::::: in draw Visual Leg = \(leg.name)")
-                drawVisualLeg(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize, sizeFactor: sizeFactor, iconName: iconName, cell: cell, lineName: leg.name)
+                
+                
+                 tagValuesReceived = drawVisualLeg(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize, sizeFactor: sizeFactor, iconName: iconName, cell: cell, lineName: leg.name,cellIndex: indexValueFromSectionOrRow,legIndex: indexValueFromCurrentLeg,iconTagIntValueMicro: iconTagIntValue,lineNoIntValueMicro: lineNoIntValue)
 
             
             } else if (leg.journeyType == "WALK"){
-            
-//                let legsTemp = legs as! LegWalk
-//                
-                // for example line is 801 then it will be 801
-                //  let label = "Dist"
                 let labelText = leg.dist
                 let iconName = leg.type
                 
-                drawVisualLeg(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize,sizeFactor: sizeFactor, iconName: iconName, cell: cell, lineName: leg.name)
+                tagValuesReceived =  drawVisualLeg(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize,sizeFactor: sizeFactor, iconName: iconName, cell: cell, lineName: leg.name,cellIndex:indexValueFromSectionOrRow,legIndex: indexValueFromCurrentLeg,iconTagIntValueMicro: iconTagIntValue,lineNoIntValueMicro: lineNoIntValue)
                 
-            
-            }
+             }
            //gather all x axis and width data
             
             var sx = legStartingPoint.x + sizeFactor.width + innerLegSpacing.x + labelSize.width + sizeFactor.width + legSpacingFactor.x
@@ -142,56 +111,33 @@ class SlifeMethods {
             }
             counter += 1
             print("-------------legStartingPoint:-------<<<<<<<---\(i)-\(legStartingPoint)")
-            
             print("-------------x---\(legStartingPoint.x)")
             print("-------------y---\(i)-\(legStartingPoint.y)")
             print("------yPosition = \(yPosition)")
             print("-------------counter---\(i)-\(counter)")
-            
-            //gather all y-axis and height data
-            
-            
+             //gather all y-axis and height data
           // calculate and pack them in starting point
-        
-            
 //           spoint.x = spoint.x + size.width + spaceFactor.x
         //spoint.y = spoint.y + size.height + spaceFactor.y
 //            spoint.y = spoint.y  + spaceFactor.y
             i += 1
     }
    // }
+        
+        return (tagValuesReceived.iconTagIntReturnedMicro,tagValuesReceived.lineNoIntReturnedMicro)
+        
         }
     
     
     static func drawLegsCollectionView(startingPoint: CGPoint,startingSize:CGSize,legs: NSMutableArray,collectionViewCell: UICollectionViewCell,orientation: String,innerLegSpacingFactor: CGPoint, interLegSpacingFactor: CGPoint, sizeFactor: CGSize ){
         //        getVisualLeg(legs)
         var  i = 0
-        //------------
-        // starting position= s
-        //        var startingPosition_x = startingPoint.x
-        //        var startingPosition_y = startingPoint.y
-        var legStartingPoint = startingPoint
-        //CGPoint(x:startingPosition_x,y:startingPosition_y)
-        // icon size = s
+           var legStartingPoint = startingPoint
         var iconSize = startingSize
         var labelSize = startingSize
-        //        var iconSize_w = startingSize.width
-        //        var iconSize_h = startingSize.height
-        //
-        // inner leg spacing = ils
-        var innerLegSpacing = innerLegSpacingFactor
-        //        var innerLegSpacing_x = innerLegSpacingFactor.x
-        //        var innerLegSpacing_y = innerLegSpacingFactor.y
-        // sizeFactor (used to increase size of one of the box. plus it to the box size whoose size is required to be increased
+         var innerLegSpacing = innerLegSpacingFactor
         let sizeFactor = sizeFactor
-        //        let sizeFactor_w = sizeFactor.width
-        //        let sizeFactor_h = sizeFactor.height
-        // Leg Spacing Factor
         let legSpacingFactor = interLegSpacingFactor
-        //let legSpacingFactor_x = interLegSpacingFactor.x
-        //let legSpacingFactor_y = interLegSpacingFactor.y
-        
-        //------------
         print("leg count is ::legs.count:\(legs.count)")
         print("starting x = \(startingPoint.x)")
         print("starting y = \(startingPoint.y)")
@@ -201,14 +147,11 @@ class SlifeMethods {
         
         
         for legs in legs {
-            //            (legs as! Leg).allKeys
-            //            print("legs.allKeys === \((legs as ).count)")
             let leg = legs as! Leg
             print("leg.name =name== \(leg.name)")
             print("leg.name =jtype== \(leg.journeyType)")
             print("leg.name =type== \(leg.type)")
             if (leg.journeyType != "WALK")
-                
             {
                 let labelText = leg.line
                 let iconName = leg.type
@@ -216,14 +159,7 @@ class SlifeMethods {
                 //              print("------size-.....\(size)")
                 print("print name ::::: in draw Visual Leg = \(leg.name)")
                 drawVisualLegForCollectionView(startingPoint: legStartingPoint, labelText: labelText, labelTag: i, innerLegSpacing: innerLegSpacingFactor, startingSize: startingSize, sizeFactor: sizeFactor, iconName: iconName, cell: collectionViewCell, lineName: leg.name)
-                
-                
-            } else if (leg.journeyType == "WALK"){
-                
-                //                let legsTemp = legs as! LegWalk
-                //
-                // for example line is 801 then it will be 801
-                //  let label = "Dist"
+             } else if (leg.journeyType == "WALK"){
                 let labelText = leg.dist
                 let iconName = leg.type
                 
@@ -234,10 +170,7 @@ class SlifeMethods {
             //gather all x axis and width data
             
             var sx = legStartingPoint.x + sizeFactor.width + innerLegSpacing.x + labelSize.width + sizeFactor.width + legSpacingFactor.x
-            var sy = legStartingPoint.y + yPosition // + sizeFactor.height + innerLegSpacing.y + labelSize.height + sizeFactor.height + legSpacingFactor.y
-            legStartingPoint = CGPoint(x: sx,y: sy)
-            
-            // MARK: Leg Y Position Change when Leg>3
+            var sy = legStartingPoint.y + yPosition // + sizeFactor.height +                    // MARK: Leg Y Position Change when Leg>3
             if (counter == 1){
                 
                 yPosition -= 0
@@ -251,16 +184,6 @@ class SlifeMethods {
             print("-------------y---\(i)-\(legStartingPoint.y)")
             print("------yPosition = \(yPosition)")
             print("-------------counter---\(i)-\(counter)")
-            
-            //gather all y-axis and height data
-            
-            
-            // calculate and pack them in starting point
-            
-            
-            //           spoint.x = spoint.x + size.width + spaceFactor.x
-            //spoint.y = spoint.y + size.height + spaceFactor.y
-            //            spoint.y = spoint.y  + spaceFactor.y
             i += 1
         }
     }
@@ -268,17 +191,7 @@ class SlifeMethods {
     
     static  func drawVisualLegForCollectionView(startingPoint: CGPoint,labelText: String,labelTag: Int,innerLegSpacing: CGPoint,startingSize: CGSize,sizeFactor:CGSize,iconName: String,cell: UICollectionViewCell,lineName: String)
     {
-        //  var label3 = UILabel(frame: CGRectMake(0.0, 100.0, 320.0, 80.0))
-        
-        // create and tag uilabel
-        
-        // set the text for label
-        // change backgroun color
-        // set the back ground
-        // starting point is for icon
-        
-        
-        // icong & label position will be calculated
+      // icong & label position will be calculated
         print("lineName :::::: drawVisualLeg = \(lineName)")
         
         //-----------------------------------------------icon point, size, UILable Creation
@@ -308,22 +221,12 @@ class SlifeMethods {
         var labelPoint_y = sy //+ sh + innerLegSpacing_y
         
         var labelSize = CGSize(width: labelSize_w , height: labelSize_h)
-        
-        // var legIcon = CGRect(x: sx, y: sy, width: sw, height: sh)
-        //var legLabel = CGRect(x: labelPoint_x, y: labelPoint_y, width: labelSize_w, height: labelSize_h)
-        //-----------------------------------------------iCon Label Creation
-        //var legIcon = UILabel(frame: CGRectMake(sx ,sy, sw,sh))
-        //let legIcon = UIButton(frame: CGRectMake(sx ,sy, sw,sh))
         let legIcon = UIButton(frame: CGRect(origin: CGPoint(x:sx,y:sy), size: CGSize(width:(sw),height:(sh))))
-        
         legIcon.backgroundColor = UIColor.cyan
         // MARK: Resize Image default sizes
         let iconSize_SubtractionConstant = CGFloat(10)
-        
         let resizedWidth = sw - iconSize_SubtractionConstant
         let resizedHeight = sh  - iconSize_SubtractionConstant
-        
-        
         //var legLabel = UILabel(frame: CGRectMake(labelPoint_x,labelPoint_y , labelSize.width,labelSize.height))
         var legLabel_Button = UIButton(frame: CGRect(origin: CGPoint(x:labelPoint_x,y:labelPoint_y), size: CGSize(width:labelSize.width,height:labelSize.height )))
         var legLabel = UILabel(frame: CGRect(origin: CGPoint(x:labelPoint_x,y:labelPoint_y), size: CGSize(width:resizedWidth,height:resizedHeight)))
@@ -338,12 +241,6 @@ class SlifeMethods {
         //
         print("indeside test.........")
         print("-----feeded value--\(startingPoint)---icon size---\(startingSize)")
-        
-        //        var legIcon = UILabel(frame: CGRectMake(iconPoint.x ,iconPoint.y, size.width,size.height))
-        //        var legLabel = UILabel(frame: CGRectMake(iconPoint.x,iconPoint.y , size.width,size.height))
-        
-        //  var legIcon = UILabel(frame: CGRectMake(iconPoint.x ,iconPoint.y, size.width,size.height))
-        // var legLabel = UILabel(frame: CGRectMake(iconPoint.x,iconPoint.y , size.width,size.height))
         var icon = UIImage()
         //        print("--------image size is \(icon.scal)")
         // image
@@ -354,15 +251,9 @@ class SlifeMethods {
             
             icon = ResizeImage(image: UIImage(named: iconName)!, targetSize: CGSize(width:resizedWidth,height: resizedHeight))
             
-            
-            //icon = ResizeImage(image: UIImage(named: iconName)!, targetSize: CGSize(width:20.0,height: 20.0))
-            //           ResizeImage(<#T##image: UIImage##UIImage#>, targetSize: <#T##CGSize#>)
-            
-            //   // MARK: Transport Type
-            print("iconName is \(iconName)")
+           print("iconName is \(iconName)")
         }
-            
-        else if let image = UIImage.init(named: "Default")
+         else if let image = UIImage.init(named: "Default")
         {
             print("-Default----iconName value is \(iconName)")
             
@@ -370,23 +261,14 @@ class SlifeMethods {
             
             
             // MARK: Temp size chaged with default resizewidth and height
-            
-            //icon = ResizeImage(image: UIImage(named: iconName)!, targetSize: CGSize(width:20.0,height: 20.0))
-            
-            //           ResizeImage(<#T##image: UIImage##UIImage#>, targetSize: <#T##CGSize#>)
-            //   icon = image            print("iconName is--Default \(iconName)")
-        }
+         }
         print("--------image size is \(icon.size)")
         print("--labelText------ is \(labelText)")
         
         // set label text
         legLabel.text = labelText
         legLabel.font = UIFont(name: legLabel.font.fontName, size: 14)
-        //        legLabel.adjustsFontSizeToFitWidth = true
-        //        legLabel.font
-        //        legLabel.minimumScaleFactor = 0.2
-        //legLabel.sizeToFit()
-        legLabel.adjustsFontSizeToFitWidth = true
+       legLabel.adjustsFontSizeToFitWidth = true
         legLabel.textAlignment = NSTextAlignment.center
         // var image = UIImage.init(named: DEFAULT)
         var iconImage = UIImage.init(named: )
@@ -418,22 +300,14 @@ class SlifeMethods {
         
         let lineColorInfo = lineDictColorInfo["lineColor"] as! UIColor
         
-        //print("TransportTypeIcon :::::: \("TransportTypeIcon")")
-        
-        //   print(lineDictColorInfo.allKeys)
-        
-        //      let linecColorInfoDict = TripMapViewControllers.identifyTransportMode(<#T##TripMapViewControllers#>)
         //MARK: Leg Image Setting
         legIcon.setImage(icon, for: .normal)
         legIcon.setBackgroundImage(UIImage(named: "LegBorderStart.png")!, for: .normal)
-        //legIcon.backgroundColor = UIColor.init(patternImage: UIImage(named: "LegBorderStart.png")!)
-        // legIcon.backgroundColor = UIColor.init(patternImage: icon)
-        //        print("1-legLabel.text = \(legLabel.text)")
-        //        print("2-legLabel.bounds.width== \(legLabel.bounds.width)")
-        //        print("3-legLabel.bounds.height== \(legLabel.bounds.height)")
-        //        print("4-legLabel.bounds.width== \( legLabel_Button.bounds.width)")
-        //
-        
+//      
+//        legIcon.setNeedsDisplay()
+//        legLabel_Button.setNeedsDisplay()
+//        legLabel.setNeedsDisplay()
+//        legLabel_resized_image.set
         print("1-legLabel.text = \(legLabel.text)")
         print("2-label width = \( legLabel.bounds.width) && height = \(legLabel.bounds.height)")
         print("3-Button width = \( legLabel_Button.bounds.height) && height = \(legLabel_Button.bounds.width)")
@@ -443,12 +317,6 @@ class SlifeMethods {
         // var borderColor = UIColor(red: 247.0, green: 247.0, blue: 247.0, alpha: 1.0)
         
         legLabel.backgroundColor = lineColorInfo
-        //        legLabel.highlightedTextColor = UIColor.white
-        //
-        //        legLabel.layer.shadowOffset = CGSize(width: 1, height: 1)
-        //        legLabel.layer.shadowOpacity = 1
-        //        legLabel.layer.shadowRadius = 6
-        //
         legLabel.textColor = UIColor.white
         
         
@@ -466,12 +334,9 @@ class SlifeMethods {
         print("4-icon = \( icon.size.width) && height = \(icon.size.width)")
         
         if (lineName.contains("Walk")){
-            
-            legIcon.backgroundColor = UIColor.orange
+        legIcon.backgroundColor = UIColor.orange
         }
-        
-        
-        legLabel_Button.setImage(legLabel_resized_image, for: .normal)
+         legLabel_Button.setImage(legLabel_resized_image, for: .normal)
         legLabel_Button.backgroundColor = innerColor
         legIcon.backgroundColor = innerColor
         legLabel_Button.setBackgroundImage(UIImage(named: "LegBorderStop.png")!, for: .normal)
@@ -480,23 +345,65 @@ class SlifeMethods {
         
         print("--------------------------------------------------")
         //        print("stack view === in cell = \(cell.viewWithTag(15))")
-        print("--------------------------------------------------")
+        print("----------------------------------------------legIcon Size Width = \(legIcon.frame.width) & height = \(legIcon.frame.height)----")
+        
+        print("----------------------------------------------legIcon Size Width = \(legLabel_Button.frame.width) & height = \(legLabel_Button.frame.height)----")
         print("cell.view with tag ======--------after------------")
+        // MARK: TEMP LEG ICON
+        
+        legIcon.tag = 30
+        legLabel_Button.tag
+            = 35
+        legIcon.addTarget(self, action: "Clicked", for: UIControlEvents.touchUpInside)
+        legLabel_Button.addTarget(self, action: "Clicked", for: UIControlEvents.touchUpInside)
+        
+     
+        print("legicontag =9=9= \(legIcon.tag)")
+        print("legicontag =9=9= \(legIcon.tag)")
+        
+         legIcon.accessibilityIdentifier = lineName
+        print("LegIcon accessibility identifier = \(legIcon.accessibilityIdentifier)")
         cell.contentView.addSubview(legIcon)
         cell.contentView.addSubview(legLabel_Button)
+        
         //Temp switching off to test new way
         //cell.contentView.addSubview(legLabel)
         // add it to subview
         
     }
-    
-    
-    static  func drawVisualLeg(startingPoint: CGPoint,labelText: String,labelTag: Int,innerLegSpacing: CGPoint,startingSize: CGSize,sizeFactor:CGSize,iconName: String,cell: UITableViewCell,lineName: String)
+    /*
+    static func returnShortString(stringToShorten: String, availableSpace: Int) -> String {
+        var oldString = stringToShorten
+        var newString = ""
+        var width = availableSpace
+        
+        if (oldString.characters.count > width){
+            
+            print("OLD String = Count is greater than width \(oldString)")
+            newString = stringToShorten.substring(to: <#T##String.Index#>)
+
+            let charArray = [Character] stringToShorten.characters
+            
+            
+            
+//
+////            newString = oldString.substring(to: (width - 1))
+//          
+//            print("NEW String = \(newString)")
+//            
+//        } else {
+//            print("Returning old string as is")
+//            
+//            
+//            return oldString
+//        }
+        return newString
+    }
+    */
+    static  func drawVisualLeg(startingPoint: CGPoint,labelText: String,labelTag: Int,innerLegSpacing: CGPoint,startingSize: CGSize,sizeFactor:CGSize,iconName: String,cell: UITableViewCell,lineName: String,cellIndex:Int,legIndex: Int,iconTagIntValueMicro: Int, lineNoIntValueMicro: Int ) -> (iconTagIntReturnedMicro: Int,lineNoIntReturnedMicro: Int)
     {
-                //  var label3 = UILabel(frame: CGRectMake(0.0, 100.0, 320.0, 80.0))
-        
+       //  var label3 = UILabel(frame: CGRectMake(0.0, 100.0, 320.0, 80.0))
        // create and tag uilabel
-        
         // set the text for label
          // change backgroun color
                 // set the back ground
@@ -540,20 +447,23 @@ class SlifeMethods {
         //var legIcon = UILabel(frame: CGRectMake(sx ,sy, sw,sh))
         //let legIcon = UIButton(frame: CGRectMake(sx ,sy, sw,sh))
         let legIcon = UIButton(frame: CGRect(origin: CGPoint(x:sx,y:sy), size: CGSize(width:(sw),height:(sh))))
-        
+        // Mark: temp needs
+        // legIcon.setNeedsDisplay()
         legIcon.backgroundColor = UIColor.cyan
         // MARK: Resize Image default sizes
         let iconSize_SubtractionConstant = CGFloat(10)
-        
         let resizedWidth = sw - iconSize_SubtractionConstant
         let resizedHeight = sh  - iconSize_SubtractionConstant
-        
-        
-         //var legLabel = UILabel(frame: CGRectMake(labelPoint_x,labelPoint_y , labelSize.width,labelSize.height))
+          //var legLabel = UILabel(frame: CGRectMake(labelPoint_x,labelPoint_y , labelSize.width,labelSize.height))
         var legLabel_Button = UIButton(frame: CGRect(origin: CGPoint(x:labelPoint_x,y:labelPoint_y), size: CGSize(width:labelSize.width,height:labelSize.height )))
         var legLabel = UILabel(frame: CGRect(origin: CGPoint(x:labelPoint_x,y:labelPoint_y), size: CGSize(width:resizedWidth,height:resizedHeight)))
-         legLabel.font = UIFont(name: "Arial", size: 12)
-           legLabel.font = UIFont.boldSystemFont(ofSize: 12.0)
+        
+//        legLabel_Button.setNeedsDisplay()
+//        legLabel.setNeedsDisplay()
+//        legLabel_Button.setNeedsDisplay()
+//        legLabel.setNeedsDisplay()
+        legLabel.font = UIFont(name: "Arial", size: 12)
+        legLabel.font = UIFont.boldSystemFont(ofSize: 12.0)
          print("icon Point::::::::: size :::: \(iconSize)")
          print("legLabel:::::::::  :::: \(legLabel)")
          print("legIcon:::::::::  :::: \(legIcon)")
@@ -562,7 +472,7 @@ class SlifeMethods {
 //        legLabel.text = "L"
 //        
         print("indeside test.........")
-  print("-----feeded value--\(startingPoint)---icon size---\(startingSize)")
+        print("-----feeded value--\(startingPoint)---icon size---\(startingSize)")
         
 //        var legIcon = UILabel(frame: CGRectMake(iconPoint.x ,iconPoint.y, size.width,size.height))
 //        var legLabel = UILabel(frame: CGRectMake(iconPoint.x,iconPoint.y , size.width,size.height))
@@ -570,6 +480,7 @@ class SlifeMethods {
       //  var legIcon = UILabel(frame: CGRectMake(iconPoint.x ,iconPoint.y, size.width,size.height))
        // var legLabel = UILabel(frame: CGRectMake(iconPoint.x,iconPoint.y , size.width,size.height))
         var icon = UIImage()
+        
 //        print("--------image size is \(icon.scal)")
         // image
         if let image = UIImage.init(named: iconName)
@@ -578,8 +489,7 @@ class SlifeMethods {
             // TEMP chAanged with resizedwidth and height
             
             icon = ResizeImage(image: UIImage(named: iconName)!, targetSize: CGSize(width:resizedWidth,height: resizedHeight))
-            
-            
+          
             //icon = ResizeImage(image: UIImage(named: iconName)!, targetSize: CGSize(width:20.0,height: 20.0))
 //           ResizeImage(<#T##image: UIImage##UIImage#>, targetSize: <#T##CGSize#>)
     
@@ -615,6 +525,7 @@ class SlifeMethods {
         legLabel.textAlignment = NSTextAlignment.center
               // var image = UIImage.init(named: DEFAULT)
         var iconImage = UIImage.init(named: )
+        
         // MARK: Line Color
         print("leg name :::legLabel: \(legLabel.text)")
         print("leg name :::lineName: \(lineName)")
@@ -649,31 +560,18 @@ class SlifeMethods {
         
 //      let linecColorInfoDict = TripMapViewControllers.identifyTransportMode(<#T##TripMapViewControllers#>)
         //MARK: Leg Image Setting
-        legIcon.setImage(icon, for: .normal)
-        legIcon.setBackgroundImage(UIImage(named: "LegBorderStart.png")!, for: .normal)
-        //legIcon.backgroundColor = UIColor.init(patternImage: UIImage(named: "LegBorderStart.png")!)
-        // legIcon.backgroundColor = UIColor.init(patternImage: icon)
-//        print("1-legLabel.text = \(legLabel.text)")
-//        print("2-legLabel.bounds.width== \(legLabel.bounds.width)")
-//        print("3-legLabel.bounds.height== \(legLabel.bounds.height)")
-//        print("4-legLabel.bounds.width== \( legLabel_Button.bounds.width)")
-//        
         
+        legIcon.setImage(icon, for: .normal)
+       
+        legIcon.setBackgroundImage(UIImage(named: "LegBorderStart.png")!, for: .normal)
         print("1-legLabel.text = \(legLabel.text)")
         print("2-label width = \( legLabel.bounds.width) && height = \(legLabel.bounds.height)")
         print("3-Button width = \( legLabel_Button.bounds.height) && height = \(legLabel_Button.bounds.width)")
-        
-        
         var innerColor =  UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
        // var borderColor = UIColor(red: 247.0, green: 247.0, blue: 247.0, alpha: 1.0)
         
         legLabel.backgroundColor = lineColorInfo
-//        legLabel.highlightedTextColor = UIColor.white
-//        
-//        legLabel.layer.shadowOffset = CGSize(width: 1, height: 1)
-//        legLabel.layer.shadowOpacity = 1
-//        legLabel.layer.shadowRadius = 6
-//        
+      
         legLabel.textColor = UIColor.white
         
         
@@ -701,15 +599,71 @@ class SlifeMethods {
         legIcon.backgroundColor = innerColor
         legLabel_Button.setBackgroundImage(UIImage(named: "LegBorderStop.png")!, for: .normal)
         //creat a new button with same values as of leglabel and then add leglabel in that button
-        // MARK: Adding Image
+        // MARK: Adding Image 
+     
+        print("LegIcon.CurrentImage name ::::: \(legIcon.currentImage)")
+        legIcon.accessibilityIdentifier = iconName
+        legLabel_Button.accessibilityIdentifier = labelText
         
-        print("--------------------------------------------------")
+        
+      //  legIcon.setValue("Some Value", forKey: "KeyValue")
+//        
+//        legIcon.addTarget(self, action: "showSomeText", for: UIControlEvents.touchUpInside)
+//        
+//        
+//        func showSomeText(sender: UIButton) {
+//        
+//        print("LegIcon.AddTarget has been pressed")
+//        
+//        }
+//        
+      //  print("legIcon.setValue :::: \(legIcon.value(forKey: "KeyValue"))")
+        print("--accessibility identifier for legicon-----------\(legIcon.accessibilityIdentifier)----before adding to cell--------")
+        
+        print("--accessibility identifier for legLabel_Button-----------\(legLabel_Button.accessibilityIdentifier)----before adding to cell--------")
+        legIcon.tag = 200
+        legLabel_Button.tag = 201
 //        print("stack view === in cell = \(cell.viewWithTag(15))")
-        print("--------------------------------------------------")
-        print("cell.view with tag ======--------after------------")
+        
+        //,cellIndex:Int,legIndex: Int
+        print("cell index::::::\(cellIndex)")
+        print("cell index::::::tag an item:\(legIndex)")
+        var tagString = String(cellIndex) + String(legIndex)
+        print("tagString::: \(tagString)")
+        var iconTagString = tagString + "0"
+        print("iconTagString::: \(iconTagString)")
+        
+        var lineTagString = tagString + "1"
+        print("lineTagString::: \(lineTagString)")
+        // iconTagIntValueMicro: Int, lineNoIntValueMicro:
+        
+        
+        legIcon.tag = iconTagIntValueMicro // Int(iconTagString)!
+        legLabel_Button.tag = lineNoIntValueMicro //Int(lineTagString)!
+        
+        print("micro level:legicon.tag::\(legIcon.tag)")
+        print("micro level: leglabelbutton.tag :\(legLabel_Button.tag)")
+        //var tagInt = Int(tagString)
+        
+        print("-------------------------------------line no.for color--------\(lineNoForColor)-----")
+        print("cell.view with tag ======--------after--------legiCon= \(legIcon.allControlEvents)----")
+        
+        print("checking type : legIcon = \(legIcon.description)")
+        print("checking type : legIcon = \(legLabel_Button.description)")
+        
         cell.contentView.addSubview(legIcon)
         cell.contentView.addSubview(legLabel_Button)
-        //Temp switching off to test new way
+
+        
+        
+        print(" cell.content.add subview = legicon\(legIcon.accessibilityIdentifier)")
+        
+        print(" cell.content.add subview = legLabel_Button\(legLabel_Button.accessibilityIdentifier)")
+        
+        
+        return (iconTagIntValueMicro,lineNoIntValueMicro)
+        
+         //Temp switching off to test new way
         //cell.contentView.addSubview(legLabel)
        // add it to subview
     
@@ -1175,7 +1129,26 @@ class SlifeMethods {
         
         return visualLegs
     }
-
+    
+    static func extractCharFromStringAtIndex(inputString: String, lookIndex: Int) -> Character {
+        
+        //let receivedString = inputString.characters
+        let t = Array(inputString.characters)
+        print(t)
+        var i = 0
+        for index in t {
+            //  let c = receivedString as! Character
+            // print("printing chars  = \(t[i])")
+            if ((i + 1) == lookIndex)
+            {
+                return t[i]
+                
+            }
+            i += 1
+        }
+        return "0"
+    }
+    
    // static
     static func deSerializeObject (objectKeyNameToDeserialize: String)-> NSArray
         
@@ -1205,6 +1178,22 @@ class SlifeMethods {
         
             
             // MARK: Object Serialization Check Null
+            
+            
+           
+            
+            
+            
+            
+            print("Slife:Serialise:::::char  FROM_STATION_ID_obj_ser = \(FROM_STATION_ID_obj_ser)")
+            
+            print("Slife:Serialise:::::char  TO_STATION_ID_obj_ser = \(TO__STATION_ID_obj_ser)")
+            
+            print("Slife:Serialise:::::char  to_STATION_NAME_obj_ser = \(TO_STATION_NAME_obj_ser)")
+            
+            
+            print("Slife:Serialise:::::char  FROM_STATION_NAME_obj_ser = \(FROM_STATION_NAME_obj_ser)")
+            
         let char_from_station_id = FROM_STATION_ID_obj_ser.characters.count
         let char_to_station_id = TO__STATION_ID_obj_ser.characters.count
             
@@ -1452,7 +1441,7 @@ func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
     // This is the rect that we've calculated out and this is what is actually used below
     //let rect = CGRect(0, 0, newSize.width, newSize.height)
     let rect = CGRect(origin: CGPoint(x:0,y:0), size: CGSize(width:newSize.width,height:newSize.height))
-    
+
     // Actually do the resizing to the rect using the ImageContext stuff
     UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
     image.draw(in: rect)

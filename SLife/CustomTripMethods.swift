@@ -112,7 +112,7 @@ class CustomTripMethods: UITableView {
                         print("-trip--7.1---A--")
                         
                        let statusCustomTrips =  self.getTrips(json: self.customTrips_convertedJsonIntoNSDict1)
-                        print("CustomTripMethods----trip--7.1---B--")
+                        print("CustomTripMethods----trip--7.1---B-departures collection-\(self.customNewTrip.count)")
                         //--for-1--------------------------------------------------------------------------------------------------
                         print("CustomTripMethods---trip--7.2--about to return after parsing")
                         // reload the table here

@@ -7,7 +7,7 @@ class Trip: NSObject, NSCopying {
     //<#code#>
         return Any.self
     }
-
+    var showHideCell = true
     var dur : String
     var chg : String
     var co2 : String

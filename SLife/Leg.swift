@@ -2,6 +2,16 @@
 import UIKit
 
 class Leg:LegDetail {
+    
+    //TransportType /Show/Hide Values + Line Show Hide for current Object/Leg
+//    var METRO: String
+//    var BUS: String
+//    var
+    var enabled_TransportType: Bool // Default True
+    var enabled_LineNumber: Bool // Default true
+    var showHideLeg: Bool // Default true means show all legs
+    var filterLine: String
+    var filterDepartures: Bool
     // ...:Common variables available in Travel /Walk
     var journeyType : String
 // available via LegDetail
@@ -23,6 +33,11 @@ class Leg:LegDetail {
     var rtu_Message_Flag: Bool
     var rtu_Message: String
     init(journeyType: String,name: String,type: String,idx: String,geomRef: String,dist: String,hide: String,dir:String,line:String,journeyDetailRef: String, origin: Address, destination: Address, legImageName: String, rtu_Message_Flag: Bool,rtu_Message: String){
+      self.filterDepartures = false
+        self.enabled_LineNumber = false
+        self.enabled_TransportType = false
+        self.filterLine = ""
+        self.showHideLeg = true
         self.journeyType = journeyType
         self.name = name
         self.type = type

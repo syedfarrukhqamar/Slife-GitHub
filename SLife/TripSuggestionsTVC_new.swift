@@ -737,9 +737,10 @@ class TripSuggestionsTVC_new: UITableViewController {
         let sizeFactor = CGSize(width: 0.0,height: 0.0)
         
         
-        SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: tripCell.LegList, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+        SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: tripCell.LegList, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor,indexValueFromSectionOrRow: 0,indexValueFromCurrentLeg: 0,iconTagIntValue: 0,lineNoIntValue: 0)
         
-        
+//        SlifeMethods.drawLegs(startingPoint: <#T##CGPoint#>, startingSize: <#T##CGSize#>, legs: <#T##NSMutableArray#>, cell: <#T##UITableViewCell#>, orientation: <#T##String#>, innerLegSpacingFactor: <#T##CGPoint#>, interLegSpacingFactor: <#T##CGPoint#>, sizeFactor: <#T##CGSize#>, indexValueFromSectionOrRow: <#T##Int#>, indexValueFromCurrentLeg: <#T##Int#>, iconTagIntValue: <#T##Int#>, lineNoIntValue: <#T##Int#>)
+//        
         print("------from station = \(tripCell.originDetail.name)")
         print("------from time = \(tripCell.originDetail.time)")
         

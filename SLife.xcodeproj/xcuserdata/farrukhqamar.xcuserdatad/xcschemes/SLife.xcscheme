@@ -17,7 +17,7 @@
                BlueprintIdentifier = "D46964EF1CB3F37C00C6CFE1"
                BuildableName = "SLife.app"
                BlueprintName = "SLife"
-               ReferencedContainer = "container:SLife.xcodeproj">
+               ReferencedContainer = "container:Slife.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "D46965051CB3F37D00C6CFE1"
                BuildableName = "SLifeTests.xctest"
                BlueprintName = "SLifeTests"
-               ReferencedContainer = "container:SLife.xcodeproj">
+               ReferencedContainer = "container:Slife.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "D46965101CB3F37D00C6CFE1"
                BuildableName = "SLifeUITests.xctest"
                BlueprintName = "SLifeUITests"
-               ReferencedContainer = "container:SLife.xcodeproj">
+               ReferencedContainer = "container:Slife.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,7 +55,7 @@
             BlueprintIdentifier = "D46964EF1CB3F37C00C6CFE1"
             BuildableName = "SLife.app"
             BlueprintName = "SLife"
-            ReferencedContainer = "container:SLife.xcodeproj">
+            ReferencedContainer = "container:Slife.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "D46964EF1CB3F37C00C6CFE1"
             BuildableName = "SLife.app"
             BlueprintName = "SLife"
-            ReferencedContainer = "container:SLife.xcodeproj">
+            ReferencedContainer = "container:Slife.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,7 +97,7 @@
             BlueprintIdentifier = "D46964EF1CB3F37C00C6CFE1"
             BuildableName = "SLife.app"
             BlueprintName = "SLife"
-            ReferencedContainer = "container:SLife.xcodeproj">
+            ReferencedContainer = "container:Slife.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -106,7 +106,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "Slife Travel Planner"
+      customArchiveName = "Slife"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

@@ -325,7 +325,10 @@ class TrafficStatusViewController:UITableViewController {
         print("station Name = \(trafficEventCellData.trafficEvents[indexPath.row].trafficLine)")
         print("station Name : Message = \(trafficEventCellData.trafficEvents[indexPath.row].message)")
         
+        let defaultMessage = String("All Traffic is working fine.")
         if (trafficEventCellData.trafficEvents[indexPath.row].statusIcon == EVENTGOOD_ICON){
+            
+            cell.stationName.text = defaultMessage
             let iconName = EVENTGOOD_ICON + ".png"
             cell.eventIcon.image = UIImage(named: iconName)
         
@@ -350,18 +353,18 @@ as! String
         cell.message.text =  trafficEventCellData.trafficEvents[indexPath.row].message
     
         cell.stationName.text = trafficEventCellData.trafficEvents[indexPath.row].trafficLine
-        
+        print("cell.stationName.text::::::::\(cell.stationName.text)")
 //        print("--------indexPath.section--\(indexPath.section)----\(trafficEventCellData.trafficEvents[indexPath.row].lineNumbers)")
 //        print("--------indexPath.section--\(indexPath.section)----\(trafficEventCellData.name)")
 //        print("----trafficEventCellData.trafficEvents.count-- .\(trafficEventCellData.trafficEvents.count)")
+        if ((cell.stationName.text?.characters.count)! < 5){
         
+        cell.stationName.text = defaultMessage
+        }
         return cell
         //}
             }
-    
-    
-    
-  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        <#code#>
 //    }
 //    

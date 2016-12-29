@@ -9,7 +9,11 @@ import UIKit
 
 @available(iOS 9.0, *)
 class TripSuggestionsCell_new: UITableViewCell {
-     
+     // variables to show hide legs
+    
+    var showWalk = true
+    
+    
   //  @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var PriceInfo: UILabel!
     @IBOutlet weak var from_time: UILabel!

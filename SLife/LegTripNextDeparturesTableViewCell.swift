@@ -11,6 +11,9 @@ import UIKit
 class LegTripNextDeparturesTableViewCell: UITableViewCell {
 
     var keyName = String()
+    var legIndexForDepartureShow = Int()
+    var currentIndexPathRow = Int()
+    var currentIndexPathSection = Int()
         @IBOutlet weak var nextDeparturesCollectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()

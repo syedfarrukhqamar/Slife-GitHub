@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 
+let selectionBackgroundButtonColor = UIColor(red: (14/255), green: (100/255), blue: (217/255), alpha: 1.0)
+
+
 class Buttons: UIViewController {
     
     
@@ -17,7 +20,7 @@ class Buttons: UIViewController {
     static func enableButton (button:UIButton,title: String )    {
     
         // change background color of button
-        button.backgroundColor = UIColor.blue
+        button.backgroundColor = selectionBackgroundButtonColor //UIColor.blue
         button.isUserInteractionEnabled = true
         // change title color
         button.setTitleColor(UIColor.white, for: UIControlState.normal)
@@ -67,11 +70,15 @@ class Buttons: UIViewController {
     
             static func disableButton (button:UIButton,title: String )    {
                 
+              
+                
                 // change background color of button
-                button.backgroundColor = UIColor.white
+                button.backgroundColor =  UIColor.white
                 button.isUserInteractionEnabled = true 
                 // change title color
-                button.setTitleColor(UIColor.blue, for: UIControlState.normal)
+                button.setTitleColor(selectionBackgroundButtonColor, for: UIControlState.normal)
+                
+                //button.setTitleColor(UIColor.blue, for: UIControlState.normal)
                 // change title if not empty
                 if (title != ""){
                     button.setTitle(title, for: UIControlState.normal)
@@ -79,12 +86,9 @@ class Buttons: UIViewController {
             
     // disable text field
     }
-    
             static func disableTextField (textField:UITextField,textFieldText: String )
                 {
-                    
                     // disable user interaction of text field
-                    
                     textField.isUserInteractionEnabled = false
                     
                     // change title if not empty
@@ -92,16 +96,15 @@ class Buttons: UIViewController {
                         
                         textField.text = textFieldText
                     }
-
-    
-    }
+  }
     // enable one and disable other two buttons
     
     static func enableOneAndDisableTwoButtons (enableButtonFirst: UIButton, disableButtonSecond: UIButton,disableButtonThird: UIButton){
     
         // enable button
+//        : <#T##Float#>, green: <#T##Float#>, blue: <#T##Float#>, alpha: <#T##Float#>)
         
-        enableButtonFirst.backgroundColor = UIColor.blue
+        enableButtonFirst.backgroundColor = selectionBackgroundButtonColor //UIColor.blue
         enableButtonFirst.setTitleColor(UIColor.white, for: UIControlState.normal)
         
         // disable first button
@@ -122,7 +125,7 @@ class Buttons: UIViewController {
         
         // enable button
         
-        enableButtonFirst.backgroundColor = UIColor.blue
+        enableButtonFirst.backgroundColor = selectionBackgroundButtonColor //UIColor.blue
         enableButtonFirst.setTitleColor(UIColor.white, for: UIControlState.normal)
         
         // disable first button

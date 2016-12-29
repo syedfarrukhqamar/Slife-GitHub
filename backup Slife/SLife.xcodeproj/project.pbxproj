@@ -1,0 +1,1666 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D40061021DFAA95E00B4CEE2 /* TripInfoDepartures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40061011DFAA95E00B4CEE2 /* TripInfoDepartures.swift */; };
+		D401B6711CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
+		D401B6721CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
+		D401B6731CB417150018465C /* tripSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D401B6701CB417150018465C /* tripSuggestions.swift */; };
+		D40229201CDBBE3200CD7E5F /* RealTimeCommonTransportModeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D402291F1CDBBE3200CD7E5F /* RealTimeCommonTransportModeInfo.swift */; };
+		D40229221CDBC3EB00CD7E5F /* Buses.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40229211CDBC3EB00CD7E5F /* Buses.swift */; };
+		D402943E1DA5228700E962C5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D402943D1DA5228700E962C5 /* MapKit.framework */; };
+		D40421F91CC7AAC400D916C7 /* LegWalk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40421F81CC7AAC400D916C7 /* LegWalk.swift */; };
+		D40421FB1CC7AAD000D916C7 /* LegTravel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40421FA1CC7AAD000D916C7 /* LegTravel.swift */; };
+		D407CE0F1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D407CE0E1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift */; };
+		D40ADC9F1DDDA1C400AA383B /* WALK.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9B1DDDA1C300AA383B /* WALK.png */; };
+		D40ADCA01DDDA1C400AA383B /* WALK.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9C1DDDA1C400AA383B /* WALK.svg */; };
+		D40ADCA11DDDA1C400AA383B /* WALK@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9D1DDDA1C400AA383B /* WALK@2x.png */; };
+		D40ADCA21DDDA1C400AA383B /* WALK@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADC9E1DDDA1C400AA383B /* WALK@3x.png */; };
+		D40ADCAB1DDDAC0300AA383B /* Plus_Close.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA31DDDAC0300AA383B /* Plus_Close.png */; };
+		D40ADCAC1DDDAC0300AA383B /* Plus_Close.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA41DDDAC0300AA383B /* Plus_Close.svg */; };
+		D40ADCAD1DDDAC0300AA383B /* Plus_Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA51DDDAC0300AA383B /* Plus_Close@2x.png */; };
+		D40ADCAE1DDDAC0300AA383B /* Plus_Close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA61DDDAC0300AA383B /* Plus_Close@3x.png */; };
+		D40ADCAF1DDDAC0300AA383B /* Plus_options.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA71DDDAC0300AA383B /* Plus_options.png */; };
+		D40ADCB01DDDAC0300AA383B /* Plus_options.svg in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA81DDDAC0300AA383B /* Plus_options.svg */; };
+		D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */; };
+		D40ADCB21DDDAC0300AA383B /* Plus_options@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */; };
+		D40B3B331D158747004AF71C /* MapTripViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40B3B321D158747004AF71C /* MapTripViewControllers.swift */; };
+		D40C29781DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40C29771DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift */; };
+		D40D44701DB61EDB006BD413 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */; };
+		D42083C11CEB14DA00042E7D /* TrafficStatusMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */; };
+		D421F9291D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D421F9281D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift */; };
+		D421F92B1D522EA200DA5EF3 /* Favourites_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D421F92A1D522EA200DA5EF3 /* Favourites_TableViewCell.swift */; };
+		D421F92E1D522F0900DA5EF3 /* RecentTrips_TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D421F92D1D522F0900DA5EF3 /* RecentTrips_TableViewCell.swift */; };
+		D4272F3B1CD903290040BC3D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4272F3A1CD903290040BC3D /* Station.swift */; };
+		D4272F3D1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4272F3C1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift */; };
+		D4272F3F1CDA1B260040BC3D /* RealTimeResult_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4272F3E1CDA1B260040BC3D /* RealTimeResult_ViewController.swift */; };
+		D42A024D1CCB2C8B00E4C540 /* SlifeMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42A024C1CCB2C8B00E4C540 /* SlifeMethods.swift */; };
+		D431BD0B1DEF24A10036F1F3 /* CustomTripMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D431BD0A1DEF24A10036F1F3 /* CustomTripMethods.swift */; };
+		D43962E51D3F824A00C80F57 /* TRAIN.png in Resources */ = {isa = PBXBuildFile; fileRef = D43962E11D3F824A00C80F57 /* TRAIN.png */; };
+		D43962E61D3F824A00C80F57 /* TRAIN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D43962E21D3F824A00C80F57 /* TRAIN@2x.png */; };
+		D43962E71D3F824A00C80F57 /* TRAIN@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D43962E31D3F824A00C80F57 /* TRAIN@3x.png */; };
+		D43962E81D3F824A00C80F57 /* TRAIN.svg in Resources */ = {isa = PBXBuildFile; fileRef = D43962E41D3F824A00C80F57 /* TRAIN.svg */; };
+		D43E076A1D532F8300E32652 /* FavouriteHeading_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E07691D532F8300E32652 /* FavouriteHeading_Cell.swift */; };
+		D43E076C1D532FC600E32652 /* RecentrTripsHeading_CellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43E076B1D532FC600E32652 /* RecentrTripsHeading_CellTableViewCell.swift */; };
+		D4426B6E1CC0C58200199A71 /* ParseJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B6D1CC0C58200199A71 /* ParseJson.swift */; };
+		D4426B701CC0D4F900199A71 /* TripSuggestionCells_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */; };
+		D4426B721CC1267500199A71 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B711CC1267400199A71 /* Address.swift */; };
+		D4426B741CC1396500199A71 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B731CC1396500199A71 /* Leg.swift */; };
+		D4426B761CC139D800199A71 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B751CC139D700199A71 /* Trip.swift */; };
+		D4426B781CC1E9F000199A71 /* LegInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B771CC1E9F000199A71 /* LegInfo.swift */; };
+		D4426B7A1CC1F77D00199A71 /* LegDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B791CC1F77D00199A71 /* LegDetail.swift */; };
+		D4426B7C1CC1F9FC00199A71 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B7B1CC1F9FC00199A71 /* Walk.swift */; };
+		D4426B7E1CC1FB1B00199A71 /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4426B7D1CC1FB1B00199A71 /* Travel.swift */; };
+		D44CED751D0C756C007E2FC7 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44CED741D0C756C007E2FC7 /* DatePickerViewController.swift */; };
+		D4558E501CB5301E0050DB75 /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */; };
+		D4558E511CB5301E0050DB75 /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */; };
+		D4558E521CB5301E0050DB75 /* WebServiceHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */; };
+		D4558E581CB553E10050DB75 /* SearchTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E571CB553E10050DB75 /* SearchTripController.swift */; };
+		D4558E591CB553E10050DB75 /* SearchTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E571CB553E10050DB75 /* SearchTripController.swift */; };
+		D4558E5A1CB553E10050DB75 /* SearchTripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4558E571CB553E10050DB75 /* SearchTripController.swift */; };
+		D45D341A1DB7792600B7742E /* SearchTripsDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D34191DB7792600B7742E /* SearchTripsDefault.png */; };
+		D45D341C1DB77B5D00B7742E /* SearchTripsDefaultSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D341B1DB77B5D00B7742E /* SearchTripsDefaultSelected.png */; };
+		D45D341E1DB79D2300B7742E /* TrafficStatus Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D341D1DB79D2300B7742E /* TrafficStatus Selected.png */; };
+		D45D34201DB79D3F00B7742E /* TrafficStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D341F1DB79D3F00B7742E /* TrafficStatus.png */; };
+		D45D34231DB7AB4700B7742E /* RealTime.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D34211DB7AB4700B7742E /* RealTime.png */; };
+		D45D34241DB7AB4700B7742E /* RealTimeSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D34221DB7AB4700B7742E /* RealTimeSelected.png */; };
+		D45D34271DB7B6AC00B7742E /* ContactUs.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D34251DB7B6AC00B7742E /* ContactUs.png */; };
+		D45D34281DB7B6AC00B7742E /* ContactUsSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D45D34261DB7B6AC00B7742E /* ContactUsSelected.png */; };
+		D461D0A11CD3A56900D3ACAB /* SearchFrom_To_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D461D0A01CD3A56900D3ACAB /* SearchFrom_To_Controller.swift */; };
+		D4679FD21D3E271F00E477D6 /* BUS.png in Resources */ = {isa = PBXBuildFile; fileRef = D4679FCE1D3E271F00E477D6 /* BUS.png */; };
+		D4679FD31D3E271F00E477D6 /* BUS.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4679FCF1D3E271F00E477D6 /* BUS.svg */; };
+		D4679FD41D3E271F00E477D6 /* BUS@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4679FD01D3E271F00E477D6 /* BUS@2x.png */; };
+		D4679FD51D3E271F00E477D6 /* BUS@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4679FD11D3E271F00E477D6 /* BUS@3x.png */; };
+		D4679FDA1D3E5EBA00E477D6 /* METRO.png in Resources */ = {isa = PBXBuildFile; fileRef = D4679FD61D3E5EBA00E477D6 /* METRO.png */; };
+		D4679FDB1D3E5EBA00E477D6 /* METRO.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4679FD71D3E5EBA00E477D6 /* METRO.svg */; };
+		D4679FDC1D3E5EBA00E477D6 /* METRO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4679FD81D3E5EBA00E477D6 /* METRO@2x.png */; };
+		D4679FDD1D3E5EBA00E477D6 /* METRO@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4679FD91D3E5EBA00E477D6 /* METRO@3x.png */; };
+		D468FC5C1CE3C8DB003E4249 /* Trains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC5B1CE3C8DB003E4249 /* Trains.swift */; };
+		D468FC5E1CE3C95D003E4249 /* Trams.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC5D1CE3C95D003E4249 /* Trams.swift */; };
+		D468FC641CE420EB003E4249 /* RealTidMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC631CE420EB003E4249 /* RealTidMethods.swift */; };
+		D468FC661CE4BE62003E4249 /* Metros.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC651CE4BE62003E4249 /* Metros.swift */; };
+		D468FC681CE4C238003E4249 /* Ships.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC671CE4C238003E4249 /* Ships.swift */; };
+		D468FC6A1CE4C8F2003E4249 /* StopPointDeviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC691CE4C8F2003E4249 /* StopPointDeviations.swift */; };
+		D468FC6C1CE51E65003E4249 /* RealTimeInfoDetailCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC6B1CE51E65003E4249 /* RealTimeInfoDetailCells.swift */; };
+		D468FC6E1CE52994003E4249 /* RealTimeResultMainHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D468FC6D1CE52994003E4249 /* RealTimeResultMainHeaderCell.swift */; };
+		D46964F41CB3F37C00C6CFE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46964F31CB3F37C00C6CFE1 /* AppDelegate.swift */; };
+		D46964F81CB3F37C00C6CFE1 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46964F71CB3F37C00C6CFE1 /* SecondViewController.swift */; };
+		D46964FD1CB3F37C00C6CFE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */; };
+		D46965001CB3F37C00C6CFE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46964FE1CB3F37C00C6CFE1 /* LaunchScreen.storyboard */; };
+		D469650B1CB3F37D00C6CFE1 /* SLifeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D469650A1CB3F37D00C6CFE1 /* SLifeTests.swift */; };
+		D46965161CB3F37D00C6CFE1 /* SLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46965151CB3F37D00C6CFE1 /* SLifeUITests.swift */; };
+		D46CD98E1CF8B71D00B91DC8 /* BUS1.png in Resources */ = {isa = PBXBuildFile; fileRef = D46CD98C1CF8B71D00B91DC8 /* BUS1.png */; };
+		D46CD9961CF8B7AA00B91DC8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = D46CD9941CF8B7AA00B91DC8 /* Default.png */; };
+		D46E2EA81D11960400F091F1 /* IntermediateStopsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E2EA71D11960400F091F1 /* IntermediateStopsViewController.swift */; };
+		D46E2EAA1D11962F00F091F1 /* IntermediateStopsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E2EA91D11962F00F091F1 /* IntermediateStopsCell.swift */; };
+		D46E2EAD1D12D56500F091F1 /* Directions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E2EAC1D12D56500F091F1 /* Directions.swift */; };
+		D46E2EAF1D12D58300F091F1 /* Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E2EAE1D12D58300F091F1 /* Lines.swift */; };
+		D46E2EB11D12D5C500F091F1 /* Stops.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E2EB01D12D5C500F091F1 /* Stops.swift */; };
+		D46E2EB31D12DACE00F091F1 /* IntermediateStops.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46E2EB21D12DACE00F091F1 /* IntermediateStops.swift */; };
+		D46E7F2F1DABE67A00C59C9B /* Buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F2B1DABE67A00C59C9B /* Buttons.png */; };
+		D46E7F301DABE67A00C59C9B /* Buttons.svg in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F2C1DABE67A00C59C9B /* Buttons.svg */; };
+		D46E7F311DABE67A00C59C9B /* Buttons@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F2D1DABE67A00C59C9B /* Buttons@2x.png */; };
+		D46E7F321DABE67A00C59C9B /* Buttons@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F2E1DABE67A00C59C9B /* Buttons@3x.png */; };
+		D46E7F371DAC03B200C59C9B /* LabelBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F331DAC03B200C59C9B /* LabelBackground.png */; };
+		D46E7F381DAC03B200C59C9B /* LabelBackground.svg in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F341DAC03B200C59C9B /* LabelBackground.svg */; };
+		D46E7F391DAC03B200C59C9B /* LabelBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F351DAC03B200C59C9B /* LabelBackground@2x.png */; };
+		D46E7F3A1DAC03B200C59C9B /* LabelBackground@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D46E7F361DAC03B200C59C9B /* LabelBackground@3x.png */; };
+		D476FF801DCB4303007EE613 /* CustomTextFieldClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */; };
+		D47A6C4C1E00855800972FA0 /* firstLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3C1E00855800972FA0 /* firstLeg.png */; };
+		D47A6C4D1E00855800972FA0 /* firstLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3D1E00855800972FA0 /* firstLeg.svg */; };
+		D47A6C4E1E00855800972FA0 /* firstLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3E1E00855800972FA0 /* firstLeg@2x.png */; };
+		D47A6C4F1E00855800972FA0 /* firstLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C3F1E00855800972FA0 /* firstLeg@3x.png */; };
+		D47A6C501E00855800972FA0 /* lastLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C401E00855800972FA0 /* lastLeg.png */; };
+		D47A6C511E00855800972FA0 /* lastLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C411E00855800972FA0 /* lastLeg.svg */; };
+		D47A6C521E00855800972FA0 /* lastLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C421E00855800972FA0 /* lastLeg@2x.png */; };
+		D47A6C531E00855800972FA0 /* lastLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C431E00855800972FA0 /* lastLeg@3x.png */; };
+		D47A6C541E00855800972FA0 /* middleLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C441E00855800972FA0 /* middleLeg.png */; };
+		D47A6C551E00855800972FA0 /* middleLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C451E00855800972FA0 /* middleLeg.svg */; };
+		D47A6C561E00855800972FA0 /* middleLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C461E00855800972FA0 /* middleLeg@2x.png */; };
+		D47A6C571E00855800972FA0 /* middleLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C471E00855800972FA0 /* middleLeg@3x.png */; };
+		D47A6C581E00855800972FA0 /* onlyLeg.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C481E00855800972FA0 /* onlyLeg.png */; };
+		D47A6C591E00855800972FA0 /* onlyLeg.svg in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C491E00855800972FA0 /* onlyLeg.svg */; };
+		D47A6C5A1E00855800972FA0 /* onlyLeg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C4A1E00855800972FA0 /* onlyLeg@2x.png */; };
+		D47A6C5B1E00855800972FA0 /* onlyLeg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D47A6C4B1E00855800972FA0 /* onlyLeg@3x.png */; };
+		D48306311D477B1400FA42A3 /* ShowMap.png in Resources */ = {isa = PBXBuildFile; fileRef = D483062D1D477B1400FA42A3 /* ShowMap.png */; };
+		D48306321D477B1400FA42A3 /* ShowMap.svg in Resources */ = {isa = PBXBuildFile; fileRef = D483062E1D477B1400FA42A3 /* ShowMap.svg */; };
+		D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D483062F1D477B1400FA42A3 /* ShowMap@2x.png */; };
+		D48306341D477B1400FA42A3 /* ShowMap@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306301D477B1400FA42A3 /* ShowMap@3x.png */; };
+		D48306361D4A2E9800FA42A3 /* TrafficStatusCentralProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48306351D4A2E9800FA42A3 /* TrafficStatusCentralProcessor.swift */; };
+		D48306471D4A547300FA42A3 /* EventDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306371D4A547300FA42A3 /* EventDefault.png */; };
+		D48306481D4A547300FA42A3 /* EventDefault.svg in Resources */ = {isa = PBXBuildFile; fileRef = D48306381D4A547300FA42A3 /* EventDefault.svg */; };
+		D48306491D4A547300FA42A3 /* EventDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306391D4A547300FA42A3 /* EventDefault@2x.png */; };
+		D483064A1D4A547300FA42A3 /* EventDefault@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D483063A1D4A547300FA42A3 /* EventDefault@3x.png */; };
+		D483064B1D4A547300FA42A3 /* EventGood.png in Resources */ = {isa = PBXBuildFile; fileRef = D483063B1D4A547300FA42A3 /* EventGood.png */; };
+		D483064C1D4A547300FA42A3 /* EventGood.svg in Resources */ = {isa = PBXBuildFile; fileRef = D483063C1D4A547300FA42A3 /* EventGood.svg */; };
+		D483064D1D4A547300FA42A3 /* EventGood@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D483063D1D4A547300FA42A3 /* EventGood@2x.png */; };
+		D483064E1D4A547300FA42A3 /* EventGood@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D483063E1D4A547300FA42A3 /* EventGood@3x.png */; };
+		D483064F1D4A547300FA42A3 /* EventMinor.png in Resources */ = {isa = PBXBuildFile; fileRef = D483063F1D4A547300FA42A3 /* EventMinor.png */; };
+		D48306501D4A547300FA42A3 /* EventMinor.svg in Resources */ = {isa = PBXBuildFile; fileRef = D48306401D4A547300FA42A3 /* EventMinor.svg */; };
+		D48306511D4A547300FA42A3 /* EventMinor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306411D4A547300FA42A3 /* EventMinor@2x.png */; };
+		D48306521D4A547300FA42A3 /* EventMinor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306421D4A547300FA42A3 /* EventMinor@3x.png */; };
+		D48306531D4A547300FA42A3 /* EventPlanned.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306431D4A547300FA42A3 /* EventPlanned.png */; };
+		D48306541D4A547300FA42A3 /* EventPlanned.svg in Resources */ = {isa = PBXBuildFile; fileRef = D48306441D4A547300FA42A3 /* EventPlanned.svg */; };
+		D48306551D4A547300FA42A3 /* EventPlanned@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306451D4A547300FA42A3 /* EventPlanned@2x.png */; };
+		D48306561D4A547300FA42A3 /* EventPlanned@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48306461D4A547300FA42A3 /* EventPlanned@3x.png */; };
+		D48306581D4B922800FA42A3 /* TrafficStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48306571D4B922800FA42A3 /* TrafficStatusCell.swift */; };
+		D48827E31CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
+		D48827E41CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
+		D48827E51CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */; };
+		D48827EB1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */; };
+		D48827ED1CBBE108002A0A87 /* Trips.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48827EC1CBBE108002A0A87 /* Trips.swift */; };
+		D4888A371DF80AE30024EBAD /* Map.png in Resources */ = {isa = PBXBuildFile; fileRef = D4888A331DF80AE30024EBAD /* Map.png */; };
+		D4888A381DF80AE30024EBAD /* Map.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4888A341DF80AE30024EBAD /* Map.svg */; };
+		D4888A391DF80AE30024EBAD /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4888A351DF80AE30024EBAD /* Map@2x.png */; };
+		D4888A3A1DF80AE30024EBAD /* Map@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4888A361DF80AE30024EBAD /* Map@3x.png */; };
+		D48957421D099AE600055D1D /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48957411D099AE600055D1D /* Buttons.swift */; };
+		D48957461D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48957451D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift */; };
+		D48957481D09F74300055D1D /* HelpingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48957471D09F74300055D1D /* HelpingMethods.swift */; };
+		D48A952A1CE7577300D59306 /* Deviations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A95291CE7577300D59306 /* Deviations.swift */; };
+		D48A952C1CE7577F00D59306 /* StopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A952B1CE7577F00D59306 /* StopInfo.swift */; };
+		D48A952F1CEA39C600D59306 /* TrafficType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A952E1CEA39C600D59306 /* TrafficType.swift */; };
+		D48A95311CEA39DB00D59306 /* TrafficEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A95301CEA39DB00D59306 /* TrafficEvent.swift */; };
+		D48A95331CEA39FA00D59306 /* LineNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A95321CEA39FA00D59306 /* LineNumbers.swift */; };
+		D48A95371CEA465300D59306 /* TrafficStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A95361CEA465300D59306 /* TrafficStatusViewController.swift */; };
+		D48A95391CEA479D00D59306 /* TrafficTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A95381CEA479D00D59306 /* TrafficTypeCell.swift */; };
+		D48A953B1CEA48B300D59306 /* TrafficEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48A953A1CEA48B300D59306 /* TrafficEventCell.swift */; };
+		D48FAAB61D65D38B00BEA95A /* stopsCircle.svg in Resources */ = {isa = PBXBuildFile; fileRef = D48FAAB21D65D38B00BEA95A /* stopsCircle.svg */; };
+		D48FAAB71D65D38B00BEA95A /* stopsCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = D48FAAB31D65D38B00BEA95A /* stopsCircle.png */; };
+		D48FAAB81D65D38B00BEA95A /* stopsCircle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48FAAB41D65D38B00BEA95A /* stopsCircle@2x.png */; };
+		D48FAAB91D65D38B00BEA95A /* stopsCircle@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D48FAAB51D65D38B00BEA95A /* stopsCircle@3x.png */; };
+		D492907C1CCE568A0029B846 /* TripSuggestionsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D492907B1CCE568A0029B846 /* TripSuggestionsHeaderView.xib */; };
+		D4959F701DF0B4A2009A9B51 /* TripInfoDepartures.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F681DF0B4A2009A9B51 /* TripInfoDepartures.png */; };
+		D4959F711DF0B4A2009A9B51 /* TripInfoDepartures.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4959F691DF0B4A2009A9B51 /* TripInfoDepartures.svg */; };
+		D4959F721DF0B4A2009A9B51 /* TripInfoDepartures@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6A1DF0B4A2009A9B51 /* TripInfoDepartures@2x.png */; };
+		D4959F731DF0B4A2009A9B51 /* TripInfoDepartures@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6B1DF0B4A2009A9B51 /* TripInfoDepartures@3x.png */; };
+		D4959F741DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6C1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png */; };
+		D4959F751DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6D1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg */; };
+		D4959F761DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6E1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png */; };
+		D4959F771DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4959F6F1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png */; };
+		D4990F721D75C617003CCB0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4990F711D75C617003CCB0B /* Main.storyboard */; };
+		D4A411AF1D5F95AF002CCBF7 /* StationsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A411AE1D5F95AF002CCBF7 /* StationsLocation.swift */; };
+		D4A411B11D5F96AE002CCBF7 /* StationsLocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A411B01D5F96AE002CCBF7 /* StationsLocationList.swift */; };
+		D4A411B31D61FC5E002CCBF7 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A411B21D61FC5E002CCBF7 /* CustomCalloutView.swift */; };
+		D4A411B51D61FCE6002CCBF7 /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A411B41D61FCE6002CCBF7 /* CustomCalloutView.xib */; };
+		D4AC55491CFE025D0043D21E /* SearchTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC55481CFE025D0043D21E /* SearchTripsTableViewController.swift */; };
+		D4AC554B1CFEF2850043D21E /* TransportModesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC554A1CFEF2850043D21E /* TransportModesViewController.swift */; };
+		D4AC554D1D005BE70043D21E /* LineChoicesVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC554C1D005BE70043D21E /* LineChoicesVController.swift */; };
+		D4AC554F1D00A19C0043D21E /* WalkAwayVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC554E1D00A19C0043D21E /* WalkAwayVController.swift */; };
+		D4AC55511D00A6B10043D21E /* TransportChangesVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC55501D00A6B10043D21E /* TransportChangesVController.swift */; };
+		D4AC55531D00C72C0043D21E /* TransportationChangesVController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AC55521D00C72C0043D21E /* TransportationChangesVController.swift */; };
+		D4ADAAE41D3FF39E0035B5D5 /* TRAM.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAE01D3FF39E0035B5D5 /* TRAM.png */; };
+		D4ADAAE51D3FF39E0035B5D5 /* TRAM.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAE11D3FF39E0035B5D5 /* TRAM.svg */; };
+		D4ADAAE61D3FF39E0035B5D5 /* TRAM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAE21D3FF39E0035B5D5 /* TRAM@2x.png */; };
+		D4ADAAE71D3FF39E0035B5D5 /* TRAM@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAE31D3FF39E0035B5D5 /* TRAM@3x.png */; };
+		D4ADAAF41D3FFA050035B5D5 /* SHIP.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF01D3FFA050035B5D5 /* SHIP.png */; };
+		D4ADAAF51D3FFA050035B5D5 /* SHIP.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF11D3FFA050035B5D5 /* SHIP.svg */; };
+		D4ADAAF61D3FFA050035B5D5 /* SHIP@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */; };
+		D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */; };
+		D4B24B5C1CCE7060009F183F /* TripSuggestionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */; };
+		D4B487041DEE0832008FB436 /* LegBorderStart.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FC1DEE0832008FB436 /* LegBorderStart.png */; };
+		D4B487051DEE0832008FB436 /* LegBorderStart.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FD1DEE0832008FB436 /* LegBorderStart.svg */; };
+		D4B487061DEE0832008FB436 /* LegBorderStart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FE1DEE0832008FB436 /* LegBorderStart@2x.png */; };
+		D4B487071DEE0832008FB436 /* LegBorderStart@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B486FF1DEE0832008FB436 /* LegBorderStart@3x.png */; };
+		D4B487081DEE0832008FB436 /* LegBorderStop.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B487001DEE0832008FB436 /* LegBorderStop.png */; };
+		D4B487091DEE0832008FB436 /* LegBorderStop.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4B487011DEE0832008FB436 /* LegBorderStop.svg */; };
+		D4B4870A1DEE0832008FB436 /* LegBorderStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B487021DEE0832008FB436 /* LegBorderStop@2x.png */; };
+		D4B4870B1DEE0832008FB436 /* LegBorderStop@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B487031DEE0832008FB436 /* LegBorderStop@3x.png */; };
+		D4BA57EE1D22A05C00A91975 /* TripMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */; };
+		D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */; };
+		D4C9B48C1CBEAA9100978546 /* TripStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C9B48B1CBEAA9100978546 /* TripStocks.swift */; };
+		D4CB863C1CCEAD8500AE2665 /* HeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB863B1CCEAD8500AE2665 /* HeaderCells.swift */; };
+		D4CB863E1CCFD70900AE2665 /* LegListCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB863D1CCFD70900AE2665 /* LegListCells.swift */; };
+		D4D243121DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D243111DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift */; };
+		D4D8FF3D1E03D17B0057145B /* LegBase.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF391E03D17B0057145B /* LegBase.png */; };
+		D4D8FF3E1E03D17B0057145B /* LegBase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF3A1E03D17B0057145B /* LegBase@2x.png */; };
+		D4D8FF3F1E03D17B0057145B /* LegBase@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF3B1E03D17B0057145B /* LegBase@3x.png */; };
+		D4D8FF401E03D17B0057145B /* LegBase.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF3C1E03D17B0057145B /* LegBase.svg */; };
+		D4D8FF451E03D1B90057145B /* Station Swap.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF411E03D1B90057145B /* Station Swap.png */; };
+		D4D8FF461E03D1B90057145B /* Station Swap.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF421E03D1B90057145B /* Station Swap.svg */; };
+		D4D8FF471E03D1B90057145B /* Station Swap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF431E03D1B90057145B /* Station Swap@2x.png */; };
+		D4D8FF481E03D1B90057145B /* Station Swap@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF441E03D1B90057145B /* Station Swap@3x.png */; };
+		D4D8FF4D1E03D21B0057145B /* Favoutites.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF491E03D21B0057145B /* Favoutites.png */; };
+		D4D8FF4E1E03D21B0057145B /* Favoutites.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF4A1E03D21B0057145B /* Favoutites.svg */; };
+		D4D8FF4F1E03D21B0057145B /* Favoutites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF4B1E03D21B0057145B /* Favoutites@2x.png */; };
+		D4D8FF501E03D21B0057145B /* Favoutites@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF4C1E03D21B0057145B /* Favoutites@3x.png */; };
+		D4D8FF5A1E03D2F00057145B /* Slife App Icon Launch Screen.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF511E03D2F00057145B /* Slife App Icon Launch Screen.svg */; };
+		D4D8FF5B1E03D2F00057145B /* Slife Launch Screen.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF521E03D2F00057145B /* Slife Launch Screen.svg */; };
+		D4D8FF5C1E03D2F00057145B /* Slife Launch Screen@3.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF531E03D2F00057145B /* Slife Launch Screen@3.png */; };
+		D4D8FF5D1E03D2F00057145B /* Slife Launch Screen@3x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF541E03D2F00057145B /* Slife Launch Screen@3x1.png */; };
+		D4D8FF5E1E03D2F00057145B /* Slife-App-Icon-Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF551E03D2F00057145B /* Slife-App-Icon-Launch-Screen.png */; };
+		D4D8FF5F1E03D2F00057145B /* Slife-App-Icon-Launch-Screen@2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF561E03D2F00057145B /* Slife-App-Icon-Launch-Screen@2.png */; };
+		D4D8FF601E03D2F00057145B /* Slife-App-Icon-Launch-Screen@3.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF571E03D2F00057145B /* Slife-App-Icon-Launch-Screen@3.png */; };
+		D4D8FF611E03D2F00057145B /* Slife-Launch-Screen.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF581E03D2F00057145B /* Slife-Launch-Screen.png */; };
+		D4D8FF621E03D2F00057145B /* Slife-Launch-Screen@2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF591E03D2F00057145B /* Slife-Launch-Screen@2.png */; };
+		D4D8FF6B1E03D3420057145B /* RadioButtonOff.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF631E03D3420057145B /* RadioButtonOff.png */; };
+		D4D8FF6C1E03D3420057145B /* RadioButtonOff.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF641E03D3420057145B /* RadioButtonOff.svg */; };
+		D4D8FF6D1E03D3420057145B /* RadioButtonOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF651E03D3420057145B /* RadioButtonOff@2x.png */; };
+		D4D8FF6E1E03D3420057145B /* RadioButtonOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF661E03D3420057145B /* RadioButtonOff@3x.png */; };
+		D4D8FF6F1E03D3420057145B /* RadioButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF671E03D3420057145B /* RadioButtonOn.png */; };
+		D4D8FF701E03D3420057145B /* RadioButtonOn.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF681E03D3420057145B /* RadioButtonOn.svg */; };
+		D4D8FF711E03D3420057145B /* RadioButtonOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF691E03D3420057145B /* RadioButtonOn@2x.png */; };
+		D4D8FF721E03D3420057145B /* RadioButtonOn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF6A1E03D3420057145B /* RadioButtonOn@3x.png */; };
+		D4D8FF9F1E03D4310057145B /* HomeTestLatest.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF7B1E03D4310057145B /* HomeTestLatest.png */; };
+		D4D8FFA01E03D4310057145B /* HomeTestLatest.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF7C1E03D4310057145B /* HomeTestLatest.svg */; };
+		D4D8FFA11E03D4310057145B /* HomeTestLatest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF7D1E03D4310057145B /* HomeTestLatest@2x.png */; };
+		D4D8FFA21E03D4310057145B /* HomeTestLatest@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF7E1E03D4310057145B /* HomeTestLatest@3x.png */; };
+		D4D8FFA31E03D4310057145B /* RealTime.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF7F1E03D4310057145B /* RealTime.png */; };
+		D4D8FFA41E03D4310057145B /* RealTime.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF801E03D4310057145B /* RealTime.svg */; };
+		D4D8FFA51E03D4310057145B /* RealTime@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF811E03D4310057145B /* RealTime@2x.png */; };
+		D4D8FFA61E03D4310057145B /* RealTime@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF821E03D4310057145B /* RealTime@3x.png */; };
+		D4D8FFA71E03D4310057145B /* RealTimeSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF831E03D4310057145B /* RealTimeSelected.png */; };
+		D4D8FFA81E03D4310057145B /* RealTimeSelected.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF841E03D4310057145B /* RealTimeSelected.svg */; };
+		D4D8FFA91E03D4310057145B /* RealTimeSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF851E03D4310057145B /* RealTimeSelected@2x.png */; };
+		D4D8FFAA1E03D4310057145B /* RealTimeSelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF861E03D4310057145B /* RealTimeSelected@3x.png */; };
+		D4D8FFAB1E03D4310057145B /* SearchTripsDefault.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF871E03D4310057145B /* SearchTripsDefault.png */; };
+		D4D8FFAC1E03D4310057145B /* SearchTripsDefault.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF881E03D4310057145B /* SearchTripsDefault.svg */; };
+		D4D8FFAD1E03D4310057145B /* SearchTripsDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF891E03D4310057145B /* SearchTripsDefault@2x.png */; };
+		D4D8FFAE1E03D4310057145B /* SearchTripsDefault@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF8A1E03D4310057145B /* SearchTripsDefault@3x.png */; };
+		D4D8FFAF1E03D4310057145B /* SearchTripsDefaultSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF8B1E03D4310057145B /* SearchTripsDefaultSelected.png */; };
+		D4D8FFB01E03D4310057145B /* SearchTripsDefaultSelected.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF8C1E03D4310057145B /* SearchTripsDefaultSelected.svg */; };
+		D4D8FFB11E03D4310057145B /* SearchTripsDefaultSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF8D1E03D4310057145B /* SearchTripsDefaultSelected@2x.png */; };
+		D4D8FFB21E03D4310057145B /* SearchTripsDefaultSelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF8E1E03D4310057145B /* SearchTripsDefaultSelected@3x.png */; };
+		D4D8FFB31E03D4310057145B /* TrafficStatus Selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF8F1E03D4310057145B /* TrafficStatus Selected.png */; };
+		D4D8FFB41E03D4310057145B /* TrafficStatus Selected.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF901E03D4310057145B /* TrafficStatus Selected.svg */; };
+		D4D8FFB51E03D4310057145B /* TrafficStatus Selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF911E03D4310057145B /* TrafficStatus Selected@2x.png */; };
+		D4D8FFB61E03D4310057145B /* TrafficStatus Selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF921E03D4310057145B /* TrafficStatus Selected@3x.png */; };
+		D4D8FFB71E03D4310057145B /* TrafficStatus.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF931E03D4310057145B /* TrafficStatus.png */; };
+		D4D8FFB81E03D4310057145B /* TrafficStatus.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF941E03D4310057145B /* TrafficStatus.svg */; };
+		D4D8FFB91E03D4310057145B /* TrafficStatus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF951E03D4310057145B /* TrafficStatus@2x.png */; };
+		D4D8FFBA1E03D4310057145B /* TrafficStatus@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4D8FF961E03D4310057145B /* TrafficStatus@3x.png */; };
+		D4DCCAD01CCEA49B0075117C /* TripSuggestionsTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */; };
+		D4DCCAD21CCEA92A0075117C /* TripSuggestionHeaderCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */; };
+		D4E7915E1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7915D1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift */; };
+		D4E791601D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E7915F1D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift */; };
+		D4EF1FA01DDF0B4700BC25D2 /* nClock.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F981DDF0B4700BC25D2 /* nClock.png */; };
+		D4EF1FA11DDF0B4700BC25D2 /* nClock.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F991DDF0B4700BC25D2 /* nClock.svg */; };
+		D4EF1FA21DDF0B4700BC25D2 /* nClock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F9A1DDF0B4700BC25D2 /* nClock@2x.png */; };
+		D4EF1FA31DDF0B4700BC25D2 /* nClock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1F9B1DDF0B4700BC25D2 /* nClock@3x.png */; };
+		D4EF1FB41DDF0DFF00BC25D2 /* mStationSeperator.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */; };
+		D4EF1FB51DDF0DFF00BC25D2 /* mStationSeperator.svg in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */; };
+		D4EF1FB61DDF0DFF00BC25D2 /* mStationSeperator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */; };
+		D4EF1FB71DDF0DFF00BC25D2 /* mStationSeperator@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EF1FB31DDF0DFF00BC25D2 /* mStationSeperator@3x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D46965071CB3F37D00C6CFE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46964E81CB3F37C00C6CFE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D46964EF1CB3F37C00C6CFE1;
+			remoteInfo = SLife;
+		};
+		D46965121CB3F37D00C6CFE1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D46964E81CB3F37C00C6CFE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D46964EF1CB3F37C00C6CFE1;
+			remoteInfo = SLife;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D40061011DFAA95E00B4CEE2 /* TripInfoDepartures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripInfoDepartures.swift; sourceTree = "<group>"; };
+		D401B6701CB417150018465C /* tripSuggestions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tripSuggestions.swift; sourceTree = "<group>"; };
+		D402291F1CDBBE3200CD7E5F /* RealTimeCommonTransportModeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeCommonTransportModeInfo.swift; sourceTree = "<group>"; };
+		D40229211CDBC3EB00CD7E5F /* Buses.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buses.swift; sourceTree = "<group>"; };
+		D402943D1DA5228700E962C5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D40421F81CC7AAC400D916C7 /* LegWalk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegWalk.swift; sourceTree = "<group>"; };
+		D40421FA1CC7AAD000D916C7 /* LegTravel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegTravel.swift; sourceTree = "<group>"; };
+		D407CE0E1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotations_IntermediateStations.swift; sourceTree = "<group>"; };
+		D40ADC9B1DDDA1C300AA383B /* WALK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WALK.png; sourceTree = "<group>"; };
+		D40ADC9C1DDDA1C400AA383B /* WALK.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WALK.svg; sourceTree = "<group>"; };
+		D40ADC9D1DDDA1C400AA383B /* WALK@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WALK@2x.png"; sourceTree = "<group>"; };
+		D40ADC9E1DDDA1C400AA383B /* WALK@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WALK@3x.png"; sourceTree = "<group>"; };
+		D40ADCA31DDDAC0300AA383B /* Plus_Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plus_Close.png; sourceTree = "<group>"; };
+		D40ADCA41DDDAC0300AA383B /* Plus_Close.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Plus_Close.svg; sourceTree = "<group>"; };
+		D40ADCA51DDDAC0300AA383B /* Plus_Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_Close@2x.png"; sourceTree = "<group>"; };
+		D40ADCA61DDDAC0300AA383B /* Plus_Close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_Close@3x.png"; sourceTree = "<group>"; };
+		D40ADCA71DDDAC0300AA383B /* Plus_options.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plus_options.png; sourceTree = "<group>"; };
+		D40ADCA81DDDAC0300AA383B /* Plus_options.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Plus_options.svg; sourceTree = "<group>"; };
+		D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_options@2x.png"; sourceTree = "<group>"; };
+		D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus_options@3x.png"; sourceTree = "<group>"; };
+		D40B3B321D158747004AF71C /* MapTripViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTripViewControllers.swift; sourceTree = "<group>"; };
+		D40C29771DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripLegIconsCollectionViewCell.swift; path = Slife/TripLegIconsCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactUsViewController.swift; path = Slife/ContactUsViewController.swift; sourceTree = SOURCE_ROOT; };
+		D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusMethods.swift; sourceTree = "<group>"; };
+		D421F9281D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavouritesResentTrips_ViewController.swift; path = ../FavouritesResentTrips_ViewController.swift; sourceTree = "<group>"; };
+		D421F92A1D522EA200DA5EF3 /* Favourites_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favourites_TableViewCell.swift; path = ../Favourites_TableViewCell.swift; sourceTree = "<group>"; };
+		D421F92D1D522F0900DA5EF3 /* RecentTrips_TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentTrips_TableViewCell.swift; sourceTree = "<group>"; };
+		D4272F3A1CD903290040BC3D /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		D4272F3C1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBar_SLife_Controller.swift; sourceTree = "<group>"; };
+		D4272F3E1CDA1B260040BC3D /* RealTimeResult_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeResult_ViewController.swift; sourceTree = "<group>"; };
+		D42A024C1CCB2C8B00E4C540 /* SlifeMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlifeMethods.swift; sourceTree = "<group>"; };
+		D431BD0A1DEF24A10036F1F3 /* CustomTripMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTripMethods.swift; path = Slife/CustomTripMethods.swift; sourceTree = SOURCE_ROOT; };
+		D43962E11D3F824A00C80F57 /* TRAIN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TRAIN.png; sourceTree = "<group>"; };
+		D43962E21D3F824A00C80F57 /* TRAIN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TRAIN@2x.png"; sourceTree = "<group>"; };
+		D43962E31D3F824A00C80F57 /* TRAIN@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TRAIN@3x.png"; sourceTree = "<group>"; };
+		D43962E41D3F824A00C80F57 /* TRAIN.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TRAIN.svg; sourceTree = "<group>"; };
+		D43E07691D532F8300E32652 /* FavouriteHeading_Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteHeading_Cell.swift; sourceTree = "<group>"; };
+		D43E076B1D532FC600E32652 /* RecentrTripsHeading_CellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentrTripsHeading_CellTableViewCell.swift; sourceTree = "<group>"; };
+		D4426B6D1CC0C58200199A71 /* ParseJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseJson.swift; sourceTree = "<group>"; };
+		D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionCells_new.swift; sourceTree = "<group>"; };
+		D4426B711CC1267400199A71 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		D4426B731CC1396500199A71 /* Leg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		D4426B751CC139D700199A71 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		D4426B771CC1E9F000199A71 /* LegInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegInfo.swift; sourceTree = "<group>"; };
+		D4426B791CC1F77D00199A71 /* LegDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegDetail.swift; sourceTree = "<group>"; };
+		D4426B7B1CC1F9FC00199A71 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		D4426B7D1CC1FB1B00199A71 /* Travel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
+		D44CED741D0C756C007E2FC7 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DatePickerViewController.swift; path = ../DatePickerViewController.swift; sourceTree = "<group>"; };
+		D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceHandler.swift; sourceTree = "<group>"; };
+		D4558E571CB553E10050DB75 /* SearchTripController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTripController.swift; sourceTree = "<group>"; };
+		D45D34191DB7792600B7742E /* SearchTripsDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SearchTripsDefault.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/SearchTripsDefault.png"; sourceTree = "<group>"; };
+		D45D341B1DB77B5D00B7742E /* SearchTripsDefaultSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SearchTripsDefaultSelected.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/SearchTripsDefaultSelected.png"; sourceTree = "<group>"; };
+		D45D341D1DB79D2300B7742E /* TrafficStatus Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrafficStatus Selected.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/TrafficStatus Selected.png"; sourceTree = "<group>"; };
+		D45D341F1DB79D3F00B7742E /* TrafficStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrafficStatus.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/TrafficStatus.png"; sourceTree = "<group>"; };
+		D45D34211DB7AB4700B7742E /* RealTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RealTime.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/RealTime.png"; sourceTree = "<group>"; };
+		D45D34221DB7AB4700B7742E /* RealTimeSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RealTimeSelected.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/RealTimeSelected.png"; sourceTree = "<group>"; };
+		D45D34251DB7B6AC00B7742E /* ContactUs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ContactUs.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/ContactUs.png"; sourceTree = "<group>"; };
+		D45D34261DB7B6AC00B7742E /* ContactUsSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ContactUsSelected.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/TabBarIcons/ContactUsSelected.png"; sourceTree = "<group>"; };
+		D461D0A01CD3A56900D3ACAB /* SearchFrom_To_Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFrom_To_Controller.swift; sourceTree = "<group>"; };
+		D4679FCE1D3E271F00E477D6 /* BUS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BUS.png; sourceTree = "<group>"; };
+		D4679FCF1D3E271F00E477D6 /* BUS.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BUS.svg; sourceTree = "<group>"; };
+		D4679FD01D3E271F00E477D6 /* BUS@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BUS@2x.png"; sourceTree = "<group>"; };
+		D4679FD11D3E271F00E477D6 /* BUS@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BUS@3x.png"; sourceTree = "<group>"; };
+		D4679FD61D3E5EBA00E477D6 /* METRO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = METRO.png; sourceTree = "<group>"; };
+		D4679FD71D3E5EBA00E477D6 /* METRO.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = METRO.svg; sourceTree = "<group>"; };
+		D4679FD81D3E5EBA00E477D6 /* METRO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "METRO@2x.png"; sourceTree = "<group>"; };
+		D4679FD91D3E5EBA00E477D6 /* METRO@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "METRO@3x.png"; sourceTree = "<group>"; };
+		D468FC5B1CE3C8DB003E4249 /* Trains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trains.swift; sourceTree = "<group>"; };
+		D468FC5D1CE3C95D003E4249 /* Trams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trams.swift; sourceTree = "<group>"; };
+		D468FC631CE420EB003E4249 /* RealTidMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTidMethods.swift; sourceTree = "<group>"; };
+		D468FC651CE4BE62003E4249 /* Metros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metros.swift; sourceTree = "<group>"; };
+		D468FC671CE4C238003E4249 /* Ships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ships.swift; sourceTree = "<group>"; };
+		D468FC691CE4C8F2003E4249 /* StopPointDeviations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopPointDeviations.swift; sourceTree = "<group>"; };
+		D468FC6B1CE51E65003E4249 /* RealTimeInfoDetailCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealTimeInfoDetailCells.swift; path = ../RealTimeInfoDetailCells.swift; sourceTree = "<group>"; };
+		D468FC6D1CE52994003E4249 /* RealTimeResultMainHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealTimeResultMainHeaderCell.swift; sourceTree = "<group>"; };
+		D46964F01CB3F37C00C6CFE1 /* SLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46964F31CB3F37C00C6CFE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D46964F71CB3F37C00C6CFE1 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D46964FF1CB3F37C00C6CFE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D46965011CB3F37C00C6CFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46965061CB3F37D00C6CFE1 /* SLifeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLifeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D469650A1CB3F37D00C6CFE1 /* SLifeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLifeTests.swift; sourceTree = "<group>"; };
+		D469650C1CB3F37D00C6CFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46965111CB3F37D00C6CFE1 /* SLifeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SLifeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D46965151CB3F37D00C6CFE1 /* SLifeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLifeUITests.swift; sourceTree = "<group>"; };
+		D46965171CB3F37D00C6CFE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D46CD98C1CF8B71D00B91DC8 /* BUS1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BUS1.png; sourceTree = "<group>"; };
+		D46CD9941CF8B7AA00B91DC8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		D46E2EA71D11960400F091F1 /* IntermediateStopsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStopsViewController.swift; sourceTree = "<group>"; };
+		D46E2EA91D11962F00F091F1 /* IntermediateStopsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStopsCell.swift; sourceTree = "<group>"; };
+		D46E2EAC1D12D56500F091F1 /* Directions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Directions.swift; sourceTree = "<group>"; };
+		D46E2EAE1D12D58300F091F1 /* Lines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lines.swift; sourceTree = "<group>"; };
+		D46E2EB01D12D5C500F091F1 /* Stops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stops.swift; sourceTree = "<group>"; };
+		D46E2EB21D12DACE00F091F1 /* IntermediateStops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStops.swift; sourceTree = "<group>"; };
+		D46E7F2B1DABE67A00C59C9B /* Buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Buttons.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/Buttons.png"; sourceTree = "<group>"; };
+		D46E7F2C1DABE67A00C59C9B /* Buttons.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Buttons.svg; path = "../../../../../../Creative Cloud Files/SLife/Assets/Buttons.svg"; sourceTree = "<group>"; };
+		D46E7F2D1DABE67A00C59C9B /* Buttons@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buttons@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Buttons@2x.png"; sourceTree = "<group>"; };
+		D46E7F2E1DABE67A00C59C9B /* Buttons@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buttons@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/Buttons@3x.png"; sourceTree = "<group>"; };
+		D46E7F331DAC03B200C59C9B /* LabelBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LabelBackground.png; path = "../../../../../../Creative Cloud Files/SLife/Assets/LabelBackground.png"; sourceTree = "<group>"; };
+		D46E7F341DAC03B200C59C9B /* LabelBackground.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LabelBackground.svg; path = "../../../../../../Creative Cloud Files/SLife/Assets/LabelBackground.svg"; sourceTree = "<group>"; };
+		D46E7F351DAC03B200C59C9B /* LabelBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LabelBackground@2x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LabelBackground@2x.png"; sourceTree = "<group>"; };
+		D46E7F361DAC03B200C59C9B /* LabelBackground@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "LabelBackground@3x.png"; path = "../../../../../../Creative Cloud Files/SLife/Assets/LabelBackground@3x.png"; sourceTree = "<group>"; };
+		D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTextFieldClass.swift; path = Slife/CustomTextFieldClass.swift; sourceTree = SOURCE_ROOT; };
+		D47A6C3C1E00855800972FA0 /* firstLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = firstLeg.png; sourceTree = "<group>"; };
+		D47A6C3D1E00855800972FA0 /* firstLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = firstLeg.svg; sourceTree = "<group>"; };
+		D47A6C3E1E00855800972FA0 /* firstLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C3F1E00855800972FA0 /* firstLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firstLeg@3x.png"; sourceTree = "<group>"; };
+		D47A6C401E00855800972FA0 /* lastLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lastLeg.png; sourceTree = "<group>"; };
+		D47A6C411E00855800972FA0 /* lastLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lastLeg.svg; sourceTree = "<group>"; };
+		D47A6C421E00855800972FA0 /* lastLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lastLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C431E00855800972FA0 /* lastLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lastLeg@3x.png"; sourceTree = "<group>"; };
+		D47A6C441E00855800972FA0 /* middleLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = middleLeg.png; sourceTree = "<group>"; };
+		D47A6C451E00855800972FA0 /* middleLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = middleLeg.svg; sourceTree = "<group>"; };
+		D47A6C461E00855800972FA0 /* middleLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middleLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C471E00855800972FA0 /* middleLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "middleLeg@3x.png"; sourceTree = "<group>"; };
+		D47A6C481E00855800972FA0 /* onlyLeg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onlyLeg.png; sourceTree = "<group>"; };
+		D47A6C491E00855800972FA0 /* onlyLeg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = onlyLeg.svg; sourceTree = "<group>"; };
+		D47A6C4A1E00855800972FA0 /* onlyLeg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onlyLeg@2x.png"; sourceTree = "<group>"; };
+		D47A6C4B1E00855800972FA0 /* onlyLeg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onlyLeg@3x.png"; sourceTree = "<group>"; };
+		D483062D1D477B1400FA42A3 /* ShowMap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowMap.png; sourceTree = "<group>"; };
+		D483062E1D477B1400FA42A3 /* ShowMap.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ShowMap.svg; sourceTree = "<group>"; };
+		D483062F1D477B1400FA42A3 /* ShowMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMap@2x.png"; sourceTree = "<group>"; };
+		D48306301D477B1400FA42A3 /* ShowMap@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShowMap@3x.png"; sourceTree = "<group>"; };
+		D48306351D4A2E9800FA42A3 /* TrafficStatusCentralProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusCentralProcessor.swift; sourceTree = "<group>"; };
+		D48306371D4A547300FA42A3 /* EventDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventDefault.png; sourceTree = "<group>"; };
+		D48306381D4A547300FA42A3 /* EventDefault.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EventDefault.svg; sourceTree = "<group>"; };
+		D48306391D4A547300FA42A3 /* EventDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventDefault@2x.png"; sourceTree = "<group>"; };
+		D483063A1D4A547300FA42A3 /* EventDefault@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventDefault@3x.png"; sourceTree = "<group>"; };
+		D483063B1D4A547300FA42A3 /* EventGood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventGood.png; sourceTree = "<group>"; };
+		D483063C1D4A547300FA42A3 /* EventGood.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EventGood.svg; sourceTree = "<group>"; };
+		D483063D1D4A547300FA42A3 /* EventGood@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventGood@2x.png"; sourceTree = "<group>"; };
+		D483063E1D4A547300FA42A3 /* EventGood@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventGood@3x.png"; sourceTree = "<group>"; };
+		D483063F1D4A547300FA42A3 /* EventMinor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventMinor.png; sourceTree = "<group>"; };
+		D48306401D4A547300FA42A3 /* EventMinor.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EventMinor.svg; sourceTree = "<group>"; };
+		D48306411D4A547300FA42A3 /* EventMinor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventMinor@2x.png"; sourceTree = "<group>"; };
+		D48306421D4A547300FA42A3 /* EventMinor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventMinor@3x.png"; sourceTree = "<group>"; };
+		D48306431D4A547300FA42A3 /* EventPlanned.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventPlanned.png; sourceTree = "<group>"; };
+		D48306441D4A547300FA42A3 /* EventPlanned.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EventPlanned.svg; sourceTree = "<group>"; };
+		D48306451D4A547300FA42A3 /* EventPlanned@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventPlanned@2x.png"; sourceTree = "<group>"; };
+		D48306461D4A547300FA42A3 /* EventPlanned@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EventPlanned@3x.png"; sourceTree = "<group>"; };
+		D48306571D4B922800FA42A3 /* TrafficStatusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficStatusCell.swift; sourceTree = "<group>"; };
+		D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsCell.swift; sourceTree = "<group>"; };
+		D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC.swift; sourceTree = "<group>"; };
+		D48827EC1CBBE108002A0A87 /* Trips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trips.swift; sourceTree = "<group>"; };
+		D4888A331DF80AE30024EBAD /* Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Map.png; sourceTree = "<group>"; };
+		D4888A341DF80AE30024EBAD /* Map.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Map.svg; sourceTree = "<group>"; };
+		D4888A351DF80AE30024EBAD /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
+		D4888A361DF80AE30024EBAD /* Map@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@3x.png"; sourceTree = "<group>"; };
+		D48957411D099AE600055D1D /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Buttons.swift; path = HelpingMethods/Buttons.swift; sourceTree = "<group>"; };
+		D48957451D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSimpleSearchViewControllerTViewController.swift; sourceTree = "<group>"; };
+		D48957471D09F74300055D1D /* HelpingMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpingMethods.swift; path = HelpingMethods/HelpingMethods.swift; sourceTree = "<group>"; };
+		D48A95291CE7577300D59306 /* Deviations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deviations.swift; sourceTree = "<group>"; };
+		D48A952B1CE7577F00D59306 /* StopInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopInfo.swift; sourceTree = "<group>"; };
+		D48A952E1CEA39C600D59306 /* TrafficType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficType.swift; sourceTree = "<group>"; };
+		D48A95301CEA39DB00D59306 /* TrafficEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEvent.swift; sourceTree = "<group>"; };
+		D48A95321CEA39FA00D59306 /* LineNumbers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineNumbers.swift; sourceTree = "<group>"; };
+		D48A95361CEA465300D59306 /* TrafficStatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrafficStatusViewController.swift; path = ../TrafficStatusViewController.swift; sourceTree = "<group>"; };
+		D48A95381CEA479D00D59306 /* TrafficTypeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficTypeCell.swift; sourceTree = "<group>"; };
+		D48A953A1CEA48B300D59306 /* TrafficEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrafficEventCell.swift; sourceTree = "<group>"; };
+		D48FAAB21D65D38B00BEA95A /* stopsCircle.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stopsCircle.svg; sourceTree = "<group>"; };
+		D48FAAB31D65D38B00BEA95A /* stopsCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopsCircle.png; sourceTree = "<group>"; };
+		D48FAAB41D65D38B00BEA95A /* stopsCircle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopsCircle@2x.png"; sourceTree = "<group>"; };
+		D48FAAB51D65D38B00BEA95A /* stopsCircle@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopsCircle@3x.png"; sourceTree = "<group>"; };
+		D492907B1CCE568A0029B846 /* TripSuggestionsHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TripSuggestionsHeaderView.xib; sourceTree = "<group>"; };
+		D4959F681DF0B4A2009A9B51 /* TripInfoDepartures.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TripInfoDepartures.png; sourceTree = "<group>"; };
+		D4959F691DF0B4A2009A9B51 /* TripInfoDepartures.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TripInfoDepartures.svg; sourceTree = "<group>"; };
+		D4959F6A1DF0B4A2009A9B51 /* TripInfoDepartures@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDepartures@2x.png"; sourceTree = "<group>"; };
+		D4959F6B1DF0B4A2009A9B51 /* TripInfoDepartures@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDepartures@3x.png"; sourceTree = "<group>"; };
+		D4959F6C1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TripInfoDeparturesSelected.png; sourceTree = "<group>"; };
+		D4959F6D1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TripInfoDeparturesSelected.svg; sourceTree = "<group>"; };
+		D4959F6E1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDeparturesSelected@2x.png"; sourceTree = "<group>"; };
+		D4959F6F1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TripInfoDeparturesSelected@3x.png"; sourceTree = "<group>"; };
+		D4990F711D75C617003CCB0B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D4A411AE1D5F95AF002CCBF7 /* StationsLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsLocation.swift; sourceTree = "<group>"; };
+		D4A411B01D5F96AE002CCBF7 /* StationsLocationList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsLocationList.swift; sourceTree = "<group>"; };
+		D4A411B21D61FC5E002CCBF7 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		D4A411B41D61FCE6002CCBF7 /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		D4AC55481CFE025D0043D21E /* SearchTripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTripsTableViewController.swift; path = ../SearchTripsTableViewController.swift; sourceTree = "<group>"; };
+		D4AC554A1CFEF2850043D21E /* TransportModesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportModesViewController.swift; sourceTree = "<group>"; };
+		D4AC554C1D005BE70043D21E /* LineChoicesVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChoicesVController.swift; sourceTree = "<group>"; };
+		D4AC554E1D00A19C0043D21E /* WalkAwayVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkAwayVController.swift; sourceTree = "<group>"; };
+		D4AC55501D00A6B10043D21E /* TransportChangesVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportChangesVController.swift; sourceTree = "<group>"; };
+		D4AC55521D00C72C0043D21E /* TransportationChangesVController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportationChangesVController.swift; sourceTree = "<group>"; };
+		D4ADAAE01D3FF39E0035B5D5 /* TRAM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TRAM.png; sourceTree = "<group>"; };
+		D4ADAAE11D3FF39E0035B5D5 /* TRAM.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TRAM.svg; sourceTree = "<group>"; };
+		D4ADAAE21D3FF39E0035B5D5 /* TRAM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TRAM@2x.png"; sourceTree = "<group>"; };
+		D4ADAAE31D3FF39E0035B5D5 /* TRAM@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TRAM@3x.png"; sourceTree = "<group>"; };
+		D4ADAAF01D3FFA050035B5D5 /* SHIP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SHIP.png; sourceTree = "<group>"; };
+		D4ADAAF11D3FFA050035B5D5 /* SHIP.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SHIP.svg; sourceTree = "<group>"; };
+		D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHIP@2x.png"; sourceTree = "<group>"; };
+		D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SHIP@3x.png"; sourceTree = "<group>"; };
+		D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TripSuggestionHeaderCell.swift; path = ../TripSuggestionHeaderCell.swift; sourceTree = "<group>"; };
+		D4B486FC1DEE0832008FB436 /* LegBorderStart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegBorderStart.png; sourceTree = "<group>"; };
+		D4B486FD1DEE0832008FB436 /* LegBorderStart.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LegBorderStart.svg; sourceTree = "<group>"; };
+		D4B486FE1DEE0832008FB436 /* LegBorderStart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStart@2x.png"; sourceTree = "<group>"; };
+		D4B486FF1DEE0832008FB436 /* LegBorderStart@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStart@3x.png"; sourceTree = "<group>"; };
+		D4B487001DEE0832008FB436 /* LegBorderStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegBorderStop.png; sourceTree = "<group>"; };
+		D4B487011DEE0832008FB436 /* LegBorderStop.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LegBorderStop.svg; sourceTree = "<group>"; };
+		D4B487021DEE0832008FB436 /* LegBorderStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStop@2x.png"; sourceTree = "<group>"; };
+		D4B487031DEE0832008FB436 /* LegBorderStop@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBorderStop@3x.png"; sourceTree = "<group>"; };
+		D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripMapViewController.swift; sourceTree = "<group>"; };
+		D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTVC_new.swift; sourceTree = "<group>"; };
+		D4C9B48B1CBEAA9100978546 /* TripStocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripStocks.swift; sourceTree = "<group>"; };
+		D4CB863B1CCEAD8500AE2665 /* HeaderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCells.swift; sourceTree = "<group>"; };
+		D4CB863D1CCFD70900AE2665 /* LegListCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegListCells.swift; sourceTree = "<group>"; };
+		D4D243111DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LegTripNextDeparturesTableViewCell.swift; path = Slife/LegTripNextDeparturesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		D4D8FF391E03D17B0057145B /* LegBase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegBase.png; sourceTree = "<group>"; };
+		D4D8FF3A1E03D17B0057145B /* LegBase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBase@2x.png"; sourceTree = "<group>"; };
+		D4D8FF3B1E03D17B0057145B /* LegBase@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegBase@3x.png"; sourceTree = "<group>"; };
+		D4D8FF3C1E03D17B0057145B /* LegBase.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LegBase.svg; sourceTree = "<group>"; };
+		D4D8FF411E03D1B90057145B /* Station Swap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station Swap.png"; sourceTree = "<group>"; };
+		D4D8FF421E03D1B90057145B /* Station Swap.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Station Swap.svg"; sourceTree = "<group>"; };
+		D4D8FF431E03D1B90057145B /* Station Swap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station Swap@2x.png"; sourceTree = "<group>"; };
+		D4D8FF441E03D1B90057145B /* Station Swap@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Station Swap@3x.png"; sourceTree = "<group>"; };
+		D4D8FF491E03D21B0057145B /* Favoutites.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Favoutites.png; sourceTree = "<group>"; };
+		D4D8FF4A1E03D21B0057145B /* Favoutites.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Favoutites.svg; sourceTree = "<group>"; };
+		D4D8FF4B1E03D21B0057145B /* Favoutites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favoutites@2x.png"; sourceTree = "<group>"; };
+		D4D8FF4C1E03D21B0057145B /* Favoutites@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favoutites@3x.png"; sourceTree = "<group>"; };
+		D4D8FF511E03D2F00057145B /* Slife App Icon Launch Screen.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Slife App Icon Launch Screen.svg"; sourceTree = "<group>"; };
+		D4D8FF521E03D2F00057145B /* Slife Launch Screen.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Slife Launch Screen.svg"; sourceTree = "<group>"; };
+		D4D8FF531E03D2F00057145B /* Slife Launch Screen@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife Launch Screen@3.png"; sourceTree = "<group>"; };
+		D4D8FF541E03D2F00057145B /* Slife Launch Screen@3x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife Launch Screen@3x1.png"; sourceTree = "<group>"; };
+		D4D8FF551E03D2F00057145B /* Slife-App-Icon-Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife-App-Icon-Launch-Screen.png"; sourceTree = "<group>"; };
+		D4D8FF561E03D2F00057145B /* Slife-App-Icon-Launch-Screen@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife-App-Icon-Launch-Screen@2.png"; sourceTree = "<group>"; };
+		D4D8FF571E03D2F00057145B /* Slife-App-Icon-Launch-Screen@3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife-App-Icon-Launch-Screen@3.png"; sourceTree = "<group>"; };
+		D4D8FF581E03D2F00057145B /* Slife-Launch-Screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife-Launch-Screen.png"; sourceTree = "<group>"; };
+		D4D8FF591E03D2F00057145B /* Slife-Launch-Screen@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slife-Launch-Screen@2.png"; sourceTree = "<group>"; };
+		D4D8FF631E03D3420057145B /* RadioButtonOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadioButtonOff.png; sourceTree = "<group>"; };
+		D4D8FF641E03D3420057145B /* RadioButtonOff.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RadioButtonOff.svg; sourceTree = "<group>"; };
+		D4D8FF651E03D3420057145B /* RadioButtonOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButtonOff@2x.png"; sourceTree = "<group>"; };
+		D4D8FF661E03D3420057145B /* RadioButtonOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButtonOff@3x.png"; sourceTree = "<group>"; };
+		D4D8FF671E03D3420057145B /* RadioButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RadioButtonOn.png; sourceTree = "<group>"; };
+		D4D8FF681E03D3420057145B /* RadioButtonOn.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RadioButtonOn.svg; sourceTree = "<group>"; };
+		D4D8FF691E03D3420057145B /* RadioButtonOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButtonOn@2x.png"; sourceTree = "<group>"; };
+		D4D8FF6A1E03D3420057145B /* RadioButtonOn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RadioButtonOn@3x.png"; sourceTree = "<group>"; };
+		D4D8FF7B1E03D4310057145B /* HomeTestLatest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HomeTestLatest.png; sourceTree = "<group>"; };
+		D4D8FF7C1E03D4310057145B /* HomeTestLatest.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HomeTestLatest.svg; sourceTree = "<group>"; };
+		D4D8FF7D1E03D4310057145B /* HomeTestLatest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomeTestLatest@2x.png"; sourceTree = "<group>"; };
+		D4D8FF7E1E03D4310057145B /* HomeTestLatest@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomeTestLatest@3x.png"; sourceTree = "<group>"; };
+		D4D8FF7F1E03D4310057145B /* RealTime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RealTime.png; sourceTree = "<group>"; };
+		D4D8FF801E03D4310057145B /* RealTime.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RealTime.svg; sourceTree = "<group>"; };
+		D4D8FF811E03D4310057145B /* RealTime@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RealTime@2x.png"; sourceTree = "<group>"; };
+		D4D8FF821E03D4310057145B /* RealTime@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RealTime@3x.png"; sourceTree = "<group>"; };
+		D4D8FF831E03D4310057145B /* RealTimeSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RealTimeSelected.png; sourceTree = "<group>"; };
+		D4D8FF841E03D4310057145B /* RealTimeSelected.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RealTimeSelected.svg; sourceTree = "<group>"; };
+		D4D8FF851E03D4310057145B /* RealTimeSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RealTimeSelected@2x.png"; sourceTree = "<group>"; };
+		D4D8FF861E03D4310057145B /* RealTimeSelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RealTimeSelected@3x.png"; sourceTree = "<group>"; };
+		D4D8FF871E03D4310057145B /* SearchTripsDefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchTripsDefault.png; sourceTree = "<group>"; };
+		D4D8FF881E03D4310057145B /* SearchTripsDefault.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SearchTripsDefault.svg; sourceTree = "<group>"; };
+		D4D8FF891E03D4310057145B /* SearchTripsDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SearchTripsDefault@2x.png"; sourceTree = "<group>"; };
+		D4D8FF8A1E03D4310057145B /* SearchTripsDefault@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SearchTripsDefault@3x.png"; sourceTree = "<group>"; };
+		D4D8FF8B1E03D4310057145B /* SearchTripsDefaultSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SearchTripsDefaultSelected.png; sourceTree = "<group>"; };
+		D4D8FF8C1E03D4310057145B /* SearchTripsDefaultSelected.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SearchTripsDefaultSelected.svg; sourceTree = "<group>"; };
+		D4D8FF8D1E03D4310057145B /* SearchTripsDefaultSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SearchTripsDefaultSelected@2x.png"; sourceTree = "<group>"; };
+		D4D8FF8E1E03D4310057145B /* SearchTripsDefaultSelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SearchTripsDefaultSelected@3x.png"; sourceTree = "<group>"; };
+		D4D8FF8F1E03D4310057145B /* TrafficStatus Selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficStatus Selected.png"; sourceTree = "<group>"; };
+		D4D8FF901E03D4310057145B /* TrafficStatus Selected.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "TrafficStatus Selected.svg"; sourceTree = "<group>"; };
+		D4D8FF911E03D4310057145B /* TrafficStatus Selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficStatus Selected@2x.png"; sourceTree = "<group>"; };
+		D4D8FF921E03D4310057145B /* TrafficStatus Selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficStatus Selected@3x.png"; sourceTree = "<group>"; };
+		D4D8FF931E03D4310057145B /* TrafficStatus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrafficStatus.png; sourceTree = "<group>"; };
+		D4D8FF941E03D4310057145B /* TrafficStatus.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TrafficStatus.svg; sourceTree = "<group>"; };
+		D4D8FF951E03D4310057145B /* TrafficStatus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficStatus@2x.png"; sourceTree = "<group>"; };
+		D4D8FF961E03D4310057145B /* TrafficStatus@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrafficStatus@3x.png"; sourceTree = "<group>"; };
+		D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionsTViewController.swift; sourceTree = "<group>"; };
+		D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSuggestionHeaderCells.swift; sourceTree = "<group>"; };
+		D4E7915D1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStopOriginCell.swift; sourceTree = "<group>"; };
+		D4E7915F1D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntermediateStopsDestinationCell.swift; sourceTree = "<group>"; };
+		D4EF1F981DDF0B4700BC25D2 /* nClock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nClock.png; sourceTree = "<group>"; };
+		D4EF1F991DDF0B4700BC25D2 /* nClock.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nClock.svg; sourceTree = "<group>"; };
+		D4EF1F9A1DDF0B4700BC25D2 /* nClock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nClock@2x.png"; sourceTree = "<group>"; };
+		D4EF1F9B1DDF0B4700BC25D2 /* nClock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nClock@3x.png"; sourceTree = "<group>"; };
+		D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mStationSeperator.png; sourceTree = "<group>"; };
+		D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mStationSeperator.svg; sourceTree = "<group>"; };
+		D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mStationSeperator@2x.png"; sourceTree = "<group>"; };
+		D4EF1FB31DDF0DFF00BC25D2 /* mStationSeperator@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mStationSeperator@3x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D46964ED1CB3F37C00C6CFE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D402943E1DA5228700E962C5 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46965031CB3F37D00C6CFE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D469650E1CB3F37D00C6CFE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D402291E1CDBBDFA00CD7E5F /* RealTimeResultHelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D468FC6B1CE51E65003E4249 /* RealTimeInfoDetailCells.swift */,
+				D402291F1CDBBE3200CD7E5F /* RealTimeCommonTransportModeInfo.swift */,
+				D468FC6D1CE52994003E4249 /* RealTimeResultMainHeaderCell.swift */,
+				D40229211CDBC3EB00CD7E5F /* Buses.swift */,
+				D468FC5D1CE3C95D003E4249 /* Trams.swift */,
+				D468FC651CE4BE62003E4249 /* Metros.swift */,
+				D468FC671CE4C238003E4249 /* Ships.swift */,
+				D468FC691CE4C8F2003E4249 /* StopPointDeviations.swift */,
+				D468FC5B1CE3C8DB003E4249 /* Trains.swift */,
+				D468FC631CE420EB003E4249 /* RealTidMethods.swift */,
+				D48A95291CE7577300D59306 /* Deviations.swift */,
+				D48A952B1CE7577F00D59306 /* StopInfo.swift */,
+			);
+			name = RealTimeResultHelperClasses;
+			sourceTree = "<group>";
+		};
+		D402943C1DA5228700E962C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D402943D1DA5228700E962C5 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D40421F71CC6B97000D916C7 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D4272F3A1CD903290040BC3D /* Station.swift */,
+				D42A024C1CCB2C8B00E4C540 /* SlifeMethods.swift */,
+				D431BD0A1DEF24A10036F1F3 /* CustomTripMethods.swift */,
+				D4426B7D1CC1FB1B00199A71 /* Travel.swift */,
+				D48827EC1CBBE108002A0A87 /* Trips.swift */,
+				D4426B751CC139D700199A71 /* Trip.swift */,
+				D4426B711CC1267400199A71 /* Address.swift */,
+				D4426B791CC1F77D00199A71 /* LegDetail.swift */,
+				D4426B731CC1396500199A71 /* Leg.swift */,
+				D40421F81CC7AAC400D916C7 /* LegWalk.swift */,
+				D40421FA1CC7AAD000D916C7 /* LegTravel.swift */,
+				D4426B771CC1E9F000199A71 /* LegInfo.swift */,
+				D4426B7B1CC1F9FC00199A71 /* Walk.swift */,
+			);
+			name = CustomClasses;
+			sourceTree = "<group>";
+		};
+		D421F92C1D522EBC00DA5EF3 /* FavouritesRecentTrips */ = {
+			isa = PBXGroup;
+			children = (
+				D43E07691D532F8300E32652 /* FavouriteHeading_Cell.swift */,
+				D43E076B1D532FC600E32652 /* RecentrTripsHeading_CellTableViewCell.swift */,
+				D421F9281D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift */,
+				D421F92D1D522F0900DA5EF3 /* RecentTrips_TableViewCell.swift */,
+				D421F92A1D522EA200DA5EF3 /* Favourites_TableViewCell.swift */,
+			);
+			name = FavouritesRecentTrips;
+			sourceTree = "<group>";
+		};
+		D42A025A1CCB6BA400E4C540 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D4D8FF7B1E03D4310057145B /* HomeTestLatest.png */,
+				D4D8FF7C1E03D4310057145B /* HomeTestLatest.svg */,
+				D4D8FF7D1E03D4310057145B /* HomeTestLatest@2x.png */,
+				D4D8FF7E1E03D4310057145B /* HomeTestLatest@3x.png */,
+				D4D8FF7F1E03D4310057145B /* RealTime.png */,
+				D4D8FF801E03D4310057145B /* RealTime.svg */,
+				D4D8FF811E03D4310057145B /* RealTime@2x.png */,
+				D4D8FF821E03D4310057145B /* RealTime@3x.png */,
+				D4D8FF831E03D4310057145B /* RealTimeSelected.png */,
+				D4D8FF841E03D4310057145B /* RealTimeSelected.svg */,
+				D4D8FF851E03D4310057145B /* RealTimeSelected@2x.png */,
+				D4D8FF861E03D4310057145B /* RealTimeSelected@3x.png */,
+				D4D8FF871E03D4310057145B /* SearchTripsDefault.png */,
+				D4D8FF881E03D4310057145B /* SearchTripsDefault.svg */,
+				D4D8FF891E03D4310057145B /* SearchTripsDefault@2x.png */,
+				D4D8FF8A1E03D4310057145B /* SearchTripsDefault@3x.png */,
+				D4D8FF8B1E03D4310057145B /* SearchTripsDefaultSelected.png */,
+				D4D8FF8C1E03D4310057145B /* SearchTripsDefaultSelected.svg */,
+				D4D8FF8D1E03D4310057145B /* SearchTripsDefaultSelected@2x.png */,
+				D4D8FF8E1E03D4310057145B /* SearchTripsDefaultSelected@3x.png */,
+				D4D8FF8F1E03D4310057145B /* TrafficStatus Selected.png */,
+				D4D8FF901E03D4310057145B /* TrafficStatus Selected.svg */,
+				D4D8FF911E03D4310057145B /* TrafficStatus Selected@2x.png */,
+				D4D8FF921E03D4310057145B /* TrafficStatus Selected@3x.png */,
+				D4D8FF931E03D4310057145B /* TrafficStatus.png */,
+				D4D8FF941E03D4310057145B /* TrafficStatus.svg */,
+				D4D8FF951E03D4310057145B /* TrafficStatus@2x.png */,
+				D4D8FF961E03D4310057145B /* TrafficStatus@3x.png */,
+				D4D8FF631E03D3420057145B /* RadioButtonOff.png */,
+				D4D8FF641E03D3420057145B /* RadioButtonOff.svg */,
+				D4D8FF651E03D3420057145B /* RadioButtonOff@2x.png */,
+				D4D8FF661E03D3420057145B /* RadioButtonOff@3x.png */,
+				D4D8FF671E03D3420057145B /* RadioButtonOn.png */,
+				D4D8FF681E03D3420057145B /* RadioButtonOn.svg */,
+				D4D8FF691E03D3420057145B /* RadioButtonOn@2x.png */,
+				D4D8FF6A1E03D3420057145B /* RadioButtonOn@3x.png */,
+				D4D8FF511E03D2F00057145B /* Slife App Icon Launch Screen.svg */,
+				D4D8FF521E03D2F00057145B /* Slife Launch Screen.svg */,
+				D4D8FF531E03D2F00057145B /* Slife Launch Screen@3.png */,
+				D4D8FF541E03D2F00057145B /* Slife Launch Screen@3x1.png */,
+				D4D8FF551E03D2F00057145B /* Slife-App-Icon-Launch-Screen.png */,
+				D4D8FF561E03D2F00057145B /* Slife-App-Icon-Launch-Screen@2.png */,
+				D4D8FF571E03D2F00057145B /* Slife-App-Icon-Launch-Screen@3.png */,
+				D4D8FF581E03D2F00057145B /* Slife-Launch-Screen.png */,
+				D4D8FF591E03D2F00057145B /* Slife-Launch-Screen@2.png */,
+				D4D8FF491E03D21B0057145B /* Favoutites.png */,
+				D4D8FF4A1E03D21B0057145B /* Favoutites.svg */,
+				D4D8FF4B1E03D21B0057145B /* Favoutites@2x.png */,
+				D4D8FF4C1E03D21B0057145B /* Favoutites@3x.png */,
+				D4D8FF411E03D1B90057145B /* Station Swap.png */,
+				D4D8FF421E03D1B90057145B /* Station Swap.svg */,
+				D4D8FF431E03D1B90057145B /* Station Swap@2x.png */,
+				D4D8FF441E03D1B90057145B /* Station Swap@3x.png */,
+				D4D8FF391E03D17B0057145B /* LegBase.png */,
+				D4D8FF3A1E03D17B0057145B /* LegBase@2x.png */,
+				D4D8FF3B1E03D17B0057145B /* LegBase@3x.png */,
+				D4D8FF3C1E03D17B0057145B /* LegBase.svg */,
+				D47A6C3C1E00855800972FA0 /* firstLeg.png */,
+				D47A6C3D1E00855800972FA0 /* firstLeg.svg */,
+				D47A6C3E1E00855800972FA0 /* firstLeg@2x.png */,
+				D47A6C3F1E00855800972FA0 /* firstLeg@3x.png */,
+				D47A6C401E00855800972FA0 /* lastLeg.png */,
+				D47A6C411E00855800972FA0 /* lastLeg.svg */,
+				D47A6C421E00855800972FA0 /* lastLeg@2x.png */,
+				D47A6C431E00855800972FA0 /* lastLeg@3x.png */,
+				D47A6C441E00855800972FA0 /* middleLeg.png */,
+				D47A6C451E00855800972FA0 /* middleLeg.svg */,
+				D47A6C461E00855800972FA0 /* middleLeg@2x.png */,
+				D47A6C471E00855800972FA0 /* middleLeg@3x.png */,
+				D47A6C481E00855800972FA0 /* onlyLeg.png */,
+				D47A6C491E00855800972FA0 /* onlyLeg.svg */,
+				D47A6C4A1E00855800972FA0 /* onlyLeg@2x.png */,
+				D47A6C4B1E00855800972FA0 /* onlyLeg@3x.png */,
+				D4888A331DF80AE30024EBAD /* Map.png */,
+				D4888A341DF80AE30024EBAD /* Map.svg */,
+				D4888A351DF80AE30024EBAD /* Map@2x.png */,
+				D4888A361DF80AE30024EBAD /* Map@3x.png */,
+				D4959F681DF0B4A2009A9B51 /* TripInfoDepartures.png */,
+				D4959F691DF0B4A2009A9B51 /* TripInfoDepartures.svg */,
+				D4959F6A1DF0B4A2009A9B51 /* TripInfoDepartures@2x.png */,
+				D4959F6B1DF0B4A2009A9B51 /* TripInfoDepartures@3x.png */,
+				D4959F6C1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png */,
+				D4959F6D1DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg */,
+				D4959F6E1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png */,
+				D4959F6F1DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png */,
+				D4B486FC1DEE0832008FB436 /* LegBorderStart.png */,
+				D4B486FD1DEE0832008FB436 /* LegBorderStart.svg */,
+				D4B486FE1DEE0832008FB436 /* LegBorderStart@2x.png */,
+				D4B486FF1DEE0832008FB436 /* LegBorderStart@3x.png */,
+				D4B487001DEE0832008FB436 /* LegBorderStop.png */,
+				D4B487011DEE0832008FB436 /* LegBorderStop.svg */,
+				D4B487021DEE0832008FB436 /* LegBorderStop@2x.png */,
+				D4B487031DEE0832008FB436 /* LegBorderStop@3x.png */,
+				D4EF1FB01DDF0DFF00BC25D2 /* mStationSeperator.png */,
+				D4EF1FB11DDF0DFF00BC25D2 /* mStationSeperator.svg */,
+				D4EF1FB21DDF0DFF00BC25D2 /* mStationSeperator@2x.png */,
+				D4EF1FB31DDF0DFF00BC25D2 /* mStationSeperator@3x.png */,
+				D4EF1F981DDF0B4700BC25D2 /* nClock.png */,
+				D4EF1F991DDF0B4700BC25D2 /* nClock.svg */,
+				D4EF1F9A1DDF0B4700BC25D2 /* nClock@2x.png */,
+				D4EF1F9B1DDF0B4700BC25D2 /* nClock@3x.png */,
+				D40ADCA31DDDAC0300AA383B /* Plus_Close.png */,
+				D40ADCA41DDDAC0300AA383B /* Plus_Close.svg */,
+				D40ADCA51DDDAC0300AA383B /* Plus_Close@2x.png */,
+				D40ADCA61DDDAC0300AA383B /* Plus_Close@3x.png */,
+				D40ADCA71DDDAC0300AA383B /* Plus_options.png */,
+				D40ADCA81DDDAC0300AA383B /* Plus_options.svg */,
+				D40ADCA91DDDAC0300AA383B /* Plus_options@2x.png */,
+				D40ADCAA1DDDAC0300AA383B /* Plus_options@3x.png */,
+				D40ADC9B1DDDA1C300AA383B /* WALK.png */,
+				D40ADC9C1DDDA1C400AA383B /* WALK.svg */,
+				D40ADC9D1DDDA1C400AA383B /* WALK@2x.png */,
+				D40ADC9E1DDDA1C400AA383B /* WALK@3x.png */,
+				D45D340E1DB7755A00B7742E /* TabBarIcons */,
+				D46E7F331DAC03B200C59C9B /* LabelBackground.png */,
+				D46E7F341DAC03B200C59C9B /* LabelBackground.svg */,
+				D46E7F351DAC03B200C59C9B /* LabelBackground@2x.png */,
+				D46E7F361DAC03B200C59C9B /* LabelBackground@3x.png */,
+				D46E7F2B1DABE67A00C59C9B /* Buttons.png */,
+				D46E7F2C1DABE67A00C59C9B /* Buttons.svg */,
+				D46E7F2D1DABE67A00C59C9B /* Buttons@2x.png */,
+				D46E7F2E1DABE67A00C59C9B /* Buttons@3x.png */,
+				D48FAAB21D65D38B00BEA95A /* stopsCircle.svg */,
+				D48FAAB31D65D38B00BEA95A /* stopsCircle.png */,
+				D48FAAB41D65D38B00BEA95A /* stopsCircle@2x.png */,
+				D48FAAB51D65D38B00BEA95A /* stopsCircle@3x.png */,
+				D48306371D4A547300FA42A3 /* EventDefault.png */,
+				D48306381D4A547300FA42A3 /* EventDefault.svg */,
+				D48306391D4A547300FA42A3 /* EventDefault@2x.png */,
+				D483063A1D4A547300FA42A3 /* EventDefault@3x.png */,
+				D483063B1D4A547300FA42A3 /* EventGood.png */,
+				D483063C1D4A547300FA42A3 /* EventGood.svg */,
+				D483063D1D4A547300FA42A3 /* EventGood@2x.png */,
+				D483063E1D4A547300FA42A3 /* EventGood@3x.png */,
+				D483063F1D4A547300FA42A3 /* EventMinor.png */,
+				D48306401D4A547300FA42A3 /* EventMinor.svg */,
+				D48306411D4A547300FA42A3 /* EventMinor@2x.png */,
+				D48306421D4A547300FA42A3 /* EventMinor@3x.png */,
+				D48306431D4A547300FA42A3 /* EventPlanned.png */,
+				D48306441D4A547300FA42A3 /* EventPlanned.svg */,
+				D48306451D4A547300FA42A3 /* EventPlanned@2x.png */,
+				D48306461D4A547300FA42A3 /* EventPlanned@3x.png */,
+				D483062D1D477B1400FA42A3 /* ShowMap.png */,
+				D483062E1D477B1400FA42A3 /* ShowMap.svg */,
+				D483062F1D477B1400FA42A3 /* ShowMap@2x.png */,
+				D48306301D477B1400FA42A3 /* ShowMap@3x.png */,
+				D4ADAAF01D3FFA050035B5D5 /* SHIP.png */,
+				D4ADAAF11D3FFA050035B5D5 /* SHIP.svg */,
+				D4ADAAF21D3FFA050035B5D5 /* SHIP@2x.png */,
+				D4ADAAF31D3FFA050035B5D5 /* SHIP@3x.png */,
+				D4ADAAE01D3FF39E0035B5D5 /* TRAM.png */,
+				D4ADAAE11D3FF39E0035B5D5 /* TRAM.svg */,
+				D4ADAAE21D3FF39E0035B5D5 /* TRAM@2x.png */,
+				D4ADAAE31D3FF39E0035B5D5 /* TRAM@3x.png */,
+				D43962E11D3F824A00C80F57 /* TRAIN.png */,
+				D43962E21D3F824A00C80F57 /* TRAIN@2x.png */,
+				D43962E31D3F824A00C80F57 /* TRAIN@3x.png */,
+				D43962E41D3F824A00C80F57 /* TRAIN.svg */,
+				D4679FD61D3E5EBA00E477D6 /* METRO.png */,
+				D4679FD71D3E5EBA00E477D6 /* METRO.svg */,
+				D4679FD81D3E5EBA00E477D6 /* METRO@2x.png */,
+				D4679FD91D3E5EBA00E477D6 /* METRO@3x.png */,
+				D4679FCE1D3E271F00E477D6 /* BUS.png */,
+				D4679FCF1D3E271F00E477D6 /* BUS.svg */,
+				D4679FD01D3E271F00E477D6 /* BUS@2x.png */,
+				D4679FD11D3E271F00E477D6 /* BUS@3x.png */,
+				D46CD98C1CF8B71D00B91DC8 /* BUS1.png */,
+				D46CD9941CF8B7AA00B91DC8 /* Default.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		D45D340E1DB7755A00B7742E /* TabBarIcons */ = {
+			isa = PBXGroup;
+			children = (
+				D45D34251DB7B6AC00B7742E /* ContactUs.png */,
+				D45D34261DB7B6AC00B7742E /* ContactUsSelected.png */,
+				D45D34211DB7AB4700B7742E /* RealTime.png */,
+				D45D34221DB7AB4700B7742E /* RealTimeSelected.png */,
+				D45D341F1DB79D3F00B7742E /* TrafficStatus.png */,
+				D45D341D1DB79D2300B7742E /* TrafficStatus Selected.png */,
+				D45D341B1DB77B5D00B7742E /* SearchTripsDefaultSelected.png */,
+				D45D34191DB7792600B7742E /* SearchTripsDefault.png */,
+			);
+			name = TabBarIcons;
+			sourceTree = "<group>";
+		};
+		D46964E71CB3F37C00C6CFE1 = {
+			isa = PBXGroup;
+			children = (
+				D40061011DFAA95E00B4CEE2 /* TripInfoDepartures.swift */,
+				D46964F21CB3F37C00C6CFE1 /* SLife */,
+				D46965091CB3F37D00C6CFE1 /* SLifeTests */,
+				D46965141CB3F37D00C6CFE1 /* SLifeUITests */,
+				D46964F11CB3F37C00C6CFE1 /* Products */,
+				D402943C1DA5228700E962C5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D46964F11CB3F37C00C6CFE1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D46964F01CB3F37C00C6CFE1 /* SLife.app */,
+				D46965061CB3F37D00C6CFE1 /* SLifeTests.xctest */,
+				D46965111CB3F37D00C6CFE1 /* SLifeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D46964F21CB3F37C00C6CFE1 /* SLife */ = {
+			isa = PBXGroup;
+			children = (
+				D4990F711D75C617003CCB0B /* Main.storyboard */,
+				D4D243111DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift */,
+				D476FF7F1DCB4303007EE613 /* CustomTextFieldClass.swift */,
+				D40D446F1DB61EDB006BD413 /* ContactUsViewController.swift */,
+				D4A411AD1D5F958C002CCBF7 /* Map */,
+				D421F92C1D522EBC00DA5EF3 /* FavouritesRecentTrips */,
+				D46E2EAB1D12D54300F091F1 /* IntermediateStops */,
+				D44CED741D0C756C007E2FC7 /* DatePickerViewController.swift */,
+				D4AC55481CFE025D0043D21E /* SearchTripsTableViewController.swift */,
+				D46E2EA71D11960400F091F1 /* IntermediateStopsViewController.swift */,
+				D46E2EA91D11962F00F091F1 /* IntermediateStopsCell.swift */,
+				D48A952D1CEA397100D59306 /* TrafficStatus */,
+				D402291E1CDBBDFA00CD7E5F /* RealTimeResultHelperClasses */,
+				D4558E571CB553E10050DB75 /* SearchTripController.swift */,
+				D461D0A01CD3A56900D3ACAB /* SearchFrom_To_Controller.swift */,
+				D46964F31CB3F37C00C6CFE1 /* AppDelegate.swift */,
+				D48957451D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift */,
+				D4BA57ED1D22A05C00A91975 /* TripMapViewController.swift */,
+				D40B3B321D158747004AF71C /* MapTripViewControllers.swift */,
+				D4AC55521D00C72C0043D21E /* TransportationChangesVController.swift */,
+				D4AC55501D00A6B10043D21E /* TransportChangesVController.swift */,
+				D4AC554E1D00A19C0043D21E /* WalkAwayVController.swift */,
+				D4AC554C1D005BE70043D21E /* LineChoicesVController.swift */,
+				D401B6701CB417150018465C /* tripSuggestions.swift */,
+				D46964F71CB3F37C00C6CFE1 /* SecondViewController.swift */,
+				D4558E4F1CB5301E0050DB75 /* WebServiceHandler.swift */,
+				D4426B6D1CC0C58200199A71 /* ParseJson.swift */,
+				D4272F3E1CDA1B260040BC3D /* RealTimeResult_ViewController.swift */,
+				D4272F3C1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift */,
+				D4CB863B1CCEAD8500AE2665 /* HeaderCells.swift */,
+				D4DCCAD11CCEA92A0075117C /* TripSuggestionHeaderCells.swift */,
+				D492907B1CCE568A0029B846 /* TripSuggestionsHeaderView.xib */,
+				D48827EA1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift */,
+				D4C9B4891CBEA16000978546 /* TripSuggestionsTVC_new.swift */,
+				D4DCCACF1CCEA49B0075117C /* TripSuggestionsTViewController.swift */,
+				D4C9B48B1CBEAA9100978546 /* TripStocks.swift */,
+				D4B24B5B1CCE7060009F183F /* TripSuggestionHeaderCell.swift */,
+				D40421F71CC6B97000D916C7 /* CustomClasses */,
+				D48827E21CBBCF35002A0A87 /* TripSuggestionsCell.swift */,
+				D46964FC1CB3F37C00C6CFE1 /* Assets.xcassets */,
+				D42A025A1CCB6BA400E4C540 /* images */,
+				D4426B6F1CC0D4F900199A71 /* TripSuggestionCells_new.swift */,
+				D40C29771DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift */,
+				D4CB863D1CCFD70900AE2665 /* LegListCells.swift */,
+				D46964FE1CB3F37C00C6CFE1 /* LaunchScreen.storyboard */,
+				D46965011CB3F37C00C6CFE1 /* Info.plist */,
+				D4AC554A1CFEF2850043D21E /* TransportModesViewController.swift */,
+				D48957411D099AE600055D1D /* Buttons.swift */,
+				D48957471D09F74300055D1D /* HelpingMethods.swift */,
+			);
+			path = SLife;
+			sourceTree = "<group>";
+		};
+		D46965091CB3F37D00C6CFE1 /* SLifeTests */ = {
+			isa = PBXGroup;
+			children = (
+				D469650A1CB3F37D00C6CFE1 /* SLifeTests.swift */,
+				D469650C1CB3F37D00C6CFE1 /* Info.plist */,
+			);
+			path = SLifeTests;
+			sourceTree = "<group>";
+		};
+		D46965141CB3F37D00C6CFE1 /* SLifeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D46965151CB3F37D00C6CFE1 /* SLifeUITests.swift */,
+				D46965171CB3F37D00C6CFE1 /* Info.plist */,
+			);
+			path = SLifeUITests;
+			sourceTree = "<group>";
+		};
+		D46E2EAB1D12D54300F091F1 /* IntermediateStops */ = {
+			isa = PBXGroup;
+			children = (
+				D407CE0E1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift */,
+				D4E7915D1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift */,
+				D4E7915F1D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift */,
+				D46E2EAC1D12D56500F091F1 /* Directions.swift */,
+				D46E2EAE1D12D58300F091F1 /* Lines.swift */,
+				D46E2EB01D12D5C500F091F1 /* Stops.swift */,
+				D46E2EB21D12DACE00F091F1 /* IntermediateStops.swift */,
+			);
+			name = IntermediateStops;
+			sourceTree = "<group>";
+		};
+		D48A952D1CEA397100D59306 /* TrafficStatus */ = {
+			isa = PBXGroup;
+			children = (
+				D48306571D4B922800FA42A3 /* TrafficStatusCell.swift */,
+				D48A95361CEA465300D59306 /* TrafficStatusViewController.swift */,
+				D48306351D4A2E9800FA42A3 /* TrafficStatusCentralProcessor.swift */,
+				D42083C01CEB14DA00042E7D /* TrafficStatusMethods.swift */,
+				D48A95381CEA479D00D59306 /* TrafficTypeCell.swift */,
+				D48A953A1CEA48B300D59306 /* TrafficEventCell.swift */,
+				D48A952E1CEA39C600D59306 /* TrafficType.swift */,
+				D48A95301CEA39DB00D59306 /* TrafficEvent.swift */,
+				D48A95321CEA39FA00D59306 /* LineNumbers.swift */,
+			);
+			name = TrafficStatus;
+			sourceTree = "<group>";
+		};
+		D4A411AD1D5F958C002CCBF7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D4A411AE1D5F95AF002CCBF7 /* StationsLocation.swift */,
+				D4A411B01D5F96AE002CCBF7 /* StationsLocationList.swift */,
+				D4A411B21D61FC5E002CCBF7 /* CustomCalloutView.swift */,
+				D4A411B41D61FCE6002CCBF7 /* CustomCalloutView.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D46964EF1CB3F37C00C6CFE1 /* SLife */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D469651A1CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLife" */;
+			buildPhases = (
+				D46964EC1CB3F37C00C6CFE1 /* Sources */,
+				D46964ED1CB3F37C00C6CFE1 /* Frameworks */,
+				D46964EE1CB3F37C00C6CFE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SLife;
+			productName = SLife;
+			productReference = D46964F01CB3F37C00C6CFE1 /* SLife.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D46965051CB3F37D00C6CFE1 /* SLifeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D469651D1CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLifeTests" */;
+			buildPhases = (
+				D46965021CB3F37D00C6CFE1 /* Sources */,
+				D46965031CB3F37D00C6CFE1 /* Frameworks */,
+				D46965041CB3F37D00C6CFE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D46965081CB3F37D00C6CFE1 /* PBXTargetDependency */,
+			);
+			name = SLifeTests;
+			productName = SLifeTests;
+			productReference = D46965061CB3F37D00C6CFE1 /* SLifeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D46965101CB3F37D00C6CFE1 /* SLifeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D46965201CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLifeUITests" */;
+			buildPhases = (
+				D469650D1CB3F37D00C6CFE1 /* Sources */,
+				D469650E1CB3F37D00C6CFE1 /* Frameworks */,
+				D469650F1CB3F37D00C6CFE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D46965131CB3F37D00C6CFE1 /* PBXTargetDependency */,
+			);
+			name = SLifeUITests;
+			productName = SLifeUITests;
+			productReference = D46965111CB3F37D00C6CFE1 /* SLifeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D46964E81CB3F37C00C6CFE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Be My Competence AB";
+				TargetAttributes = {
+					D46964EF1CB3F37C00C6CFE1 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = ZA74DZ693N;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+					D46965051CB3F37D00C6CFE1 = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
+						TestTargetID = D46964EF1CB3F37C00C6CFE1;
+					};
+					D46965101CB3F37D00C6CFE1 = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
+						TestTargetID = D46964EF1CB3F37C00C6CFE1;
+					};
+				};
+			};
+			buildConfigurationList = D46964EB1CB3F37C00C6CFE1 /* Build configuration list for PBXProject "SLife" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D46964E71CB3F37C00C6CFE1;
+			productRefGroup = D46964F11CB3F37C00C6CFE1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D46964EF1CB3F37C00C6CFE1 /* SLife */,
+				D46965051CB3F37D00C6CFE1 /* SLifeTests */,
+				D46965101CB3F37D00C6CFE1 /* SLifeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D46964EE1CB3F37C00C6CFE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B487081DEE0832008FB436 /* LegBorderStop.png in Resources */,
+				D4D8FFB91E03D4310057145B /* TrafficStatus@2x.png in Resources */,
+				D4990F721D75C617003CCB0B /* Main.storyboard in Resources */,
+				D4D8FFAB1E03D4310057145B /* SearchTripsDefault.png in Resources */,
+				D40ADCAF1DDDAC0300AA383B /* Plus_options.png in Resources */,
+				D4959F741DF0B4A2009A9B51 /* TripInfoDeparturesSelected.png in Resources */,
+				D4888A381DF80AE30024EBAD /* Map.svg in Resources */,
+				D4D8FFB01E03D4310057145B /* SearchTripsDefaultSelected.svg in Resources */,
+				D48306321D477B1400FA42A3 /* ShowMap.svg in Resources */,
+				D4B487071DEE0832008FB436 /* LegBorderStart@3x.png in Resources */,
+				D40ADCAC1DDDAC0300AA383B /* Plus_Close.svg in Resources */,
+				D4679FD21D3E271F00E477D6 /* BUS.png in Resources */,
+				D46CD98E1CF8B71D00B91DC8 /* BUS1.png in Resources */,
+				D45D34201DB79D3F00B7742E /* TrafficStatus.png in Resources */,
+				D40ADCA21DDDA1C400AA383B /* WALK@3x.png in Resources */,
+				D47A6C561E00855800972FA0 /* middleLeg@2x.png in Resources */,
+				D4D8FF5D1E03D2F00057145B /* Slife Launch Screen@3x1.png in Resources */,
+				D4D8FF501E03D21B0057145B /* Favoutites@3x.png in Resources */,
+				D47A6C4C1E00855800972FA0 /* firstLeg.png in Resources */,
+				D4EF1FB41DDF0DFF00BC25D2 /* mStationSeperator.png in Resources */,
+				D483064E1D4A547300FA42A3 /* EventGood@3x.png in Resources */,
+				D4679FDD1D3E5EBA00E477D6 /* METRO@3x.png in Resources */,
+				D4ADAAE71D3FF39E0035B5D5 /* TRAM@3x.png in Resources */,
+				D4D8FFA71E03D4310057145B /* RealTimeSelected.png in Resources */,
+				D4EF1FA11DDF0B4700BC25D2 /* nClock.svg in Resources */,
+				D4D8FF4E1E03D21B0057145B /* Favoutites.svg in Resources */,
+				D4959F731DF0B4A2009A9B51 /* TripInfoDepartures@3x.png in Resources */,
+				D45D341C1DB77B5D00B7742E /* SearchTripsDefaultSelected.png in Resources */,
+				D4D8FFBA1E03D4310057145B /* TrafficStatus@3x.png in Resources */,
+				D4888A391DF80AE30024EBAD /* Map@2x.png in Resources */,
+				D4EF1FA21DDF0B4700BC25D2 /* nClock@2x.png in Resources */,
+				D48306341D477B1400FA42A3 /* ShowMap@3x.png in Resources */,
+				D4ADAAE61D3FF39E0035B5D5 /* TRAM@2x.png in Resources */,
+				D48306511D4A547300FA42A3 /* EventMinor@2x.png in Resources */,
+				D40ADCAB1DDDAC0300AA383B /* Plus_Close.png in Resources */,
+				D483064A1D4A547300FA42A3 /* EventDefault@3x.png in Resources */,
+				D46E7F391DAC03B200C59C9B /* LabelBackground@2x.png in Resources */,
+				D4EF1FB71DDF0DFF00BC25D2 /* mStationSeperator@3x.png in Resources */,
+				D4ADAAF41D3FFA050035B5D5 /* SHIP.png in Resources */,
+				D45D34271DB7B6AC00B7742E /* ContactUs.png in Resources */,
+				D48FAAB61D65D38B00BEA95A /* stopsCircle.svg in Resources */,
+				D4D8FF451E03D1B90057145B /* Station Swap.png in Resources */,
+				D47A6C531E00855800972FA0 /* lastLeg@3x.png in Resources */,
+				D40ADCA11DDDA1C400AA383B /* WALK@2x.png in Resources */,
+				D46E7F381DAC03B200C59C9B /* LabelBackground.svg in Resources */,
+				D48FAAB71D65D38B00BEA95A /* stopsCircle.png in Resources */,
+				D47A6C4E1E00855800972FA0 /* firstLeg@2x.png in Resources */,
+				D48306311D477B1400FA42A3 /* ShowMap.png in Resources */,
+				D4D8FFAA1E03D4310057145B /* RealTimeSelected@3x.png in Resources */,
+				D48306531D4A547300FA42A3 /* EventPlanned.png in Resources */,
+				D4D8FF401E03D17B0057145B /* LegBase.svg in Resources */,
+				D4D8FF3D1E03D17B0057145B /* LegBase.png in Resources */,
+				D4D8FF5F1E03D2F00057145B /* Slife-App-Icon-Launch-Screen@2.png in Resources */,
+				D4A411B51D61FCE6002CCBF7 /* CustomCalloutView.xib in Resources */,
+				D43962E51D3F824A00C80F57 /* TRAIN.png in Resources */,
+				D4D8FF6E1E03D3420057145B /* RadioButtonOff@3x.png in Resources */,
+				D47A6C581E00855800972FA0 /* onlyLeg.png in Resources */,
+				D40ADC9F1DDDA1C400AA383B /* WALK.png in Resources */,
+				D4888A3A1DF80AE30024EBAD /* Map@3x.png in Resources */,
+				D483064C1D4A547300FA42A3 /* EventGood.svg in Resources */,
+				D46E7F371DAC03B200C59C9B /* LabelBackground.png in Resources */,
+				D4D8FF5B1E03D2F00057145B /* Slife Launch Screen.svg in Resources */,
+				D40ADCB01DDDAC0300AA383B /* Plus_options.svg in Resources */,
+				D48306541D4A547300FA42A3 /* EventPlanned.svg in Resources */,
+				D45D34281DB7B6AC00B7742E /* ContactUsSelected.png in Resources */,
+				D4ADAAF51D3FFA050035B5D5 /* SHIP.svg in Resources */,
+				D46E7F321DABE67A00C59C9B /* Buttons@3x.png in Resources */,
+				D47A6C5B1E00855800972FA0 /* onlyLeg@3x.png in Resources */,
+				D4ADAAF61D3FFA050035B5D5 /* SHIP@2x.png in Resources */,
+				D4D8FF621E03D2F00057145B /* Slife-Launch-Screen@2.png in Resources */,
+				D4679FD41D3E271F00E477D6 /* BUS@2x.png in Resources */,
+				D48306331D477B1400FA42A3 /* ShowMap@2x.png in Resources */,
+				D4679FD31D3E271F00E477D6 /* BUS.svg in Resources */,
+				D4679FDB1D3E5EBA00E477D6 /* METRO.svg in Resources */,
+				D4D8FF9F1E03D4310057145B /* HomeTestLatest.png in Resources */,
+				D4888A371DF80AE30024EBAD /* Map.png in Resources */,
+				D4EF1FB61DDF0DFF00BC25D2 /* mStationSeperator@2x.png in Resources */,
+				D4D8FFB61E03D4310057145B /* TrafficStatus Selected@3x.png in Resources */,
+				D4959F771DF0B4A2009A9B51 /* TripInfoDeparturesSelected@3x.png in Resources */,
+				D4ADAAE41D3FF39E0035B5D5 /* TRAM.png in Resources */,
+				D4D8FFA21E03D4310057145B /* HomeTestLatest@3x.png in Resources */,
+				D483064D1D4A547300FA42A3 /* EventGood@2x.png in Resources */,
+				D40ADCB21DDDAC0300AA383B /* Plus_options@3x.png in Resources */,
+				D43962E81D3F824A00C80F57 /* TRAIN.svg in Resources */,
+				D48306521D4A547300FA42A3 /* EventMinor@3x.png in Resources */,
+				D45D341E1DB79D2300B7742E /* TrafficStatus Selected.png in Resources */,
+				D4EF1FA01DDF0B4700BC25D2 /* nClock.png in Resources */,
+				D47A6C521E00855800972FA0 /* lastLeg@2x.png in Resources */,
+				D4D8FF3E1E03D17B0057145B /* LegBase@2x.png in Resources */,
+				D45D341A1DB7792600B7742E /* SearchTripsDefault.png in Resources */,
+				D4D8FFA91E03D4310057145B /* RealTimeSelected@2x.png in Resources */,
+				D40ADCA01DDDA1C400AA383B /* WALK.svg in Resources */,
+				D46965001CB3F37C00C6CFE1 /* LaunchScreen.storyboard in Resources */,
+				D4D8FF461E03D1B90057145B /* Station Swap.svg in Resources */,
+				D4679FD51D3E271F00E477D6 /* BUS@3x.png in Resources */,
+				D45D34231DB7AB4700B7742E /* RealTime.png in Resources */,
+				D4D8FF721E03D3420057145B /* RadioButtonOn@3x.png in Resources */,
+				D48306481D4A547300FA42A3 /* EventDefault.svg in Resources */,
+				D4D8FF6F1E03D3420057145B /* RadioButtonOn.png in Resources */,
+				D46CD9961CF8B7AA00B91DC8 /* Default.png in Resources */,
+				D47A6C5A1E00855800972FA0 /* onlyLeg@2x.png in Resources */,
+				D4D8FFA81E03D4310057145B /* RealTimeSelected.svg in Resources */,
+				D48FAAB81D65D38B00BEA95A /* stopsCircle@2x.png in Resources */,
+				D47A6C591E00855800972FA0 /* onlyLeg.svg in Resources */,
+				D4679FDC1D3E5EBA00E477D6 /* METRO@2x.png in Resources */,
+				D4D8FF4D1E03D21B0057145B /* Favoutites.png in Resources */,
+				D4D8FFB21E03D4310057145B /* SearchTripsDefaultSelected@3x.png in Resources */,
+				D4B487051DEE0832008FB436 /* LegBorderStart.svg in Resources */,
+				D48306551D4A547300FA42A3 /* EventPlanned@2x.png in Resources */,
+				D47A6C501E00855800972FA0 /* lastLeg.png in Resources */,
+				D47A6C551E00855800972FA0 /* middleLeg.svg in Resources */,
+				D4D8FFA41E03D4310057145B /* RealTime.svg in Resources */,
+				D4D8FF611E03D2F00057145B /* Slife-Launch-Screen.png in Resources */,
+				D4B4870B1DEE0832008FB436 /* LegBorderStop@3x.png in Resources */,
+				D48306501D4A547300FA42A3 /* EventMinor.svg in Resources */,
+				D4D8FF701E03D3420057145B /* RadioButtonOn.svg in Resources */,
+				D4959F751DF0B4A2009A9B51 /* TripInfoDeparturesSelected.svg in Resources */,
+				D47A6C571E00855800972FA0 /* middleLeg@3x.png in Resources */,
+				D4D8FF6D1E03D3420057145B /* RadioButtonOff@2x.png in Resources */,
+				D4D8FFB41E03D4310057145B /* TrafficStatus Selected.svg in Resources */,
+				D47A6C4F1E00855800972FA0 /* firstLeg@3x.png in Resources */,
+				D4D8FF5A1E03D2F00057145B /* Slife App Icon Launch Screen.svg in Resources */,
+				D40ADCB11DDDAC0300AA383B /* Plus_options@2x.png in Resources */,
+				D4959F701DF0B4A2009A9B51 /* TripInfoDepartures.png in Resources */,
+				D43962E71D3F824A00C80F57 /* TRAIN@3x.png in Resources */,
+				D46E7F311DABE67A00C59C9B /* Buttons@2x.png in Resources */,
+				D48306491D4A547300FA42A3 /* EventDefault@2x.png in Resources */,
+				D4D8FF6C1E03D3420057145B /* RadioButtonOff.svg in Resources */,
+				D46964FD1CB3F37C00C6CFE1 /* Assets.xcassets in Resources */,
+				D4D8FF601E03D2F00057145B /* Slife-App-Icon-Launch-Screen@3.png in Resources */,
+				D4D8FFB71E03D4310057145B /* TrafficStatus.png in Resources */,
+				D4959F721DF0B4A2009A9B51 /* TripInfoDepartures@2x.png in Resources */,
+				D4B487061DEE0832008FB436 /* LegBorderStart@2x.png in Resources */,
+				D483064F1D4A547300FA42A3 /* EventMinor.png in Resources */,
+				D4B487091DEE0832008FB436 /* LegBorderStop.svg in Resources */,
+				D48306561D4A547300FA42A3 /* EventPlanned@3x.png in Resources */,
+				D4D8FF481E03D1B90057145B /* Station Swap@3x.png in Resources */,
+				D45D34241DB7AB4700B7742E /* RealTimeSelected.png in Resources */,
+				D4D8FFAF1E03D4310057145B /* SearchTripsDefaultSelected.png in Resources */,
+				D48306471D4A547300FA42A3 /* EventDefault.png in Resources */,
+				D492907C1CCE568A0029B846 /* TripSuggestionsHeaderView.xib in Resources */,
+				D4D8FFB81E03D4310057145B /* TrafficStatus.svg in Resources */,
+				D4D8FFA31E03D4310057145B /* RealTime.png in Resources */,
+				D4D8FF5E1E03D2F00057145B /* Slife-App-Icon-Launch-Screen.png in Resources */,
+				D48FAAB91D65D38B00BEA95A /* stopsCircle@3x.png in Resources */,
+				D47A6C541E00855800972FA0 /* middleLeg.png in Resources */,
+				D47A6C511E00855800972FA0 /* lastLeg.svg in Resources */,
+				D4679FDA1D3E5EBA00E477D6 /* METRO.png in Resources */,
+				D4D8FF6B1E03D3420057145B /* RadioButtonOff.png in Resources */,
+				D4D8FFAD1E03D4310057145B /* SearchTripsDefault@2x.png in Resources */,
+				D4D8FF5C1E03D2F00057145B /* Slife Launch Screen@3.png in Resources */,
+				D40ADCAD1DDDAC0300AA383B /* Plus_Close@2x.png in Resources */,
+				D4D8FFB11E03D4310057145B /* SearchTripsDefaultSelected@2x.png in Resources */,
+				D4D8FFAE1E03D4310057145B /* SearchTripsDefault@3x.png in Resources */,
+				D4ADAAF71D3FFA050035B5D5 /* SHIP@3x.png in Resources */,
+				D4959F761DF0B4A2009A9B51 /* TripInfoDeparturesSelected@2x.png in Resources */,
+				D4D8FFA01E03D4310057145B /* HomeTestLatest.svg in Resources */,
+				D40ADCAE1DDDAC0300AA383B /* Plus_Close@3x.png in Resources */,
+				D4EF1FB51DDF0DFF00BC25D2 /* mStationSeperator.svg in Resources */,
+				D4D8FF711E03D3420057145B /* RadioButtonOn@2x.png in Resources */,
+				D43962E61D3F824A00C80F57 /* TRAIN@2x.png in Resources */,
+				D4B4870A1DEE0832008FB436 /* LegBorderStop@2x.png in Resources */,
+				D4EF1FA31DDF0B4700BC25D2 /* nClock@3x.png in Resources */,
+				D4D8FFA11E03D4310057145B /* HomeTestLatest@2x.png in Resources */,
+				D4D8FFA51E03D4310057145B /* RealTime@2x.png in Resources */,
+				D46E7F3A1DAC03B200C59C9B /* LabelBackground@3x.png in Resources */,
+				D4D8FF4F1E03D21B0057145B /* Favoutites@2x.png in Resources */,
+				D4D8FF3F1E03D17B0057145B /* LegBase@3x.png in Resources */,
+				D4ADAAE51D3FF39E0035B5D5 /* TRAM.svg in Resources */,
+				D4D8FFAC1E03D4310057145B /* SearchTripsDefault.svg in Resources */,
+				D4D8FFB51E03D4310057145B /* TrafficStatus Selected@2x.png in Resources */,
+				D46E7F2F1DABE67A00C59C9B /* Buttons.png in Resources */,
+				D4D8FFA61E03D4310057145B /* RealTime@3x.png in Resources */,
+				D483064B1D4A547300FA42A3 /* EventGood.png in Resources */,
+				D4D8FFB31E03D4310057145B /* TrafficStatus Selected.png in Resources */,
+				D4B487041DEE0832008FB436 /* LegBorderStart.png in Resources */,
+				D47A6C4D1E00855800972FA0 /* firstLeg.svg in Resources */,
+				D46E7F301DABE67A00C59C9B /* Buttons.svg in Resources */,
+				D4D8FF471E03D1B90057145B /* Station Swap@2x.png in Resources */,
+				D4959F711DF0B4A2009A9B51 /* TripInfoDepartures.svg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46965041CB3F37D00C6CFE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D469650F1CB3F37D00C6CFE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D46964EC1CB3F37C00C6CFE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D468FC681CE4C238003E4249 /* Ships.swift in Sources */,
+				D48A95391CEA479D00D59306 /* TrafficTypeCell.swift in Sources */,
+				D4426B761CC139D800199A71 /* Trip.swift in Sources */,
+				D421F92E1D522F0900DA5EF3 /* RecentTrips_TableViewCell.swift in Sources */,
+				D4AC554F1D00A19C0043D21E /* WalkAwayVController.swift in Sources */,
+				D4AC55531D00C72C0043D21E /* TransportationChangesVController.swift in Sources */,
+				D4BA57EE1D22A05C00A91975 /* TripMapViewController.swift in Sources */,
+				D48827ED1CBBE108002A0A87 /* Trips.swift in Sources */,
+				D468FC5E1CE3C95D003E4249 /* Trams.swift in Sources */,
+				D4B24B5C1CCE7060009F183F /* TripSuggestionHeaderCell.swift in Sources */,
+				D4C9B48C1CBEAA9100978546 /* TripStocks.swift in Sources */,
+				D421F9291D522E0B00DA5EF3 /* FavouritesResentTrips_ViewController.swift in Sources */,
+				D4A411B31D61FC5E002CCBF7 /* CustomCalloutView.swift in Sources */,
+				D4DCCAD01CCEA49B0075117C /* TripSuggestionsTViewController.swift in Sources */,
+				D421F92B1D522EA200DA5EF3 /* Favourites_TableViewCell.swift in Sources */,
+				D43E076A1D532F8300E32652 /* FavouriteHeading_Cell.swift in Sources */,
+				D468FC661CE4BE62003E4249 /* Metros.swift in Sources */,
+				D40421F91CC7AAC400D916C7 /* LegWalk.swift in Sources */,
+				D4272F3B1CD903290040BC3D /* Station.swift in Sources */,
+				D4CB863C1CCEAD8500AE2665 /* HeaderCells.swift in Sources */,
+				D4426B7A1CC1F77D00199A71 /* LegDetail.swift in Sources */,
+				D40D44701DB61EDB006BD413 /* ContactUsViewController.swift in Sources */,
+				D4558E581CB553E10050DB75 /* SearchTripController.swift in Sources */,
+				D48A952F1CEA39C600D59306 /* TrafficType.swift in Sources */,
+				D46964F81CB3F37C00C6CFE1 /* SecondViewController.swift in Sources */,
+				D46964F41CB3F37C00C6CFE1 /* AppDelegate.swift in Sources */,
+				D4E791601D14AAC300E66BFB /* IntermediateStopsDestinationCell.swift in Sources */,
+				D4CB863E1CCFD70900AE2665 /* LegListCells.swift in Sources */,
+				D4426B7E1CC1FB1B00199A71 /* Travel.swift in Sources */,
+				D48A95331CEA39FA00D59306 /* LineNumbers.swift in Sources */,
+				D40B3B331D158747004AF71C /* MapTripViewControllers.swift in Sources */,
+				D4558E501CB5301E0050DB75 /* WebServiceHandler.swift in Sources */,
+				D46E2EA81D11960400F091F1 /* IntermediateStopsViewController.swift in Sources */,
+				D4A411B11D5F96AE002CCBF7 /* StationsLocationList.swift in Sources */,
+				D4AC55511D00A6B10043D21E /* TransportChangesVController.swift in Sources */,
+				D407CE0F1D16D6970047EABB /* MapAnnotations_IntermediateStations.swift in Sources */,
+				D4AC554D1D005BE70043D21E /* LineChoicesVController.swift in Sources */,
+				D48A95311CEA39DB00D59306 /* TrafficEvent.swift in Sources */,
+				D48827E31CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */,
+				D4426B701CC0D4F900199A71 /* TripSuggestionCells_new.swift in Sources */,
+				D4DCCAD21CCEA92A0075117C /* TripSuggestionHeaderCells.swift in Sources */,
+				D4A411AF1D5F95AF002CCBF7 /* StationsLocation.swift in Sources */,
+				D40229221CDBC3EB00CD7E5F /* Buses.swift in Sources */,
+				D4272F3D1CD9FCED0040BC3D /* BaseTabBar_SLife_Controller.swift in Sources */,
+				D468FC5C1CE3C8DB003E4249 /* Trains.swift in Sources */,
+				D40C29781DE33613007E8CD3 /* TripLegIconsCollectionViewCell.swift in Sources */,
+				D46E2EAF1D12D58300F091F1 /* Lines.swift in Sources */,
+				D42A024D1CCB2C8B00E4C540 /* SlifeMethods.swift in Sources */,
+				D4AC55491CFE025D0043D21E /* SearchTripsTableViewController.swift in Sources */,
+				D48A952A1CE7577300D59306 /* Deviations.swift in Sources */,
+				D4272F3F1CDA1B260040BC3D /* RealTimeResult_ViewController.swift in Sources */,
+				D48A952C1CE7577F00D59306 /* StopInfo.swift in Sources */,
+				D48306581D4B922800FA42A3 /* TrafficStatusCell.swift in Sources */,
+				D4426B7C1CC1F9FC00199A71 /* Walk.swift in Sources */,
+				D43E076C1D532FC600E32652 /* RecentrTripsHeading_CellTableViewCell.swift in Sources */,
+				D401B6711CB417150018465C /* tripSuggestions.swift in Sources */,
+				D468FC641CE420EB003E4249 /* RealTidMethods.swift in Sources */,
+				D46E2EB31D12DACE00F091F1 /* IntermediateStops.swift in Sources */,
+				D40421FB1CC7AAD000D916C7 /* LegTravel.swift in Sources */,
+				D48957461D09A3B600055D1D /* MainSimpleSearchViewControllerTViewController.swift in Sources */,
+				D476FF801DCB4303007EE613 /* CustomTextFieldClass.swift in Sources */,
+				D46E2EAD1D12D56500F091F1 /* Directions.swift in Sources */,
+				D42083C11CEB14DA00042E7D /* TrafficStatusMethods.swift in Sources */,
+				D4426B721CC1267500199A71 /* Address.swift in Sources */,
+				D4C9B48A1CBEA16000978546 /* TripSuggestionsTVC_new.swift in Sources */,
+				D46E2EAA1D11962F00F091F1 /* IntermediateStopsCell.swift in Sources */,
+				D46E2EB11D12D5C500F091F1 /* Stops.swift in Sources */,
+				D431BD0B1DEF24A10036F1F3 /* CustomTripMethods.swift in Sources */,
+				D468FC6A1CE4C8F2003E4249 /* StopPointDeviations.swift in Sources */,
+				D4E7915E1D14AA9A00E66BFB /* IntermediateStopOriginCell.swift in Sources */,
+				D48A953B1CEA48B300D59306 /* TrafficEventCell.swift in Sources */,
+				D40229201CDBBE3200CD7E5F /* RealTimeCommonTransportModeInfo.swift in Sources */,
+				D4426B781CC1E9F000199A71 /* LegInfo.swift in Sources */,
+				D48A95371CEA465300D59306 /* TrafficStatusViewController.swift in Sources */,
+				D4AC554B1CFEF2850043D21E /* TransportModesViewController.swift in Sources */,
+				D468FC6E1CE52994003E4249 /* RealTimeResultMainHeaderCell.swift in Sources */,
+				D40061021DFAA95E00B4CEE2 /* TripInfoDepartures.swift in Sources */,
+				D461D0A11CD3A56900D3ACAB /* SearchFrom_To_Controller.swift in Sources */,
+				D4D243121DF9922C003213B7 /* LegTripNextDeparturesTableViewCell.swift in Sources */,
+				D48957481D09F74300055D1D /* HelpingMethods.swift in Sources */,
+				D4426B6E1CC0C58200199A71 /* ParseJson.swift in Sources */,
+				D48306361D4A2E9800FA42A3 /* TrafficStatusCentralProcessor.swift in Sources */,
+				D468FC6C1CE51E65003E4249 /* RealTimeInfoDetailCells.swift in Sources */,
+				D44CED751D0C756C007E2FC7 /* DatePickerViewController.swift in Sources */,
+				D48957421D099AE600055D1D /* Buttons.swift in Sources */,
+				D4426B741CC1396500199A71 /* Leg.swift in Sources */,
+				D48827EB1CBBDEEA002A0A87 /* TripSuggestionsTVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D46965021CB3F37D00C6CFE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4558E591CB553E10050DB75 /* SearchTripController.swift in Sources */,
+				D48827E41CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */,
+				D401B6721CB417150018465C /* tripSuggestions.swift in Sources */,
+				D4558E511CB5301E0050DB75 /* WebServiceHandler.swift in Sources */,
+				D469650B1CB3F37D00C6CFE1 /* SLifeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D469650D1CB3F37D00C6CFE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4558E5A1CB553E10050DB75 /* SearchTripController.swift in Sources */,
+				D48827E51CBBCF35002A0A87 /* TripSuggestionsCell.swift in Sources */,
+				D401B6731CB417150018465C /* tripSuggestions.swift in Sources */,
+				D4558E521CB5301E0050DB75 /* WebServiceHandler.swift in Sources */,
+				D46965161CB3F37D00C6CFE1 /* SLifeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D46965081CB3F37D00C6CFE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D46964EF1CB3F37C00C6CFE1 /* SLife */;
+			targetProxy = D46965071CB3F37D00C6CFE1 /* PBXContainerItemProxy */;
+		};
+		D46965131CB3F37D00C6CFE1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D46964EF1CB3F37C00C6CFE1 /* SLife */;
+			targetProxy = D46965121CB3F37D00C6CFE1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D46964FE1CB3F37C00C6CFE1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D46964FF1CB3F37C00C6CFE1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D46965181CB3F37D00C6CFE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D46965191CB3F37D00C6CFE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D469651B1CB3F37D00C6CFE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZA74DZ693N;
+				INFOPLIST_FILE = SLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BMCSLIFE2017;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D469651C1CB3F37D00C6CFE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = ZA74DZ693N;
+				INFOPLIST_FILE = SLife/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BMCSLIFE2017;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D469651E1CB3F37D00C6CFE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BeMyCompetenceAB.SLifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLife.app/SLife";
+			};
+			name = Debug;
+		};
+		D469651F1CB3F37D00C6CFE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SLifeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BeMyCompetenceAB.SLifeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SLife.app/SLife";
+			};
+			name = Release;
+		};
+		D46965211CB3F37D00C6CFE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SLifeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BeMyCompetenceAB.SLifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SLife;
+			};
+			name = Debug;
+		};
+		D46965221CB3F37D00C6CFE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SLifeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = BeMyCompetenceAB.SLifeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SLife;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D46964EB1CB3F37C00C6CFE1 /* Build configuration list for PBXProject "SLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46965181CB3F37D00C6CFE1 /* Debug */,
+				D46965191CB3F37D00C6CFE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D469651A1CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLife" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D469651B1CB3F37D00C6CFE1 /* Debug */,
+				D469651C1CB3F37D00C6CFE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D469651D1CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLifeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D469651E1CB3F37D00C6CFE1 /* Debug */,
+				D469651F1CB3F37D00C6CFE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D46965201CB3F37D00C6CFE1 /* Build configuration list for PBXNativeTarget "SLifeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D46965211CB3F37D00C6CFE1 /* Debug */,
+				D46965221CB3F37D00C6CFE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D46964E81CB3F37C00C6CFE1 /* Project object */;
+}

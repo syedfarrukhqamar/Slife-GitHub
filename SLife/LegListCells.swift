@@ -15,10 +15,17 @@ class LegListCells: UITableViewCell {
     var rowInfo = String()
     var keyName = String()
     var showHideDepartureCell = false
+    var legTag = Int()
+    var lineDistTag = Int()
     
+//    @IBOutlet weak var legIcon: UIButton!
+//    @IBOutlet weak var legIconImageButton: UIButton!
+//    @IBOutlet weak var lineNumber: UIButton!
+//    
     @IBOutlet weak var nextDeparturesOutlet: UIButton!
     //@IBOutlet weak var nextdepartures_Outlet: UIButton!
-
+   // @IBOutlet weak var legIconButton: UIButton!
+    
     
     //-----------------Origin
     @IBOutlet weak var rtuMessage: UILabel!
@@ -54,5 +61,45 @@ class LegListCells: UITableViewCell {
         
         // Configure the view for the selected state
     }
-       
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        let legTagToRemove = self.legTag
+        let lineDist_TagToRemove  = self.lineDistTag
+        
+          if (self.viewWithTag(legTagToRemove) != nil){
+         let someButton = self.viewWithTag(legTagToRemove) as! UIButton
+         
+         print("somebutton check = \(someButton.accessibilityIdentifier)")
+         print("Before some button hidden or not = 1000= \(someButton.isHidden)")
+         someButton.backgroundColor = UIColor.yellow
+         someButton.setTitle("2", for:UIControlState.normal)
+         someButton.isHidden = true
+         print("After some button hidden or not = \(someButton.isHidden)")
+         self.contentView.willRemoveSubview(someButton)
+            
+            someButton.removeFromSuperview()
+         
+         }
+        
+        if (self.viewWithTag(lineDist_TagToRemove) != nil){
+            let someButton = self.viewWithTag(lineDist_TagToRemove) as! UIButton
+            
+            print("somebutton check = 1001 = \(someButton.accessibilityIdentifier)")
+            print("Before some button hidden or not = \(someButton.isHidden)")
+            someButton.backgroundColor = UIColor.yellow
+            someButton.setTitle("999", for:UIControlState.normal)
+            someButton.isHidden = true
+            print("After some button hidden or not = \(someButton.isHidden)")
+            self.contentView.willRemoveSubview(someButton)
+someButton.removeFromSuperview()
+           
+            
+            
+        }
+        
+
+        // self  = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! LegListCells
+        
+    }
 }

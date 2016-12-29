@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/Leg.swift"
-            timestampString = "483566192.052821"
+            timestampString = "504535992.424327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "init(journeyType:name:type:idx:geomRef:dist:hide:dir:line:journeyDetailRef:origin:destination:legImageName:rtu_Message_Flag:rtu_Message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "503435378.45275"
+            timestampString = "504621698.902631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "4187"
-            endingLineNumber = "4187">
+            startingLineNumber = "6183"
+            endingLineNumber = "6183">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "503435378.45275"
+            timestampString = "504621698.902631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3941"
-            endingLineNumber = "3941">
+            startingLineNumber = "5937"
+            endingLineNumber = "5937">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -118,11 +118,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "503435378.45275"
+            timestampString = "504621698.902631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3757"
-            endingLineNumber = "3757">
+            startingLineNumber = "5753"
+            endingLineNumber = "5753">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -144,16 +144,112 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SLife/SlifeMethods.swift"
+            timestampString = "504080421.074581"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "drawLegs(startingPoint:startingSize:legs:cell:orientation:innerLegSpacingFactor:interLegSpacingFactor:sizeFactor:indexValueFromSectionOrRow:indexValueFromCurrentLeg:iconTagIntValue:lineNoIntValue:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SLife/SlifeMethods.swift"
+            timestampString = "504080421.074581"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "drawLegsCollectionView(startingPoint:startingSize:legs:collectionViewCell:orientation:innerLegSpacingFactor:interLegSpacingFactor:sizeFactor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "503435378.45275"
+            filePath = "SLife/SlifeMethods.swift"
+            timestampString = "504300835.674255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1492"
-            endingLineNumber = "1492"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "1118"
+            endingLineNumber = "1118"
+            landmarkName = "getVisualLeg(leg:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SLife/TripSuggestionsTViewController.swift"
+            timestampString = "504621698.902631"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3981"
+            endingLineNumber = "3981"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SLife/TripSuggestionsTViewController.swift"
+            timestampString = "504621698.902631"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3482"
+            endingLineNumber = "3482"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SLife/TripSuggestionsTViewController.swift"
+            timestampString = "504621698.902631"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4334"
+            endingLineNumber = "4334"
+            landmarkName = "tableView(_:heightForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SLife/TripSuggestionsTViewController.swift"
+            timestampString = "504621698.902631"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3765"
+            endingLineNumber = "3765"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -164,12 +260,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SLife/TripSuggestionsTViewController.swift"
-            timestampString = "503435378.45275"
+            timestampString = "504616545.11336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1497"
-            endingLineNumber = "1497"
-            landmarkName = "collectionView(_:cellForItemAt:)"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "showClickedTransportTypeInNextDepartures(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
