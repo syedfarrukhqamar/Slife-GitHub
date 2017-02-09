@@ -38,6 +38,9 @@ class TripLegIconsCollectionViewCell: UICollectionViewCell {
             
             }
             else {
+                self.backgroundColor =  UIColor.init(patternImage: UIImage())
+
+                print("Line 41:::\(self.backgroundColor)")
             if let checkButton =  self.contentView.subviews[p] as? UIButton
             {
                 p -= 1

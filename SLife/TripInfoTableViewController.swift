@@ -2655,6 +2655,9 @@ print("Key Name Received =next dep refresh= \(keyName)")
          print("Departure Available:\(currentLeg.departureAvailable))")
         print("Dep Count= \(currentLeg.nextDeparturesTrip.count)")
         print("Line2588: Trip Count Check:BEFORE:\(currentLeg.nextDeparturesTrip.count)")
+        
+      
+        
 //        if(currentLeg.nextDeparturesTrip.count != 0){
 //        currentLeg.nextDeparturesTrip.removeFirst()
 //        }
@@ -2804,7 +2807,8 @@ print("Key Name Received =next dep refresh= \(keyName)")
             assert(false, "Unexpected element kind")
         }
     }
- */
+    */
+ 
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Did Slect is pressed........")
@@ -3597,7 +3601,9 @@ return CGSize(width:0, height: 0)
         
         
         
-        var currentTrip = Trip() //newTrip[tripSection] as! Trip
+      // 9th feb  var currentTrip = Trip() //newTrip[tripSection] as! Trip
+        var currentTrip = newTrip[tripSection] as! Trip
+        /* 9th feb
          var indexRow = Int()
         if (genericTripFlag == false) {
         print("generic trip flag is false =\(genericTripFlag)")
@@ -3611,11 +3617,12 @@ return CGSize(width:0, height: 0)
         
         indexRow = indexPath.row
         }
-       
+         9th feb
+       */
         
 
-       // let leg = currentTrip.LegList[parentCellCollectionDepartureView.indexPathSelected.row] as! Leg
-        let leg = currentTrip.LegList[indexRow] as! Leg
+        let leg = currentTrip.LegList[parentCellCollectionDepartureView.indexPathSelected.row] as! Leg
+       // 9th feb let leg = currentTrip.LegList[indexRow] as! Leg
         
         print("CollectionView:Section:\(indexPath):Leg Dep Status:\(leg.departureAvailable) & Trip Count = \(leg.nextDeparturesTrip.count)")
         // check if departures are available
@@ -3629,7 +3636,13 @@ return CGSize(width:0, height: 0)
             // show only trip
                 let cellDepTrip = collectionView.dequeueReusableCell(withReuseIdentifier: "TripInfoDepartureCells", for: indexPath as IndexPath) as! TripLegIconsCollectionViewCell
                 cellDepTrip.prepareForReuse()
+                var bcolor : UIColor = UIColor( red: 0.2, green: 0.2, blue:0.2, alpha: 0.3 )
                 
+                cellDepTrip.layer.borderColor = bcolor.cgColor
+                cellDepTrip.layer.borderWidth = 2 //0.5
+                cellDepTrip.layer.cornerRadius = 3
+                
+                cellDepTrip.backgroundColor=UIColor.white
                 
                 cellDepTrip.from_time.text = currentLegTrip.originDetail.time
                 cellDepTrip.from_station.text = currentLegTrip.originDetail.name
@@ -4258,7 +4271,7 @@ return CGSize(width:0, height: 0)
                     print("cell.from_time.frame.origin.x = \(leg_x_spacing)")
                     
                     let x = leg_x_spacing //.from_time.frame.origin.x + leg_x_spacing
-                    let y = CGFloat(50.0) //cell.from_time.frame.size.height + 7
+                    let y = CGFloat(120.0) //cell.from_time.frame.size.height + 7
             
                     let startingPoint = CGPoint(x: x,y: y)
             print("Line 4238:Starting POint :\(startingPoint)")
@@ -5386,16 +5399,15 @@ return CGSize(width:0, height: 0)
 //    return UIEdgeInsetsMake(0, 100, 0, 0);
 //    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-        //--------------------
+         //--------------------
         let currentCell = collectionView.superview?.superview as! LegTripNextDeparturesTableViewCell
     
         var currentTrip = newTrip[tripSection] as! Trip
         var currentLeg = currentTrip.LegList[currentCell.indexPathSelected.row] as! Leg
         var currentLegDepTrip = currentLeg.nextDeparturesTrip[indexPath.section]
         //--------------below is the code if you want to show tripInfo in the same collection view 
-       let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+      /* 9th feb 2017
+         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         print("------S2--------")
         print("-Trip Header Cell Clicked-----S2--------")
         let vc = storyboard?.instantiateViewController(withIdentifier: "TripInfoTableViewController") as! TripInfoTableViewController
@@ -5427,9 +5439,12 @@ return CGSize(width:0, height: 0)
         
         //----------------
         self.navigationController?.pushViewController(vc, animated: true)
+      
+        9th feb 2017
+        */
         // but the problem is how to use prepare for resuse because images are not appearning correct
         // check if the current tapped cell is of type Trip Level Coll.Cell
-     /*
+     
          let currentCollCell = collectionView.cellForItem(at: indexPath) as! TripLegIconsCollectionViewCell
         print("Line 4982: IP:Selected:\(currentCell.indexPathSelected.row)")
         print("Line 4982: IP:Section:\(indexPath.section)")
@@ -5457,7 +5472,7 @@ return CGSize(width:0, height: 0)
         collectionView.reloadData()
         
         print("Line 4936: indexpath:\(indexPath)")
-        */
+ 
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -5817,6 +5832,17 @@ return CGSize(width:0, height: 0)
 
          cellDeparture.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
         cellDeparture.indexPathSelected = indexPath
+        /*
+        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top:1,left:10,bottom:10,right:10)
+        layout.minimumInteritemSpacing = 5
+        layout.minimumLineSpacing = 10
+        cellDeparture.nextDeparturesCollectionView.collectionViewLayout = layout
+        */
+        //collectionView.collectionViewLayout = layout
+        //  collectionview.collectionViewLayout = layout
+
+        
        // cellDeparture.currentIndexPathSection = indexPath.section
        let currentLeg = (newTrip[tripSection] as! Trip).LegList[indexPath.row] as! Leg
         print("Line 5207: \(indexPath):\(currentLeg.showHideLeg):Dep:\(currentLeg.departureAvailable):From:\(currentLeg.depScope_fromLegIndex):To:\(currentLeg.depScope_toLegIndex)")

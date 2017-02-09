@@ -3018,7 +3018,7 @@
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="564275E5-0842-4C1B-A29C-7ED7AEE57EE4" translatesAutoresizingMaskIntoConstraints="NO" id="kCe-3v-CAd">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4279460B-6849-4746-BC18-EEC20D1D11A7" translatesAutoresizingMaskIntoConstraints="NO" id="kCe-3v-CAd">
                                                                             <rect key="frame" x="62.5" y="2" width="20" height="20"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to_time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ovr-uv-QqO">
@@ -3055,7 +3055,7 @@
                                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C73C0E93-D758-45CD-B250-FE0ADEBC14AD" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-kt-TAO">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FA7EBA8B-0515-44B4-AE65-6B121EC34384" translatesAutoresizingMaskIntoConstraints="NO" id="jCw-kt-TAO">
                                                                             <rect key="frame" x="105" y="0.5" width="20" height="20"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="to_station" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G2d-W5-2S3">
@@ -3201,7 +3201,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to_time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EbW-cY-yif">
-                                                                <rect key="frame" x="30" y="110" width="42" height="20"/>
+                                                                <rect key="frame" x="30" y="111" width="42" height="20"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="dEM-bz-NzG"/>
                                                                 </constraints>
@@ -4086,7 +4086,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to_stationId" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVf-Wd-Ypm">
-                                            <rect key="frame" x="156" y="-50" width="146" height="0.0"/>
+                                            <rect key="frame" x="155" y="-50" width="146" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -4234,7 +4234,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="564275E5-0842-4C1B-A29C-7ED7AEE57EE4" width="20" height="20">
+        <image name="4279460B-6849-4746-BC18-EEC20D1D11A7" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4315,7 +4315,11 @@ AEEAAAAAAAAAAAAAAAAAABCMA
         <image name="BUS.png" width="18" height="20"/>
         <image name="Back.png" width="40" height="40"/>
         <image name="Buttons.png" width="375" height="40"/>
-        <image name="C73C0E93-D758-45CD-B250-FE0ADEBC14AD" width="20" height="20">
+        <image name="ContactUs.png" width="31" height="31"/>
+        <image name="ContactUsSelected.png" width="31" height="31"/>
+        <image name="Default.png" width="27" height="26"/>
+        <image name="EventDefault.png" width="20" height="20"/>
+        <image name="FA7EBA8B-0515-44B4-AE65-6B121EC34384" width="20" height="20">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -4393,10 +4397,6 @@ D/oQAxAIEBAQExAYECcQKxAyEDoQRxBMEE4QUBBVEF0QYBBlEG0QcBCCEIUQigAAAAAAAAIBAAAAAAAA
 AEEAAAAAAAAAAAAAAAAAABCMA
 </mutableData>
         </image>
-        <image name="ContactUs.png" width="31" height="31"/>
-        <image name="ContactUsSelected.png" width="31" height="31"/>
-        <image name="Default.png" width="27" height="26"/>
-        <image name="EventDefault.png" width="20" height="20"/>
         <image name="Favoutites.png" width="20" height="20"/>
         <image name="LabelBackground.png" width="375" height="40"/>
         <image name="LegBorderStart.png" width="20" height="20"/>
