@@ -104,50 +104,43 @@ class WebServiceHandler {
 
     // construct url for advanced parameter screens
     
-    func constructAdvancedURL ( methodName: String , origin : String , destination : String , returnContentType : String , searchForArrival : String )-> String
+    func constructAdvancedURL ( methodName: String , origin : String , destination : String , returnContentType : String , searchForArrival : String ,tripDate: String, tripTime: String)-> String
     {
         //var finalisedURLtoConnectConstruct = NSURL()
         print("---webservice handler------0--------")
+        
         var finalisedURLtoConnectConstruct = String()
         finalisedURLtoConnectConstruct  = sl_Api_url
         finalisedURLtoConnectConstruct += methodName
         finalisedURLtoConnectConstruct += returnContentType
         finalisedURLtoConnectConstruct += keyID
-        
         finalisedURLtoConnectConstruct += key
         // parameter static value- origin
         finalisedURLtoConnectConstruct += originID
         finalisedURLtoConnectConstruct += origin
-        
         // parameter static value- destination id
         finalisedURLtoConnectConstruct += destinationID
         finalisedURLtoConnectConstruct += destination
         // parameter static value- search arrivals
         finalisedURLtoConnectConstruct += searchForArrivalID
         finalisedURLtoConnectConstruct += searchForArrival
-        
         //------Advanced Options---Start
         // ----VIA + stop over minutes
         if (advancedOptionsFlag == true ){
+            print("Advance flag is true.......")
         if (viaStationFlag == true){
             print("via station flag is true")
             print("via station id = \(via_StationId)")
-            
             finalisedURLtoConnectConstruct += viaId_Param_Name
             finalisedURLtoConnectConstruct += via_StationId
-            
             // check for stop over minutes if flag is yes then add it as well
             print("stop over flag = \(viaStopOverMinutesFlags)")
             print("stop over Minutes = \(stopOverMinutes)")
-            
             if ( viaStopOverMinutesFlags == true){
-             
-           // stopOverMinutes add stop over minutes param name
+            // stopOverMinutes add stop over minutes param name
             finalisedURLtoConnectConstruct += viaStopOverMinutes_Param_Name
                 // add stop over minutes values
-                
-                finalisedURLtoConnectConstruct += String(stopOverMinutes)
-            
+            finalisedURLtoConnectConstruct += String(stopOverMinutes)
             }
             }
         else {
@@ -165,6 +158,11 @@ class WebServiceHandler {
                 finalisedURLtoConnectConstruct += expectedTripDate
                 finalisedURLtoConnectConstruct += Time_Param_Name
                 finalisedURLtoConnectConstruct += expectedTripTime
+                print("date_Param_Name==\(date_Param_Name)")
+                print("expectedTripDate==\(expectedTripDate)")
+                print("Time_Param_Name==\(Time_Param_Name)")
+                print("Time_Param_Name==\(Time_Param_Name)")
+                print("expectedTripTime==\(expectedTripTime)")
                 
             } else {
             
@@ -174,8 +172,8 @@ class WebServiceHandler {
         print("Web service Advanced URL date time = \(finalisedURLtoConnectConstruct)")
         //----Realtime or time table
         
+        print("Realtime Flag was: \(realTimeFlag)")
         if (realTimeFlag == true){
-        
          finalisedURLtoConnectConstruct += realtime_Param_Name
           finalisedURLtoConnectConstruct += "true"
         
@@ -297,7 +295,7 @@ class WebServiceHandler {
     // parameter static value- search arrivals
     finalisedURLtoConnectConstruct += searchForArrivalID
        finalisedURLtoConnectConstruct += searchForArrival
-    print("---webservice handler------2--------")
+    print("---webservice handler------2------\(simple_earliestDepartLatestArrival_flag)--")
 
     // MARK: Simple Date Options
     //------Depart Now/ Depart Earliest / Arrival At
@@ -309,7 +307,11 @@ class WebServiceHandler {
             finalisedURLtoConnectConstruct += searchForArrival_Param_Name
             finalisedURLtoConnectConstruct += String(simple_earliestDepartLatestArrival_Value)
         }
-        
+        print("Departure time selected...........")
+        print("\(date_Param_Name)")
+         print("simple_expectedTripDate....\(simple_expectedTripDate)")
+         print("Time_Param_Name...\(Time_Param_Name)")
+         print("simple_expectedTripTime......\(simple_expectedTripTime)")
         finalisedURLtoConnectConstruct += date_Param_Name
         finalisedURLtoConnectConstruct += simple_expectedTripDate
         finalisedURLtoConnectConstruct += Time_Param_Name
@@ -321,14 +323,15 @@ class WebServiceHandler {
     }
     
     //----Realtime or time table
-    
-    if (realTimeFlag == true){
+    print("RealTimeFlag values ie being received as = \(realTimeFlag)")
+    if (realTimeFlag == false){
+        print("Data Required from time Table:")
+    } else {
         
         finalisedURLtoConnectConstruct += realtime_Param_Name
         finalisedURLtoConnectConstruct += "true"
         
-    } else {
-        print("Time Table data required")
+        print("RealTime data is required:\(realTimeFlag)")
         
     }
     // checking ends of flags in the simple screen

@@ -10,7 +10,7 @@ import UIKit
 var convertedJsonIntoNSDict = NSDictionary()
 class TripSuggestionsTVC_new: UITableViewController {
     //    var newTrip = [Trip]()
-    var newTrip = NSMutableArray()
+   // TEMP ON 20TH JAN  var newTrip = NSMutableArray()
     let legList = ["test-0","test-1","test-2"]
     //    var trips = [Trips]()
     
@@ -362,7 +362,7 @@ class TripSuggestionsTVC_new: UITableViewController {
                 }
                 
                     // MARK: Leg 2 populate
-                var leg =  Leg(journeyType: journeyType, name: nameValue, type: typeValue, idx: idxValue, geomRef: geometryReference, dist: distValue, hide: hideValue, dir: dirValue, line: lineValue, journeyDetailRef: journeyDetailRefValue, origin: originDetail, destination: destinDetail,legImageName: "Test",rtu_Message_Flag: checkKeyExist,rtu_Message: rtuMessageString)
+                var leg =  Leg(journeyType: journeyType, name: nameValue, type: typeValue, idx: idxValue, geomRef: geometryReference, dist: distValue, hide: hideValue, dir: dirValue, line: lineValue, journeyDetailRef: journeyDetailRefValue, origin: originDetail, destination: destinDetail,legImageName: "Test",rtu_Message_Flag: checkKeyExist,rtu_Message: rtuMessageString,currentLegStatus: true)
 
                 trip.LegList.add(leg)
                     
@@ -673,7 +673,8 @@ class TripSuggestionsTVC_new: UITableViewController {
             }
             
             print("---LegList.allKeys----duration being entered is :\(dur)")
-            self.newTrip.add(trip)
+            
+            newTrip.add(trip)
             print("--End--------------End------------------forMain1  \(forMain1)-----")
             forMain1 += 1
             

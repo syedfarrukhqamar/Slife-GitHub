@@ -10,6 +10,9 @@ import UIKit
 
 class LegTripNextDeparturesTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var NextDepOutLet: UIButton!
+    @IBOutlet weak var PrevDepOutLet: UIButton!
+    var indexPathSelected = IndexPath()
     var keyName = String()
     var legIndexForDepartureShow = Int()
     var currentIndexPathRow = Int()
@@ -31,6 +34,8 @@ class LegTripNextDeparturesTableViewCell: UITableViewCell {
         <D: protocol<UICollectionViewDataSource, UICollectionViewDelegate>>
         (dataSourceDelegate: D, forRow row: Int) {
         
+        
+        print("data source has been called-...")
         nextDeparturesCollectionView.delegate = dataSourceDelegate
         nextDeparturesCollectionView.dataSource = dataSourceDelegate
         nextDeparturesCollectionView.tag = row

@@ -22,7 +22,7 @@ import MapKit
 var draw = 0
 
 // transportImages
-
+let MORE_ICON_NAME = "MORELEGSDEP.png"
 let BUS_ICON_NAME = "BUS.png"
 let WALK_ICON_NAME = "WALK.png"
 let TRAM_ICON_NAME = "TRAM.png"
@@ -170,7 +170,7 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
 //        self.navigationItem.leftBarButtonItem = newBackButton
         
 //        resetRegion()
-        self.mapView.delegate = self
+        mapView.delegate = self
         // check for the flag if request is from the trip view controller then
         print(" trip map vc ...1= tripRootMapFlag = \(tripRootMapFlag) ")
         var finalURL = String()
@@ -248,7 +248,9 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
             print(" trip map vc ...3 ")
             showRouteOnMap(intermediateStopsObject: intermediateStops)
             print("intermediate Stops show route map has been called.........")
+           // self.mapView.delegate = self
         }
+        
     }
      func resetRegion(){
         let region = MKCoordinateRegionMakeWithDistance(chicagoCoordinate, 5000, 5000)
@@ -300,7 +302,7 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
     
     
     
-    
+   
    
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
@@ -656,7 +658,7 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
        
          let nsdata =    rawJson.value(forKey: legIdx) as! NSData
        self.extract_json(jsonData: nsdata, rootTripDict: rootTripDictToSend,legIndx: legIdx)
-            print("------rawjson rawjson.-------")
+            print("------rawjson rawjson.-----Line661--")
          //   print(rawJson.description)
             
         q += 1
@@ -1407,6 +1409,7 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
           
             // MARK: Annotation being added
             mapView.addAnnotations(station_location_list.stationsLocation)
+            
             print("station_location_list.stationsLocation =====\(station_location_list.stationsLocation.count)")
             print("stationLocationArray.count  =====\(stationLocationArray.count)")
             print("mapView.annotations.count  =====\(mapView.annotations.count)")
@@ -1414,9 +1417,14 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
             //My location
             var myLocation = CLLocation(latitude: 59.244696, longitude: 17.813868)
             
+            let locartion0 = CLLocationCoordinate2D(latitude: 59.244696, longitude: 17.813868)
+            let locartion1 = CLLocationCoordinate2D(latitude: 59.326354, longitude: 18.072310)
+            
             //My buddy's location
             var myBuddysLocation = CLLocation(latitude: 59.326354, longitude: 18.072310)
-           
+            
+           drawLineBetweenTwoStops(originLocation2D: locartion0, destinationLocation2D: locartion1)
+            
             // MARK: Annotation Show By Default
             var p = 0
             if (stationLocationArray.count != 0){
@@ -1492,10 +1500,18 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
             }
         }
 
-        print("inside else.................")
+        print("inside else................Line 1497 = \(stationLocationArray.count).")
+       /*
+         var stationLocation0 = stationLocationArray[0] as! StationsLocation
+       var stationLocation1 = stationLocationArray[0] as! StationsLocation
         
         
         
+        let clLocationCoo2D0 = CLLocationCoordinate2D(latitude:  stationLocation0.lat!, longitude:  stationLocation0.long!)
+        let clLocationCoo2D1 = CLLocationCoordinate2D(latitude:  stationLocation1.lat!, longitude:  stationLocation1.long!)
+        
+        drawLineBetweenTwoStops(originLocation2D: clLocationCoo2D0, destinationLocation2D: clLocationCoo2D1)
+        */
         //self.tableView.reloadData()
         
         //        print("-intermediate stops:::::::after----tabledata count AFTER-dataSourceTrafficStatus\(rootTrip_dataSource_rootTrip_intermediateStops_MasterStocking_StatusCode.count)")
@@ -1578,7 +1594,7 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
                     print("")
                     
                     drawRootUrlsArray.add(rootTrip_MapValuesBucket)
-                    print("after adding value to root url array")
+                    print("after adding value to root url array:\(drawRootUrlsArray.count)")
                     //_______________________________::::: Start.....temp switching off
                     
                     //____________________________________ END.....temp switching off
@@ -1874,6 +1890,12 @@ class TripMapViewControllers: UIViewController, MKMapViewDelegate, MKOverlay {
         // MARK: Tunnelbana LINE COLOR INFO
         // type is Transport Type
         
+        // MARK: LINE # 599 // MORE LEGS
+        let rgb_599 = [R:244,G:244,B:77,transportType:MORE_ICON_NAME,LineNo :599] as [String : Any]
+        
+        lineColorValuesDict.setValue(rgb_599, forKey: "599")
+        
+
         // MARK: LINE # 10 11 T
         let rgb_10 = [R:0,G:112,B:192,transportType:METRO_ICON_NAME,LineNo :10] as [String : Any]
         let rgb_11 = [R:0,G:112,B:192,transportType:METRO_ICON_NAME,LineNo :11] as [String : Any]

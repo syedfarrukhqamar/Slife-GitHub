@@ -96,13 +96,41 @@ var tripDateShow = Bool()
     
     @IBOutlet weak var swapFromTo_Outlet: UIButton!
     @IBAction func swapFromTo(sender: UIButton) {
+//        let origin = from_Origin_Input.titleLabel?.text
+//        let destination = to_destination_Input.titleLabel?.text
+        let oldOrigin = origin
+        let oldDestination = destination
+        let oldOrigin_StationID = origin_StationId
+        let oldDestination_StationID = destination_StationId
         
-        let origin = from_Origin_Input.titleLabel?.text
-        let destination = to_destination_Input.titleLabel?.text
+        print("Line 106: oldOrigin = \(origin) & old_OriginStationID = \(oldOrigin_StationID)")
+        print("Line 106: oldDestination = \(destination) & old_DestinationStationID = \(oldDestination_StationID)")
+
         
+        print("Line 106: from_Origin_Input.titleLabel?.text= orgin = \(from_Origin_Input.titleLabel?.text)")
+        
+        print("Line 106: to_destination_Input.titleLabel?.text= Destination=\(to_destination_Input.titleLabel?.text)")
+        origin = oldDestination
+        origin_StationId = oldDestination_StationID
+        destination = oldOrigin
+        destination_StationId = oldOrigin_StationID
+        
+        print("Line 106: newOrigin = \(origin) & old_OriginStationID = \(oldOrigin_StationID)")
+        print("Line 106: newDestination = \(destination) & old_DestinationStationID = \(oldDestination_StationID)")
+        
+        
+        print("Line 106: new.from_Origin_Input.titleLabel?.text= orgin = \(from_Origin_Input.titleLabel?.text)")
+        
+        print("Line 106: new.to_destination_Input.titleLabel?.text= Destination=\(to_destination_Input.titleLabel?.text)")
+        
+        /*
         from_Origin_Input.titleLabel?.text = destination
         to_destination_Input.titleLabel?.text = origin
         
+        print("from_Origin_Input.titleLabel?.text= destination = \(from_Origin_Input.titleLabel?.text)")
+        
+        print("to_destination_Input.titleLabel?.text= Origin=\(to_destination_Input.titleLabel?.text)")
+        */
     }
     @IBOutlet weak var from_Origin_Input: UIButton!
     @IBOutlet weak var to_destination_Input: UIButton!
@@ -480,7 +508,7 @@ var tripDateShow = Bool()
 
       //  datePickerCell.sizeToFit()
         
-        print("TESTING ........")
+        print("TESTING ......real_time_flag\(real_time_flag)..")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -558,6 +586,7 @@ var tripDateShow = Bool()
             tripDateShow = true
             whenTripDateShow.isUserInteractionEnabled = false
             Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDepartureOutlet, disableButtonThird: latestArrivalOutlet)
+//            Buttons.enableOneAndDisableTwoButtons(enableButtonFirst: now, disableButtonSecond: earliestDepartureOutlet, disableButtonThird: latestArrivalOutlet)
            
             expectedTripTime = HelpingMethods.currentTime24Hour()
             expectedTripDate = HelpingMethods.currentDate()
@@ -850,7 +879,7 @@ var tripDateShow = Bool()
          
             print("--------2---------origin_StationId=\(origin_StationId)--------")
             print("--------2---------Destination_StationId=\(destination_StationId)--------")
-            
+            from_to_flag = ""
             segue.destination.setValue(origin_StationId, forKey: "from")
             segue.destination.setValue(destination_StationId, forKey: "to")
             // now reset the values of from and to

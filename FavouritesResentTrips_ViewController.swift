@@ -366,7 +366,7 @@ var recentTrips_History_array = NSMutableArray()
         if (indexPath.row >= fav_start_index && indexPath.row <= fav_end_index){
             // assign keyname to favourite
             // get the current index after accessing the cell
-            
+            //MARK: Bug caugh, couldnt cast the value of some heading cell to the following
             let cell = tableView.cellForRow(at: indexPath as IndexPath) as! Favourites_TableViewCell
          //   let deleteFromIndex = cell.currentIndex.text
             from_fav_rec_station_id =  cell.from_station_id.text!

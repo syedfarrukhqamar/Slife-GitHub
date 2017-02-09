@@ -20,20 +20,37 @@ class Trip: NSObject, NSCopying {
 // they are being added in TripSuggestionsTVC_news.swift
     
     var LegList : NSMutableArray
-    
+    var depExpand: Bool
     // some variables which will be populated by external functions
     var originDetail: Address
     var destinationDetail: Address
-    
+
 //    var from_time : String
 //    var from_station : String
 //    var to_Station : String
 //    var to_time : String
     
    // init(duration: String, change: String, emission: String, tariffRemark : String , tariffZones : String, LegListLegs: NSMutableArray,from_time: String, from_station: String, to_time: String, to_station: String  ) {
-   
-    init(dur: String, chg: String, co2: String, tariffRemark : String , tariffZones : String, LegList: NSMutableArray,originDetail: Address, destinationDetail:Address  ) {
+    override init(){
+        self.dur = "dur"
+        self.chg = "chg"
+        self.co2 = "co2"
+        self.depExpand = false
+        // <PriceInfo>
         
+        self.tariffRemark = "tariffRemark"
+        self.tariffZones = "tariffZones"
+       
+        self.LegList = NSMutableArray()
+        
+        self.originDetail = Address(name: "", type: "", id: "", lon: "", lat: "", time: "", date: "", routeIdx: "")
+        self.destinationDetail = Address(name: "", type: "", id: "", lon: "", lat: "", time: "", date: "", routeIdx: "")
+        
+        
+    
+    }
+    init(dur: String, chg: String, co2: String, tariffRemark : String , tariffZones : String, LegList: NSMutableArray,originDetail: Address, destinationDetail:Address  ) {
+        self.depExpand = false
     self.dur = dur
     self.chg = chg
     self.co2 = co2

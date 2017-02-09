@@ -5,10 +5,7 @@ class Address: NSObject, NSMutableCopying {
 //    public func mutableCopy(with zone: NSZone? = nil) -> Any {
 //        <#code#>
 //    }
-
-    
-
-    
+    var track: String // new
     var date : String
     var id : String
     var lat : String
@@ -21,8 +18,6 @@ class Address: NSObject, NSMutableCopying {
     // at some later stage we may create two objecrs here (one dynamic with below info and one with static info above
    // var routeIdx = ""
     
-    
-    
     init(name: String,type: String, id:String , lon: String ,lat:String,time:String,date:String, routeIdx: String){
     
     self.name = name
@@ -34,6 +29,7 @@ class Address: NSObject, NSMutableCopying {
     self.time = time
     self.date = date
     self.routeIdx = routeIdx
+    self.track = "Not Initialised"
     }
 
  public   func mutableCopy(with zone: NSZone?) -> Any {

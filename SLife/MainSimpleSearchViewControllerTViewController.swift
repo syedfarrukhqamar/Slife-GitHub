@@ -13,13 +13,17 @@ var recentr_to_flag = true
 
 let FROM_ORIGIN = "From"
 let TO_DESTINATION = "To"
-let VIA_DESTINATION = "Via"
-var from_to_flag = String()
-var advancedOptionsFlag = false
+
+
 var origin = "From"
 var origin_StationId = String()
+
 var destination = "To"
 var destination_StationId = String()
+
+var from_to_flag = String()
+var advancedOptionsFlag = false
+let VIA_DESTINATION = "Via"
 var via = "Via"
 var via_StationId = String()
 
@@ -123,21 +127,94 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
     // MARK: Swap Origin Destination
     @IBOutlet weak var swap_origin_Destination_Outlet: UIButton!
     @IBAction func swap_Origin_Destination(sender: UIButton) {
-      
+     /*
+        let oldOrigin = origin
+        let oldDestination = destination
+       
+        print("Line 130:oldOrigin Value: = \(origin)" )
+        print("Line 130:oldDestination Value: = \(destination)" )
+   
+        // swap them
+        destination = oldOrigin
+        origin = oldDestination
+        
+        print("Line 130:newOrigin Value: = \(origin)" )
+        print("Line 130:newDestination Value: = \(destination)" )
+        
+        
+        from_Origin_Input.setTitle(origin, for: .normal)
+        to_destination_Input.setTitle(destination, for: .normal)
+        
+        print("Line 130:newOrigin Value: = Title Values: \(from_Origin_Input.titleLabel?.text)" )
+        print("Line 130:newDestination Value: = Title Values:\(to_destination_Input.titleLabel?.text)" )
+        
+  */
         if (!(from_Origin_Input.titleLabel?.text?.isEmpty)! && !((to_destination_Input.titleLabel?.text?.isEmpty)!)){
-            
-            let origin = from_Origin_Input.titleLabel?.text
-            let destitnationValue = to_destination_Input.titleLabel?.text
-            print("origin was:::::\(origin)")
-            print("Destination was:::::\(destitnationValue)")
-            
-            from_Origin_Input.titleLabel?.text = destitnationValue
-            to_destination_Input.titleLabel?.text = origin
+            let oldOrigin = origin
+            let oldDestination = destination
          
-            print("New Origin was:::::\(from_Origin_Input.titleLabel?.text)")
-            print("to_destination_Input.titleLabel?.text was:::::\(to_destination_Input.titleLabel?.text)")
+            let oldOriginSiteID = origin_StationId
+            let oldDestinationSiteID = destination_StationId
+            
+            print("Line 153: oldOriginSiteID = \(oldOriginSiteID) ")
+            
+            print("Line 153: oldDestinationSiteID = \(oldDestinationSiteID) ")
+           
+            
+            origin_StationId = oldDestinationSiteID
+            destination_StationId = oldOriginSiteID
+           
+            print("Line 153: origin_StationId = \(origin_StationId) ")
+            
+            print("Line 153: destination_StationId = \(destination_StationId) ")
             
             
+            print("Line 130:oldOrigin Value: = \(origin)" )
+            print("Line 130:oldDestination Value: = \(destination)" )
+            
+            // swap them
+            destination = oldOrigin
+            origin = oldDestination
+            
+            print("Line 130:newOrigin Value: = \(origin)" )
+            print("Line 130:newDestination Value: = \(destination)" )
+            
+            
+            from_Origin_Input.setTitle(origin, for: .normal)
+            to_destination_Input.setTitle(destination, for: .normal)
+            
+            print("Line 130:newOrigin Value: = Title Values: \(from_Origin_Input.titleLabel?.text)" )
+            print("Line 130:newDestination Value: = Title Values:\(to_destination_Input.titleLabel?.text)" )
+            
+            /*
+            let oldOrigin = origin
+            let oldDestination = destination
+            
+            // swap them
+            destination = oldOrigin
+            origin = oldDestination
+            
+            from_Origin_Input.titleLabel?.text = origin
+            to_destination_Input.titleLabel?.text = destination
+            
+            */
+            
+            /*
+            let
+            oldOrigin = from_Origin_Input.titleLabel?.text
+            let oldDestination = to_destination_Input.titleLabel?.text
+            
+            
+            print("origin OLD:::::\(from_Origin_Input.titleLabel?.text) = Origin Value = \(origin)")
+            print("Destination old:::::\(to_destination_Input.titleLabel?.text) = Destination Value = \(destitnationValue)")
+            
+            from_Origin_Input.titleLabel?.text = "destitnationValue"
+            to_destination_Input.titleLabel?.text = "origin"
+            
+            print("origin NEW:::::\(from_Origin_Input.titleLabel?.text) = Origin Value = \(origin)")
+            print("Destination NEW:::::\(to_destination_Input.titleLabel?.text) = Destination Value = \(destitnationValue)")
+          
+            */
         }
 
         
@@ -276,10 +353,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
     
         let testCheck = "From"
         let condition = (from_Origin_Input.titleLabel?.text != testCheck)
-        print("from_Origin_Input.titleLabel?.text = \(from_Origin_Input)")
-        print("testCheck = \(testCheck)")
-        print("condition........")
-        print(condition)
+         print(condition)
         // EARLIEST AND LATEST ARRIVAL
         
         if (simple_earliestDepartLatestArrival_flag == true) {
@@ -324,13 +398,9 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             self.navigationItem.rightBarButtonItem?.isEnabled = true
         }
 
-        
-        print("origin first value = ")
-        print(from_Origin_Input.titleLabel?.text)
-        print("destination first value = ")
-          print(to_destination_Input.titleLabel?.text)
-        swap_origin_Destination_Outlet.isEnabled = false
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
+
+     //   swap_origin_Destination_Outlet.isEnabled = false
+       // self.navigationItem.rightBarButtonItem?.isEnabled = false
         // testing user defaults
                
         print("-view did apear----here.-.--.-.")
@@ -349,8 +419,8 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
           //---------------------
         print("view did appear--------------")
         
-        print("from_Origin_Input.titleLabel?.text view will appear = simple = \(from_Origin_Input.titleLabel?.text)")
-        print("to_destination_Input.titleLabel?.text?.text view will appear = simple = \(to_destination_Input.titleLabel?.text)")
+        print("Line 421:from_Origin_Input.titleLabel?.text view will appear = simple = \(from_Origin_Input.titleLabel?.text)----origin-\(origin)")
+        print("Line 421:to_destination_Input.titleLabel?.text?.text view will appear = simple = \(to_destination_Input.titleLabel?.text)----destination-\(destination)")
          if(from_Origin_Input.titleLabel?.text == "From"){
             navigationItem.rightBarButtonItem?.isEnabled = false
             swap_origin_Destination_Outlet.isEnabled = false
@@ -383,27 +453,25 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //        print("ORIGIN STATUS: = \(from_Origin_Input.titleLabel?.text!) ")
 //        print("Destination STATUS: = \(to_destination_Input.titleLabel?.text?.isEmpty) ")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
+        print("-viewWillAppear:----------fromStation_SiteId---\(origin_StationId)------& origin = \(origin)-------2-----------------")
+         print("-viewWillAppear:-----------toStation_SiteId---\(destination_StationId)----Destination = \(destination)---------2-----------------")
+        print("-viewWillAppear--- from origin button =\(from_Origin_Input.titleLabel?.text) ")
+        print("-viewWillAppear--- from origin button =\(to_destination_Input.titleLabel?.text) ")
+        
         
         rec_trip_to_Station_first_row.isHidden = true
         rec_trip_from_Station_first_row.isHidden = true
-        
         rec_trip_from_Station_ID_second_row.isHidden = true
-        
         rec_trip_to_StationID_second_row.isHidden = true
         rec_trip_from_Station_ID_third_Row.isHidden = true
         rec_trip_to_Station_id_third_Row.isHidden = true
-        
-        
-        
-       //MARK: Fav and Rec trips check
-        
-        print("inside Simple screen : check fav and recent trips.......")
+         //MARK: Fav and Rec trips check
+          print("inside Simple screen : check fav and recent trips.......")
         let fav_array = SlifeMethods.deSerializeObject(objectKeyNameToDeserialize: FAVOURITES)
         let rec_array = SlifeMethods.deSerializeObject(objectKeyNameToDeserialize: RECENTTRIPS)
-    
-        
-        if ((fav_array.count == 0) && (rec_array.count == 0)){
+     if ((fav_array.count == 0) && (rec_array.count == 0)){
         
             //MARK: Recentr Cells All Hide
             
@@ -754,11 +822,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         if (errorCode_generic_flag == true) {
            // self.title = "Error Reported...."
              print("error Code has been caught... error should be displayed....")
-           // genericErrorDisplay.isHidden = false
-//            error_Title_Display_Outlet.titleLabel?.text = "Network Problem"
-//            error_Message_Display_Outlet.titleLabel?.text = "Please Try Again after checking your internet connection!"
-//            error_Title_Display_Outlet.setTitleColor(UIColor.red, for: .normal)
-//            error_Message_Display_Outlet.setTitleColor(UIColor.red, for: .normal)
+
             let real_titleAlert = "Network Problem:" + errorCode_generic
             let real_titleMessage = errorMessage_generic
             print("Error:101: \(real_titleMessage)")
@@ -775,23 +839,15 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             print("Error Code flag is Red..........")
          }
         else {
-           // genericErrorDisplay.isHidden = true
-//            error_Title_Display_Outlet.titleLabel?.text = ""
-//            error_Message_Display_Outlet.titleLabel?.text = ""
-//            error_Title_Display_Outlet.setTitleColor(UIColor.red, for: .normal)
-//            error_Message_Display_Outlet.setTitleColor(UIColor.red, for: .normal)
-            
-            // MARK: Temp Date Test
-            // dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
-            
-           // genericErrorDisplay.backgroundColor = UIColor.white
+
+
             print("Error Code flag is White:: No Error Found..........")
             
             
         }
         
         // enable time table
-        Buttons.enableOneAndDisableOneButton(enableButtonFirst: timeTable, disableButtonSecond: realTime)
+        Buttons.enableOneAndDisableOneButton(enableButtonFirst: realTime, disableButtonSecond: timeTable)
       // MARK: temp date trip
         
         //  dateTimeTrip.setTitle(HelpingMethods.currentDateTime(), for: UIControlState.normal)
@@ -874,7 +930,11 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         from_Origin_Input.setTitle(origin, for: .normal)
         to_destination_Input.setTitle(destination, for: .normal)
-//
+        print("Line: 941: from_to_flag = \(from_to_flag)")
+        
+        print("Line: 941: origin = \(origin) & Origin.station id = \(origin_StationId)")
+        print("Line: 941: destination = \(destination) & destination Dest.station id = \(destination_StationId)")
+        
        // print("1) from_Origin_Input.titleLabel = \(from_Origin_Input.titleLabel?.text!)")
         print("010-----origin = \(origin)")
         print("010------station.site_id-----\(station.site_id)")
@@ -910,7 +970,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         }
             
         else if (indexPath.section == 6) {
-        print("RECENTR TRIPS SECTION TOUCHED........")
+        print("RECENT TRIPS SECTION TOUCHED........")
             var from_Station_ID = String()
             var to_Station_ID = String()
             
@@ -935,7 +995,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
             print("------S2--------")
             let vc = storyBoard.instantiateViewController(withIdentifier: "TripSuggestion") as! TripSuggestionsTViewController
             print("------S3--------")
-            
+        
             vc.setValue(from_Station_ID, forKey: "from")
             print("------S4--------")
             vc.setValue(to_Station_ID, forKey: "to")
@@ -995,7 +1055,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //            destination_StationId = (to_destination_Input.titleLabel?.text)!
 //            
 //            recent_from_flag = false
-            realTimeFlag = false
+            realTimeFlag = true
             advancedOptionsFlag = false
             
             print("from segue has been caught")
@@ -1010,7 +1070,7 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
 //            
 //            recentr_to_flag = false
             from_to_flag = TO_DESTINATION
-            realTimeFlag = false
+            realTimeFlag = true
             advancedOptionsFlag = false
             
             print("to has been caught")
@@ -1020,8 +1080,10 @@ class MainSimpleSearchViewControllerTViewController : UITableViewController,UIPo
         
         
         if (segue.identifier == "tripSuggestions" || segue.identifier == "tripSuggestionsNew") || (segue.identifier == "withHeader") {
-            print("-----------fromStation_SiteId---\(origin_StationId)-------------2-----------------")
-            print("-----------toStation_SiteId---\(destination_StationId)-------------2-----------------")
+            print("-Prepare for Segue:----------fromStation_SiteId---\(origin_StationId)------& origin = \(origin)-------2-----------------")
+            print("-Prepare for Segue:-----------toStation_SiteId---\(destination_StationId)----Destination = \(destination)---------2-----------------")
+            
+            from_to_flag = ""
             segue.destination.setValue(origin_StationId, forKey: "from")
             segue.destination.setValue(destination_StationId, forKey: "to")
             segue.destination.setValue("0", forKey: "searchForArrivals")

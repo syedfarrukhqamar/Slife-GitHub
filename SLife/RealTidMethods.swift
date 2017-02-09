@@ -487,6 +487,25 @@ if (jsonObject.count == 0){
         return result
     }
     
+    static func checkIfKeyExists (dictToCheck: NSMutableDictionary, keyName: String) -> Bool {
+        
+        
+        if let a = dictToCheck[keyName] as? NSMutableDictionary
+        {
+            
+            print("dict caught.......for key \(keyName).............8787")
+            print(a.allKeys)
+            return true
+        }
+            
+        else {
+            
+            print("nothing nothing nothing. .no dict caught \(keyName). . . . .. .")
+            return false
+        }
+        
+    }
+
     static func checkIfKeyExists (objectToCheck: AnyObject, keyName: String) -> Bool {
         
         

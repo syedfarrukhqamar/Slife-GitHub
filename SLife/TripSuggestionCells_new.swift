@@ -13,7 +13,9 @@ class TripSuggestionsCell_new: UITableViewCell {
     
     var showWalk = true
     
+    @IBOutlet weak var refresh_top_navigation: UIButton!
     
+    @IBOutlet weak var refresh_next_navigation: UIButton!
   //  @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var PriceInfo: UILabel!
     @IBOutlet weak var from_time: UILabel!
@@ -24,7 +26,6 @@ class TripSuggestionsCell_new: UITableViewCell {
     @IBOutlet weak var to_station: UILabel!
     
     @IBOutlet weak var to_time: UILabel!
-    
    
     @IBOutlet weak var sectionSelected: UIButton!
     @IBOutlet weak var mapReference: UIButton!

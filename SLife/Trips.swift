@@ -1,7 +1,13 @@
 
 import UIKit
 
-class Trips {
+class Trips: NSObject, NSCopying {
+    public func copy(with zone: NSZone? = nil) -> Any {
+       
+        return Any.self
+    }
+    
+//    check may be it is old one 
     // MARK: Properties
     
     var from_time: String       // 1

@@ -8,7 +8,24 @@
 import UIKit
 import QuartzCore
 var watchIcons = false
+// MARK: variables for trip info departures
+let NEXT = "NEXT"
+let PREVIOUS = "PREVIOUS"
+let TRIPINFO = "TRIPINFO"
+// MARK: Border Header & Trip Info Rounded Corner
+let headerBorderWidth = CGFloat(4.0)
+let cellBorderWidth = CGFloat(1)
+let collectionBorderWidth = CGFloat(0.5)
 
+var navigationDeparturesTripInfo = ""
+var TRIP = "TRIP"
+var lastCountTripsHeaderCells = 0
+var lastCountTripInfoDepartureCells = 0
+// current section index calculation for cells at section , because header 0 & last cell is for navigation
+ // var currentSectionIndex = 0
+var  previousTripClickedFlag = false
+var nextTripClickedFlag = false
+var bounce = 0
 var convertedJsonIntoNSDict1 = NSDictionary()
 var selectedLegJourneyDetailedRef = String()
 var tripRootMapFlag = false
@@ -17,9 +34,7 @@ var rootMap_Ref = String()
 var rootMap_Ref_Dict = NSMutableDictionary()
 var colorFlag = true
 // Being used in custom trips for next departures in trip info
-// MARK: Border Header & Trip Info Rounded Corner
-let headerBorderWidth = CGFloat(4.0)
-let cellBorderWidth = CGFloat(0.2)
+
 
 // icon & row sizes
 var headerHeightDict = NSMutableDictionary()
@@ -39,9 +54,10 @@ let default_sizeFactor = CGSize(width: 0.0,height: 0.0)
 let iconSelectedColor = UIColor(red: (191/255), green: (239/255), blue: (191/255), alpha: 1.0)
 let cellBackgroundColor = UIColor(red: (235/255), green: (236/255), blue: (237/255), alpha: 1.0)
 // MARK: Color Enabled/Disabled
-let defaultColor = UIColor(red: (242/255), green: (242/255), blue: (242/255), alpha: 1.0)
-let enabledColor = UIColor(red: (244/255), green: (157/255), blue: (164/255), alpha: 1.0)
-let disabledColor = UIColor(red: (203/255), green: (247/255), blue: (203/255), alpha: 1.0)
+let enabledColor = UIColor(red: (218/255), green: (242/255), blue: (218/255), alpha: 1.0)
+let  defaultColor = UIColor(red: (244/255), green: (157/255), blue: (164/255), alpha: 1.0)
+//let disabledColor = UIColor(red: (203/255), green: (247/255), blue: (203/255), alpha: 1.0)
+let disabledColor = UIColor(red: (244/255), green: (206/255), blue: (211/255), alpha: 1.0)
 
 //----------------------------------------------------------------
 let headerRowDefaultColor = UIColor(red: (235/255), green: (237/255), blue: (237/255), alpha: 1.0)
@@ -67,22 +83,78 @@ let middleLegImage  = "middleLeg.png"
 let lastLegImage    = "lastLeg.png"
 let onlyLegImage    = "onlyLeg.png"
 
+
+// Header Data Source--( Sections
+var newTrip = NSMutableArray()
+
 // Switching off 23rd dec 0835 HRS Morning-------------START
 
 // Switching off 23rd dec 0700 HRS Morning-------------START
 
  class TripSuggestionsTViewController: UITableViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var nextDepartureRemainingLegStatusDict = NSMutableDictionary()
+    func tripHeaderSelector(gestureRecognizer: UIGestureRecognizer) {
+       let selectedTripHeaderCell = gestureRecognizer.view as! TripSuggestionsCell_new
+        showTripIndexOnTripInfo = selectedTripHeaderCell.tag 
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "TripDetailsWithNextDeparture", bundle:nil)
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        print("------S2--------")
+        print("-Trip Header Cell Clicked-----S2--------")
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TripInfoTableViewController") as! TripInfoTableViewController
+        print("--Trip Header Cell Clicked-----S3--------")
+        
+//        vc?.setValue(0, forKey: "showTripIndex")
+       // let currentTrip = newTrip[0] as! Trip
+       // let currentTripInArray = NSMutableArray()
+        print("--Trip Header Cell Clicked-----with tag = \(showTripIndexOnTripInfo)--------")
+
+       // currentTripInArray.add((newTrip[showTripIndexOnTripInfo] as! Trip))
+       // vc.setValue(selectedTripHeaderCell., forKey: "tripselected")
+        vc.setValue(selectedTripHeaderCell.tag, forKey: "tripSection")
+    
+        //vc.setValue(currentTripInArray, forKey: "currentTripScope")
+        self.navigationController?.pushViewController(vc, animated: true)
+       // self.present(vc, animated: true, completion: nil)
+        
+        
+      //  print("Trip Header clicked & values have been sent \(gestureRecognizer.view)")
+        //do your stuff here
+    }
+    
+    
+    @IBAction func getNextTrips(_ sender: UIBarButtonItem) {
+        print("BRING NEXT TRIPS........lastCountTripHeader=\(newTrip.count)..")
+        nextTripClickedFlag = true
+        lastCountTripsHeaderCells = newTrip.count
+    masterNextTripGrabberFromSL()
+    }
+    @IBAction func getPreviousTrips(_ sender: UIBarButtonItem) {
+       // remove the previous trips before loading?
+        // check previous trips
+        // check net trips......
+        
+        lastCountTripsHeaderCells = newTrip.count
+        
+        print("BRING PREVIOUS TRIPS.......lastCountTripHeader=\(newTrip.count)..")
+
+        masterPreviousTripGrabberFromSL()
+    }
     // Mark: 23rd dec 1800-changed clicked to  showClickedTransportType
+    @IBAction func refresh_previous_trips(_ sender: UIButton) {
+        print("Refresh Previous Trips::::::Has been CLiecked")
+    }
+    //MARK: Old?
+    @IBAction func refresh_next_trips(_ sender: Any) {
+    print("Refresh next trips have been cliecked...depriciated.")
+    }
     //                showClickedLine
     
    // MArk:  Trip Suggestion (Icon Filters Towards Trip Info
     func showClickedTransportType(sender: UIButton) {
     let currentCell = (sender.superview)?.superview as! TripSuggestionsCell_new
     let legIndex = SlifeMethods.extractCharFromStringAtIndex(inputString: String(sender.tag), lookIndex: 3)
-    
-    
     //currentCell.setNeedsDisplay()
-    
     // breakdown clicked icon's tag into current section,Current Row(i.e. leg index.
     let clickedButtonStringTag = String(sender.tag)
         let transpTypeIconButton = sender
@@ -263,11 +335,12 @@ let onlyLegImage    = "onlyLeg.png"
             if (currentLeg.enabled_TransportType == true){
             currentLeg.enabled_TransportType = false
             
-            
+           
             } else {
             currentLeg.enabled_TransportType = true
             currentLeg.enabled_LineNumber = false
-            
+                
+                currentLeg.clickLevel = TRIP
             }
             // check if enabled , if yes then  disable it
         } else if (String(buttonIdentifierIndex).contains("1")){
@@ -276,11 +349,12 @@ let onlyLegImage    = "onlyLeg.png"
             
             if (currentLeg.enabled_LineNumber == true){
                 currentLeg.enabled_LineNumber = false
-                
+               
                 
             } else {
                 currentLeg.enabled_LineNumber = true
                 currentLeg.enabled_TransportType = false
+                 currentLeg.clickLevel = TRIP
             }
         
         
@@ -317,6 +391,7 @@ let onlyLegImage    = "onlyLeg.png"
                     // show this filtered cel
                         print("True : setting show hide true for legiteratingLeg.type = \(legIteratingLeg.type) & LegIteratingLeg.Line = \(legIteratingLeg.line)")
                     legIteratingLeg.showHideLeg = true
+                    legIteratingLeg.clickLevel = TRIP
                     } else {
                         
                         print("False: setting show hide true for legiteratingLeg.type = \(legIteratingLeg.type) & LegIteratingLeg.Line = \(legIteratingLeg.line)")
@@ -342,7 +417,7 @@ let onlyLegImage    = "onlyLeg.png"
                 // when the trip departures next are clicked then they are being added at the end of the current leglist as trip info departures
                 if let legIteratingLeg = leglists[i] as? Leg {
                     legIteratingLeg.showHideLeg = true
-                    
+                    legIteratingLeg.clickLevel = ""
                 }
              i += 1
             }
@@ -502,7 +577,7 @@ let onlyLegImage    = "onlyLeg.png"
     }
    
     func showClickedTransportTypeOrLineInNextDepartures(sender: UIButton) {
-        print("Trip Info Button Clicked -.......\(sender.tag).....")
+        print("TripInfo Button Clicked -.......\(sender.tag).....")
         
         
         
@@ -534,12 +609,12 @@ let onlyLegImage    = "onlyLeg.png"
             if (leg.enabled_TransportType == true){
             leg.enabled_TransportType = false
             
-            
+          
+                
             } else {
                 leg.enabled_TransportType = true
                 leg.enabled_LineNumber = false
-            
-            
+                leg.clickLevel = TRIPINFO
             }
             
             
@@ -556,19 +631,15 @@ let onlyLegImage    = "onlyLeg.png"
                 leg.enabled_LineNumber = false
                 
                 
+
+                
             } else {
                 leg.enabled_LineNumber = true
                 leg.enabled_TransportType = false
-                
-                
+                leg.clickLevel = TRIPINFO
+
             }
             
-            
-            
-            
-            
-        
-        
         
         }
         
@@ -820,6 +891,7 @@ let onlyLegImage    = "onlyLeg.png"
     var legIconsLineCounter = 0
     let legIconsHeight = default_startingSize.height
     let headerCellHeight = 90 //100 //80 //60
+    let header_ref_cellHeight = 10
     var legIconsLineTerminateCount = 1
     
     //  @IBOutlet weak var mapReferenceAction: UIButton!
@@ -836,24 +908,73 @@ let onlyLegImage    = "onlyLeg.png"
         
         if (addToFav_flag == false){
             print("--------from---inside add to fav----------")
-            
             SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: FAVOURITES)
             addToFav_flag = true
         }
         else {
-            
             print("Already added......")
-            
-        }
+         }
     }
-    
+    //MARK: Master next dep trip info button
+    @IBAction func nextDeparturesTripInfo(_ sender: UIButton) {
+        
+        print("Get NEXT Departures for Trip Info Has been pressed....TAG=\(sender.tag)Selected=\(sender.isSelected)")
+        sender.isSelected = true
+        getNextDeparturesTripInfo(sender: sender, tableViewCurrent: tableView)
+        
+//        print("Next Departures Trip Info Clicked:: BUtton....")
+//    getNextDeparturesTripInfo(sender: sender, tableViewCurrent: tableView)
+//    
+    /*
+         let currentDepartureCell = scrollView.viewWithTag(55)?.superview?.superview?.superview as! LegTripNextDeparturesTableViewCell //LegTripNextDeparturesTableViewCell
+         print("next::Cell.Current:Cell.....987::\(currentDepartureCell.currentIndexPathSection) ---- \(currentDepartureCell.currentIndexPathRow)")
+         let keyName = String(currentDepartureCell.currentIndexPathSection) + String(currentDepartureCell.currentIndexPathRow)
+         print("next::Cell.Current Key Name = \(currentDepartureCell.keyName)")
+         
+         //            var indexPath = IndexPath(item: (currentDepartureCell.currentIndexPathRow), section: currentDepartureCell.currentIndexPathSection)
+         //            let tripInfoCurrent = tableView.cellForRow(at: indexPath) as! LegListCells
+         //            print("next departure Master DIct All keys = \(custom_Trip_NextDepartures_Dict.allKeys) & tripinfo keyName = \(tripInfoCurrent.keyName)")
+         print("next::custom trip object count = \(custom_Trip_NextDepartures_Dict.allKeys) && keyname = \(keyName)")
+         print("next::current Departure Cell = \(currentDepartureCell.keyName)")
+         if ( custom_Trip_NextDepartures_Dict.value(forKey: keyName) != nil ){
+         let collectionTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+         print("next::collection trip object count = \(collectionTripObject.count)")
+         if (xMovement < 0){
+         navigationDeparturesTripInfo = NEXT
+         if (navigationDeparturesTripInfo.contains(NEXT))
+         {
+         simple_earliestDepartLatestArrival_flag = true
+         
+         // value 1 is bringing based on arrival
+         simple_earliestDepartLatestArrival_Value = 0
+         // send info from last object
+         let lastObjectIndex = collectionTripObject.count - 1
+         
+         let lastObject = collectionTripObject[lastObjectIndex] as! Trip
+         simple_expectedTripDate = lastObject.originDetail.date
+         simple_expectedTripTime = lastObject.originDetail.time
+         print("next From station = \(lastObject.originDetail.name)")
+         print("next time = \(lastObject.originDetail.time)")
+         print("next to station = \(lastObject.destinationDetail.name)")
+         print("next From Station :: To Station:: = \(keyName)")
+         // Temp off 8th jan getNextDeparturesForCollection(fromStation: lastObject.originDetail.name,toStation: lastObject.destinationDetail.name, fromTime: lastObject.originDetail.time, tableView: tableView, keyName: keyName,navigationType: navigationDeparturesTripInfo)
+         }
+
+ */
+    }
+    @IBAction func previousDeparturesInTripInfo(_ sender: UIButton) {
+          sender.isSelected = true
+        print("Get Previous Departures for Trip Info Has been pressed......")
+        
+        getPreviousDeparturesTripInfo(sender: sender, tableViewCurrent: tableView)
+    }
     @IBAction func showTripOnMapAction(sender: UIButton) {
         print("showTripOnMapAction .......")
         
         print("newTrip.count = \(newTrip.count)")
         print("sender.tag\(sender.tag)")
         
-        let tripCell = newTrip[sender.tag - 1] as! Trip
+        let tripCell = newTrip[sender.tag ] as! Trip
         
         print("trip cell.Leglist.Count = \(tripCell.LegList.count)")
         selectedRootTripForMap = tripCell.LegList
@@ -865,6 +986,7 @@ let onlyLegImage    = "onlyLeg.png"
         
         tripRootMapFlag = true
         print("map Referrence Action = \(rootMap_Ref)")
+        
     }
     
     @IBAction func mapReferenceAction(sender: UIButton) {
@@ -881,202 +1003,288 @@ let onlyLegImage    = "onlyLeg.png"
         print("map Referrence Action = \(rootMap_Ref)")
     }
     
-    @IBAction func showNextDepartures_InTripInfo(_ sender: UIButton) {
+    //MARK: COLLECTION NEXT TRIPS GRAB
+    func getNextDeparturesForCollection(fromStation: String,toStation:String, fromTime: String,tableView: UITableView,keyName: String,navigationType: String,legRow_ID_From: String,legRow_ID_To:String){
+        print("TripInfo:: Navigation type clicked = \(navigationType) & earlest Dp Flag = \(simple_earliestDepartLatestArrival_flag) & Value = \(simple_earliestDepartLatestArrival_Value)")
+    
+        // get current cell's from time and from station
+       
+        // get section row as well
+        // one timp is to get these as parameters, and send from scroll view 
+        // after getting view with tag, 55 tag is working
+        let customTripClass = CustomTripMethods()
+        print("about to call webservice ..getNextDeparturesForCollection....")
+
+//            let sectionId = sectionStr
+//        let rowId = rowStr
+        
+     // MARK: Departures Collection View in progress jan 2017   
+       // customTripClass.get_data_from_url_ForExistingDepartures(from: <#T##String#>, to: <#T##String#>, tableView: <#T##UITableView#>, headerSectionId: <#T##String#>, legRow_id: <#T##String#>)
+        //(from: currentCell.from_station.text!, to: currentCell.to_station.text!, tableView: tableView, headerSectionId: sectionId,onInfo, legRow_id: rowId)
+        
+        let sectionExtracted = String(SlifeMethods.extractCharFromStringAtIndex(inputString: keyName, lookIndex: 1))
+        let rowExtracted_forTripInfo = String(SlifeMethods.extractCharFromStringAtIndex(inputString: keyName, lookIndex: 2))
+print("Key Name Received =next dep refresh= \(keyName)")
+        
+        
+        print("sectionExtracted  = \(sectionExtracted)")
+        print("rowExtracted  = \(rowExtracted_forTripInfo)")
+        print("inside get next dep function::fromStation::\(fromStation)")
+        print("inside get next dep function::toStation::\(toStation)")
+        print("inside get next dep function::toStation::\(toStation)")
+        
+        
+        customTripClass.get_data_from_url_ForExistingDepartures(from_Station: fromStation, to_Station: toStation, tableView: tableView, headerSectionId: sectionExtracted, legRow_id_From : rowExtracted_forTripInfo,keyName: keyName,navigationTypeClicked: navigationType,legRow_id_To:legRow_ID_To ,previousNext_Dep_Flag: NEXT_DEP)
+        //customTripClass.get_data_from_url(from: fromStation, to: fromTime, tableView: tableView, headerSectionId: sectionExtracted , legRow_id: rowExtracted_forTripInfo)
+//        
+    
+    }
+    // MARK: ShowNextDeparture Action
+    func nextDepartureTarget(_ sender: UIButton)  {
+        print("Sender.Tag:: = \(sender.tag)")
+       sender.backgroundColor = UIColor.gray
+    }
+    /*
+    @IBAction func nextDeparturesFromCurrentLeg(_ sender: UIButton) {
+        sender.backgroundColor = UIColor.blue
+    }*/
+
+    @IBAction func showNextDepartures_RemainingJourney(_ sender: UIButton) {
+  //  }
+ /* 17th jan 2017 0400
+        @IBAction func showNextDepartures_InTripInfo(_ sender: UIButton) {
+            */
         //     let currentCell = sender.superview as! LegListCells
         //  if(newTrip.count != 0) {
+        
         if(watchIcons == false){
         
         //    watchIcons = true
         
         }
         
+        
         var clicked = false
         
         let button = sender as! UIButton
         let view = button.superview!
+      //  button.backgroundColor = UIColor.yellow
         //MARK: Departure temp off 9th nov 8pm
         // get values from the departure button clicked (from its super view)
            
         let currentCell = view.superview as! LegListCells
-            let departureCellIndex = Int(currentCell.rowInfo)! + 1
-        print("showNextDepartures_InTripInfo has been Pressed ::::::::\(currentCell.sectionInfo)::\(currentCell.rowInfo):::")
-        print("Departure cell Index = \(departureCellIndex)")
-        print("current cell show hidden value is = \(currentCell.showHideDepartureCell)")
-       // print("CurrentCell Current Index ==== \(currentCell\)")
-        if (currentCell.showHideDepartureCell == false){
-            // before cell was hidden
-            // show departure cell
-            let image = UIImage(contentsOfFile: "TripInfoDeparturesSelected.png")
-            currentCell.nextDeparturesOutlet.setImage(image, for: .normal)
-            // get the data
-        //---------------------------end departure collection view old
-        let customTripClass = CustomTripMethods()
+        let departureCellIndex = Int(currentCell.rowInfo)! + 1
+        // check if the key exist to check if the cell is opened or not
+               print("Button Tag = \(sender.tag)")
+        print("Line:1046:BeforenextDepartureRemainingLegStatusDict.allkeys= \(nextDepartureRemainingLegStatusDict.allKeys)")
+            
+        if let valueExistDepartCellStatus = nextDepartureRemainingLegStatusDict.value(forKey: currentCell.keyName) as? Bool
+        {
+        // just  change status to show for the current cell
+           print("valueExistDepartCellStatus: \(valueExistDepartCellStatus)")
+            // if value is false: then it is not funcitonal for now
+            if (valueExistDepartCellStatus == false){
+                //  currentCell.showHideDepartureCell_Master = true
+            // MARK: Next Departure isSelected
+               //   currentCell.nextDepartureTillCurrLeg_Outlet.isSelected = false
+            // already shown now hide it
+                print("ValueExistDepartCellStatus:False....")
+               // currentCell.showHideDepartureCell_Master = true
+               //   currentCell.showHide_Departures = true
+            } else if (valueExistDepartCellStatus == true){
+               // currentCell.showHide_Departures = false
+           //     currentCell.showHideDepartureCell_Master = false
+             //   currentCell.nextDepartureTillCurrLeg_Outlet.isSelected = false
+//                
+//                currentCell.nextDeparturesOutlet.setTitle("N", for: UIControlState.normal)
+//                  currentCell.nextDeparturesOutlet.isSelected = false
+                print("ValueExistDepartCellStatus:True....")
+                // remove the departure cell values as well as the dict key
+                
+                print("Line:1072:BeforenextDepartureRemainingLegStatusDict.allkeys= \(nextDepartureRemainingLegStatusDict.allKeys)")
+                print("Line:1072:Before:newTrip.Leglist Count:\((newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.count)")
+                
+          
+                //nextDepartureRemainingLegStatusDict.removeObject(forKey: currentCell.keyName)
+                
+                //(newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.removeObject(at: departureCellIndex)
+                
+                print("Line:1072:After:newTrip.Leglist Count:\((newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.count)")
+                
+                print("Line:1072:After:nextDepartureRemainingLegStatusDict.allkeys= \(nextDepartureRemainingLegStatusDict.allKeys)")
+                
+            }
+        
+        } else {
+        // load values and add key as true
+          print("Not Loaded Before: about to load now:")
+        //    currentCell.nextDeparturesOutlet.isSelected = true
+              currentCell.showHideDepartureCell_Master = true
+         //   currentCell.nextDepartureTillCurrLeg_Outlet.isSelected = true
+//            
+//            currentCell.nextDeparturesOutlet.setTitle("S", for: UIControlState.selected)
+//            
+                //currentCell.showHide_Departures = true
+            nextDepartureRemainingLegStatusDict.setValue(true, forKey: currentCell.keyName)
+            let customTripClass = CustomTripMethods()
             print("about to call webservice ......")
-        customTripClass.get_data_from_url(from: currentCell.from_station.text!, to: currentCell.to_station.text!, tableView: tableView, headerSectionId: currentCell.sectionInfo, legRow_id: String((Int(currentCell.rowInfo)! + 1)))
-       //MARK: EXTRA
+            customTripClass.get_data_from_url(currentCollectionView: UICollectionView() , from: currentCell.from_station.text!, to: currentCell.to_station.text!, tableView: tableView, headerSectionId: currentCell.sectionInfo, legRow_id_from: String((Int(currentCell.rowInfo)! + 1)),fromTime: currentCell.from_time.text!,legRowID_To: String((Int(currentCell.rowInfo)! + 1)),previousOrNextFlag: NEXT_DEP,fromDate_Dep: "",fromTime_Dep: "")
+            //MARK: EXTRA
             // insert into newtrip
             print("Custom Trip Next Departure dict status = \(custom_Trip_NextDepartures_Dict.count)")
-//            if (custom_Trip_NextDepartures_Dict.count != 0)
-//            {
-                // MARK: replace it later with collection dict
-                let newDepartureObject = TripInfoDepartures()
-                print("Adding in new trip ........")
-                (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.insert(newDepartureObject, at: departureCellIndex)
-                
+            //            if (custom_Trip_NextDepartures_Dict.count != 0)
+            //            {
+            // MARK: replace it later with collection dict
+            
+            let newDepartureObject = TripInfoDepartures()
+            print("Adding in new trip ........")
+            (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.insert(newDepartureObject, at: departureCellIndex)
+         
+        }
+        
+        print("All keys in:nextDepartureRemainingLegStatusDict:S:\(currentCell.sectionInfo):R:\(currentCell.rowInfo):--------\(nextDepartureRemainingLegStatusDict.allKeys) ")
+
+        tableView.reloadData()
+
+       /*
+        print("Line 1026: showNextDepartures_ :keyName.CurrentCell: \(currentCell.keyName):T:\(currentCell.tag) Sec:\(currentCell.sectionInfo): R:\(currentCell.rowInfo): ")
+        print("button.nextdeparture.current tag = \(button.tag)")
+        //currentCell.backgroundColor = UIColor.red
+       // if(currentCell.showdi)
+        print("showNextDepartures_InTripInfo has been Pressed ::::::::\(currentCell.sectionInfo)::\(currentCell.rowInfo):::")
+        print("Departure cell Index = \(departureCellIndex)")
+       // print("CurrentCell Current Index ==== \(currentCell\)")
+
+       if (currentCell.showHideDepartureCell_Master == false){
+          
+          //  currentCell.showHideDepartureCell_Master = true
+        
+            // check if the data has been loaded already 
+//            if let departTrip =  (newTrip[(Int(currentCell.sectionInfo))!] as! Trip).LegList[departureCellIndex] {
+//            
+//            print("")
+//            
+//            }
+
+           
+            // before cell was hidden
+            // show departure cell
+            //let image = UIImage(contentsOfFile: "TripInfoDeparturesSelected.png")
+           // currentCell.nextDeparturesOutlet.isSelected = true
+            // get the data
+        //---------------------------end departure collection view old
+        
             //    (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.insert(custom_Trip_NextDepartures_Dict, at: departureCellIndex)
          //   }
-            currentCell.showHideDepartureCell = true
+            
             print("setting value to true for currentcell.showhide........")
             }
-            else if (currentCell.showHideDepartureCell == true)
+            else if (currentCell.showHideDepartureCell_Master == true)
         {
+            
+            
+            currentCell.nextDeparturesOutlet.isSelected = false
+            
+           //    currentCell.showHideDepartureCell_Master = false
+            /*
+            if (currentCell.showHideDepartureCell == true){
+                currentCell.showHideDepartureCell = false
+               // currentCell.nextDeparturesOutlet.isSelected = false
+                
+            }*/
+            
+            
+            
+        
             print("setting value to false......and removing object.......")
-            let image = UIImage(contentsOfFile: "TripInfoDepartures.png")
-            currentCell.nextDeparturesOutlet.setImage(image, for: .normal)
+           // let image = UIImage(contentsOfFile: "TripInfoDepartures.png")
+           // currentCell.nextDeparturesOutlet.isSelected = false
+            // currentCell.nextDeparturesOutlet.setImage(image, for: .normal)
             
             print("Before Removal::::tableviews current count = \(tableView.subviews.count)")
-            (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.removeObject(at: departureCellIndex)
-            currentCell.showHideDepartureCell = false
+          
+          //  currentCell.showHideDepartureCell = false
 //           
 //            tableView.subviews[0].removeFromSuperview()
 //            tableView.subviews[1].removeFromSuperview()
 //            
         //    tableView.subviews[2].removeFromSuperview()
-            
-            tableView.reloadData()
-            
-        print("Removed:::::tableviews current count = \(tableView.subviews.count)")
-      
-            
-            print("Removed:::::tableviews current count = \(tableView.subviews.count)")
-        }
-        // Departure new code start 9th nov 10Am friday 2016-----start
-        // 1) get current section and index
-        print("newtrip count = in departure action = \(newTrip.count)")
-      
-            // 1.1) check current object
-        // MARK: temp off departures 9pm 9th nov
-            
-            /*
-            let tripLegOrDepartureObject = (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList[Int(currentCell.rowInfo)!] as! AnyObject
-            // 1.1.1) if LEG then add departure object
-            print("checking for type of object received ::::::.")
-            if (RealTidMethods.checkIfLeg(objectToCheck: tripLegOrDepartureObject)){
-                // add leg object after the current index
-                print("current index = \(currentCell.rowInfo)")
-                print("Leg is present inside........")
-                
-                let newDepartureObject = TripInfoDepartures()
-                print("adding  departure object in the trip.... at index = \(currentCell.rowInfo)")
-                let trip = newTrip[Int(currentCell.sectionInfo)!] as! Trip
-                
-                print("\(trip.LegList.count)")
-                
-           print("Before Adding NewTrip.Leglist.Count = \(trip.LegList.count)")
-                let departureCellIndex = Int(currentCell.rowInfo)! + 1
-                print("Deprture Cell Index ======== \(departureCellIndex)")
-                (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.insert(newDepartureObject, at: departureCellIndex)
-                //let trip = newTrip(Int(currentCell.sectionInfo) as! Trip
-//                let LegList = trip.LegList.count
-                print("After Adding...NewTrip.Leglist.Count = \(trip.LegList.count)")
-                
-            }
-                // 1.1.2) if DEPARTURE then remove departure object
-                
-            else if (RealTidMethods.checkIfDepartureObject(objectToCheck: tripLegOrDepartureObject)){
-            
-//            let departureObjectToRemove = 
-                // Remove the current object at current rwo for current section within the newtrip
-                let trip = newTrip[Int(currentCell.sectionInfo)!] as! Trip
-              
-                
-                print("Before Removing Depart object = \(trip.LegList.count)")
-           
-                (newTrip[Int(currentCell.sectionInfo)!] as! Trip).LegList.removeObject(at: Int(currentCell.rowInfo)!)
-                
-                
-         
-                print("After Removing..Departure Object = \(trip.LegList.count)")
-                
-                
-            
-            
-            }
-        
-        */
-        
-        // depart new code 9th nov friday -----------------------end
-        
-        //----------------------------------------------
-        
-        
-        // Update Master Departure
-        /* //------temp off 9th nov friday 10Am
-
-        var currentSectionDict = nextDepartureMasterDict.value(forKey: String(currentCell.sectionInfo)) as! NSMutableDictionary
-        print("All keys in next departureMasterDict = \(nextDepartureMasterDict.allKeys)")
-        print("All keys in current section dict = Trip Info Level = \(currentSectionDict)")
-        
-        // get section and row as key
-        let currentTripInfoCellValue = currentSectionDict.value(forKey: String(currentCell.rowInfo)) as! Int
-        print("Current Cell Section = \(currentCell.sectionInfo) && Row = \(currentCell.rowInfo)")
-        
-        print("current Trip info CEll Value = \(currentTripInfoCellValue)")
-        if (currentTripInfoCellValue == 0){
-            
-            currentSectionDict.setValue(1, forKey: String(currentCell.rowInfo))
-            
-            print("old=0new value for the current row = \(currentCell.rowInfo) = 1)")
-            
-            
-        } else if (currentTripInfoCellValue == 1){
-            
-            
-            currentSectionDict.setValue(0, forKey: String(currentCell.rowInfo))
-            
-            print("old=1 new value for the current row = \(currentCell.rowInfo) = 0)")
-            
-        }
-         
-         
-         nextDepartureMasterDict.setValue(currentSectionDict, forKey: String(currentCell.sectionInfo))
-         
- */ //        temp off 9th nov friday 10AM
-        
-        // update the tripinfo value against respective section
-        
-        
-        
-        
-        // get section as key
-        
-        // receive dict and then receive value from index.row as key
-        
-        
-        //----------------------------------------------
-        print("current button tag =  \(sender.tag)" )
-        
-        // let indexPath = itemTable.indexPathForCell(currentCell)
-        
-        print("currentcell.sectioninfo & row = \(currentCell.sectionInfo) & \(currentCell.rowInfo)")
-        
-        print("currentCell.from_station.text station= \(currentCell.from_station.text)")
-        
-        print("current cell values  to station = \(currentCell.to_station.text)")
-        
-         // tableView.reloadData()
-    
-        
-        //}
-        }
-    // Leg Image Names
+         }
+    */
+    }
+   // Leg Image Names
     //MARK: Show Trip Details
     @IBAction func sectionAction(sender: UIButton) {
         print("section button is pressed with :\(sender.state) ")
+        let currentCell = sender.superview?.superview?.superview?.superview?.superview?.superview?.superview as! TripSuggestionsCell_new
+        print("Current Cell.\(currentCell)")
+        print("Current Cell.\(currentCell.from_station)")
         
-        print(sender.tag)
+        
+        if let currentCell = sender.superview?.superview?.superview?.superview?.superview?.superview?.superview as? TripSuggestionsCell_new
+            
+        {
+        print("Header Cell found::)")
+      
+        let currentSection = 0
+            let currentTrip = newTrip[currentSection] as! Trip
+            
+           // let currentLegListCount = currentTrip.LegList
+            var i = 0
+            var count = currentTrip.LegList.count
+            print("count of leglist = \(currentTrip.LegList.count)")
+            
+            let ary = currentTrip.LegList as? NSMutableArray
+           
+  /* MARK: Temp Remove Departures
+             for index in 1...count
+                
+                {
+            print("Line 1202:::")
+            let keyName = String(currentSection) + String(i)
+                    
+                    print("Line 1205:::")
+                    if let valueExistDepartCellStatus = nextDepartureRemainingLegStatusDict.value(forKey: keyName) as? Bool
+                    {
+                    // remove the key
+                        var currentRow = i
+                        var departRow = i + 1
+                        print("Line1210: all dict keys =Before: \(nextDepartureRemainingLegStatusDict.allKeys)")
+                        nextDepartureRemainingLegStatusDict.removeObject(forKey: keyName)
+            
+                         print("Line1210: all dict keys =After: \(nextDepartureRemainingLegStatusDict.allKeys)")
+                        
+                        // remove the object
+                        
+                                   (newTrip[Int(currentSection)] as! Trip).LegList.removeObject(at: (departRow))
+                    // change the value of the button? 
+                    // get the cell and change the status
+                
+                    let newIndexPath = IndexPath(row: currentRow, section: currentSection)
+                        
+                        // MARK: nill found 
+                        // fatal error: unexpectedly found nil while unwrapping an Optional value
+                        let tripInfoCell = tableView.cellForRow(at: newIndexPath) as! LegListCells
+                        
+                        print("tripInfoCell: : \(tripInfoCell.from_station)")
+                        
+                       // tripInfoCell.nextDepartureTillCurrLeg_Outlet.isSelected = false
+                        
+                //    currentCell.showHideDepartureCell_Master = false
+                    //                currentCell.nextDeparturesOutlet.isSelected = false
+                    //
+                    //                currentCell.nextDeparturesOutlet.setTitle("N", for: UIControlState.normal)
+                    //                  currentCell.nextDeparturesOutlet.isSelected = false
+
+                    // remove the departure cell values as well as the dict key
+                    }
+     i += 1
+
+            }
+*/
+        }
         sectionShow = sender.tag
-        print("Section Show sender = \(sectionShow)")
+        print("Section Show sender = \(sectionShow) + tag ? \(sender.tag)")
         print("Dict Section Show current keys = \(showTripDetail_Dict.allKeys)")
       var button = sender
         
@@ -1173,8 +1381,6 @@ let onlyLegImage    = "onlyLeg.png"
     
     //MARK: Old Leg Image Constant Place
     
-    // Header Data Source--( Sections
-    var newTrip = NSMutableArray()
     
     // Rows Data Source
     
@@ -1185,52 +1391,89 @@ let onlyLegImage    = "onlyLeg.png"
     var from = String()
     var to = String()
     var searchForArrivals = String()
-    
+    /*
+    func refresh(sender: AnyObject) {
+        let refreshControlTemp = sender as! UIRefreshControl
+        print("----REFRESH HAS BEEN CALLED ...............")
+        masterTripGrabberFromSL_Refresh()
+        refreshControl?.endRefreshing()
+        // Code to refresh table view
+    }
+    */
     override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: AutoRowHeight
+         //MARK: PULL TO REFRESH
+       /* refreshControl = UIRefreshControl()
+        refreshControl?.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl?.addTarget(self, action: #selector(TripSuggestionsTViewController.refresh), for: UIControlEvents.valueChanged)
+ 
+        tableView.addSubview(refreshControl!) // not required when using UITableViewController
+*/
+        
+ // MARK: AutoRowHeight
         // tableView.backgroundColor = UIColor.white
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
-        
-        //        tableView.estimatedSectionHeaderHeight = 100
-        //        tableView.sectionHeaderHeight = UITableViewAutomaticDimension
-        
         tripRootMapFlag = false
+        masterTripGrabberFromSL()
+      }
+    
+    /*func masterTripGrabberFromSL_Refresh(){
         
-        // print("-selected index path---------\(self.tableView.indexPathForSelectedRow)")
+        print("old simple earliest dep latest arrival flag = \(simple_earliestDepartLatestArrival_flag)")
+        
+        simple_earliestDepartLatestArrival_flag = true
+          print("old simple earliest dep latest arrival flag = \(simple_earliestDepartLatestArrival_flag)")
+        
+        if (newTrip[4] == nil){
+        print("New Trip last trip is nil ")
+        
+        
+        } else {
+        let tempLastTrip = newTrip[4] as! Trip
+        print("Last Trip Destination origin Time ===\(tempLastTrip.originDetail.time)")
+        print("Before :: New vlaue Simple Expected Trip Time === \(simple_expectedTripTime)")
+//            let h1 = SlifeMethods.extractCharFromStringAtIndex(inputString: tempLastTrip.originDetail.time, lookIndex: 0)
+//        
+//            let h2 = SlifeMethods.extractCharFromStringAtIndex(inputString: tempLastTrip.originDetail.time, lookIndex: 1)
+//            
+//            let seperator  = SlifeMethods.extractCharFromStringAtIndex(inputString: simple_expectedTripTime, lookIndex: 2)
+//            
+//            
+//            let m1 = SlifeMethods.extractCharFromStringAtIndex(inputString: tempLastTrip.originDetail.time, lookIndex: 3)
+//            
+//            let m2 = SlifeMethods.extractCharFromStringAtIndex(inputString: tempLastTrip.originDetail.time, lookIndex: 4)
+//            let hour = String(h1) + String(h2)
+//            
+//            let lastMinute = String((Int(String(m2))! + 1))
+//            
+//            var timeConstruct = hour + ":" + String(m1) + lastMinute
+//            
+//           print("h1=\(h1) h2= \(h2) Seperat=\(seperator) m1=\(m1) m2=\(m2).....")
+//            print("time construct ==== \(timeConstruct)")
+            simple_expectedTripTime = tempLastTrip.originDetail.time //timeConstruct //tempLastTrip.originDetail.time
+        
+        }
+       print("After :: New vlaue Simple Expected Trip Time === \(simple_expectedTripTime)")
         let searchTrips = WebServiceHandler()
         var url = String()
-        
         print("from = = = = = \(from)")
         print("to = = = = = \(to)")
-        
         // recent trips addition
         // MARK: Recent Trips Adding
-        
-        
         print(" sr_fromStation_id \(sr_fromStation_id) && count is \(sr_fromStation_id.characters.count)")
         print(" sr_fromStation_id \(sr_toStation_ID) && count is \(sr_toStation_ID.characters.count)")
-        
         SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
-        //
-        //        if (advancedOptionsFlag == false){
-        //         url = searchTrips.constructURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
         if (advancedOptionsFlag == false){
             // coming from simple screen
-            
             self.title = simple_expectedTripDate + "-" + simple_expectedTripTime
-            
             url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
             
             // from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            
-            //             from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            // from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             
         } else if (advancedOptionsFlag == true){
-            
             self.title = expectedTripDate + "-" + expectedTripTime
-            
             //        url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
             url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
         }
@@ -1238,13 +1481,155 @@ let onlyLegImage    = "onlyLeg.png"
         get_data_from_url(url: url)
         print("-----------------------ended--090")
         
+    } */
+    
+    func masterPreviousTripGrabberFromSL(){
+        print("masterPreviousTripGrabberFromSL.. has been called.....")
+        
+        // set Earliest Arrival / Departure flag
+        simple_earliestDepartLatestArrival_flag = true
+        
+        // value 1 is bringing based on arrival
+        simple_earliestDepartLatestArrival_Value = 1
+        // get the first object from newtrip
+        let firstTripObject = newTrip.firstObject as! Trip
+        simple_expectedTripDate = firstTripObject.originDetail.date
+        simple_expectedTripTime = firstTripObject.originDetail.time
+        
+        //        let fromTime_firstObject = firstTripObject.originDetail.time
+        //        let fromStation_firstObject = firstTripObject.originDetail.name
+        //        let toStation_firstObject = firstTripObject.destinationDetail.name
+        ////        let toStation_firstObject = firstTripObject.dest
+        
+        
+        let searchTrips = WebServiceHandler()
+        var url = String()
+        print("from = = Previous Trips= = = \(from)")
+        print("to = = =Previous Trips = = \(to)")
+        // recent trips addition
+        // MARK: Recent Trips Adding
+        print(" sr_fromStation_id:Previous Trips: \(sr_fromStation_id) && count is \(sr_fromStation_id.characters.count)")
+        print(" sr_fromStation_id:Previous Trips: \(sr_toStation_ID) && count is \(sr_toStation_ID.characters.count)")
+        SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
+        print("Previous Trips: advancedOptionsFlag = \(advancedOptionsFlag)")
+        print("Previous Trips: earliestDepartLatestArrival_flag = \(earliestDepartLatestArrival_flag) &value=\(earliestDepartLatestArrival_Value) && Time = \(firstTripObject.originDetail.time)")
+        
+        if (advancedOptionsFlag == false){
+            print("Previous Trips: advancedOptionsFlag = \(advancedOptionsFlag)")
+            // coming from simple screen
+            self.title = simple_expectedTripDate + "-" + simple_expectedTripTime
+            // search for arrival
+            // By default / default are looking for the time that you want the trip to resign. By putting searchForArrival = 1, so looking instead travels based on the time you want to arrive. Default = 0th
+            url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
+            
+            // from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            // from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            
+        } else if (advancedOptionsFlag == true){
+            self.title = expectedTripDate + "-" + expectedTripTime
+            //        url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
+            url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0",tripDate: "",tripTime: "")
+            
+        }
+        print("-------------------url----\(url)")
+        previousTripClickedFlag = true
+        get_data_from_url(url: url)
+        print("-----------------------ended--090")
+        
+    }
+    
+    func masterNextTripGrabberFromSL(){
+        print("masterPreviousTripGrabberFromSL.. has been called.....")
+        
+        // set Earliest Arrival / Departure flag
+        
+        simple_earliestDepartLatestArrival_flag = true
+        
+        // value 1 is bringing based on arrival
+        simple_earliestDepartLatestArrival_Value = 0
+        // get the first object from newtrip
+        let lastTripObject = newTrip.lastObject as! Trip
+        simple_expectedTripDate = lastTripObject.originDetail.date
+        simple_expectedTripTime = lastTripObject.originDetail.time
+        
+//        let fromTime_firstObject = firstTripObject.originDetail.time
+//        let fromStation_firstObject = firstTripObject.originDetail.name
+//        let toStation_firstObject = firstTripObject.destinationDetail.name
+////        let toStation_firstObject = firstTripObject.dest
+        
+        
+        let searchTrips = WebServiceHandler()
+        var url = String()
+        print("from = = Previous Trips= = = \(from)")
+        print("to = = =Previous Trips = = \(to)")
+        // recent trips addition
+        // MARK: Recent Trips Adding
+        print(" sr_fromStation_id:Previous Trips: \(sr_fromStation_id) && count is \(sr_fromStation_id.characters.count)")
+        print(" sr_fromStation_id:Previous Trips: \(sr_toStation_ID) && count is \(sr_toStation_ID.characters.count)")
+        SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
+        print("Previous Trips: advancedOptionsFlag = \(advancedOptionsFlag)")
+        print("Previous Trips: earliestDepartLatestArrival_flag = \(earliestDepartLatestArrival_flag) &value=\(earliestDepartLatestArrival_Value) && Time = \(lastTripObject.originDetail.time)")
+        
+        if (advancedOptionsFlag == false){
+            print("Previous Trips: advancedOptionsFlag = \(advancedOptionsFlag)")
+            // coming from simple screen
+            self.title = simple_expectedTripDate + "-" + simple_expectedTripTime
+            // search for arrival
+            // By default / default are looking for the time that you want the trip to resign. By putting searchForArrival = 1, so looking instead travels based on the time you want to arrive. Default = 0th
+            url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
+            
+            // from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            // from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            
+        } else if (advancedOptionsFlag == true){
+            self.title = expectedTripDate + "-" + expectedTripTime
+            //        url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
+            url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0",tripDate: "",tripTime: "")
+        }
+        print("-------------------url----\(url)")
+        nextTripClickedFlag = true
+        get_data_from_url(url: url)
+        print("-----------------------ended--090")
+        
+    }
+    //MARK:  Basic Version
+    func masterTripGrabberFromSL(){
+        print("masterTripGrabberFromSL___ has been called.....")
+        let searchTrips = WebServiceHandler()
+        var url = String()
+        print("from = = = = = \(from)")
+        print("to = = = = = \(to)")
+        // recent trips addition
+        // MARK: Recent Trips Adding
+        print(" sr_fromStation_id \(sr_fromStation_id) && count is \(sr_fromStation_id.characters.count)")
+        print(" sr_fromStation_id \(sr_toStation_ID) && count is \(sr_toStation_ID.characters.count)")
+        SlifeMethods.serializeObject(fromStationName: sr_fromStation_name, fromStationId: sr_fromStation_id, toStation_Name: sr_toStation_name, toStationId: sr_toStation_ID, objectToSerialize_keyName: RECENTTRIPS)
+        if (advancedOptionsFlag == false){
+            // coming from simple screen
+            self.title = simple_expectedTripDate + "-" + simple_expectedTripTime
+           // search for arrival
+            // By default / default are looking for the time that you want the trip to resign. By putting searchForArrival = 1, so looking instead travels based on the time you want to arrive. Default = 0th
+            url = searchTrips.constructURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0")
+            
+            // from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            // from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            
+        } else if (advancedOptionsFlag == true){
+            self.title = expectedTripDate + "-" + expectedTripTime
+            //        url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), destination: to.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()), returnContentType: jsonType, searchForArrival: "0")
+            url = searchTrips.constructAdvancedURL(methodName: "Trip", origin: from.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), destination: to.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines), returnContentType: jsonType, searchForArrival: "0",tripDate: "",tripTime: "")
+        }
+        print("-------------------url----\(url)")
+        get_data_from_url(url: url)
+        print("-----------------------ended--090")
+
     }
     override func viewWillAppear(_ animated: Bool) {
         
         
         //        tableView.backgroundColor = UIColor.white
         
-        print("view will current real_time_flag value is ==== \(real_time_flag)")
+        print("view will current real_time_flag value is ====old???? \(real_time_flag)")
     
         
         
@@ -1253,9 +1638,7 @@ let onlyLegImage    = "onlyLeg.png"
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    //-----webservice start
+      //-----webservice start
     func get_data_from_url(url:String)
     {
         
@@ -1323,13 +1706,17 @@ let onlyLegImage    = "onlyLeg.png"
                     else if (errorCheckFlag == false){
                         let tripArray = (convertedJsonIntoNSDict1["TripList"]! as! [String:Any])["Trip"] as! NSArray
                         print("-trip--7.1---A--")
-                        
+                        // add newtrips to begining if previous is clicked
                         self.getTrips(json: convertedJsonIntoNSDict1)
                         print("-trip--7.1---B--")
                         //--for-1--------------------------------------------------------------------------------------------------
                         print("-trip--7.2--about to return after parsing")
                         // reload the table here
                         self.tableView.reloadData()
+                        
+                        if (previousTripClickedFlag == true){
+                        previousTripClickedFlag = false
+                        }
                     }
                 }
                 // dispatch_async(dispatch_get_main_queue(), {
@@ -1431,15 +1818,8 @@ let onlyLegImage    = "onlyLeg.png"
             //            trip.to_Station = tripArray.valueForKey("dur")! as! String
             //            trip.to_time = tripArray.valueForKey("dur")! as! String
             //
-            
             //--Priceinfo--Start--------gather legs inside LegList-----start
-            
-            
             //  let priceInfo = tripArray.valueForKey("LegList")!["PriceInfo"] as! NSDictionary
-            
-            
-            
-            
             if let priceInfo = (tripArray as! NSDictionary).value(forKey: "PriceInfo") {
                 print("------price info found---yes--")
                 //                print("Price Info -----\(priceInfo.allKeys)")
@@ -1686,17 +2066,6 @@ let onlyLegImage    = "onlyLeg.png"
                 
                 //  Address(name: <#T##String#>, type: <#T##String#>, id: <#T##String#>, lon: <#T##String#>, lat: <#T##String#>, time: <#T##String#>, date: <#T##String#>, routeIdx: <#T##String#>)
                 originDetail = Address(name: originNameVal, type: originTypeVal, id: originIdVal, lon: originIdVal, lat: originLatVal, time: originTimeVal, date: originDateVal,routeIdx: originRouteIdx)
-                
-                //                    print("---12--originNameVal-\(originNameVal)")
-                //                    print("--12---originDetail.name-\(originDetail.name)")
-                //
-                //                    print("---12--Origin- originNameVal-\(originNameVal)")
-                //
-                //
-                //                    print("-12----Origin- originNameVal-\(originNameVal)")
-                
-                //                    let destination = leglist["Destination"] as! NSDictionary
-                //    print("nested loop current index \(forMain11)")
                 print("test 1.1")
                 let destination = (leglist as! NSDictionary)["Destination"] as! NSDictionary
                 // trip.from_time = origin["time"]! as! String
@@ -1823,42 +2192,122 @@ let onlyLegImage    = "onlyLeg.png"
                         //    print(leglistRTUMessage["RTUMessage"]!["$"] as! String)
                         rtuMessageString = (leglistRTUMessage["RTUMessage"]! as! NSDictionary)["$"] as! String
                     }
-                    
-                    
                 }
                 print("check if Key Exist or not ======== \(checkKeyExist)")
                 // MARK: Leg Population
-                let leg =  Leg(journeyType: journeyType, name: nameValue, type: typeValue, idx: idxValue, geomRef: geometryReference, dist: distValue, hide: hideValue, dir: dirValue, line: lineValue, journeyDetailRef: journeyDetailRefValue, origin: originDetail, destination: destinDetail,legImageName: legImageName!,rtu_Message_Flag: checkKeyExist,rtu_Message: rtuMessageString)
+             
+                let leg =  Leg(journeyType: journeyType, name: nameValue, type: typeValue, idx: idxValue, geomRef: geometryReference, dist: distValue, hide: hideValue, dir: dirValue, line: lineValue, journeyDetailRef: journeyDetailRefValue, origin: originDetail, destination: destinDetail,legImageName: legImageName!,rtu_Message_Flag: checkKeyExist,rtu_Message: rtuMessageString,currentLegStatus: true)
+                
                 print("rtu message status from leg = flag = \(leg.rtu_Message_Flag)")
                 print("rtu message status from leg = message = \(leg.rtu_Message)")
+                print("Line2201: Leg.LegIndex.B4:\(leg.legIndex)")
+                leg.legIndex = forMain11
+                
+                print("Line2201: Leg.LegIndex.After:\(leg.legIndex)")
                 trip.LegList.add(leg)
+            
+                // MARK: Add Leg for departures Leg
                 forMain11 += 1
                 //----------------if condition walk & travel----------end
             }
-            print("---LegList.allKeys----duration being entered is :\(dur)")
-            self.newTrip.add(trip)
+            print("---NewTrip total counter:\(newTrip.count)")
+            
+            print("Newtripi Total Count = \(newTrip.count)---Current Index:\(forMain1)")
+            if(previousTripClickedFlag == true){
+                print("-previousTripClickedFlag= True--Adding trips to the first index.FromTime=.\(trip.originDetail.time).-Totime:\(trip.destinationDetail.time)--from origin=\(trip.originDetail.name)::to dest: \(trip.destinationDetail.name)")
+                
+             newTrip.insert(trip, at: forMain1)
+            //    self.newTrip.add(trip)
+            } else {
+                newTrip.add(trip)
+            }
             print("--End--------------End------------------forMain1  \(forMain1)-----")
             forMain1 += 1
         }
     }
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-     return 5
+        //Mark: need to upate
+    print("Collection View::\(collectionView.superview?.superview)")
+        let parentCellCollectionDepartureView = collectionView.superview?.superview as! LegTripNextDeparturesTableViewCell
+        // MARK: Bug: Found 1028-12jan2017
+        // 2017-01-12 10:26:25.134415 SLife[4559:1648852] fatal error: unexpectedly found nil while unwrapping an Optional value
+        
+        print("Parent Cell Collection Departure View = \(parentCellCollectionDepartureView.currentIndexPathSection) & row = \(parentCellCollectionDepartureView.currentIndexPathRow)")
+        let currentSection = String(parentCellCollectionDepartureView.currentIndexPathSection)
+        let currentRow = String(parentCellCollectionDepartureView.currentIndexPathRow)
+        let keyName = currentSection + currentRow
+        // Temp : found Nil.
+        var collectionReturnCount = 0
+        
+        if let currentCollectionDepartureTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as? NSMutableArray
+        {
+        //let currentCollectionDepartureTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+        print("Current Collection Departure Trip Object = \(currentCollectionDepartureTripObject.count)")
+        
+        // check for the duplication and remove if you find any
+        print("Count before checking of the duplication .coll.departy.= \(currentCollectionDepartureTripObject.count)")
+    //MARK: Temp duplicate Off 6th jan
+          print("checking duplicates in tripaArray.collection.depart after refresh = \(checkAllTripsForDuplicates(tripArray: currentCollectionDepartureTripObject))")
+      var u = 0
+        
+        for index in currentCollectionDepartureTripObject {
+        
+        let currentPrintingTrip = currentCollectionDepartureTripObject[u] as! Trip
+        print("Dep: Collection:::Check::From Time: \(currentPrintingTrip.originDetail.time) & From Station \(currentPrintingTrip.originDetail.name)-----> to time:\(currentPrintingTrip.destinationDetail.time) toStation:\(currentPrintingTrip.destinationDetail.name)")
+        u += 1
+        }
+         print("Count after checking of the duplication .coll.departy.= \(currentCollectionDepartureTripObject.count)")
+        collectionReturnCount += currentCollectionDepartureTripObject.count
+        }
+        //--------
+        return collectionReturnCount
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
+        /*
+        var headerSectionCount = 0
+        let extraCellsNeeded = 0
+        */
         // 1
         // Return the number of sections.
         print("section count is = \(newTrip.count)")
+        // Mark: Later Trips Cell Section Return    
+//        var currentSections = newTrip.count
+//        if (newTrip.count != 0){
+//        
+//       currentSections +=  1
+//        
+//        }
+   //     print("Total Trip Count in number of sections returning including navigation = \(currentSections)")
+        /*
+        if(newTrip.count == 0){
         
-        return newTrip.count
+        headerSectionCount = 0
+        } else {
+        
+       // compareTrips(tripExisting: <#T##Trip#>, tripToCheck: <#T##Trip#>)
+        
+            headerSectionCount =  newTrip.count + extraCellsNeeded
+            
+        }
+        */
+        
+        print("Before duplicate check  : New Trip Total Count = \(newTrip.count)")
+        print("Checking...all trips for duplicates = \(checkAllTripsForDuplicates(tripArray: newTrip))")
+        
+        print("After duplicate check  : New Trip Total Count = \(newTrip.count)")
+        
+        
+        //print("Total number of sections being returned : \(headerSectionCount)")
+        return newTrip.count //headerSectionCount
     }
     
     
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let pcell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         
-        print("row has been selected....Cell = \(pcell)......\(indexPath.row)")
+        print("row has been selected....Cell = \(pcell)..IP=\(indexPath)....\(indexPath.row)")
         print("\(tableView.cellForRow(at: indexPath)?.tag)")
         // reset intermediat stops if it is already initialised
         
@@ -1875,11 +2324,8 @@ let onlyLegImage    = "onlyLeg.png"
         // let leg = legList.LegList[indexPath.row] as! Leg
         
         //        print("Leg Journey Detailed Ref: \()")
-        
-        
-        let legList = newTrip[indexPath.section] as! Trip
+           let legList = newTrip[indexPath.section] as! Trip
         //let test = NSMutableArray()
-        
         //test.addObject(legList.LegList[indexPath.row])
         //        let startingPoint = CGPoint(x: 35.0,y: 30.0)
         //        let startingSize = CGSize(width:20.0,height:20.0)
@@ -1892,6 +2338,7 @@ let onlyLegImage    = "onlyLeg.png"
         var count = legList.LegList.count
         count = count - 1
         print("--Row = \(indexPath.row)----count = \(count)")
+        //MARK: Problem 7th Jan
         let leg = legList.LegList[indexPath.row] as! Leg
         print("checking transport type........ when leg is being selected....\(leg.type)")
         // reset intermediate stops
@@ -1922,8 +2369,7 @@ let onlyLegImage    = "onlyLeg.png"
             print("CELL SELECTED = ")
             print(indexPath.row)
             print("section  ?  SELECTED =  tableView.indexPathForSelectedRow = ")
-            print(tableView.indexPathForSelectedRow)
-            
+            print(tableView.indexPathForSelectedRow!)
             
         } else {
             
@@ -1933,10 +2379,32 @@ let onlyLegImage    = "onlyLeg.png"
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // return newTrip[section].legList.count
+        // return 0 if section count 
+       /*
+        if (newTrip[section] == nil) {
+        return 0
+       
+        }
+        else if (newTrip.count == 0){
+           return 0
+         
+        }
+        else if ((section + 1) == newTrip.count){
+        return 0
+        }
+        */
+        
         let legList = newTrip[section] as! Trip
+        //MARK: Compare trip test
+        if (section > 0){
+            let existingTrip = newTrip[section - 1] as! Trip
+        print("-------------comparing section = \((section - 1)) with current = \(section)")
+            let result = compareTrips(tripExisting: existingTrip , tripToCheck: legList)
+            print("Result from trip comparison for existing previous and next trip = \(result).--section = \(section)---\(existingTrip.originDetail.time)")
+            
+        }
         print("----LegList Count is in number of rows in section=\(legList.LegList.count)")
         print("section show value in number of rows in section = \(sectionShow)")
-        
         // extract value of section if not null
         // check if it is true then show
         // else return 0
@@ -1947,176 +2415,18 @@ let onlyLegImage    = "onlyLeg.png"
         
         
         if (section_null_or_not.contains("null")){
+             print("section null or not contains===== false = \(section_null_or_not)")
             
             
-            
-            print("section null or not contains===== false = \(section_null_or_not)")
-            
-            
-        } else if (section_null_or_not.contains("true")) {
-            
-            
+        }
+        else if (section_null_or_not.contains("true"))
+        {
             
             print("section null or not contains===== True = \(section_null_or_not)")
             
             print(" \(legList.LegList.count)")
             
-            //MARK: NextDepartureCEll Count Return
-            
-//            var departureCellCount = 0
-            //----------------------------
-            
-            
-            //  let key = String(currentCell.sectionInfo)  + String(currentCell.rowInfo)
-            //                let nextDepartureShowFlag = RealTidMethods.checkIfKeyExists(objectToCheck: showNextDeparturesTripInfo, keyName: String(key))
-            //                print("nextDepartureShowFlag= \(nextDepartureShowFlag)")
-            //                print("showNextDeparturesTripInfo-------\(showNextDeparturesTripInfo.allKeys)")
-            //                print("Checking for next departure cell show value....in number of rows in cell... in show next departure action....")
-            //                if (nextDepartureShowFlag == true){
-            //                    print("Key exists for show hide..in number of rows in cell....some one has checked before as well....")
-            //                    // key found
-            //                    // check for previous value
-            //                    let value =  showNextDeparturesTripInfo.value(forKey: key) as! Bool
-            //
-            //                    print("value received is == \(value)")
-            //                    if (value == true){
-            //
-            //                        // value is true , show cell
-            //                        // increase count for departure cell to show
-            //                        departureCellCount = 1
-            //
-            //                       print("Departure cell count new value is 1-SHOW. .... hide collection view.....")
-            //
-            //                    } else if (value == false ){
-            //                    departureCellCount = 0
-            //                        print("Departure cell count new value is 0-HIDE. .... hide collection view.....")
-            //
-            //
-            //                    }
-            //                }
-            //
-            
-            //---------------------------
-            
-            
-            // ------------temp of master dict on 9th nov 10am friday-----------start---------
-            
-            /*
-             var departureCellCount = 0
-             // Departure Master Creation ------
-            var sectionTripInfoDict = NSMutableDictionary()
-            // get count for currection section number of rows
-            // creat this only first time
-            // var currentSectionDepartureCells = 0
-            
-            var currentTripInfoDepartCount = 0
-            
-            var i = 0
-            
-            // check if master dict is empty or not ()
-            
-            let masterDepartDictFlag  = RealTidMethods.checkIfKeyExists(objectToCheck: nextDepartureMasterDict, keyName: String(section))
-            
-            if (masterDepartDictFlag == false){
-                
-                // add the section level key
-                
-                nextDepartureMasterDict.setValue(sectionTripInfoDict, forKey: String(section))
-                
-                // get object and update it
-                let currentTripInfoDepartDictObj = nextDepartureMasterDict.value(forKey: String(section)) as! NSMutableDictionary
-                
-                // add the trip info level keys
-                var i = 0
-                for index in legList.LegList {
-                    
-                    // set value as 0 for each tripinfo cell row index
-                    currentTripInfoDepartDictObj.setValue(0, forKey: String(i))
-                    
-                    print("---------------------Section = \(section) && i = \(i) value = \(0)")
-                    i += 1
-                }
-                
-                print("currentTripInfoDepartDictObj all keys = \(currentTripInfoDepartDictObj.allKeys)")
-                
-                print("currentTripInfoDepartDictObj.count = \(currentTripInfoDepartDictObj.count)")
-                print("leglist.leglist.count = \(legList.LegList.count)")
-                
-                // update it back to the main object
-                
-                nextDepartureMasterDict.setValue(currentTripInfoDepartDictObj, forKey: String(section))
-                
-                
-                
-            } else if (masterDepartDictFlag == true){
-                // extract current trip info level dict object
-                let currentTripInfoDepartDictObj = nextDepartureMasterDict.value(forKey: String(section)) as! NSMutableDictionary
-                print("currentTripInfo DepartDictObj === \(currentTripInfoDepartDictObj.allKeys)")
-                // iterate throught the object and
-                var i = 0
-                //  let tripInfoDepartDict =  currentTripInfoDepartDictObj.value(forKey: String(section)) as! NSMutableDictionary
-                
-                for (key,index) in currentTripInfoDepartDictObj {
-                    let iStr = String(i)
-                    if (iStr.contains(key as! String))
-                    {
-                        
-                        currentTripInfoDepartCount += currentTripInfoDepartDictObj[iStr] as! Int
-                        
-                    }
-                    
-                    i += 1
-                }
-                
-                // add to main return number of cell counts
-                
-                
-                
-                
-            }
-            
-            
-            //                let currentMasterDepartDict = nextDepartureMasterDict.value(forKey: String(section)) as! NSMutableDictionary
-            //
-            //                if (currentMasterDepartDict.count == 0){
-            //                for index in legList.LegList.count {
-            //                    print("section ::: \(section) && i = \(i) Count = \(legList.LegList.count)")
-            //                  // resetting all departure values
-            //                    sectionTripInfoDict.setValue(0, forKey: String(i))
-            //                    }
-            //                } else {
-            //                // if the dict has keys more than 0 then update the return count based on
-            //                    var i = 0
-            //                    for index in legList.LegList.count {
-            //
-            //
-            //
-            //                    }
-            //
-            //                    currentSectionDepartureCells +=
-            //                }
-            
-            
-            //                print("sectionTripInfo All Keys = \(sectionTripInfoDict.allKeys)")
-            //                print("sectionTripInfo Dict Total Count = \(sectionTripInfoDict.count)")
-            //
-            // once created then iterate through current section values and add it to total current count
-            
-            
-            //  print("number of rows in Section: LegList= \(newTrip[section].)")
-            
-            //  print("s[section].Rows are = \(s[section].count)")
-            
-            
-            
-            
-            print("LegList.Leglist.Count = \(legList.LegList.count) && DepartureCellCount = \(currentTripInfoDepartCount)")
-            let totReturn = legList.LegList.count + currentTripInfoDepartCount
-            
-            return totReturn //legList.LegList.count + currentTripInfoDepartCount
-            */
-            
-            // ------------temp of master dict on 9th nov 10am friday-----------
+          
         return legList.LegList.count
         }
         // if not null then check if true
@@ -2262,6 +2572,417 @@ return CGSize(width:0, height: 0)
         return 5.0
     }
     */
+    
+    
+    func checkAllTripsForDuplicates (tripArray: NSMutableArray) -> Bool {
+       // let trips = tripArray
+    var status = true
+    var i = 0
+    var objectsRemoved = 0
+        for index in tripArray {
+            
+            print("Test 1 ....check duplicate...")
+            if ((i + 1) <= tripArray.count){
+                print("A-----at duplicate..objects=\(tripArray.count)...i:\(i).")
+            let currentTripObject = tripArray[i] as! Trip
+                print("b-----at duplicate......")
+                print("B-----at duplicate......")
+            if (i > 0 ){
+                print("c-----at duplicate......")
+                print("Test 2 ....check duplicate..\(i).")
+                
+                //check if the object exist
+                if (tripArray[i - 1] == nil){
+                print("Trip Array returned null object.....")
+                
+                } else {
+                let  previousTripObject = tripArray[i - 1] as! Trip
+                
+            
+            let statusCompare = compareTrips(tripExisting: previousTripObject, tripToCheck: currentTripObject)
+        print("previousTripObject.originDetail.time \(previousTripObject.originDetail.time) :To Tim = \(previousTripObject.destinationDetail.time)_Cure Dur=\(previousTripObject.dur) ")
+                
+            print("currentTripObject.originDetail.time  = \(currentTripObject.originDetail.time) : To:Tim : Time  = \(currentTripObject.destinationDetail.time) & Cure Dur=\(currentTripObject.dur)")
+            print("--------Result Comparison = \(statusCompare)")
+                
+                
+                if (statusCompare == true){
+                    // if it doesnt work then creat two functions and remove parameter and give them direct acces to class variable or global
+                    // variable to remove duplicates
+//                    i.e. newTrip and the collection trips
+               // MARK: Temp change newtrip to the trip which is received in parameter
+                    print("Before:About to remove duplication object ::::\(i): \(tripArray.count)")
+                    tripArray.removeObject(at: i)
+                    print("Removed:About to remove duplication object ::::\(i):\(tripArray.count) ")
+                    
+                    /*
+                    print("Before:About to remove duplication object ::::\(i): \(newTrip.count)")
+                newTrip.removeObject(at: i)
+                       print("Removed:About to remove duplication object ::::\(i):\(newTrip.count) ")
+                 */   // need to correct status
+                }
+            }
+            }
+                i += 1
+            } else {
+            objectsRemoved += 1
+            print("number of objects removed = \(objectsRemoved)")
+                
+            }
+            }
+    return status
+    }
+    func compareTrips (tripExisting: Trip, tripToCheck: Trip) -> Bool {
+    var result = false
+        // false means both trips are different
+        // true means both trips are same thus remove the current trip and return one less number of rows for the current header session.
+        
+        // variables to check
+        // from time, & from station
+        // to time & to station
+        // iterate through the leg list and check the line and transport type if same
+        
+        // Existing Trip
+        
+        
+        let exist_from_Station = tripExisting.originDetail.name
+        let exist_from_station_time =  tripExisting.originDetail.time
+        let exist_to_station =  tripExisting.destinationDetail.name
+        let exist_to_station_time =  tripExisting.destinationDetail.time
+        
+        let exist_duration =  tripExisting.dur
+        
+        //Trip to compare
+        let compare_from_Station = tripToCheck.originDetail.name
+        let compare_from_station_time = tripToCheck.originDetail.time
+        
+        let compare_to_station = tripToCheck.destinationDetail.name
+        let compare_to_station_time = tripToCheck.destinationDetail.time
+        
+        let compare_duration = tripToCheck.dur
+        
+        print("1-exist_from_Station:: \(exist_from_Station)--compare_from_Station=\(compare_from_Station)")
+        
+        print("2-exist_from_station_time:: \(exist_from_station_time)--compare_to_station_time=\(compare_to_station_time)")
+        
+        print("3-exist_to_station:: \(exist_to_station)--compare_to_station=\(compare_to_station)")
+        print("4-exist_to_station_time:: \(exist_to_station_time)--compare_to_station_time=\(compare_to_station_time)")
+        
+        print("4-exist_duration:: \(exist_duration)--compare_duration=\(compare_duration)")
+        if ((exist_from_Station.contains(compare_from_Station)) && (exist_from_station_time.contains(compare_from_station_time)) && (exist_to_station.contains(compare_to_station)) && (exist_to_station_time.contains(compare_to_station_time)) && (exist_duration.contains(compare_duration))){
+        // all aboe are same
+            // if any one of above is not same then it means that the trip is different thus both 
+            // existing and trip to comapre are different thus return false
+        result = true
+        }
+        print("Trips compare result = \(result)")
+        return result
+    }
+     override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+       // print("scrollViewDidScrollToTop::::CALLED::::.")
+    
+            }
+    
+     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+       // print("scrollViewDidScroll:scrollView.accessibilityActivationPoint    \(scrollView.accessibilityActivationPoint)")
+    
+//    print("contentOffset    \(scrollView.contentOffset)")
+//      print("bounds    \(scrollView.bounds)")
+//    scrollView.flashScrollIndicators()
+    
+    }
+    // MARK: Next/Previous Departures Refresh Master
+    func getNextDeparturesTripInfo(sender: UIButton,tableViewCurrent: UITableView){
+        
+        
+        let currentDepartureCell = sender.superview?.superview as! LegTripNextDeparturesTableViewCell
+        print("Current DepartureCell : \(currentDepartureCell)")
+        
+        //scrollView.viewWithTag(55)?.superview?.superview?.superview as! LegTripNextDeparturesTableViewCell //LegTripNextDeparturesTableViewCell
+        print("previous::Cell.Current:Cell.....987::\(currentDepartureCell.currentIndexPathSection) ---- \(currentDepartureCell.currentIndexPathRow)")
+        let keyName = String(currentDepartureCell.currentIndexPathSection) + String(currentDepartureCell.currentIndexPathRow)
+        
+        let collectionTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+        print("collection trip object count = \(collectionTripObject.count)")
+        
+        print("previous::Cell.Current Key Name = \(currentDepartureCell.keyName)")
+        print("previous::custom trip object count = \(custom_Trip_NextDepartures_Dict.allKeys) && keyname = \(keyName)")
+        print("previous::current Departure Cell = \(currentDepartureCell.keyName)")
+        navigationDeparturesTripInfo = NEXT
+        if ( custom_Trip_NextDepartures_Dict.value(forKey: keyName) != nil ){
+            lastCountTripInfoDepartureCells = collectionTripObject.count
+            let firstObject = collectionTripObject.firstObject as! Trip
+            // arrive latest by first object's origin.time
+            simple_earliestDepartLatestArrival_flag = true
+            // value 1 is bringing based on arrival
+            simple_earliestDepartLatestArrival_Value = 0
+            
+            let lastObjectIndex = collectionTripObject.count - 1
+            
+            let lastObject = collectionTripObject[lastObjectIndex] as! Trip
+            simple_expectedTripDate = lastObject.originDetail.date
+            simple_expectedTripTime = lastObject.originDetail.time
+            
+            print("next From station = \(lastObject.originDetail.name)")
+            print("next time = \(lastObject.originDetail.time)")
+            print("next to station = \(lastObject.destinationDetail.name)")
+            print("next From Station :: To Station:: = \(keyName)")
+            getNextDeparturesForCollection(fromStation: lastObject.originDetail.name,toStation: lastObject.destinationDetail.name, fromTime: lastObject.originDetail.time, tableView: tableViewCurrent, keyName: keyName,navigationType: navigationDeparturesTripInfo,legRow_ID_From: String(currentDepartureCell.indexPathSelected.row), legRow_ID_To: String(currentDepartureCell.indexPathSelected.row))
+            
+        } }
+        
+    func getPreviousDeparturesTripInfo(sender: UIButton,tableViewCurrent: UITableView){
+    
+    
+        let currentDepartureCell = sender.superview?.superview as! LegTripNextDeparturesTableViewCell
+        print("Current DepartureCell : \(currentDepartureCell)")
+        
+            //scrollView.viewWithTag(55)?.superview?.superview?.superview as! LegTripNextDeparturesTableViewCell //LegTripNextDeparturesTableViewCell
+        print("previous::Cell.Current:Cell.....987::\(currentDepartureCell.currentIndexPathSection) ---- \(currentDepartureCell.currentIndexPathRow)")
+        let keyName = String(currentDepartureCell.currentIndexPathSection) + String(currentDepartureCell.currentIndexPathRow)
+        
+        let collectionTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+        print("collection trip object count = \(collectionTripObject.count)")
+        
+        print("previous::Cell.Current Key Name = \(currentDepartureCell.keyName)")
+        print("previous::custom trip object count = \(custom_Trip_NextDepartures_Dict.allKeys) && keyname = \(keyName)")
+        print("previous::current Departure Cell = \(currentDepartureCell.keyName)")
+        navigationDeparturesTripInfo = PREVIOUS
+        
+        if ( custom_Trip_NextDepartures_Dict.value(forKey: keyName) != nil ){
+            lastCountTripInfoDepartureCells = collectionTripObject.count
+        let firstObject = collectionTripObject.firstObject as! Trip
+        // arrive latest by first object's origin.time
+        simple_earliestDepartLatestArrival_flag = true
+        // value 1 is bringing based on arrival
+        simple_earliestDepartLatestArrival_Value = 1
+        simple_expectedTripDate = firstObject.originDetail.date
+        simple_expectedTripTime = firstObject.originDetail.time
+        print("PREVIOUS:From station = \(firstObject.originDetail.name)")
+        print("PREVIOUS:from time = \(firstObject.originDetail.time)")
+        print("PREVIOUS:to station = \(firstObject.destinationDetail.name)")
+        print("PREVIOUS:From Station :: To Station:: = \(keyName)")
+        getNextDeparturesForCollection(fromStation: firstObject.originDetail.name,toStation: firstObject.destinationDetail.name, fromTime: firstObject.originDetail.time, tableView: tableViewCurrent, keyName: keyName,navigationType: navigationDeparturesTripInfo,legRow_ID_From: "0",legRow_ID_To: "0")
+        }
+        
+        /*
+        if ( custom_Trip_NextDepartures_Dict.value(forKey: keyName) != nil ){
+         
+            let collectionTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+            
+            print("collection trip object count = \(collectionTripObject.count)")
+            
+            if (xMovement > 0){
+                navigationDeparturesTripInfo = PREVIOUS
+                
+                if (navigationDeparturesTripInfo.contains(PREVIOUS))
+                {
+                    
+                    
+                    let firstObject = collectionTripObject.firstObject as! Trip
+                    // arrive latest by first object's origin.time
+                    simple_earliestDepartLatestArrival_flag = true
+                    // value 1 is bringing based on arrival
+                    simple_earliestDepartLatestArrival_Value = 1
+                    simple_expectedTripDate = firstObject.originDetail.date
+                    simple_expectedTripTime = firstObject.originDetail.time
+                    print("PREVIOUS:From station = \(firstObject.originDetail.name)")
+                    print("PREVIOUS:from time = \(firstObject.originDetail.time)")
+                    print("PREVIOUS:to station = \(firstObject.destinationDetail.name)")
+                    print("PREVIOUS:From Station :: To Station:: = \(keyName)")
+                    getNextDeparturesForCollection(fromStation: firstObject.originDetail.name,toStation: firstObject.destinationDetail.name, fromTime: firstObject.originDetail.time, tableView: tableView, keyName: keyName,navigationType: navigationDeparturesTripInfo)
+                }
+            } else {
+                //   navigation = PREVIOUS
+                // ONCE NEXT IS WORKING THEN WORK ON THIS
+                
+            }*/
+    
+    
+    
+    }
+   override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+   //print("\(scrollView.showsHorizontalScrollIndicator)")
+    
+//   print("-Scroll View superview-----\(scrollView.viewWithTag(55))")
+//    print("-Scroll View superview-----\(scrollView.viewWithTag(65))")
+//    scrollView.isPagingEnabled = true
+
+    
+    
+    // extract the cell from here
+    
+    if ( scrollView.bounces){
+        bounce += 1
+        //print("Bounced ::::::::::::::bounce::::\(bounce) && \(scrollView.contentOffset.x):")
+        print("Cell = \(scrollView.viewWithTag(55))")
+        let xMovement = scrollView.contentOffset.x
+         // MARK: Previous Departures Bring
+        if ((xMovement > 0) && scrollView.bounces){
+            
+//        print("previous::touched Left and bounced.......")
+//            print("previous::TripLegIconsCollectionViewCell:0 = \(scrollView.viewWithTag(55))")
+//            print("previous::TripLegIconsCollectionViewCell:1 = \(scrollView.viewWithTag(55)?.superview)")
+//            print("previous::TripLegIconsCollectionViewCell:2 = \(scrollView.viewWithTag(55)?.superview?.superview)")
+//            print("previous::TripLegIconsCollectionViewCell:3 = \(scrollView.viewWithTag(55)?.superview?.superview?.superview)")
+//            
+          //            var indexPath = IndexPath(item: (currentDepartureCell.currentIndexPathRow), section: currentDepartureCell.currentIndexPathSection)
+//            let tripInfoCurrent = tableView.cellForRow(at: indexPath) as! LegListCells
+//            print("next departure Master DIct All keys = \(custom_Trip_NextDepartures_Dict.allKeys) & tripinfo keyName = \(tripInfoCurrent.keyName)")
+ 
+//                let NEXT = "NEXT"
+//                let PREVIOUS = "PREVIOUS"
+//                var navigation = ""
+                let currentDepartureCell = scrollView.viewWithTag(55)?.superview?.superview?.superview as! LegTripNextDeparturesTableViewCell //LegTripNextDeparturesTableViewCell
+                print("previous::Cell.Current:Cell.....987::\(currentDepartureCell.currentIndexPathSection) ---- \(currentDepartureCell.currentIndexPathRow)")
+                let keyName = String(currentDepartureCell.currentIndexPathSection) + String(currentDepartureCell.currentIndexPathRow)
+                print("previous::Cell.Current Key Name = \(currentDepartureCell.keyName)")
+            print("previous::custom trip object count = \(custom_Trip_NextDepartures_Dict.allKeys) && keyname = \(keyName)")
+            print("previous::current Departure Cell = \(currentDepartureCell.keyName)")
+            
+            if ( custom_Trip_NextDepartures_Dict.value(forKey: keyName) != nil ){
+                
+                let collectionTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+                
+                print("collection trip object count = \(collectionTripObject.count)")
+
+                if (xMovement > 0){
+                navigationDeparturesTripInfo = PREVIOUS
+                
+                if (navigationDeparturesTripInfo.contains(PREVIOUS))
+                {
+                
+                    
+                    let firstObject = collectionTripObject.firstObject as! Trip
+                    // arrive latest by first object's origin.time
+                    simple_earliestDepartLatestArrival_flag = true
+                    // value 1 is bringing based on arrival
+                    simple_earliestDepartLatestArrival_Value = 1
+                    simple_expectedTripDate = firstObject.originDetail.date
+                    simple_expectedTripTime = firstObject.originDetail.time
+                    print("PREVIOUS:From station = \(firstObject.originDetail.name)")
+                    print("PREVIOUS:from time = \(firstObject.originDetail.time)")
+                    print("PREVIOUS:to station = \(firstObject.destinationDetail.name)")
+                    print("PREVIOUS:From Station :: To Station:: = \(keyName)")
+                 // Temp Off    getNextDeparturesForCollection(fromStation: firstObject.originDetail.name,toStation: firstObject.destinationDetail.name, fromTime: firstObject.originDetail.time, tableView: tableView, keyName: keyName,navigationType: navigationDeparturesTripInfo)
+                    }
+                } else {
+             //   navigation = PREVIOUS
+                    // ONCE NEXT IS WORKING THEN WORK ON THIS
+                
+                }
+            }
+            
+//         let currentTripInfoCell
+            print("PREVIOUS:Cell.Current Key Name = \(currentDepartureCell.keyName)")
+            print("PREVIOUS:Going to get departures.....")
+           // getNextDeparturesForCollection(fromStation: tripInfoCurrent.from_station.text!, fromTime: tripInfoCurrent.from_time.text!, tableView: tableView, keyName: tripInfoCurrent.keyName)
+        }
+            
+            // MARK: Next Departures Bring
+        else if ((xMovement < 0 && scrollView.bounces)){
+            
+//            print("TripLegIconsCollectionViewCell:0 = \(scrollView.viewWithTag(55))")
+//            print("TripLegIconsCollectionViewCell:1 = \(scrollView.viewWithTag(55)?.superview)")
+//            print("TripLegIconsCollectionViewCell:2 = \(scrollView.viewWithTag(55)?.superview?.superview)")
+//            print("TripLegIconsCollectionViewCell:3 = \(scrollView.viewWithTag(55)?.superview?.superview?.superview)")
+//            
+            let currentDepartureCell = scrollView.viewWithTag(55)?.superview?.superview?.superview as! LegTripNextDeparturesTableViewCell //LegTripNextDeparturesTableViewCell
+            print("next::Cell.Current:Cell.....987::\(currentDepartureCell.currentIndexPathSection) ---- \(currentDepartureCell.currentIndexPathRow)")
+            let keyName = String(currentDepartureCell.currentIndexPathSection) + String(currentDepartureCell.currentIndexPathRow)
+            print("next::Cell.Current Key Name = \(currentDepartureCell.keyName)")
+            
+            //            var indexPath = IndexPath(item: (currentDepartureCell.currentIndexPathRow), section: currentDepartureCell.currentIndexPathSection)
+            //            let tripInfoCurrent = tableView.cellForRow(at: indexPath) as! LegListCells
+            //            print("next departure Master DIct All keys = \(custom_Trip_NextDepartures_Dict.allKeys) & tripinfo keyName = \(tripInfoCurrent.keyName)")
+            print("next::custom trip object count = \(custom_Trip_NextDepartures_Dict.allKeys) && keyname = \(keyName)")
+            print("next::current Departure Cell = \(currentDepartureCell.keyName)")
+            if ( custom_Trip_NextDepartures_Dict.value(forKey: keyName) != nil ){
+                let collectionTripObject = custom_Trip_NextDepartures_Dict.value(forKey: keyName) as! NSMutableArray
+                print("next::collection trip object count = \(collectionTripObject.count)")
+                if (xMovement < 0){
+                    navigationDeparturesTripInfo = NEXT
+                    if (navigationDeparturesTripInfo.contains(NEXT))
+                    {
+                        simple_earliestDepartLatestArrival_flag = true
+                        
+                        // value 1 is bringing based on arrival
+                        simple_earliestDepartLatestArrival_Value = 0
+                        // send info from last object
+                        let lastObjectIndex = collectionTripObject.count - 1
+                        
+                        let lastObject = collectionTripObject[lastObjectIndex] as! Trip
+                        simple_expectedTripDate = lastObject.originDetail.date
+                        simple_expectedTripTime = lastObject.originDetail.time
+                        print("next From station = \(lastObject.originDetail.name)")
+                        print("next time = \(lastObject.originDetail.time)")
+                        print("next to station = \(lastObject.destinationDetail.name)")
+                        print("next From Station :: To Station:: = \(keyName)")
+                       // Temp off 8th jan getNextDeparturesForCollection(fromStation: lastObject.originDetail.name,toStation: lastObject.destinationDetail.name, fromTime: lastObject.originDetail.time, tableView: tableView, keyName: keyName,navigationType: navigationDeparturesTripInfo)
+                    }
+                } else {
+                   // navigation = PREVIOUS
+                    // ONCE NEXT IS WORKING THEN WORK ON THIS
+                    
+                }
+            }
+            
+
+           print("touched Right and bounced....for next trips...")
+        
+        }
+       
+//        if (bounce == 4){
+//        //masterTripGrabberFromSL()
+//            bounce = 0
+//            scrollView.isPagingEnabled = true
+//            
+//        }
+  //  show alert when real bounce aocciurs like some -ve value comes in
+       //----------Alert-----
+//        Mark: Alert Code
+        /*
+         let alertController = UIAlertController(title: "Load Next Trips?", message: "Simple alertView demo with Destructive and Ok.", preferredStyle: UIAlertControllerStyle.alert) //Replace UIAlertControllerStyle.Alert by UIAlertControllerStyle.alert
+        let DestructiveAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.destructive) { (result : UIAlertAction) -> Void in
+            
+            print("Destructive")
+        }
+        // Replace UIAlertActionStyle.Default by UIAlertActionStyle.default
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("OK")
+            
+        //    self.masterTripGrabberFromSL_Refresh()
+        }
+        alertController.addAction(DestructiveAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        */
+        //-----Alert code ends here----
+    
+      //  print("-----Bounce: \(bounce)----\(scrollView.isPagingEnabled)------contentOffset    \(scrollView.contentOffset.y) && D Acc Rte = \(scrollView.decelerationRate)---\(scrollView.isDragging)")
+        let bounceThreshHold = CGFloat(275)
+        /*if (scrollView.contentOffset.y > bounceThreshHold){
+        
+            print("---BOUNCE CAUGHT-------------------------contentOffset    \(scrollView.contentOffset.y)")
+            let bounceThreshHold = CGFloat(30)
+            
+        masterTripGrabberFromSL()
+        
+        } */
+    
+//        print("-BOUNCED-----------------------Bounce check ==if=== \(scrollView.bounces)-----Count = \(bounce)")
+
+//        print("-----------contentOffset    \(scrollView.contentOffset.y).....).\(scrollView.bounds.size)")
+//        print("-----------bounds    \(scrollView.bounds)")
+    
+        //masterTripGrabberFromSL()
+    } else {
+    
+      //  print("---NOT BOUNCED-------------------Bounce check ==else=== \(scrollView.bounces)")
+    }
+    
+        //print("Scroll View Testing: Scorll View Did End Dragging: \(decelerate)")
+    }
      public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
      
      // triplegiconscollection view cell name is old but now it is being used for next departures collection view show
@@ -2271,41 +2992,12 @@ return CGSize(width:0, height: 0)
      
      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewReuseIdentifier", for: indexPath as IndexPath) as! TripLegIconsCollectionViewCell
      
+
     print(cell.superview?.superview.debugDescription)
     
      // MARK: border collection view
      
-     
-     // cell.from_time.layer.backgroundColor  = UIColor.red.cgColor
-     //  cell.from_time.layer.cornerRadius = 5
-     
-     
-     //headerCell.layer.borderColor = UIColor.gray.cgColor
-     
-     /*
-     if (colorFlag == true){
-     
-     cell.backgroundColor = UIColor.lightGray
-     cell.from_time.textColor = UIColor.white
-     cell.to_time.textColor = UIColor.white
-     
-     colorFlag = false
-     } else {
-     
-     cell.backgroundColor = UIColor.white
-     cell.from_time.textColor = UIColor.black
-     cell.to_time.textColor = UIColor.black
-     
-     colorFlag = true
-     
-     }
-     */
-     //        if(indexPath.row == 2){
-     //
-     //            cell.backgroundColor = UIColor.red
-     //
-     //        }
-      var layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+           var layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 //    layout = collectionView.delegate
         layout.minimumInteritemSpacing = 5.0
     
@@ -2320,7 +3012,19 @@ return CGSize(width:0, height: 0)
      //
      //            let currentCell = view.superview as! LegListCells
      let currentCell = view.superview as! LegTripNextDeparturesTableViewCell
-     let keyNameTemp = currentCell.keyName
+     
+        //MARK: Reset Trip INfo Dep navigation buttons
+        currentCell.NextDepOutLet.isSelected = false
+        currentCell.PrevDepOutLet.isSelected = false
+         // Mark: scroll
+        /*
+        if (navigationDeparturesTripInfo.contains(NEXT)){
+        print("latest count of trip departures = \(lastCountTripInfoDepartureCells)")
+        
+        navigationDeparturesTripInfo = ""
+        }
+        */
+        let keyNameTemp = currentCell.keyName
      print("printing cells..keyname temp from current cell = \(keyNameTemp)")
      let keyName = currentSection + currentRow
      print("Collection ALL KEYS = \(custom_Trip_NextDepartures_Dict.allKeys)")
@@ -2347,115 +3051,7 @@ return CGSize(width:0, height: 0)
         print("Trip Custom Count Collection View : \(tripCustom.LegList.count)")
         //  let leg = tripCustom.LegList.firstObject as! Leg
         let leg = tripCustom.LegList[indexPath.row] as! Leg
-    
-        //---Departure filter check if only selected line has to be shown------SHOWN
-       /* 28th dec wed 0730 -----start
-         let mainTrip = newTrip[currentCell.currentIndexPathSection] as! Trip
-        //print("Main Trip Count is === \(maintr)")
-        let legDepartureFilterStatus = mainTrip.LegList[currentCell.legIndexForDepartureShow] as! Leg //tripCustom.LegList[indexPath.row - 1] as!Leg
-        let line_dist_Value = legDepartureFilterStatus.line
-        let transp_type_Value = legDepartureFilterStatus.type
-        let filterDepartureStatus = legDepartureFilterStatus.filterDepartures
-        
-        print("Line Dist Value =Departure Cells=Line/Dist =  \(line_dist_Value) && TrsnType =  \(transp_type_Value)")
-        
-    print("Leglist count in mainTrip =tripCustom.LegList.count= \(tripCustom.LegList.count)")
-        
-        print("filterDepartureStatus====----------checking if departure is true-----------\(indexPath)----TRUE / FALSE:\(filterDepartureStatus)")
-        print("Before: Coll Cell old value before all tess is = \(cell.isHidden)")
-             // iterate through LegLi
-        for index in tripCustom.LegList {
-            if(filterDepartureStatus == true)
-            {
-            
-            
-                if ((leg.line.contains(line_dist_Value)) && ((leg.type.contains(transp_type_Value))) && (tripCustom.LegList.count == 1)){
-                    
-                    leg.showHideLeg = true
-            
-                } else {
-                    leg.showHideLeg = false
-                
-                }
-             
-        
-            }
-            else
-            {
-                
-                // show all legs because false received from icon pressed in Trip Info
-                leg.showHideLeg = true
-                
-            }
-            
-        }
-        
-       28th dec wed 0730 -------end 
-         */
-        
-        // iteration end here
-       /* 27th tuesday 2030 off
-         if (filterDepartureStatus == true ){
-            // check if its a direct journey means 1 leg
-            print("checking if it is a direct journey ...\(tripCustom.LegList.count)..")
-        //    cell.isHidden = false
-            // there is another way to hide.. i.e. via leg.departfilter hide ... t
-            if (tripCustom.LegList.count == 1){
-                
-                print("checking if it is has the same Transport Type \(transp_type_Value) ..&& Col Value TranType = \(leg.type)...")
-            // check if it has the same transport type
-                if (leg.type.contains(transp_type_Value)){
-                // check if it has the same line as clicked on trip info currentleg - 1
-                    print("Chcking if it has the same line_value as on trip inof clicked = \(line_dist_Value) & Col.Value.Line = \(leg.line)")
-                    if (leg.line.contains(line_dist_Value)){
-                    // this collection cell must be hidden
-                        print("Old Coll:Departu:Cell :Hidden value = \(cell.isHidden) & \(line_dist_Value) & transport type = \(transp_type_Value) & \(indexPath)")
-                      
-                        
-                        // iterate through all legs , false for rest and true for current trye
-                        
-                            leg.showHideLeg = true
-                        
-                        
-                        //}
-                        
-                        //  cell.isHidden = false
-                    }
-                    
-                
-                
-                }
-            
-            
-            }
-            print("Collectionview Current Line =collectionLine= \(leg.line) DepartureLegLine = \(legDepartureFilterStatus.line)")
-            print("Collectionview Current TransportType =collectionLine= \(leg.type) DepartureLeg TransportType = \(legDepartureFilterStatus.type)")
-            
-            
-            print("LegDepartureFilterStatus Line = \(legDepartureFilterStatus.line)")
-          /*
-            if (legDepartureFilterStatus.line.contains(leg.line) && (mainTrip.LegList.count == 1)){
-            cell.isHidden = false
-            print("cell departure current value : show cells =\(currentCell.isHidden)")
-            
-        } else {
-            
-            cell.isHidden = true
-            print("cell departure current value : show cells =\(currentCell.isHidden)")
-            }
-        */
-        }
-        else {
-            
-            leg.showHideLeg = true
-            //cell.isHidden = true
-            print("hiding rest of the cells = \(line_dist_Value) & transport type = \(transp_type_Value) & \(indexPath)")
-        }
-        
-        temp off 27th dec 2030hrs night
-        */
-
-print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.line)--\(indexPath)")
+    print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.line)--\(indexPath)")
        
         print("defaul value leg.show hide value = \(leg.showHideLeg)")
         if (leg.showHideLeg == true)
@@ -2511,25 +3107,13 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
      
      
      if (collectionCellColor == true){
-     //collectionCellColor = false
-     // cell.layer.masksToBounds = true
-     //   cell.layer.borderWidth = 2.0 // cellBorderWidth
-     //  cell.layer.cornerRadius = 10.0
-     //    cell.layer.borderColor = legColorFirst
-     
-     //UIColor.lightGray.cgColor
-     //tableView.backgroundColor = UIColor.lightGray
-     
+        
      print("collectionCellColor = FALSE section \(indexPath.section) & row \(indexPath.row)")
      } else {
      
      //collectionCellColor = true
      cell.backgroundColor = UIColor.init(patternImage: UIImage(named: "LegBorderStart.png")!)
-     //   cell.layer.masksToBounds = true
-     //  cell.layer.borderWidth = 2.0 // cellBorderWidth
-     //   cell.layer.cornerRadius = 10.0
-     //  cell.layer.borderColor = legColorSecond//UIColor.yellow.cgColor//UIColor.lightGray.cgColor
-     print("collectionCellColor = TRUE section \(indexPath.section) & row \(indexPath.row)")
+    print("collectionCellColor = TRUE section \(indexPath.section) & row \(indexPath.row)")
      }
      print("Current Cell size = width =  \(cell.frame.size.width)")
      print("Current Cell size = height =\(cell.frame.size.height)")
@@ -2672,19 +3256,7 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
      //let some = Int(cell.from_time.frame.size.width)
      
      cell.to_time.frame.origin.x = cell.from_time.frame.size.width + startingSize.width + startingSize.width
-     
-     
-     //  SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
-     // MARK: temp friday draw 2 COLLECTION VIEW
-     
-     // MARK: Departure Cell Icon Printing
-     
-     print("Departure Cell: Collection View Sizes : Icon :Starting Point:\(startingPoint)------Section & Row = \(indexPath.section)-- \(indexPath.row)")
-     print("Departure Cell: Collection View Sizes : Icon :Starting Size: \(startingSize)")
-     print("Departure Cell: Collection View Sizes : Icon :Size Factor: \(startingSize)")
-     print(" Cell.fromTime.Startpoint = \(cell.from_time.frame.origin)")
-     
-     if (cell.viewWithTag(30) == nil) {
+          if (cell.viewWithTag(30) == nil) {
      print("button is null........ ")
      
      
@@ -2700,6 +3272,7 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
      }
      
      SlifeMethods.drawLegsCollectionView(startingPoint: startingPoint, startingSize: startingSize, legs: testCollectionMArray, collectionViewCell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
+        
      print("Collection View cell tag is = \( cell.viewWithTag(30))")
      //MARK: Departure Cell Info Filling
      
@@ -2738,52 +3311,13 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
      
      }
      
-     
-     //        if let collectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-     //
-     //
-     //
-     //            // Use collectionViewFlowLayout
-     //
-     //        }
-     
-  //   collectionView.setNeedsLayout()
-     
-     //        collectionView.set
-     
-     print("---collectionView.collectionViewLayout.collectionViewContentSize.width\(collectionView.collectionViewLayout.collectionViewContentSize.width)")
-     
-     //  cell.legLineNo.setTitle("11", for: .normal)
-     // cell.legImage.backgroundColor = UIColor.yellow
-     // cell.contentView.frame.size.width = 10.0
-     
-     print("collectionView.frame.width = \(collectionView.frame.width)")
-     
-     
-     print("collectionView.frame.width = \(collectionView.frame.width)")
-     
-     
-     print("collectionView.intrinsicContentSize = \(collectionView.intrinsicContentSize)")
-     
-     
-     print("collectionView.contentSize.width = \(collectionView.contentSize.width)")
-     
-     
-     print("collectionView.contentSize.width = \(collectionView.contentSize.width)")
-     
-     
-     print("in collection view number of items in section---cell--\(indexPath.row)--")
-     
-     // text related operation
         
      
      return cell
      
      }
-     
- 
- 
- 
+    
+    
  //-------------------------end
     //    swiitching off on 23rd Dec
     /*replaced from above which is same as below
@@ -3219,6 +3753,7 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
     }
     */
     //MARK: This is the latest one : checked 23rd dec 0933
+
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        //        let tripCell = newTrip[section] as! Trip
         //
@@ -3423,20 +3958,30 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
         print("Count for collection view count = \(number) ")
         return number
     }
-    
-    
-    
-//    override func prepareforreuse (){
-//    
-//    
-//    
-//    
-//    }
-    
+    //    override func prepareforreuse (){
+    // it is behaving wrongly
+    // when you click then you cant drag. it starts animation
+    /*
+   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+     print("Animation has been called....collection view...")
+        collectionView.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animate(withDuration: 1, animations: {
+            collectionView.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
+        
+    }
+    func tableView(tableView: UITableView, willDisplay cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        print("Animation has been called.......")
+        cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
+        UIView.animate(withDuration: 1, animations: {
+            cell.layer.transform = CATransform3DMakeScale(1,1,1)
+        })
+    }
+    */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // get current trip object
-        print("TRIPINFO-0-current section in cell for row at\(indexPath.section) && \(indexPath.row)")
-         let tripCurrentObj = newTrip[indexPath.section] as! Trip
+              print("TRIPINFO-0-current section in cell for row at\(indexPath.section) && \(indexPath.row)")
+       //currentSectionIndex
+        let tripCurrentObj = newTrip[indexPath.section] as! Trip
         
         print("tripcurrentObject show hide value is = \(tripCurrentObj.showHideCell)")
         // current leglist object
@@ -3446,8 +3991,8 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
         // 1.0) check for the type of object
         if (RealTidMethods.checkIfDepartureObject(objectToCheck: legObjToCheck))
         {
-            //let showDeparturesForLeg = legList.LegList[indexPath.row] as! Leg
             
+            //let showDeparturesForLeg = legList.LegList[indexPath.row] as! Leg
             // if object is departure then return depart object
             // copy paste departure code......
             print("cell departure must be printed now.......1.\(indexPath).")
@@ -3458,8 +4003,12 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
             cellDeparture.currentIndexPathRow = indexPath.row
             cellDeparture.currentIndexPathSection = indexPath.section
             cellDeparture.legIndexForDepartureShow = indexPath.row - 1
-            
-            //MARK: CollectionView temp off
+            // MARK: Departure Collection Border
+            cellDeparture.layer.masksToBounds = true
+            cellDeparture.layer.borderWidth = collectionBorderWidth
+            //        headerCell.layer.borderColor = UIColor.gray.cgColor
+            cellDeparture.layer.borderColor = UIColor.lightGray.cgColor
+             //MARK: CollectionView temp off
             
               cellDeparture.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
             
@@ -3468,185 +4017,100 @@ print("After::: current Status coll. leg show/hide = \(leg.showHideLeg)---\(leg.
         print("cell departure must be printed now......2...")
         
         showDeparture = false
-        print("cell Departure Size = \(cellDeparture.frame.size.width) && height = \(cellDeparture.frame.size.height)")
-            print("cell departure is hidden or not ?? \(cellDeparture.isHidden)")
-            
-
-//            let previousRow = indexPath.row - 1
-//            print("DepartureCell ::::: :indexPath===\(indexPath.section)= \(indexPath.row)")
-//            print("tableview count visible cells = \(tableView.visibleCells.count)")
-//            print("Bringing data for cell ======Section / Row = \(indexPath.section) +++ \(previousRow)")
-//            let previousCell = tableView.cellForRow(at: indexPath)
-//            
-//            
-//            //let previousCell = tableView.cellForRow(at: newIndexPath) as! LegListCells
-//            print("Previous Cell ==456= \(previousCell) ...\(previousCell)")
-////            print("leg tag for previous cell = \(previousCell.legTag)")
-////            print("icon tag for previous cell = \(previousCell.lineDistTag)")
-////            print("PreviousCell Content is = \(previousCell.line_dist)")
-////            let previoudCellLegButton = previousCell.viewWithTag(previousCell.legTag) as! UIButton
-////            print("previous cell leg button Background color in departure cell = \(previoudCellLegButton.backgroundColor)")
-// 
-            
         return cellDeparture
     }
         
         let legList = newTrip[indexPath.section] as! Trip
-        
         let leg = legList.LegList[indexPath.row] as! Leg
-        
-        // if object is normal then return normal object
-        // show normal cells......BECAUSE Show Departure should be false
-        print("SHOW DEPARTURE IS FALSE = \(showDeparture)")
-        
-        print("in printing normal cells ,current indexpath.row = \(indexPath.row) && departureCounter = \(departureCounter)")
-        
-        let currentIndex = indexPath.row - departureCounter
-        print("IndexPath.Row = \(indexPath.row)")
-        print("Calculated Current Index = \(currentIndex)")
-        
-        // copy paste code for normal cell......
-        
-        // ----------------------------------NORMAL CELL......................-----------START------
-        
-        
-        let test = NSMutableArray()
+           let currentIndex = indexPath.row - departureCounter
+         let test = NSMutableArray()
         var count = legList.LegList.count
-        print("indexPath.row = \(indexPath.row) && Total count is = \(count)")
-        //
-        //        if (indexPath.row <= count){
-        //
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! LegListCells
+         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! LegListCells
+        //MARK: DepartureButton On TripInfo cell Level
+        cell.tag = indexPath.row
+        print("Line 3983: B4:indexPath: \(indexPath): AllKeys=\(nextDepartureRemainingLegStatusDict.allKeys):CellState: \(cell.nextDepartureTillCurrLeg_Outlet.state)")
         
-       print("Cell address === \(indexPath)+++++Debug descr\(cell.debugDescription)")
-        // cell.prepareForReuse()
+        print("Cell.next dep: indexPath=\(indexPath):----:\(cell.showHideDepartureCell_Master)")
         
-        
-       // cell.prepareForReuse()
-        
-    //    cell.setNeedsDisplay()
-    
-        
-        //cell.prepareForReuse()
-        
-        print("cellCurrent value is hidden or not =Before=\(cell.isHidden)" )
-        print("tripCurrentObj.showHideCell  value is hidden or not =Before=\(tripCurrentObj.showHideCell )" )
-        
-  /*
-        if (tripCurrentObj.showHideCell == false){
-        cell.isHidden = false
-        
-        } else if (tripCurrentObj.showHideCell == true){
-        
-        cell.isHidden = true
+        /*  18th jan :if(cell.showHideDepartureCell_Master == true){
+        cell.nextDeparturesOutlet.isSelected = true
             
-        }
-    
-        print("cellCurrent value is hidden or not =After = \(cell.isHidden)" )
-//        tableView.headerView(forSection: <#T##Int#>)
-        if (cell.showHideDepartureCell == true)
-        {
+//        cell.nextDeparturesOutlet.backgroundColor = UIColor.blue
         
-cell.nextDeparturesOutlet.isSelected = true
-            
         } else {
-        
-            
             cell.nextDeparturesOutlet.isSelected = false
             
+        //    cell.nextDeparturesOutlet.backgroundColor = UIColor.red
             
         
         }
-*/
-        //MARK: Trip info Hidden views
-    
-       // cell.backgroundColor = UIColor.white
-        print("-Printing Cells--[Sections]=\(indexPath.section)--[Rows] = \(indexPath.row)")
-        print("CELL INTERACTION STATUS = \(indexPath.section) && row = \(indexPath.row) = interaction = \(cell.isUserInteractionEnabled)")
-        //MARK:BorderTripInfo
+        */
+        /* temp 17th jan 1400 HRS
+        if let valueExistDepartCellStatus = nextDepartureRemainingLegStatusDict.value(forKey: cell.keyName) as? Bool
+        {
+            
+            // just  change status to show for the current cell
+            print("valueExistDepartCellStatus: \(valueExistDepartCellStatus)")
+            // if value is false: then it is not funcitonal for now
+            if (valueExistDepartCellStatus == true){
+                // currentCell.showHide_Departures = false
+                cell.nextDeparturesOutlet.isSelected = true
+                
+                cell.nextDeparturesOutlet.setTitle("S", for: UIControlState.selected)
+                cell.nextDeparturesOutlet.backgroundColor = UIColor.blue
+                //                  currentCell.nextDeparturesOutlet.isSelected = false
+                print("Line 4201:ValueExistDepartCellStatus:True....")
+                // remove the departure cell values as well as the dict key
+                //   nextDepartureRemainingLegStatusDict.removeObject(forKey: cell.keyName)
+                // (newTrip[Int(cell.sectionInfo)!] as! Trip).LegList.removeObject(at: departureCellIndex)
+            cell.prepareForReuse()
+            
+            }
+        }
+        else {
+            cell.nextDeparturesOutlet.isSelected = false
+            cell.nextDeparturesOutlet.setTitle("N", for: UIControlState.normal)
+            cell.nextDeparturesOutlet.backgroundColor = UIColor.red
+        }
+        */
+        print("Line 3983: indexPath:After \(indexPath): AllKeys=\(nextDepartureRemainingLegStatusDict.allKeys):CellState: \(cell.nextDepartureTillCurrLeg_Outlet.state)")
+        
+        // MARK: TripInfo Borde
+       // cell.prepareForReuse()
+        cell.layer.masksToBounds = true
+        cell.layer.borderWidth = cellBorderWidth
+        //        headerCell.layer.borderColor = UIColor.gray.cgColor
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+           //MARK:BorderTripInfo
         cell.layer.masksToBounds = true
         cell.layer.borderWidth = cellBorderWidth
         
         //headerCell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.borderColor = UIColor.lightGray.cgColor
         tableView.backgroundColor = UIColor.lightGray
-        
-    
-        //        let border = CALayer()
-        //        let width = CGFloat(15.0)
-        //        border.borderColor = UIColor.darkGray.cgColor
-        //        border.frame = CGRect(x: 0, y: tableView.frame.size.height - width, width:  tableView.frame.size.width, height: tableView.frame.size.height)
-        //
-        //        border.borderWidth = width
-        //        tableView.layer.addSublayer(border)
-        //        tableView.layer.masksToBounds = true
-        
-        
-        /*
-         cell.layer.borderWidth = 10.0
-         cell.layer.borderColor = UIColor.green.cgColor
-         
-         */
-        
-        cell.tag = indexPath.row
-        cell.nextDeparturesOutlet.tag = indexPath.row
-        
-        cell.sectionInfo = String(indexPath.section)
+         cell.sectionInfo = String(indexPath.section)
         cell.rowInfo = String(indexPath.row)
         
         cell.keyName = cell.sectionInfo + cell.rowInfo
-        
+        print("Cell.KeyName:assigned for indexpath= \(cell.keyName)")
         print("Current Section = \(indexPath.section).self && Current Row = \(indexPath.row)")
         cell.name.isHidden = true
         //cell.nextDeparturesOutlet.backgroundColor = UIColor.lightGray
         cell.towards_or_walk.isHidden = true
-        
-        // MARK# Collection View
-        // MARK: cell
-        
-        //MARK: CollectionView temp off
-        
-        //   cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-        
-        //headerCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: section)
-        
-        // 3
-        // Configure the cell...
-        // MARK: Move to collection 1
-        
-        print("From Station id = \(legList.originDetail)")
-        // MARK: Trip info icon Printing
-        
         test.add(legList.LegList[indexPath.row])
         
 //        CGPoint(x: 40, y: 40)
         let startingPoint = CGPoint(x: cell.to_time.frame.origin.x,y: cell.to_time.frame.size.height + 20)
-        
-        //        let startingPoint = CGPoint(x: 35.0,y: 30.0)
-//        
-        
-        //let startingPoint = CGPoint(x: 35.0,y: 30.0)
-        // let startingPoint = CGPoint(x: 35.0,y: -130.0)
         let startingSize = default_startingSize //CGSize(width:20.0,height:20.0)
         let orientation = "x"  // x, y, or xy
         let innerSpacing = default_innerSpacing //CGPoint(x:10,y:0)
         let innerLegSpacing = default_innerLegSpacing //CGPoint(x:25,y:0)
         let sizeFactor = CGSize(width: 0.0,height: 0.0)
         // MARK: Move to collection 1 ---end
-        // ------------setting Leg Images---------START
-        print("--Row = \(indexPath.row)----count = \(legList.LegList.count)")
         count = count - 1
-        print("--Row = \(indexPath.row)----count = \(count)")
-        
-        cell.legImage.image = UIImage(named: leg.legImageName)
+         cell.legImage.image = UIImage(named: leg.legImageName)
         // MARK: Leg
-        print("cell for row  at index ===\(indexPath)-------------------------")
-        print("leg image name ==\(leg.legImageName)")
-        print("leg.line ==\(leg.line)")
-        print("leg.dir ==\(leg.dir)")
-        print("leg.journeyType ==\(leg.journeyType)")
-        print("leg.name ==\(leg.name)")
-        print("leg.origin ==\(leg.origin)")
+   
         // legList.originDetail.name
         //----#1-----#2------------------------ Origin Station....Leg
         cell.from_station.text = leg.origin.name
@@ -3657,55 +4121,26 @@ cell.nextDeparturesOutlet.isSelected = true
         if (leg.rtu_Message_Flag == true){
             print("cell:: RTU Message ::::")
             print(leg.rtu_Message)
-            cell.rtuMessage.isHidden = false
+            cell.rtuMessage.isHidden = true
             cell.rtuMessage.text = leg.rtu_Message
             cell.rtuMessage.textColor = UIColor.red
+            cell.from_station.backgroundColor = UIColor.red
+            cell.from_station.textColor = UIColor.white
         } else {
             cell.rtuMessage.isHidden = true
         }
-        // cell.transportTypeOutlet.text = leg.origin.type
-        //        if (leg.dir != "Default"){
-        //        cell.towards_or_walk.text = leg.dir
-        //        }
-        cell.towards_or_walk.text = ""
-        print("cell.towards_or_walk.text  :\(leg.dir)")
-        
-        // set root map reference
-        // set root map geometry reference
-        
-        print("------090--------- cell.from_time.text--989=")
-        print(cell.to_time.text)
-        
-        print("printing indexpath.row = in cell Level \(indexPath.row)")
-        print("current Geom Ref is = \(leg.geomRef)")
-        
-        print("current Geom Ref is journeyDetailRef...........= \(leg.journeyDetailRef)")
-        
-        //-----#3------Visual Leg
-        
+         cell.towards_or_walk.text = ""
+   
+           //-----#3------Visual Leg
+          /* 17th jan 2017 0400
+         cell.nextDepartureTillCurrLeg_Outlet.tag = indexPath.row
+        cell.nextDeparturesLatest.addTarget(self, action: #selector(TripSuggestionsTViewController.nextDepartureTarget), for: UIControlEvents.touchUpInside)
+        print("Cell.NextDepartureTillCurr: \(indexPath)")
+        */
         print(test.count)
         // MARK: Move to collection 2
         // MARK: temp friday draw 3 cell view
-     /*   if (cell.viewWithTag(1000) != nil){
-        let someButton = cell.viewWithTag(1000) as! UIButton
-        
-        print("somebutton check = \(someButton.accessibilityIdentifier)")
-        print("Before some button hidden or not = \(someButton.isHidden)")
-            someButton.backgroundColor = UIColor.orange
-            someButton.setTitle("999", for:UIControlState.normal)
-            someButton.isHidden = true
-            print("After some button hidden or not = \(someButton.isHidden)")
-            cell.contentView.willRemoveSubview(someButton)
-        
-        } */
-        
-        //MARK: TripInfo Leg Icon Printing in , cellatrow
-        // creating tag
-        // get section
-        // get leg current indexPath
-        // join them together
-        // merge 0 or 1 accordingly
-        let tagSeriesStart = "7"
+           let tagSeriesStart = "7"
         let sectionIndexString = String(indexPath.section)
         let increment = indexPath.row
         let legIndexString = String(increment)
@@ -3716,155 +4151,70 @@ cell.nextDeparturesOutlet.isSelected = true
         let lineNoTagString = sectionLegIndexUnion + "1"
         let iconTagInt = Int(iconTagString)
         let lineNoInt = Int(lineNoTagString)
-        
-        print("Creating Tag for icon Legs:::::----------")
-        print("Current Section:\(indexPath.section)")
-        print("Current Leg-Index:\(increment) ")
-        
-        print("---------Do we have same tag values Test 1----packagin---")
-        print("----------String---------------")
-        print("iConTagString: \(iconTagString)")
-        print("lineNoTagString: \(lineNoTagString)")
-        print("----------Int---------------")
-        print("iconTagInt: \(iconTagString)")
-        print("lineNoTagString: \(lineNoTagString)")
-        
-        print("---------Do we have same tag values Test 1---Values Sent----")
+        // check if old icon exists then remove them because they
+//        print("Leg Icon To Remove Old  Tag = \(iconTagInt)")
+//        if let legIconToRemove = cell.contentView.viewWithTag(iconTagInt!) as? UIButton {
+//        print("LegIconToRemove Old Found =icontag: \(legIconToRemove.accessibilityIdentifier)")
+//        legIconToRemove.backgroundColor = UIColor.black
+//        }
+//        
+//        if let legLineDistIconToRemove = cell.viewWithTag(lineNoInt!) as? UIButton {
+//            print("LegIconToRemove Old Found = lineno:\(legLineDistIconToRemove.accessibilityIdentifier)")
+//            legLineDistIconToRemove.backgroundColor = UIColor.black
+//        }
+//        
         if (watchIcons == false){
         let tagValueReceived = SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor,indexValueFromSectionOrRow: indexPath.row,indexValueFromCurrentLeg: indexPath.row,iconTagIntValue: iconTagInt! ,lineNoIntValue: lineNoInt!)
-        cell.legTag = tagValueReceived.iconTagIntReturned
+      
+            cell.legTag = tagValueReceived.iconTagIntReturned
         cell.lineDistTag = tagValueReceived.lineNoIntReturned
         
-        print("Trip Info Tag Values = \(tagValueReceived)")
+            print("cell.legTag=indexPath=\(cell.legTag)")
+        print("Trip Info Tag Values =Line 4401:cell.nextDepartureTillCurrLeg_Outlet: \(cell.nextDepartureTillCurrLeg_Outlet)")
         //-------add ibaction to icons and line number---start
         
         
         // Extract buttons which have been added
-        
-        print("---in trip info------Do we have same tag values Test 1-----Values Received--")
-        print("trip infoCurrent Section:\(indexPath.row)")
-        print("trip info tagValueReceives.iconTagIntReturned = \(tagValueReceived.iconTagIntReturned)")
-        print(" trip info tagValueReceives.lineNoIntReturned = \(tagValueReceived.lineNoIntReturned)")
-        
-        
-        //                let iconButton = headerCell.contentView.v
-        
-        //                print("iconButton:::::: \(iconButton)")
-        
-        
-        //MARK: Trip Info Leg Icon Interaction
-        
-        
+          //MARK: Trip Info Leg Icon Interaction
+          
         let iconNumberButton = cell.contentView.viewWithTag(tagValueReceived.iconTagIntReturned) as! UIButton
-        iconNumberButton.backgroundColor = UIColor.red
-        print("trip info iconButton Accessibility identifier: \(iconNumberButton.accessibilityIdentifier)")
-        
-        
-        let lineNumberButton = cell.contentView.viewWithTag(tagValueReceived.lineNoIntReturned) as! UIButton
-        print("trip info lineNumberButton Accessibility identifier: \(iconNumberButton.accessibilityIdentifier)")
-        
-      //  let currentLeg = leg  //tripCell.LegList[increment] as! Leg
-        
-        print("current leg info = index path . row = \(indexPath.row) && \(leg.name) && \(leg.line)")
-        print("Show Hide life info = \(leg.showHideLeg)")
-        print(iconNumberButton.backgroundColor)
-        print(" before entering leg.show hide : cell color is = \(UIColor.orange)")
-        /*
-        if (leg.showHideLeg == true){
+//        iconNumberButton.backgroundColor = UIColor.red
+         let lineNumberButton = cell.contentView.viewWithTag(tagValueReceived.lineNoIntReturned) as! UIButton
+//           iconNumberButton.backgroundColor = UIColor.red
+//            lineNumberButton.backgroundColor = UIColor.yellow
+        if (leg.showHideLeg == true && leg.enabled_LineNumber == true){
             // green means it is enabled while red means it is disabled :show or hide
-            iconNumberButton.backgroundColor = UIColor.orange
-            
-            print("indexpathc = before--- \(indexPath.row)")
-        
-            print("indexpathc = after---\(indexPath.row)")
+//            iconNumberButton.backgroundColor = UIColor.orange
+            lineNumberButton.backgroundColor = UIColor.blue
+  
         }
         else {
-            
-            iconNumberButton.backgroundColor = UIColor.red
-            
-            
-        }
-
-        */
+            lineNumberButton.backgroundColor = UIColor.yellow
+//            iconNumberButton.backgroundColor = UIColor.red
+         }
         print(" After entering leg.show hide : cell color is = \(UIColor.orange)")
-        
         print("trip info trip info lineNumberButton Accessibility identifier: \(lineNumberButton.accessibilityIdentifier)")
-        
-        
-        print("trip info legicon:::::::")
+        print("trip info legicon:::::should be trip info:\(leg.clickLevel):")
         // Mark: 23rd dec 1800-changed clicked to  showClickedTransportType
         //                showClickedLine
         lineNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.showClickedTransportTypeOrLineInNextDepartures), for: UIControlEvents.touchUpInside)
-        
-        print("leg.enabled_TransportType_______\(indexPath)_\(leg.enabled_TransportType)")
-        // lineNumberButton.backgroundColor = UIColor.red
-        // iconNumberButton.backgroundColor = UIColor.cyan
-        print("old Userinteration is enabled or not = \(lineNumberButton.isUserInteractionEnabled)")
+        print("leg.enabled_TransportType_______\(indexPath)_Leg.TT.\(leg.enabled_TransportType)-LLE_\(leg.enabled_LineNumber) &Line& \(leg.line) && \(leg.type)")
         lineNumberButton.isUserInteractionEnabled = true
-        print("new Userinteration is enabled or not = \(lineNumberButton.isUserInteractionEnabled)")
-        
-        print("Current iconNumberButton Button tag is \(lineNumberButton.tag)")
         iconNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.showClickedTransportTypeOrLineInNextDepartures), for: UIControlEvents.touchUpInside)
-        
-        
-        print("action target objects connected with curren icon = \(indexPath)----\(iconNumberButton.allTargets))")
-        print("old Userinteration is enabled or not = \(iconNumberButton.isUserInteractionEnabled)")
         iconNumberButton.isUserInteractionEnabled = true
-        print("new Userinteration is enabled or not = \(iconNumberButton.isUserInteractionEnabled)")
-        
-        print("Current iconNumberButtontag is \(iconNumberButton.tag)")
+            print("Line 4111:LndexPath:Status: \(indexPath):iconNumberButtonUserInter=\(iconNumberButton.isUserInteractionEnabled):IconTag:\(iconNumberButton.tag)")
+            print("Line 4111:LndexPath:Status: \(indexPath):lineNumberButton=\(lineNumberButton.isUserInteractionEnabled):LineTag:\(lineNumberButton.tag)")
         }
-//
-//        if (leg.filterLine == ""){
-//            
-//            lineNumberButton.backgroundColor = UIColor.green
-//            print(" trip info Line Number Button: Leg.LineValue = Empty =  \(leg.filterLine)")
-//        } else {
-//            
-//            lineNumberButton.backgroundColor = UIColor.red
-//            print("trip info Line Number Button: Leg.LineValue = \(leg.filterLine)")
-//            
-//            
-//        }
-//        
-        
-        // ------end
-        
-        
-        
-        
-        
-//        override func prepareForReuse()
-//        {
-//            cell.prepareForReuse()
-//            // Reset the cell for new row's data
-//            let iconOld = cell.viewWithTag(tagValuesReceived.iconTagIntReturned)
-//
-//        print("iconold.accessibilityidentifier ===== \(iconOld?.accessibilityIdentifier)")
-//            iconOld?.isHidden = true
-//            
-//            
-//        }
-        
-        print("startingPoint_101001----\(startingPoint)")
         //----#4------
         cell.name.text = ""//leg.name
-        
         //----#4.5------
         //----#5------line/dist
         cell.transportTypeOutlet.text = leg.journeyType
         cell.transportTypeOutlet.isHidden = true
-        
-        
-        print("--212----journey type is =\(leg.journeyType)")
-        print("--dist---- =\(leg.dist)")
-        print("--Line--- =\(leg.line)")
-        
-        print("-leg.dir--- =\(leg.dir)")
+
         var line_dist = String()
         var helpingWord = String()
-        print("leg.journey Type..... = \(leg.journeyType)")
-        if (leg.journeyType == "WALK"){
+         if (leg.journeyType == "WALK"){
             
             print("switching off walk cell to be touched..........")
         cell.isUserInteractionEnabled = false
@@ -3892,439 +4242,30 @@ cell.nextDeparturesOutlet.isSelected = true
             
         }
         cell.line_dist.text = line_dist
-        print("line_dist ::__:::\(line_dist)")
-        //    cell.towards_or_walk.text = helpingWord
-        
-        //        cell.legImage.image = UIImage(named: "firstLeg.png")
-        //        print("----image value is--\(cell.legImage)")
-        //        cell.legImage.image = UIImage(named: "lastLeg.png")
-       
-        //-----#6-----#7------------------------ Destination Station....Leg
+ 
         cell.to_station.text = leg.destination.name
         cell.to_time.text = leg.destination.time
         // cell.transportTypeOutlet.text = leg.destination.type
-        
-        print("------090---------cell.to_time.text--989=")
-        print(cell.to_time.text)
-        
-        
-        print("------090---------cell.to_time.text--989=")
-        print(cell.to_time.text)
-        
-        print("Before 879 cell info = \(cell.isHidden)")
-
-        print("Before leg.showHide: tripinfo = \(leg.showHideLeg) && index row = \(indexPath)")
+     
         
         // MARK: TripInfo Show/Hide based on button clicked
+        print("Cell: Line:4128 = indexPath= \(indexPath) = keyName = \(cell.keyName): isSelected: \(cell.nextDepartureTillCurrLeg_Outlet.isSelected): cell status: \(cell.showHideDepartureCell_Master)")
         
+        print("Line:4188:BeforenextDepartureRemainingLegStatusDict.allkeys= \(nextDepartureRemainingLegStatusDict.allKeys)")
         
-        print("trip info show hide current values = \(indexPath) & showhide value=\(leg.enabled_LineNumber)")
-        
-//        print("trip info show hide current values = \(indexPath) & showhide value=\(leg.li)")
-        
-        
-        print("Cell show trip info show hide current values = \(indexPath) & showhide value=\(leg.showHideLeg)")
-        if (leg.showHideLeg == true ){
-        
-        
-        cell.isHidden = false
-        } else if (leg.showHideLeg == false){
-        cell.isHidden = true
-        
-        
-        }
-        
-        //----switching off below on 24th dec 0835 to check showonly leg before it was showhideleg
-        
-        
-//        if (leg.show_OnlyLeg ==  )
-        
-/*        if (leg.show_OnlyLeg == true){
-        
-        cell.isHidden = false
-            
-            print("098123 = Leg.Line info = \(leg.filterLine) & Leg.line = \(leg.line)")
-        
-            if (leg.filterLine == leg.line)
-            {
-                cell.isHidden = true
-            } else {
-                cell.isHidden = false
-                
-            }
-
-        
-        } else {
-        
-        cell.isHidden = true
-            
-        
-        
-        } */
-        print("Afeter 879 cell info = indexpth = \(indexPath) &&  \(cell.isHidden)")
-        print("After leg.showHide: tripinfo = leg value \(leg.showHideLeg) + \(indexPath)")
-        
-        //MARK: TripInfo Show Hide/ Line Filter
-        
-        print("Before inside Trip Info cell Leg.showHide value in legList.showHideCell =\(legList.showHideCell) && IndexPath = \(indexPath)")
-//        if (legList.showHideCell == false){
-//             cell.isHidden = true
-//        } else {
-//            
-//            cell.isHidden = false
-//            
-//        }
-        print("090989 Current Leg Show/Hide Value = Trip Info = \(cell.isHidden)")
-        
-        // check for the line filter
-        print("07657 Leg filter & Leg Line Values respectively = Filter = \(leg.filterLine) & Line = \(leg.line) && indexpath = \(indexPath)")
-        print("5432 inside Trip Info cell is hidden = \(cell.isHidden)")
-       /*
- if (leg.filterLine == leg.line)
+        print("Line 4217:IP=\(indexPath)-state:\(cell.nextDepartureTillCurrLeg_Outlet.state) :Title:\(cell.nextDepartureTillCurrLeg_Outlet.titleLabel)")
+        if let btt = cell.viewWithTag(7000) as? UIButton
         {
-            cell.isHidden = true
-        } else {
-            cell.isHidden = false
-            
+        print("btt.userinter:bttTag-\(btt.tag)-UI- \(btt.isUserInteractionEnabled):----Idn-:\(btt.accessibilityIdentifier)-\(btt.allTargets)")
         }
-        */
-        print(" Just before returning the cell = color value is =\(UIColor.orange)")
-        
-        print("After inside Trip Info cell  is hidden = \(cell.isHidden)")
-      //  cell.contentView.setNeedsDisplay()
-//    
-//        print("old status of user interaction = \(cell.isUserInteractionEnabled) ---\(indexPath)")
-//        
-//        cell.isUserInteractionEnabled = true
-//        print("new status of user interaction = \(cell.isUserInteractionEnabled)")
-//        cell.from_time.text = String(indexPath.section) + ":" + String(indexPath.row)
-//        
-//        cell.from_station.backgroundColor = UIColor.red
-        
-        return cell
-        
-        //-----------------------------------------------------------------------------------------------------------Start
-        // temp switch off
-        // 9th nov friday 10 am--------------------start
-        /*
-        //-----------------------------------SECTION HANDLING--------------------------------------------start--------
-        print("Start in cell for row at = \(indexPath)")
-        // section handling
-        var currentSection = 0
-        
-        if (currentSection == indexPath.section){
-            
-            print("Current Section is equal to indexpath.seection = \(currentSection) && \(indexPath.section)")
-            
-        }
-        else if (currentSection != indexPath.section){
-            
-            // if session is new then counter reset
-            // reset it for every new section.....
-            print("New Section is being printed....Resetting all values....................")
-            
-            currentSection = indexPath.section
-            departureCounter = 0
-            showDeparture = false
-        }
-        // show departure reset
-        
-        //-----------------------------------SECTION HANDLING--------------------------------------------start--------
-        
-        ////MARK: Master Trip Dic--------------------Get Value Master Dict (For Current Section)-------------------start--------
-        
-        // get the value from master dict
-        // Get value for current section
-        // you will receive a dict of all values for rows within section
-        
-        let currentTripInfoDepartCellStatus = nextDepartureMasterDict.value(forKey: String(indexPath.section)) as! NSMutableDictionary
-        
-        // it should have values for all trip info cells
-        // count of keys shuold be equal to trip info cells within current section
-        print("currentTripInfoDepartureCell Status = allKeys =\(currentTripInfoDepartCellStatus.allKeys)")
-        
-        // get value for current Row
-        print("indexPath Row = \(indexPath.row)")
-        print("indexPath Section = \(indexPath.startIndex)")
-        let valueDepartureCurrentRow = currentTripInfoDepartCellStatus.value(forKey: String(indexPath.row)) as! Int
-        print("value departure current row = == \(valueDepartureCurrentRow)")
-        
-        // if value is 0 then show departure set true
-        if (valueDepartureCurrentRow == 1){
-            showDeparture = true
-            departureCounter += 1
-            
-            print("Current Value Departure Counter === \(departureCounter)")
-            print("Current Value of Departure Status == \(showDeparture)")
-        }
-        
-        //-----------------------------------Get Value Master Dict (For Current Section)-------------------end--------
-        
-        //-----------------------------------show normal cell / show departure cel if true-----------start--------
-        print("Show Departure Last Value ===== \(showDeparture)")
-        if (showDeparture == true){
-            
-            // copy paste departure code......
-            
-            print("cell departure must be printed now.......1..")
-            //    departureCounter += 1
-            
-            let cellDeparture = tableView.dequeueReusableCell(withIdentifier: "LegnextDepartures", for: indexPath as IndexPath) as! LegTripNextDeparturesTableViewCell
-            
-            print("cell departure must be printed now......2...")
-            
-            showDeparture = false
-            
-            return cellDeparture
-            
-            
-        }
-        
-        //if (showDeparture == false) {
-        
-        
-        
-        
-        
-        // show normal cells......BECAUSE Show Departure should be false
-        print("SHOW DEPARTURE IS FALSE = \(showDeparture)")
-        
-        print("in printing normal cells ,current indexpath.row = \(indexPath.row) && departureCounter = \(departureCounter)")
-        
-        let currentIndex = indexPath.row - departureCounter
-        print("IndexPath.Row = \(indexPath.row)")
-        print("Calculated Current Index = \(currentIndex)")
-        
-        // copy paste code for normal cell......
-        
-        // ----------------------------------NORMAL CELL......................-----------START------
-        let legList = newTrip[indexPath.section] as! Trip
-        let test = NSMutableArray()
-        var count = legList.LegList.count
-        
-        print("indexPath.row = \(indexPath.row) && Total count is = \(count)")
-        //
-        //        if (indexPath.row <= count){
-        //
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! LegListCells
-        cell.backgroundColor = UIColor.white
-        print("-Printing Cells--[Sections]=\(indexPath.section)--[Rows] = \(indexPath.row)")
-        
-        //MARK:BorderTripInfo
-        cell.layer.masksToBounds = true
-        cell.layer.borderWidth = cellBorderWidth
-        
-        //headerCell.layer.borderColor = UIColor.gray.cgColor
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        tableView.backgroundColor = UIColor.lightGray
-        //
-        //
-        //        let border = CALayer()
-        //        let width = CGFloat(15.0)
-        //        border.borderColor = UIColor.darkGray.cgColor
-        //        border.frame = CGRect(x: 0, y: tableView.frame.size.height - width, width:  tableView.frame.size.width, height: tableView.frame.size.height)
-        //
-        //        border.borderWidth = width
-        //        tableView.layer.addSublayer(border)
-        //        tableView.layer.masksToBounds = true
-        
-        
-        /*
-         cell.layer.borderWidth = 10.0
-         cell.layer.borderColor = UIColor.green.cgColor
-         
-         */
-        
-        cell.tag = indexPath.row
-        cell.nextDeparturesOutlet.tag = indexPath.row
-        
-        cell.sectionInfo = String(indexPath.section)
-        cell.rowInfo = String(indexPath.row)
-        
-        cell.keyName = cell.sectionInfo + cell.rowInfo
-        
-        print("Current Section = \(indexPath.section).self && Current Row = \(indexPath.row)")
-        cell.name.isHidden = true
-        //cell.nextDeparturesOutlet.backgroundColor = UIColor.lightGray
-        cell.towards_or_walk.isHidden = true
-        
-        // MARK# Collection View
-        // MARK: cell
-        
-        //MARK: CollectionView temp off
-        
-        //   cell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
-        
-        //headerCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: section)
-        
-        // 3
-        // Configure the cell...
-        // MARK: Move to collection 1
-        
-        print("From Station id = \(legList.originDetail)")
-        
-        test.add(legList.LegList[indexPath.row])
-        let startingPoint = CGPoint(x: 35.0,y: 30.0)
-        // let startingPoint = CGPoint(x: 35.0,y: -130.0)
-        let startingSize = default_startingSize //CGSize(width:20.0,height:20.0)
-        let orientation = "x"  // x, y, or xy
-        let innerSpacing = default_innerSpacing //CGPoint(x:10,y:0)
-        let innerLegSpacing = default_innerLegSpacing //CGPoint(x:25,y:0)
-        let sizeFactor = CGSize(width: 0.0,height: 0.0)
-        // MARK: Move to collection 1 ---end
-        // ------------setting Leg Images---------START
-        print("--Row = \(indexPath.row)----count = \(legList.LegList.count)")
-        count = count - 1
-        print("--Row = \(indexPath.row)----count = \(count)")
-        let leg = legList.LegList[indexPath.row] as! Leg
-        
-        cell.legImage.image = UIImage(named: leg.legImageName)
-        // MARK: Leg
-        print("cell for row  at index ===\(indexPath)-------------------------")
-        print("leg image name ==\(leg.legImageName)")
-        print("leg.line ==\(leg.line)")
-        print("leg.dir ==\(leg.dir)")
-        print("leg.journeyType ==\(leg.journeyType)")
-        print("leg.name ==\(leg.name)")
-        print("leg.origin ==\(leg.origin)")
-        // legList.originDetail.name
-        //----#1-----#2------------------------ Origin Station....Leg
-        cell.from_station.text = leg.origin.name
-        print("cell.from_station.text::::\(cell.from_station.text)")
-        // temp cell.from_time.text = legList.originDetail.time
-        cell.from_time.text = leg.origin.time
-        // MARK: RTU Message Cell Level
-        if (leg.rtu_Message_Flag == true){
-            print("cell:: RTU Message ::::")
-            print(leg.rtu_Message)
-            cell.rtuMessage.isHidden = false
-            cell.rtuMessage.text = leg.rtu_Message
-            cell.rtuMessage.textColor = UIColor.red
-        } else {
-            cell.rtuMessage.isHidden = true
-        }
-        // cell.transportTypeOutlet.text = leg.origin.type
-        //        if (leg.dir != "Default"){
-        //        cell.towards_or_walk.text = leg.dir
-        //        }
-        cell.towards_or_walk.text = ""
-        print("cell.towards_or_walk.text  :\(leg.dir)")
-        
-        // set root map reference
-        // set root map geometry reference
-        
-        print("------090--------- cell.from_time.text--989=")
-        print(cell.to_time.text)
-        
-        print("printing indexpath.row = in cell Level \(indexPath.row)")
-        print("current Geom Ref is = \(leg.geomRef)")
-        
-        print("current Geom Ref is journeyDetailRef...........= \(leg.journeyDetailRef)")
-        
-        //-----#3------Visual Leg
-        
-        print(test.count)
-        // MARK: Move to collection 2
-        
-        SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: startingSize, legs: test, cell: cell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor)
-        print("startingPoint_101001----\(startingPoint)")
-        //----#4------
-        cell.name.text = ""//leg.name
-        
-        //----#4.5------
-        //----#5------line/dist
-        cell.transportTypeOutlet.text = leg.journeyType
-        cell.transportTypeOutlet.isHidden = true
-        
-        
-        print("--212----journey type is =\(leg.journeyType)")
-        print("--dist---- =\(leg.dist)")
-        print("--Line--- =\(leg.line)")
-        
-        print("-leg.dir--- =\(leg.dir)")
-        var line_dist = String()
-        var helpingWord = String()
-        print("leg.journey Type..... = \(leg.journeyType)")
-        if (leg.journeyType == "WALK"){
-            
-            print("switching off walk cell to be touched..........")
-            cell.isUserInteractionEnabled = false
-            
-            //        cell.multipleTouchEnabled = false
-            
-            
-        }
-        
-        if (leg.journeyType == "WALK"){
-            line_dist = leg.name + " "+leg.dist + " Meters"
-            // helpingWord = "Meters"
-        }
-        else if (leg.journeyType != "WALK")
+        if let btt = cell.viewWithTag(7001) as? UIButton
         {
-            line_dist =   leg.name + " Towards " + leg.dir
-            //            helpingWord = "Towards"
-            
+            print("btt.userinter:-bttTag-\(btt.tag)-UI- \(btt.isUserInteractionEnabled):---Idn-:\(btt.accessibilityIdentifier)-\\(btt.allTargets)")
         }
-        else {
-            line_dist = "--??---"
-            helpingWord = "?????"
-            
-        }
-        cell.line_dist.text = line_dist
-        print("line_dist ::__:::\(line_dist)")
-        //    cell.towards_or_walk.text = helpingWord
-        
-        //        cell.legImage.image = UIImage(named: "firstLeg.png")
-        //        print("----image value is--\(cell.legImage)")
-        //        cell.legImage.image = UIImage(named: "lastLeg.png")
-        
-        
-        
-        
-        
-        //-----#6-----#7------------------------ Destination Station....Leg
-        cell.to_station.text = leg.destination.name
-        cell.to_time.text = leg.destination.time
-        // cell.transportTypeOutlet.text = leg.destination.type
-        
-        print("------090---------cell.to_time.text--989=")
-        print(cell.to_time.text)
-        
-        
-        print("------090---------cell.to_time.text--989=")
-        print(cell.to_time.text)
         
         
         return cell
-        
-        // ----------------------------------NORMAL CELL......................-----------END------
-        // MASTer dict switching off on 9th nov for departure object insertion and deletion mecahnism 
-        // 9th nov friday 10 Am
-        */
-        
-        
-        
-        //   }
-        
-        // if show departure == true
-        
-        // departure cell print
-        
-        // else if show departure is false
-        // print normal cells
-        
-        //            }
-        //        else {
-        //
-        //
-        //
-        //        }
     }
-    //
-    //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        <#code#>
-    //    }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 // get new trip and then extract current leg
         
@@ -4346,40 +4287,24 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         } else {
             
             if let currentDepartures = currentSection.LegList[indexPath.row] as? TripInfoDepartures {
-                print("if.....object type = TripInfoDepartures Found = \(currentSection.LegList[indexPath.row])")
+                //print("if.....object type = TripInfoDepartures Found = \(currentSection.LegList[indexPath.row])")
                 return 150
                 
             } else {
                 print("else.....object type other found = \(currentSection.LegList[indexPath.row])")
-                
-            
             }
             
         }
-        
-      
-    
         return 0
     }
- 
-    
-    // MARK: Height of row
+  // MARK: Height of row
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let titleHeader = "SLife:" + String(section)
+        let titleHeader = "SLife:HEADER TITLE IS HERE" + String(section)
         return titleHeader
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        //        let headerCellTemp = tableView.viewWithTag(section) as!TripSuggestionsCell_new
-        //
-        //        print("HeaderCellTemp tag value is = \(headerCellTemp.tag)")
-        //
-        //print("TableView Subview Counts = \(tableView.subviews.count)")
-        
-        //let headerCellTemp = tableView.subviews[section]. as! TripSuggestionsCell_new
-        
-        //              print("HeaderCellTemp tag value is = \(headerCellTemp.tag)")
-        
+       
         let tripCell = newTrip[section] as! Trip
         print("heightForHeaderInSection...........\(section).")
         print(legIconsLineCounter)
@@ -4423,24 +4348,10 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         
         
         print("headerHeightDict==== \(headerHeightDict.allKeys)")
-        // -----------header height cell testing
-        //        let defaultBottomSpaceLeave = 15.0
-        //        let defaultTopSpaceLeave = 15.0
-        //        let defaultStackViewBottomSpaceBeforeIconLeave = 10
         
+        let headerHeightCalculation = headerCell_StackView_Height + (total_icon_lines.lineCount * Int(default_startingSize.height)) //+ navigationHeaderCellHeight
         
-        let headerHeightCalculation = headerCell_StackView_Height + (total_icon_lines.lineCount * Int(default_startingSize.height))
-        
-        // -----------header height cell testing end
-        
-        print(".---------------------------------------------------Height Calculation HeaderCEll---.")
-        print("total ICon Lines = \(total_icon_lines)")
-        print("DefaultBottomSpace Leave = \(defaultBottomSpaceLeave)")
-        print("(total_icon_lines * defaultBottomSpaceLeave) = \(defaultBottomSpaceLeave)")
-        print("HeaderCell_StackViewHeight = \(headerCell_StackView_Height)")
-        
-        print("Returning with HeaderCell Trip Suggestion Height = \(headerHeightCalculation)")
-        print(".-----------------------------------------------------.")
+        print("Total Height of the header section =\(headerHeightCalculation)")
         return CGFloat(headerHeightCalculation)
         
         // temp check on above headerheightcalculation return CGFloat(headerCellTotalHeight)
@@ -4449,7 +4360,8 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        
+//        print("if section is 6th then return navigation later trips cells = section \(section)")
+//
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCells") as! TripSuggestionsCell_new
         
           let trip_detail_flag = RealTidMethods.checkNullForBool(someValue: showTripDetail_Dict, keyName: String(section))
@@ -4468,7 +4380,13 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         
         }
         
+        // tap gesture for header cell
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TripSuggestionsTViewController.tripHeaderSelector))
         
+        tapGesture.numberOfTouchesRequired = 1
+        tapGesture.numberOfTapsRequired = 1
+        headerCell.addGestureRecognizer(tapGesture)
+         //----------
         headerCell.showTripRouteOnMapOutlet.isHidden = true
         headerCell.tag = section
         print("header cell tag = \(headerCell.tag)")
@@ -4494,34 +4412,16 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
             headerCell.backgroundColor = headerRowSelectedColor
              print("True is here .... \(headerSelectionFlagNull)")
         }
-        //MARK: TripSuggestionBorder
-        //MARK: Corner Radius
-        /*
-         headerCell.layer.cornerRadius = 6 //set corner radius here
-         headerCell.layer.borderColor = UIColor.lightGray.cgColor  // set cell border color here
-         headerCell.layer.borderWidth = 2 // set border width here
-         */
-        //MARK: HeaderRowColor
+                //MARK: HeaderRowColor
         //   headerCell.backgroundColor = headerRowSelectedColor
         //___________________________
         headerCell.layer.masksToBounds = true
         headerCell.layer.borderWidth = headerBorderWidth
         //        headerCell.layer.borderColor = UIColor.gray.cgColor
         headerCell.layer.borderColor = UIColor.lightGray.cgColor
-        
-        
-        //        let border = CALayer()
-        //        let width = CGFloat(2.0)
-        //        border.borderColor = UIColor.darkGray.cgColor
-        //        border.frame = CGRect(x: 0, y: tableView.frame.size.height - width, width:  tableView.frame.size.width, height: tableView.frame.size.height)
-        
-        
-        print(tableView.rowHeight)
+          print(tableView.rowHeight)
         headerCell.sectionSelected.tag = section
         // MARK: ShowTripDetail_Dict
-        
-        //        print("before setting dict values..................")
-        //        showTripDetail_Dict.setValue(false, forKey: String(section))
         
         print("tableView.frame.size.height ........")
         print(tableView.frame.size.height)
@@ -4534,7 +4434,11 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         print("cell-header cell---\(headerCell)")
         
         let head = newTrip[section] as! Trip
+        // check if the Trip Count is greater than the Current Section then return navigational cell
         
+        
+        print("returning bottom Navigational Cell: Total Trips::\(newTrip.count) Section = \(section)")
+      
         print("-In Sections--[Sections]=\(section)--)")
         print(".....head.count is \(head.dur)")
         
@@ -4562,6 +4466,7 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         //drawLeg(xy, size: size, legs: <#T##NSMutableArray#>, cell: <#T##UITableViewCell#>, indexPath: <#T##NSIndexPath#>, orientation: <#T##Character#>, spacingFactor: <#T##Float#>)
         //  let startingPoint = CGPoint(x: 5.0,y: 2.0)
         
+        //--- ICON PRINTING CODE-----------------------------------start
         let legIcons_y = headerCell.viewWithTag(10)?.frame.size.height
         
         // old starting vlaue of y is = 100
@@ -4692,66 +4597,89 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
                 
                 let tagValueReceives = SlifeMethods.drawLegs(startingPoint: startingPoint, startingSize: default_startingSize, legs: ns , cell: headerCell, orientation: orientation, innerLegSpacingFactor: innerSpacing, interLegSpacingFactor: innerLegSpacing, sizeFactor: sizeFactor,indexValueFromSectionOrRow: section,indexValueFromCurrentLeg: increment, iconTagIntValue: iconTagInt!, lineNoIntValue: lineNoInt!)
                 // Extract buttons which have been added
-              
-                print("---------Do we have same tag values Test 1-----Values Received--")
+                print("--view for header: line : 5001-------Do we have same tag values Test 1-----Values Received--")
                 print("Current Section:\(section)")
-                print(" tagValueReceives.iconTagIntReturned = \(tagValueReceives.iconTagIntReturned)")
+                print(" Line 5003tagValueReceives.iconTagIntReturned = \(tagValueReceives.iconTagIntReturned)")
                 print(" tagValueReceives.lineNoIntReturned = \(tagValueReceives.lineNoIntReturned)")
                 
-                
-//                let iconButton = headerCell.contentView.v
+           //                let iconButton = headerCell.contentView.v
                 
 //                print("iconButton:::::: \(iconButton)")
-                
-
-                //MARK: Trip Info Leg Icon Interaction
-         
-                 
+                            //MARK: Trip Info Leg Icon Interaction
                 let iconNumberButton = headerCell.contentView.viewWithTag(tagValueReceives.iconTagIntReturned) as! UIButton
                 
-                print("iconButton Accessibility identifier: \(iconNumberButton.accessibilityIdentifier)")
-                
+               
                 
                 let lineNumberButton = headerCell.contentView.viewWithTag(tagValueReceives.lineNoIntReturned) as! UIButton
-               let currentLeg = tripCell.LegList[increment] as! Leg
+                let currentLeg = tripCell.LegList[increment] as! Leg
                 
+                print("currentLeg.enabled_TransportType = \(currentLeg.enabled_TransportType) && Line Number Enab= \(currentLeg.enabled_LineNumber)")
                 
-                if (currentLeg.enabled_TransportType == true ){
-                // green means it is enabled while red means it is disabled :show or hide
+                print("iconButton Accessibility identifier: & ---\(iconNumberButton.accessibilityIdentifier) && \(currentLeg.type) && Line = \(currentLeg.line)")
+              // MARK: Version 2 enabl disable
+                /*--
+                if ((currentLeg.enabled_TransportType == true ) && (currentLeg.type.contains(iconNumberButton.accessibilityIdentifier!))){
+                  // green means it is enabled while red means it is disabled :show or hide
                   
                     iconNumberButton.backgroundColor = iconSelectedColor
-                    
+                    lineNumberButton.backgroundColor = disabledColor
                 }
                 else {
                     
                 
-                    iconNumberButton.backgroundColor = UIColor.white
+                    iconNumberButton.backgroundColor = disabledColor
+                    
+                   // lineNumberButton.backgroundColor = enabledColor
                     
                 }
+                */
+                print("currentLeg.filterLine = update::: \(currentLeg.enabled_LineNumber) & \(currentLeg.line)")
+                
+                
+
+                /*if (currentLeg.enabled_LineNumber){
+                    lineNumberButton.backgroundColor = enabledColor
+                    iconNumberButton.backgroundColor = disabledColor
+                }
+                
+                else if (currentLeg.enabled_LineNumber == false){
+                
+                    
+                    lineNumberButton.backgroundColor = disabledColor
+
+                
+                }*/
+//
+//                if (currentLeg.enabled_LineNumber == true ){
+//                    // green means it is enabled while red means it is disabled :show or hide
+//                    
+//                    lineNumberButton.backgroundColor = iconSelectedColor
+//                    
+//                }
+//                else {
+//                    
+//                    
+//                    lineNumberButton.backgroundColor = disabledColor
+//                    
+//                }
                 
                 print("lineNumberButton Accessibility identifier: \(lineNumberButton.accessibilityIdentifier)")
                 
           
-                print("legicon:::::::")
+                print("legicon:::::trip level:\(currentLeg.clickLevel):Line:\(currentLeg.line)-Lin Status=\(currentLeg.enabled_LineNumber) Type: \(currentLeg.type) & typeStatus = \(currentLeg.enabled_TransportType)")
                 // Mark: 23rd dec 1800-changed clicked to  showClickedTransportType
 //                showClickedLine
-                lineNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.showClickedLegOrLineFilter), for: UIControlEvents.touchUpInside)
+               
+                /* MARK: VERSION 2.0 filter trip > tripinfo
+                    lineNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.showClickedLegOrLineFilter), for: UIControlEvents.touchUpInside)
                // lineNumberButton.backgroundColor = UIColor.red
                 // iconNumberButton.backgroundColor = UIColor.cyan
                 
                 iconNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.showClickedLegOrLineFilter), for: UIControlEvents.touchUpInside)
 
-                if (currentLeg.filterLine == ""){
-                    lineNumberButton.backgroundColor = UIColor.white
-                    
-                    print("Line Number Button: Leg.LineValue = Empty =  \(currentLeg.filterLine)")
-                } else {
-                    lineNumberButton.backgroundColor = iconSelectedColor
-                    
-                    print("Line Number Button: Leg.LineValue = \(currentLeg.filterLine)")
-                    
+                */
                 
-                }
+             
         }
             increment += 1
           //  }
@@ -4761,7 +4689,7 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         }
         
         
-        
+        //-----icon printing-------end
         
         
         // create header cell height dict bank
@@ -4822,35 +4750,70 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
         print("tripcell.duration is =)")
         // MARK: MapReference temp friday off
       
-        /*
+        
         let leg =  tripCell.LegList[0] as! Leg
-        headerCell.mapReference.tag = section + 1
+        headerCell.mapReference.tag = section //+ 1
         headerCell.mapReference.accessibilityIdentifier = leg.journeyDetailRef
         headerCell.mapReference.isHidden = true
-        headerCell.showTripRouteOnMapOutlet.tag = section + 1
+        headerCell.showTripRouteOnMapOutlet.tag = section //+ 1
         headerCell.showTripRouteOnMapOutlet.accessibilityIdentifier = leg.journeyDetailRef
-        let mapReferenceKey = section + 1
+        
+        let mapReferenceKey = section //+ 1
         rootMap_Ref_Dict.setValue(leg.journeyDetailRef, forKey: String(mapReferenceKey))
         // MARK: AutoLayout
-        */
+ 
         let evenOrNot = even(number: section)
-        
+        /*
         if (evenOrNot){
-            
-            // headerCell.backgroundColor = UIColor.lightGray
-        }
-        
+             headerCell.backgroundColor = UIColor.lightGray
+        }*/
         print("section::::::header:::\(section)")
+        headerCell.refresh_top_navigation.isHidden = true
+        headerCell.refresh_next_navigation.isHidden = true
         
+        /*
+        if(section == 0){
+     //   headerCell.backgroundColor = UIColor.green
+          
+           // headerCell.refresh_top_navigation.isHidden = false
+           // headerCell.refresh_next_navigation.isHidden = true
+ headerCell.backgroundColor = enabledColor
+            
+        } else if ((section + 1) == newTrip.count){
+        headerCell.backgroundColor = disabledColor
+          
+          //  headerCell.refresh_top_navigation.isHidden = true
+        // headerCell.refresh_next_navigation.isHidden = false
+
+            
+        }
+     else {
+            headerCell.refresh_top_navigation.isHidden = true
+            headerCell.refresh_next_navigation.isHidden = true
+         }    */
         
-        
+        print("headerCell.isUserInteractionEnabled ??? \(headerCell.isUserInteractionEnabled)")
+        headerCell.showTripRouteOnMapOutlet.isHidden = false
+      //  headerCell.showTripRouteOnMapOutlet.tag = section
+        print("Line4796_section=\(section)-- \(headerCell.showTripRouteOnMapOutlet.tag)")
+        print("Line4796:ootMap_Ref_Dict.value=\(rootMap_Ref_Dict.allKeys)")
+    
         return headerCell
     }
+    
     
     func even(number: Int) -> Bool {
         // Return true if number is evenly divisible by 2.
         return number % 2 == 0
     }
+    /*
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Prepare for Segue in TripSuggestion Has been called: Line 4871:\(segue.identifier)")
+    
+    if sender
+    }
+    */
+    
     /*
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        <#code#>
@@ -7823,7 +7786,8 @@ print(" in height of row current section.leglist.count = \(currentSection.LegLis
                     
                     print("legicon:::::::")
                     
-                    lineNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.Clicked), for: UIControlEvents.touchUpInside)
+                    lineNumberButton.
+ (self, action: #selector(TripSuggestionsTViewController.Clicked), for: UIControlEvents.touchUpInside)
                     
                     
                     iconNumberButton.addTarget(self, action: #selector(TripSuggestionsTViewController.Clicked), for: UIControlEvents.touchUpInside)
@@ -10488,8 +10452,6 @@ class TripSuggestionsTViewController: UITableViewController,UICollectionViewDele
         }
         
         print("section::::::header:::\(section)")
-        
-        
         
         return headerCell
     }

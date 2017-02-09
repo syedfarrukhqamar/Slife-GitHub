@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4D017F1E4C83A828F6EAE4070A12C10FB21A8C4C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "37AC42550CE5B7E2545152FB9B1CBFF8CEA69749" : 9223372036854775807,
+    "4D017F1E4C83A828F6EAE4070A12C10FB21A8C4C" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D5C47F49-2786-4AC1-B260-A0ACFCDC5A5B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "37AC42550CE5B7E2545152FB9B1CBFF8CEA69749" : "",
+    "4D017F1E4C83A828F6EAE4070A12C10FB21A8C4C" : "Slife\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Slife",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Slife.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/syedfarrukhqamar\/SlifeMaster.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "37AC42550CE5B7E2545152FB9B1CBFF8CEA69749"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/syedfarrukhqamar\/Slife-GitHub.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4D017F1E4C83A828F6EAE4070A12C10FB21A8C4C"
+    }
+  ]
+}
